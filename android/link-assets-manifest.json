@@ -1,0 +1,41 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/NotoSerif-Bold.ttf",
+      "sha1": "26e576716767a74d49f3804df9d7acccb77ac3c1"
+    },
+    {
+      "path": "assets/fonts/NotoSerif-Regular.ttf",
+      "sha1": "e75978c49a8a21f9180cb476ffdb7b0d637f6622"
+    },
+    {
+      "path": "assets/fonts/NotoSerif-Thin.ttf",
+      "sha1": "8da3fb730dc6245c8e8b4b8bd4aca57b090160c5"
+    },
+    {
+      "path": "assets/fonts/NotoSerifCondensed-BoldItalic.ttf",
+      "sha1": "8d48ae94a8de30a490ab38aa0b4c1b4a7429bde2"
+    },
+    {
+      "path": "assets/fonts/NotoSerifCondensed-Italic.ttf",
+      "sha1": "820fcf178adcdf7123ba54cecb80d493cfe35bb5"
+    },
+    {
+      "path": "assets/fonts/NotoSerifCondensed-LightItalic.ttf",
+      "sha1": "e08347f26604f42e367fef374cb60a39d9172e78"
+    },
+    {
+      "path": "assets/fonts/NotoSerifCondensed-Medium.ttf",
+      "sha1": "604083e43558fb3c9998d6370afc2376e304fc69"
+    },
+    {
+      "path": "assets/fonts/NotoSerifCondensed-MediumItalic.ttf",
+      "sha1": "c163d57d8bdfdc917c3166153d68319f05a7fa67"
+    },
+    {
+      "path": "assets/fonts/NotoSerifCondensed-Thin.ttf",
+      "sha1": "011253fac2e406260e24c9eb797e398e21f9be42"
+    }
+  ]
+}

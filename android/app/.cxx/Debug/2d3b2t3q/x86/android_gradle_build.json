@@ -1,0 +1,42 @@
+{
+  "buildFiles": [
+    "/Users/furkantomu/Desktop/ArcanaX/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/furkantomu/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/furkantomu/Desktop/ArcanaX/android/app/.cxx/Debug/2d3b2t3q/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/furkantomu/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/furkantomu/Desktop/ArcanaX/android/app/.cxx/Debug/2d3b2t3q/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "appmodules::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "appmodules",
+      "output": "/Users/furkantomu/Desktop/ArcanaX/android/app/build/intermediates/cxx/Debug/2d3b2t3q/obj/x86/libappmodules.so",
+      "runtimeFiles": [
+        "/Users/furkantomu/.gradle/caches/8.9/transforms/8c86c492e2de93e5f90947fa7dc8b26e/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.x86/libfbjni.so",
+        "/Users/furkantomu/.gradle/caches/8.9/transforms/f5c12c2c72cd64347f6fb229808e30a5/transformed/react-android-0.77.0-debug/prefab/modules/jsi/libs/android.x86/libjsi.so",
+        "/Users/furkantomu/.gradle/caches/8.9/transforms/f5c12c2c72cd64347f6fb229808e30a5/transformed/react-android-0.77.0-debug/prefab/modules/reactnative/libs/android.x86/libreactnative.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/furkantomu/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/furkantomu/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
