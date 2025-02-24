@@ -1,4 +1,4 @@
-import {COLORS, FONTS, SIZES} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 import {StyleSheet} from 'react-native';
 
 export const getStyles = () =>
@@ -34,9 +34,6 @@ export const getStyles = () =>
       height: 130,
     },
     title: {
-      fontSize: SIZES.body2,
-      fontWeight: 'bold',
-      color: COLORS.cream,
       textAlign: 'left',
       width: '100%',
       paddingLeft: 20,
@@ -73,9 +70,6 @@ export const getStyles = () =>
       paddingVertical: 20,
     },
     lifePathSectionTitle: {
-      color: COLORS.cream,
-      fontWeight: 'bold',
-      fontSize: SIZES.title,
       textAlign: 'center',
     },
     lifePathSectionWrapper: {
@@ -116,14 +110,6 @@ export const getStyles = () =>
       height: 30,
       tintColor: COLORS.cream,
     },
-    lifePathSectionItemTitle: {
-      color: COLORS.cream,
-      fontSize: SIZES.subTitle,
-    },
-    lifePathSectionItemDescription: {
-      color: COLORS.cream,
-      fontSize: SIZES.body3,
-    },
     lifePathSectionItemImage: {
       width: 60,
       height: 40,
@@ -138,23 +124,17 @@ export const getStyles = () =>
     },
     planetSectionTitle: {
       color: COLORS.white,
-      fontSize: SIZES.body1,
       borderBottomWidth: 1,
       borderColor: COLORS.cream,
       marginBottom: 10,
     },
-    planetSectionTResult: {
+    planetSectionResult: {
       color: COLORS.gold,
-      fontSize: SIZES.body1,
+
     },
-    planetSectionDescription: {
-      color: COLORS.cream,
-      fontSize: SIZES.body2,
-    },
+
     karmicNumberLabel: {
       color: COLORS.gold,
-      fontFamily: FONTS.NotoSerifCondensedMediumItalic,
-      fontSize: SIZES.body2,
       textAlign: 'center',
       marginBottom: 10,
     },

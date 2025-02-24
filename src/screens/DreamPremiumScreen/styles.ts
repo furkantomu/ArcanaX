@@ -61,10 +61,6 @@ export const getStyles = () =>
       borderRadius: 20,
       marginTop: 10,
     },
-    resultText: {
-      color: COLORS.cream,
-      fontSize: SIZES.body3,
-    },
     selfMessage: {
       alignSelf: 'flex-end',
       backgroundColor: COLORS.darkGray,

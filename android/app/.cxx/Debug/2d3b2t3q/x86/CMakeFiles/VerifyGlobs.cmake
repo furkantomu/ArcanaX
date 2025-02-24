@@ -5,6 +5,7 @@ cmake_policy(SET CMP0009 NEW)
 # input_SRC at /Users/furkantomu/Desktop/ArcanaX/node_modules/react-native/ReactAndroid/cmake-utils/ReactNative-application.cmake:47 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/furkantomu/Desktop/ArcanaX/android/app/build/generated/autolinking/src/main/jni/*.cpp")
 set(OLD_GLOB
+  "/Users/furkantomu/Desktop/ArcanaX/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

@@ -42,7 +42,6 @@ export const getStyles = () =>
     },
     faqSectionItemTitle: {
       color: COLORS.gold,
-      fontSize: SIZES.body2,
     },
     faqSectionItemItemDescription: {
       color: COLORS.cream,

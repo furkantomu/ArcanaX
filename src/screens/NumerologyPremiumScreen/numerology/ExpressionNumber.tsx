@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, Text, Pressable, ActivityIndicator, Image} from 'react-native';
+import {View, Pressable, ActivityIndicator, Image} from 'react-native';
 import Animated, {
   Easing,
   runOnUI,

@@ -43,7 +43,7 @@ export const getStyles = () =>
       height: 130,
     },
     title: {
-      fontSize: SIZES.body2,
+      fontSize: SIZES.body3,
       fontWeight: 'bold',
       color: COLORS.cream,
       textAlign: 'left',
@@ -85,19 +85,19 @@ export const getStyles = () =>
     },
     planetSectionTitle: {
       color: COLORS.white,
-      fontSize: SIZES.body1,
+      fontSize: SIZES.body2,
       borderBottomWidth: 1,
       borderColor: COLORS.cream,
       marginBottom: 10,
     },
     planetSectionTResult: {
       color: COLORS.gold,
-      fontSize: SIZES.body1,
+      fontSize: SIZES.body2,
     },
     lifePathSectionTitle: {
       color: COLORS.cream,
       fontWeight: 'bold',
-      fontSize: SIZES.title,
+      fontSize: SIZES.body2,
       textAlign: 'center',
     },
     karmicNumberLabel: {

@@ -1,9 +1,7 @@
 module.exports = {
   project: {
     ios: {},
-    android: {
-      packageName: 'com.arcanax',
-    },
+    android: {},
   },
   assets: ['./assets/fonts'],
 };

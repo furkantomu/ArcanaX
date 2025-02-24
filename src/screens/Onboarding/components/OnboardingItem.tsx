@@ -101,7 +101,7 @@ function RenderItem({index, x, item}: Props) {
           style={[styles.descriptionContainer, lottieAnimationStyle]}>
           <Typography
             weight={'regular'}
-            size={'large'}
+            size={'medium'}
             style={{...styles.itemDescription, color: item.textColor}}>
             {item.description}
           </Typography>
@@ -116,8 +116,7 @@ export default RenderItem;
 const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   image: {
     width: '100%',
@@ -136,13 +135,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 2,
+    position:'absolute',
+    top: 60,
   },
   logo: {
     height: 30,
     width: 120,
   },
   content: {
-    flex: 0.5,
     gap: 30,
   },
   itemText: {

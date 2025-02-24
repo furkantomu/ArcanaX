@@ -18,7 +18,7 @@ export const getStyles = () =>
       marginBottom: 20,
     },
     collapsibleMenuItemText: {
-      fontSize: 20,
+      fontSize: SIZES.body4,
       fontFamily: FONTS.NotoSerifCondensedBoldItalic,
       color: COLORS.cream,
     },

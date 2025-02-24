@@ -13,6 +13,7 @@ import {Pressable} from 'react-native-gesture-handler';
 import {useRefsContext} from '@/context';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {COLORS} from '@/styles/theme';
+import {Typography} from '@/components';
 
 const arrow = require('../../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -70,10 +71,8 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
         <View style={styles.lifePathSectionItem}>
           <View style={styles.lifePathSectionItemLeft}>
             <View>
-              <Text style={styles.lifePathSectionItemTitle}>{title}</Text>
-              <Text style={styles.lifePathSectionItemDescription}>
-                {description}
-              </Text>
+              <Typography size="large">{title}</Typography>
+              <Typography>{description}</Typography>
             </View>
           </View>
 

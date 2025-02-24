@@ -131,11 +131,11 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 50,
+    gap: 30,
     padding: 16,
   },
   form: {
-    marginTop: 50,
+    marginTop:20,
   },
   passwordChangeContainer: {
     alignItems: 'flex-end',

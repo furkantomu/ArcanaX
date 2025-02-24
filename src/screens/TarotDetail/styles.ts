@@ -7,8 +7,7 @@ const imageHeight = imageWidth * 1.4;
 export const getStyles = () =>
   StyleSheet.create({
     wrapper: {
-      marginTop: 150,
-      paddingBottom:70,
+      flex: 1,
     },
     collapsibleMenu: {
       justifyContent: 'space-between',
@@ -28,7 +27,6 @@ export const getStyles = () =>
     collapsibleMenuContent: {
       justifyContent: 'center',
       alignItems: 'center',
-   
     },
     cardContainer: {
       flexDirection: 'row',
@@ -47,10 +45,10 @@ export const getStyles = () =>
     title: {
       color: COLORS.silverGray,
     },
-    margin:{
+    margin: {
       marginTop: 10,
     },
     loading: {
-      marginTop:100,
+      marginTop: 100,
     },
   });

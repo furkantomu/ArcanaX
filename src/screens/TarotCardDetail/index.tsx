@@ -68,8 +68,8 @@ const TarotCardDetail = () => {
 
   return (
     <LinearGradient colors={[COLORS.black, '#3F2305']} style={styles.container}>
-      <CustomHeader leftIcon={true} title={false} rightIcon={false} />
       <SafeAreaView style={styles.container}>
+      <CustomHeader leftIcon={true} title={false} rightIcon={false} />
         <ScrollView>
           <View style={styles.imageContainer}>
             <Typography size="heading">{card?.name}</Typography>

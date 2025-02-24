@@ -16,6 +16,7 @@ import {apiService} from '@/services/APIService';
 import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
 import {COLORS} from '@/styles/theme';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+import { Typography } from '@/components';
 
 const arrow = require('../../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -99,7 +100,12 @@ const PersonalYearNumber = () => {
               />
             )}
 
-            <Text style={styles.title}>Kişisel Yıl Sayısı</Text>
+            <Typography
+              size="large"
+              weight="NotoSerifCondensedBoldItalic"
+              style={styles.title}>
+              Kişisel Yıl Sayısı
+            </Typography>
           </View>
           <View style={styles.imageContainer}>
             <Image source={image} resizeMode={'cover'} style={styles.image} />

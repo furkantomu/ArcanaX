@@ -14,7 +14,7 @@ import {Form, useForm} from '@/hooks/useForm';
 
 import {useLoginContext} from './LoginContext';
 
-import {COLORS, FONTS} from '@/styles/theme';
+import {COLORS, FONTS, SIZES} from '@/styles/theme';
 import {useAppDispatch} from '@/hooks';
 import {authActions} from '@/store/auth/authActions';
 import {useSelector} from 'react-redux';
@@ -369,13 +369,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   day: {
-    width: 100,
+    width: SIZES.width / 5,
   },
   month: {
-    width: 100,
+    width: SIZES.width / 5,
   },
   year: {
-    width: 150,
+    width: SIZES.width / 3,
   },
   label: {
     color: COLORS.black,

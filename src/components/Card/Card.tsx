@@ -85,7 +85,9 @@ const Card: React.FC<CardProps> = ({
               style={styles.title}>
               {cardTitle}
             </Typography>
-            <Typography size={'regular'} weight={'bold'}>
+            <Typography
+          weight={'NotoSerifCondensedBoldItalic'}
+            >
               {cardDescription}
             </Typography>
             <View style={styles.cardButtonContainer}>
@@ -126,10 +128,6 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 10,
-  },
-  description: {
-    fontSize: 14,
-    color: COLORS.cream,
   },
 });
 

@@ -1,10 +1,11 @@
-import {useRoute} from '@react-navigation/native';
 
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import {useRoute} from '@react-navigation/native';
+
+import {Typography} from '@/components';
+
 import {getStyles} from '../styles';
-
-
 
 const Header = () => {
   const route = useRoute();
@@ -13,12 +14,16 @@ const Header = () => {
 
   return (
     <View style={styles.headerWrapper}>
-      <Text style={styles.headerTitle}>Numeroloji Raporunuz</Text>
+      <Typography size="heading" style={styles.headerTitle}>
+        Numeroloji Raporunuz
+      </Typography>
       <View style={styles.headerNameInfo}>
-        <Text style={styles.headerNameInfoText}>{numerologyDetail.name}</Text>
-        <Text style={styles.headerNameInfoText}>
+        <Typography size="large" style={styles.headerNameInfoText}>
+          {numerologyDetail.name}
+        </Typography>
+        <Typography size="large" style={styles.headerNameInfoText}>
           {numerologyDetail.birthDate}
-        </Text>
+        </Typography>
       </View>
     </View>
   );

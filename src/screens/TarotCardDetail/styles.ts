@@ -17,7 +17,6 @@ export const getStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
       gap: 10,
-      marginTop: 120,
     },
     imageIconContainer: {
       flexDirection: 'row',

@@ -1,3 +1,4 @@
+import { responsiveSize } from '@/utils/responsiveSize';
 import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
@@ -20,13 +21,13 @@ const COLORS = {
 };
 
 const SIZES = {
-    title: 32,
-    subTitle: 24,
-    body1: 30,
-    body2: 20,
-    body3: 16,
-    body4: 14,
-    body5: 12,
+    title: responsiveSize(32),
+    subTitle:responsiveSize(24),
+    body1: responsiveSize(30),
+    body2: responsiveSize(20),
+    body3: responsiveSize(16),
+    body4: responsiveSize(14),
+    body5: responsiveSize(12),
     width,
     height,
 };

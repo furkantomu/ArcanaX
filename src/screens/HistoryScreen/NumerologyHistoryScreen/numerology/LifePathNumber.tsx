@@ -1,4 +1,4 @@
-import {View, Text, Pressable, ActivityIndicator, Image} from 'react-native';
+import {View, Pressable, ActivityIndicator, Image} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {getStyles} from '../styles';
 import Animated, {
@@ -14,13 +14,14 @@ import {useRefsContext} from '@/context';
 import {getImageForNumber} from '@/utils/getImageForNumber';
 import {apiService} from '@/services/APIService';
 import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
-import Markdown, { MarkdownIt } from 'react-native-markdown-display';
-import { COLORS } from '@/styles/theme';
+import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+import {COLORS} from '@/styles/theme';
+import {Typography} from '@/components';
 
 const arrow = require('../../../../../assets/icon/downArrow.png');
 
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'}, 
+  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 
@@ -101,7 +102,12 @@ const LifePathNumber = () => {
               />
             )}
 
-            <Text style={styles.title}>Yaşam Yolu Sayısı</Text>
+            <Typography
+              size="large"
+              weight="NotoSerifCondensedBoldItalic"
+              style={styles.title}>
+              Yaşam Yolu Sayısı
+            </Typography>
           </View>
           <View style={styles.imageContainer}>
             <Image source={image} resizeMode={'cover'} style={styles.image} />
@@ -112,16 +118,16 @@ const LifePathNumber = () => {
       <Animated.View style={animatedheightStyle}>
         <View style={styles.accordionWrapper}>
           <View onLayout={handleLayout} ref={animatedref} collapsable={false}>
-          <Markdown
-                    markdownit={MarkdownIt({
-                      typographer: true,
-                      linkify: true,
-                      breaks: true,
-                    }).disable(['blockquote', 'list', 'code'])}
-                    //rules={rules}
-                    style={markdownStyles}>
-                    {lifePath.lifePath}
-                  </Markdown>
+            <Markdown
+              markdownit={MarkdownIt({
+                typographer: true,
+                linkify: true,
+                breaks: true,
+              }).disable(['blockquote', 'list', 'code'])}
+              //rules={rules}
+              style={markdownStyles}>
+              {lifePath.lifePath}
+            </Markdown>
           </View>
         </View>
       </Animated.View>

@@ -1,5 +1,6 @@
+import {Typography} from '@/components';
 import React, {useEffect} from 'react';
-import {TouchableOpacity, View, Image, Text} from 'react-native';
+import {TouchableOpacity, View, Image} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -71,22 +72,34 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
             <View style={styles.row}>
               <Image source={card} style={styles.cardImage} />
               <View>
-                <Text style={styles.cardTitle}>{name}</Text>
-                <Text style={styles.cardSubtitle}>{engName}</Text>
+                <Typography size="large" style={styles.cardTitle}>
+                  {name}
+                </Typography>
+                <Typography weight="NotoSerifThin" style={styles.cardSubtitle}>
+                  {engName}
+                </Typography>
               </View>
             </View>
             <Image source={rightArrows} style={styles.rightArrows} />
           </View>
-          <Text style={styles.cardDescription}>
-            <Text style={styles.descriptionTitle}>Amaç:</Text> {aim}
-          </Text>
-          <Text style={styles.cardDescription}>
-            <Text style={styles.descriptionTitle}>Kullanım Alanı:</Text>{' '}
+          <Typography style={styles.cardDescription}>
+            <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
+              Amaç:
+            </Typography>{' '}
+            {aim}
+          </Typography>
+          <Typography style={styles.cardDescription}>
+            <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
+              Kullanım Alanı:
+            </Typography>{' '}
             {usageArea}
-          </Text>
-          <Text style={styles.cardDescription}>
-            <Text style={styles.descriptionTitle}>Özellikleri:</Text> {feature}
-          </Text>
+          </Typography>
+          <Typography style={styles.cardDescription}>
+            <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
+              Özellikleri:
+            </Typography>{' '}
+            {feature}
+          </Typography>
         </View>
       </Animated.View>
     </TouchableOpacity>

@@ -12,7 +12,6 @@ const SheetHeader = ({route}: any) => {
 
   const styles = getStyles();
 
-
   useEffect(() => {
     setReadingType(route.params.type);
   }, [route.params.type, setReadingType]);
@@ -20,7 +19,10 @@ const SheetHeader = ({route}: any) => {
   return (
     <View style={styles.bottomSheetHeader}>
       <Typography size={'heading'}>{route.params.type} Kart Seçin</Typography>
-      <Typography size="heading" weight="NotoSerifCondensedThin" >
+      <Typography
+        size="heading"
+        weight="NotoSerifCondensedThin"
+        style={{textAlign: 'center'}}>
         'Sezgilerine güven, doğru kart seni bekliyor.'
       </Typography>
     </View>

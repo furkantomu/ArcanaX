@@ -8,11 +8,12 @@ import {navigationRef} from '@/utils/navigationUtils';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {RefsProvider} from '@/context';
 
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import {AppTabs} from './tabs/AppTabs';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/tr';
+import { COLORS } from '@/styles/theme';
 
 dayjs.locale('tr');
 
@@ -51,5 +52,6 @@ export const AppNavigator = () => {
 const styles = StyleSheet.create({
   navigationLayout: {
     flex: 1,
+    backgroundColor:COLORS.black,
   },
 });

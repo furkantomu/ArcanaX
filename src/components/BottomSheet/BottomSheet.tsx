@@ -1,4 +1,4 @@
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import React, {useCallback, useImperativeHandle} from 'react';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {

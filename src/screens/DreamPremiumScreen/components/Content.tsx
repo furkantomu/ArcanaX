@@ -1,4 +1,4 @@
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import React, {useEffect} from 'react';
 import Animated, {
   useAnimatedStyle,
@@ -11,6 +11,12 @@ import {useDreamContext} from '../DreamScreenContext';
 
 import {getStyles} from '../styles';
 import {COLORS} from '@/styles/theme';
+import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+
+const markdownStyles = {
+  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
+  strong: {color: COLORS.gold},
+};
 
 const Content = () => {
   const styles = getStyles();
@@ -51,11 +57,18 @@ const Content = () => {
             <View
               style={[
                 styles.result,
-                item.role === 'user'
-                  ? styles.selfMessage
-                  : styles.otherMessage,
+                item.role === 'user' ? styles.selfMessage : styles.otherMessage,
               ]}>
-              <Text style={styles.resultText}>{item.content}</Text>
+              <Markdown
+                markdownit={MarkdownIt({
+                  typographer: true,
+                  linkify: true,
+                  breaks: true,
+                }).disable(['blockquote', 'list', 'code'])}
+                //rules={rules}
+                style={markdownStyles}>
+                {item.content}
+              </Markdown>
             </View>
           </Animated.View>
         ))

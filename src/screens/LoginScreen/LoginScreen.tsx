@@ -28,12 +28,12 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (loginType === 'login') {
-      height.value = withSpring(1.2, {
+      height.value = withSpring(1.6, {
         damping: 30,
         stiffness: 200,
       });
     } else {
-      height.value = withSpring(4, {
+      height.value = withSpring(5, {
         damping: 50,
         stiffness: 500,
       });
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   content: {
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    flex: 4,
     width: '100%',
     backgroundColor: COLORS.cream,
   },

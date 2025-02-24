@@ -69,7 +69,7 @@ const Header = () => {
             <Icon name={'user'} size={50} style={styles.profileIcon} />
           </View>
           <View style={styles.profileName}>
-            <Typography weight="NotoSerifCondensedBoldItalic" size="heading">
+            <Typography weight="bold" size="heading">
               {user?.name}
             </Typography>
             <Typography weight="NotoSerifThin" size="large">

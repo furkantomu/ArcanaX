@@ -5,6 +5,7 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   Platform,
+  View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -36,17 +37,17 @@ const TarotSpreadScreen = ({route}: any) => {
           style={{backgroundColor: COLORS.black}}
           ref={tarotSpreadScrollViewRef}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <SafeAreaView style={styles.container}>
+            <View>
               <TarotSpreadWrapper route={route} />
-            </SafeAreaView>
+            </View>
           </TouchableWithoutFeedback>
         </ScrollView>
         <BottomSheet ref={selectCardSheetRef}>
-          <>
+          <View style={styles.cardSelectionSheet}>
             <SheetHeader route={route} />
             <CartSelection />
             <SheetFooter />
-          </>
+          </View>
         </BottomSheet>
         <BottomSheet ref={detailCardSheetRef}>
           <CardDetail />

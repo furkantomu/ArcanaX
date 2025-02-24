@@ -6,6 +6,7 @@ import {useHaptic, useScaleAnimation} from '@/utils';
 import Icon from '../Icon';
 import {Icons} from '../Icon/Icons';
 import {COLORS} from '@/styles/theme';
+import Typography from '../Typography/Typography';
 
 type ButtonProps = {
   isDestructive?: boolean;
@@ -75,7 +76,7 @@ export const IconButton = ({
           <Icon name={iconName} size={iconSize} style={[iconStyle]} />
         </View>
         <View style={styles.iconTextContainer}>
-          <Text style={getTextStyles(isPrimary, isDestructive, textStyle)}>{text}</Text>
+          <Typography style={getTextStyles(isPrimary, isDestructive, textStyle)}>{text}</Typography>
         </View>
       </Pressable>
     </Animated.View>

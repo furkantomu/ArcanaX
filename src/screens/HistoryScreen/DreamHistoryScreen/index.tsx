@@ -2,7 +2,6 @@ import {
   ActivityIndicator,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -21,6 +20,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import dayjs from 'dayjs';
 import {DreamDetailResponse} from '@/types/service';
+import Markdown, { MarkdownIt } from 'react-native-markdown-display';
 
 type DreamHistoryRouteParams = {
   id: string;
@@ -31,6 +31,10 @@ type DreamHistoryRouteProp = RouteProp<
   'DreamHistoryScreen'
 >;
 
+const markdownStyles = {
+  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
+  strong: {color: COLORS.gold},
+};
 const DreamHistoryScreen = () => {
   const route = useRoute<DreamHistoryRouteProp>();
   const {id} = route.params;
@@ -61,7 +65,7 @@ const DreamHistoryScreen = () => {
         });
       } catch (error) {
         showToast({
-          message: 'Sunucuya baplanırken bir hata oluştu.',
+          message: 'Sunucuya bağlanırken bir hata oluştu.',
           type: 'error',
         });
       } finally {
@@ -100,7 +104,16 @@ const DreamHistoryScreen = () => {
                       ? styles.selfMessage
                       : styles.otherMessage,
                   ]}>
-                  <Text style={styles.resultText}>{item.content}</Text>
+                   <Markdown
+                markdownit={MarkdownIt({
+                  typographer: true,
+                  linkify: true,
+                  breaks: true,
+                }).disable(['blockquote', 'list', 'code'])}
+                //rules={rules}
+                style={markdownStyles}>
+                {item.content}
+              </Markdown>
                 </View>
               </Animated.View>
             ))

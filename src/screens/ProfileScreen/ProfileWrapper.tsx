@@ -1,7 +1,6 @@
 import {useAppDispatch, useAppSelector} from '@/hooks';
 import {authActions} from '@/store/auth/authActions';
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
 
 import Header from './components/Header';
 import SettingsMenu from './SettingsMenu';
@@ -14,13 +13,13 @@ const ProfileWrapper = () => {
     if (user && user.id) {
       dispatch(authActions.user({id: user.id, email: user.email}));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <View>
+    <>
       <Header />
       <SettingsMenu />
-    </View>
+    </>
   );
 };
 

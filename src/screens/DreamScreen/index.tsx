@@ -1,7 +1,6 @@
-import { CustomHeader } from '@/components';
 import {COLORS} from '@/styles/theme';
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -9,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {AppProvider} from './DreamScreenContext';
 
@@ -43,15 +41,9 @@ const DreamScreen = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         // eslint-disable-next-line react-native/no-inline-styles
         style={{backgroundColor: COLORS.black, flex: 1}}>
-            <CustomHeader leftIcon={true} title={false} rightIcon={true} />
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={{backgroundColor: COLORS.black}}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            {/* eslint-disable-next-line react-native/no-inline-styles */}
-            <SafeAreaView style={{flex: 1}}>
-                <DreamWrapper/>
-            </SafeAreaView>
+            <DreamWrapper />
           </TouchableWithoutFeedback>
         </ScrollView>
       </KeyboardAvoidingView>

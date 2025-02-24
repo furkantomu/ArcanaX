@@ -1,12 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, ImageSourcePropType} from 'react-native';
+import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Animated, {
-  interpolate,
   SharedValue,
   useAnimatedScrollHandler,
-  useAnimatedStyle,
-  useSharedValue,
 } from 'react-native-reanimated';
 
 import {DUMMY} from '@/utils/dummy';
@@ -21,43 +18,16 @@ import Tarot from './Tarot';
 const imageWidth = SIZES.width * 0.7;
 const imageHeight = imageWidth * 1.63;
 
-interface BackDropProps {
-  image: ImageSourcePropType;
-  index: number;
+type NavigationProps = StackNavigationProp<RootStackParamList>;
+
+interface SliderProps {
   scrollX: SharedValue<number>;
 }
-
-const BackDrop: React.FC<BackDropProps> = ({image, index, scrollX}) => {
-  const backDropStyle = {
-    width: SIZES.width,
-    height: SIZES.height * 4,
-  };
-  const rnAnimatedImageStyle = useAnimatedStyle(() => {
-    const inputRange = [index - 1, index, index + 1];
-    return {
-      opacity: interpolate(scrollX.value, inputRange, [0, 1, 0]),
-    };
-  });
-  return (
-    <Animated.Image
-      source={image}
-      style={[
-        StyleSheet.absoluteFillObject,
-        rnAnimatedImageStyle,
-        backDropStyle,
-      ]}
-      resizeMode={'cover'}
-      blurRadius={30}
-    />
-  );
-};
-
-type NavigationProps = StackNavigationProp<RootStackParamList>;
-const Slider = () => {
+const Slider: React.FC<SliderProps> = ({scrollX}) => {
   const styles = getStyles();
 
+
   const navigation = useNavigation<NavigationProps>();
-  const scrollX = useSharedValue(0);
 
   const onScrollHandler = useAnimatedScrollHandler({
     onScroll: (e: any) => {
@@ -66,14 +36,6 @@ const Slider = () => {
   });
   return (
     <View style={styles.flex}>
-      {DUMMY.map((item, index) => (
-        <BackDrop
-          key={index}
-          image={item.imageSource}
-          index={index}
-          scrollX={scrollX}
-        />
-      ))}
       <Animated.FlatList
         data={DUMMY}
         horizontal

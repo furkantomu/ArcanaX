@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS, SIZES} from 'styles/theme';
+import { SIZES} from 'styles/theme';
 
 export const getStyles = () =>
   StyleSheet.create({
@@ -20,14 +20,12 @@ export const getStyles = () =>
     },
     flex: {
       flex: 1,
-      backgroundColor: COLORS.cream,
+      backgroundColor: 'transparent',
       alignItems: 'center',
     },
     homeContainer: {
-      paddingHorizontal: 20,
+      bottom: SIZES.height / 7,
 
-      position: 'absolute',
-      bottom: SIZES.height / 5,
     },
     tarotButton: {
       width: SIZES.width * 0.6,

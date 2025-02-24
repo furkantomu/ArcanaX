@@ -39,7 +39,7 @@ export const getStyles = () =>
     profileImage: {},
     profileIcon: {tintColor: COLORS.cream},
     profileName: {
-      width: '50%',
+      width: '60%',
     },
     profileEdit: {},
     editIcon: {
@@ -48,13 +48,13 @@ export const getStyles = () =>
     editButton: {backgroundColor: 'transparent', width: 40},
     settingsMenu: {
       zIndex: 3,
-      marginTop: SIZES.height / 5,
+      marginTop: SIZES.height / 4.5,
       marginHorizontal: 30,
       gap: 30,
       backgroundColor: COLORS.darkGray,
       padding: 10,
       borderRadius: 10,
-      marginBottom: 50,
+      marginBottom: 80,
     },
     settingsMenuItem: {
       backgroundColor: '#212121',

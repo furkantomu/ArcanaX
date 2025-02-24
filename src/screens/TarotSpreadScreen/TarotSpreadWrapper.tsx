@@ -22,6 +22,11 @@ import {getStyles} from './style';
 
 import {apiService} from '@/services/APIService';
 import SaveModal from './components/SaveModal';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
+import {COLORS} from '@/styles/theme';
+
+const tarotSpreadBG = require('../../../assets/background/tarotspread.webp');
 
 const TarotSpreadWrapper = ({route}: any) => {
   const [newMessage, setNewMessage] = useState<string>('');
@@ -86,45 +91,60 @@ const TarotSpreadWrapper = ({route}: any) => {
         <CartReveal />
       ) : (
         <>
-          <CustomHeader leftIcon={true} title={false} rightIcon={true} />
-          <Header route={route} />
-          <Content />
-          <FooterButtons />
+          <Image
+            source={tarotSpreadBG}
+            style={styles.tarotSpreadBG}
+            resizeMode={'cover'}
+          />
+          <LinearGradient
+            colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
+            style={styles.linearGradient}
+            start={{x: 0.5, y: 0}}
+            end={{x: 0.5, y: 1}}
+            locations={[0.05, 0.5, 0.95]}
+          />
+          <SafeAreaView>
+            <CustomHeader leftIcon={true} title={false} rightIcon={true} />
+            <Header route={route} />
+            <Content />
+            <FooterButtons />
+          </SafeAreaView>
         </>
       )}
-
-      {!showOpenButton && messages.length > 0 && (
-        <View style={styles.textFieldWrapper}>
-          <View style={styles.textFieldContainer}>
-            <TextInput
-              placeholder="Bir soru sor..."
-              style={styles.questionInput}
-              value={newMessage}
-              onChangeText={setNewMessage}
-              onSubmitEditing={handleSendMessage}
-              returnKeyType="send"
-              maxLength={50}
-            />
-            <TouchableOpacity onPress={handleSendMessage}>
-              <Image
-                source={sendIcon}
-                style={styles.questionInputIcon}
-                resizeMode={'contain'}
+      <SafeAreaView>
+        {!showOpenButton && messages.length > 0 && (
+          <View style={styles.textFieldWrapper}>
+            <View style={styles.textFieldContainer}>
+              <TextInput
+                placeholder="Bir soru sor..."
+                style={styles.questionInput}
+                value={newMessage}
+                onChangeText={setNewMessage}
+                onSubmitEditing={handleSendMessage}
+                returnKeyType="send"
+                maxLength={50}
               />
-            </TouchableOpacity>
+              <TouchableOpacity onPress={handleSendMessage}>
+                <Image
+                  source={sendIcon}
+                  style={styles.questionInputIcon}
+                  resizeMode={'contain'}
+                />
+              </TouchableOpacity>
+            </View>
+            <Typography size="small">
+              Soru Sayısı: 10/
+              {messages.filter(msg => msg.role === 'user').length}
+            </Typography>
+            <Button
+              text="Okumayı Bitir"
+              variant="secondary"
+              handlePress={handleCompleted}
+            />
           </View>
-          <Typography size="small">
-            Soru Sayısı: 10/
-            {messages.filter(msg => msg.role === 'user').length}
-          </Typography>
-          <Button
-            text="Okumayı Bitir"
-            variant="secondary"
-            handlePress={handleCompleted}
-          />
-        </View>
-      )}
-      <SaveModal />
+        )}
+        <SaveModal />
+      </SafeAreaView>
     </>
   );
 };

@@ -4,26 +4,26 @@ import {COLORS, FONTS, SIZES} from 'styles/theme';
 export const getStyles = () =>
   StyleSheet.create({
     container: {
-      height: SIZES.height - 100,
-      justifyContent: 'space-between',
+      flex: 1,
+      justifyContent:'space-between',
+      gap: 40,
     },
     ImageBackground: {
       width: SIZES.width,
       height: SIZES.height / 1.7,
       position: 'absolute',
-      zIndex: 0,
+      zIndex: -1,
     },
     linearGradient: {
       width: '100%',
-      height: SIZES.height / 1.8,
+      height: SIZES.height / 1.7,
       position: 'absolute',
-      zIndex: 1,
+      zIndex: 0,
     },
     headerTextWrapper: {
       zIndex: 3,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 50,
     },
     content: {
       paddingHorizontal: 20,
@@ -75,7 +75,7 @@ export const getStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 3,
-      marginTop: 100,
+
     },
     footerButton: {
       marginHorizontal: 20,

@@ -1,5 +1,5 @@
 import {useRefsContext} from '@/context';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
@@ -71,15 +71,12 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
 
 const styles = StyleSheet.create({
   headerContainer: {
-    position: 'absolute',
+    top: 0,
     width: SIZES.width,
-    height: 50,
-    top: 60,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: COLORS.blackOpacity,
-    paddingHorizontal: 15,
     zIndex: 99,
     // iOS shadow
     shadowColor: COLORS.gold,

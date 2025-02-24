@@ -6,6 +6,7 @@ import {getStyles} from './styles';
 import {apiService} from '@/services/APIService';
 import LifePathSectionAccordion from './components/LifePathSectionAccordion';
 import {useNumerologyHistoryContext} from './NumerologyHistoryContext';
+import {Typography} from '@/components';
 
 const SUB_TITLE = ['İlk Dönem', 'İkinci Dönem', 'Üçüncü Dönem'];
 
@@ -40,7 +41,9 @@ const LifePathSection = () => {
 
   useEffect(() => {
     const getPinnacleNumber = async () => {
-      if (!numerologyDetail.pinnacleNumber) {return;}
+      if (!numerologyDetail.pinnacleNumber) {
+        return;
+      }
       try {
         setLoading(true);
         const response: AxiosResponse<PinnacleNumber> = await apiService.get(
@@ -62,7 +65,9 @@ const LifePathSection = () => {
 
   return (
     <View style={styles.lifePathSection}>
-      <Text style={styles.lifePathSectionTitle}>Zirve Dönemler</Text>
+      <Typography size="title" style={styles.lifePathSectionTitle}>
+        Zirve Dönemler
+      </Typography>
       <View style={styles.lifePathSectionWrapper}>
         {['first', 'second', 'third'].map((item, idx) => (
           <LifePathSectionAccordion

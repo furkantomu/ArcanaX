@@ -35,8 +35,8 @@ const TarotDetail = () => {
   return (
     <AppProvider>
       <LinearGradient colors={[COLORS.black, '#3F2305']} style={{flex: 1}}>
-        <CustomHeader leftIcon={true} title={false} rightIcon={true} />
         <SafeAreaView style={{flex: 1}}>
+        <CustomHeader leftIcon={true} title={false} rightIcon={true} />
           <TarotDetailWrapper />
         </SafeAreaView>
       </LinearGradient>

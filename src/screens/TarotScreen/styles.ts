@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { COLORS, FONTS, SIZES } from '@/styles/theme';
-
+import {COLORS, SIZES} from '@/styles/theme';
 
 export const getStyles = () =>
   StyleSheet.create({
@@ -17,6 +16,7 @@ export const getStyles = () =>
     linearGradient: {
       width: SIZES.width,
       height: SIZES.height / 2,
+      position: 'absolute',
     },
     cardContainer: {
       flexDirection: 'row',
@@ -40,26 +40,18 @@ export const getStyles = () =>
     },
 
     content: {
+      paddingTop: SIZES.height / 4,
       paddingHorizontal: 20,
-      paddingBottom: 100,
     },
     title: {
-      fontSize: SIZES.title,
-      color: COLORS.cream,
-      fontFamily: FONTS.NotoSerifThin,
       textAlign: 'center',
     },
     description: {
-      fontSize: SIZES.body4,
-      color: COLORS.cream,
       textAlign: 'center',
       marginTop: 30,
     },
     subTitle: {
-      fontSize: SIZES.subTitle,
-      color: COLORS.cream,
       marginTop: 30,
-      fontFamily: FONTS.NotoSerifCondensedMediumItalic,
     },
     loading: {
       marginTop: 50,
@@ -73,12 +65,10 @@ export const getStyles = () =>
       borderRadius: 20,
     },
     cardTitle: {
-      fontSize: SIZES.body2,
       color: COLORS.cream,
     },
     cardSubtitle: {
       color: COLORS.cream,
-      fontFamily: FONTS.NotoSerifThin,
     },
     cardDescription: {
       color: COLORS.cream,
@@ -86,7 +76,5 @@ export const getStyles = () =>
     },
     descriptionTitle: {
       color: COLORS.cream,
-      fontWeight: 'bold',
-      fontFamily: FONTS.NotoSerifCondensedThin,
     },
   });

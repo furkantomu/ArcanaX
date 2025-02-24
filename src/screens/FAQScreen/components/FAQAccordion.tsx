@@ -18,7 +18,7 @@ import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 const arrow = require('../../../../assets/icon/downArrow.png');
 
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'}, 
+  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.silverGray},
 };
 
@@ -63,6 +63,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
             <View>
               <Typography
                 weight="NotoSerifCondensedBoldItalic"
+                size="large"
                 style={styles.faqSectionItemTitle}>
                 {title}
               </Typography>

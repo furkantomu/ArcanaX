@@ -1,12 +1,11 @@
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {getStyles} from '../styles';
-
-import {useRoute} from '@react-navigation/native';
 
 import {AxiosResponse} from 'axios';
 import {apiService} from '@/services/APIService';
 import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
+import {Typography} from '@/components';
 
 interface ResponseData {
   id: string;
@@ -82,9 +81,9 @@ const StaticInfo = () => {
         setLoading(false);
       }
     };
-   if(numerologyDetail.rulingPlanet !== 0){
-    getRulingPlanets();
-   }
+    if (numerologyDetail.rulingPlanet !== 0) {
+      getRulingPlanets();
+    }
   }, [numerologyDetail.rulingPlanet]);
   return (
     <View style={styles.planetSection}>
@@ -93,50 +92,46 @@ const StaticInfo = () => {
       ) : (
         <>
           <View>
-            <Text style={styles.planetSectionTitle}>
+            <Typography size="heading" style={styles.planetSectionTitle}>
               Yönetici Gezegen:
-              <Text style={styles.planetSectionTResult}>
+              <Typography size="heading" style={styles.planetSectionResult}>
                 {' '}
                 {rulingPlanet.planet}
-              </Text>
-            </Text>
+              </Typography>
+            </Typography>
 
-            <Text style={styles.planetSectionDescription}>
-              {rulingPlanet.description}
-            </Text>
+            <Typography size="medium">{rulingPlanet.description}</Typography>
           </View>
 
           <View>
-            <Text style={styles.planetSectionTitle}>Kariyer</Text>
-            <Text style={styles.planetSectionDescription}>
-              {rulingPlanet.career}
-            </Text>
+            <Typography size="heading" style={styles.planetSectionTitle}>
+              Kariyer
+            </Typography>
+            <Typography>{rulingPlanet.career}</Typography>
           </View>
           <View>
-            <Text style={styles.planetSectionTitle}>İlişkiler</Text>
-            <Text style={styles.planetSectionDescription}>
-              {rulingPlanet.relationships}
-            </Text>
+            <Typography size="heading" style={styles.planetSectionTitle}>
+              İlişkiler
+            </Typography>
+            <Typography>{rulingPlanet.relationships}</Typography>
           </View>
           <View>
-            <Text style={styles.planetSectionTitle}>Özel Aylar</Text>
-            <Text style={styles.planetSectionDescription}>
-              {rulingPlanet.auspiciousMonths}
-            </Text>
+            <Typography size="heading" style={styles.planetSectionTitle}>
+              Özel Aylar
+            </Typography>
+            <Typography>{rulingPlanet.auspiciousMonths}</Typography>
           </View>
         </>
       )}
       {numerologyDetail.checkSpecificNumber && (
         <View>
-          <Text style={styles.planetSectionTitle}>
+          <Typography size="heading" style={styles.planetSectionTitle}>
             {karmicNumberDetails.value}
-          </Text>
-          <Text style={styles.karmicNumberLabel}>
+          </Typography>
+          <Typography size="large" style={styles.karmicNumberLabel}>
             '{karmicNumberDetails.label}'
-          </Text>
-          <Text style={styles.planetSectionDescription}>
-            {karmicNumberDetails.description}
-          </Text>
+          </Typography>
+          <Typography>{karmicNumberDetails.description}</Typography>
         </View>
       )}
     </View>

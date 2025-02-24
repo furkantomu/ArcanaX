@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image} from 'react-native';
-import {RouteProp, useRoute} from '@react-navigation/native';
+import {View, Image} from 'react-native';
+import {useRoute} from '@react-navigation/native';
+
+import {Typography} from '@/components';
 
 import {getStyles} from '../styles';
 import {getImageForNumber} from '@/utils/getImageForNumber';
@@ -50,7 +52,9 @@ const Card = () => {
               style={styles.image}
             />
           </View>
-          <Text style={styles.cardText}>{item.label}</Text>
+          <Typography size="medium" style={styles.cardText}>
+            {item.label}
+          </Typography>
         </View>
       ))}
     </View>

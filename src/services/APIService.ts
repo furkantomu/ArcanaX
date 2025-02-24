@@ -14,7 +14,7 @@ class APIService {
 
   private constructor() {
     this.api = axios.create({
-      baseURL: 'http://192.168.1.101:3002/',
+      baseURL: 'http://192.168.1.106:3002/',
     });
     this.setupInterceptors();
   }

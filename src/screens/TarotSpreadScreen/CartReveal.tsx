@@ -27,10 +27,11 @@ import {useHaptic} from '@/utils';
 import {useNavigation} from '@react-navigation/native';
 import {getReadingTypeText} from '@/utils/getReadingTypeText';
 import {apiService} from '@/services/APIService';
-import Markdown, { MarkdownIt } from 'react-native-markdown-display';
+import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'}, 
+  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 
@@ -77,7 +78,6 @@ const CartReveal = () => {
       transform: [{scale: scale.value}],
     };
   });
-
   useEffect(() => {
     let MESSAGE = '';
     if (question === '') {
@@ -107,7 +107,7 @@ const CartReveal = () => {
         );
       });
 
-      return unsubscribe; 
+      return unsubscribe;
     }
   }, [navigation, readingCompleted, setModalVisible]);
   const handleSendMessage = async () => {
@@ -169,77 +169,81 @@ const CartReveal = () => {
         resizeMode={'cover'}
         blurRadius={5}
       />
-      <View style={styles.cardRevealHeader}>
-        <Text style={styles.cardRevealHeaderText}>
-          Seçilen Kartlar Açmak İçin Dokun
-        </Text>
-      </View>
-      <Animated.FlatList
-        data={selectedCards}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={SIZES.width * 0.7 + 12}
-        onScroll={onScrollHandler}
-        contentContainerStyle={styles.spinningCardFlatList}
-        renderItem={({item, index}) => (
-          <SpinningCard
-            backImageSource={back}
-            frontImageSource={String(item.frontImageSource)}
-            index={index}
-            isFlippedAll={isFlipped}
-            item={item}
-          />
-        )}
-      />
-      {showOpenButton && (
-        <View style={styles.isFlippedAllButtonContainer}>
-          <TouchableOpacity
-            onPress={handlePress}
-            style={styles.isFlippedAllButton}
-            //</View>disabled={isFlipped.value}
-          >
-            <Text style={styles.isFlippedAllButtonText}>Okumayı Başlat</Text>
-          </TouchableOpacity>
+      <SafeAreaView>
+        <View style={styles.cardRevealHeader}>
+          <Text style={styles.cardRevealHeaderText}>
+            Seçilen Kartlar Açmak İçin Dokun
+          </Text>
         </View>
-      )}
-      <View style={styles.selectedCards}>
-        {selectedCards.map((item, index) => (
-          <TouchableOpacity key={index} onPress={() => handleCardDetail(item)}>
-            <Animated.View style={[styles.badge, animatedBadgeStyle]}>
-              <Text style={styles.badgeText}>{item.name}</Text>
-              <Text style={styles.badgeTextEng}>({item.engName})</Text>
-            </Animated.View>
-          </TouchableOpacity>
-        ))}
-      </View>
-      {loading && (
-        <View style={styles.startLoading}>
-          <ActivityIndicator size="large" color={COLORS.cream} />
-        </View>
-      )}
-
-      {messages.map((item, idx) => (
-        <Animated.View
-          style={[styles.resultContainer, animatedBadgeStyle]}
-          key={idx}>
-          <View
-            style={[
-              styles.result,
-              item.role === 'user' ? styles.selfMessage : styles.otherMessage,
-            ]}>
-            <Markdown
-                    markdownit={MarkdownIt({
-                      typographer: true,
-                      linkify: true,
-                      breaks: true,
-                    }).disable(['blockquote', 'list', 'code'])}
-                    //rules={rules}
-                    style={markdownStyles}>
-                    {item.content}
-                  </Markdown>
+        <Animated.FlatList
+          data={selectedCards}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          snapToInterval={SIZES.width * 0.7 + 12}
+          onScroll={onScrollHandler}
+          contentContainerStyle={styles.spinningCardFlatList}
+          renderItem={({item, index}) => (
+            <SpinningCard
+              backImageSource={back}
+              frontImageSource={String(item.frontImageSource)}
+              index={index}
+              isFlippedAll={isFlipped}
+              item={item}
+            />
+          )}
+        />
+        {showOpenButton && (
+          <View style={styles.isFlippedAllButtonContainer}>
+            <TouchableOpacity
+              onPress={handlePress}
+              style={styles.isFlippedAllButton}
+              //</View>disabled={isFlipped.value}
+            >
+              <Text style={styles.isFlippedAllButtonText}>Okumayı Başlat</Text>
+            </TouchableOpacity>
           </View>
-        </Animated.View>
-      ))}
+        )}
+        <View style={styles.selectedCards}>
+          {selectedCards.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleCardDetail(item)}>
+              <Animated.View style={[styles.badge, animatedBadgeStyle]}>
+                <Text style={styles.badgeText}>{item.name}</Text>
+                <Text style={styles.badgeTextEng}>({item.engName})</Text>
+              </Animated.View>
+            </TouchableOpacity>
+          ))}
+        </View>
+        {loading && (
+          <View style={styles.startLoading}>
+            <ActivityIndicator size="large" color={COLORS.cream} />
+          </View>
+        )}
+
+        {messages.map((item, idx) => (
+          <Animated.View
+            style={[styles.resultContainer, animatedBadgeStyle]}
+            key={idx}>
+            <View
+              style={[
+                styles.result,
+                item.role === 'user' ? styles.selfMessage : styles.otherMessage,
+              ]}>
+              <Markdown
+                markdownit={MarkdownIt({
+                  typographer: true,
+                  linkify: true,
+                  breaks: true,
+                }).disable(['blockquote', 'list', 'code'])}
+                //rules={rules}
+                style={markdownStyles}>
+                {item.content}
+              </Markdown>
+            </View>
+          </Animated.View>
+        ))}
+      </SafeAreaView>
       {isWritingLoading && (
         <View style={styles.writingLoading}>
           <Loading />

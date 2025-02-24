@@ -17,7 +17,7 @@ import {
   DreamPremiumScreen,
   TarotCardDetail,
 } from '@/screens';
-import {BottomSheet, Typography} from '@/components';
+import {BottomSheet, CustomHeader, Typography} from '@/components';
 import {useRefsContext} from '@/context';
 
 export type RouteTypes = {

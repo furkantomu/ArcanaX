@@ -7,12 +7,12 @@ const imageHeight = imageWidth * 1.4;
 export const getStyles = () =>
   StyleSheet.create({
     container: {
-      backgroundColor: COLORS.black,
       flex: 1,
     },
     backgroundContent: {
       position: 'relative',
       height: SIZES.height / 3,
+      paddingHorizontal: 20,
     },
     linearGradient: {
       position: 'absolute',
@@ -22,13 +22,12 @@ export const getStyles = () =>
     },
     title: {
       textAlign: 'center',
-      marginTop: 50,
       zIndex: 2,
     },
     info: {
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 30,
+      marginTop: 20,
       zIndex: 1,
     },
     infoTitle: {
@@ -58,10 +57,8 @@ export const getStyles = () =>
     buttons: {
       paddingHorizontal: 10,
       alignItems: 'center',
-      marginTop: 30,
       zIndex: 2,
-      backgroundColor: COLORS.black,
-      height: '100%',
+
       paddingTop: 50,
     },
     imageContainer: {
@@ -69,7 +66,7 @@ export const getStyles = () =>
       justifyContent: 'space-around',
     },
     subTitle: {
-      fontSize: SIZES.subTitle,
+      fontSize: SIZES.body2,
       color: COLORS.cream,
       fontFamily: FONTS.NotoSerifCondensedBoldItalic,
       textAlign: 'center',
@@ -126,9 +123,13 @@ export const getStyles = () =>
       color: COLORS.cream,
       marginHorizontal: 20,
     },
+    cardSelectionSheet: {
+      justifyContent: 'space-between',
+      height: SIZES.height - 250,
+    },
     bottomSheetHeader: {
       alignItems: 'center',
-      gap: 100,
+      gap: 30,
     },
     bottomSheetText: {
       marginTop: 30,
@@ -137,12 +138,11 @@ export const getStyles = () =>
     buttonContainer: {
       paddingHorizontal: 20,
       gap: 5,
-      marginTop: 120,
     },
     bottomSheetButtonText: {
       fontWeight: 600,
       fontFamily: FONTS.NotoSerifBold,
-      fontSize: SIZES.body2,
+      fontSize: SIZES.body3,
       color: COLORS.cream,
     },
     regularCard: {
@@ -267,7 +267,7 @@ export const getStyles = () =>
       marginLeft: 5,
       zIndex: 2,
       position: 'absolute',
-      bottom: 5,
+      bottom: 0,
     },
     textFieldContainer: {
       height: 70,
@@ -277,6 +277,7 @@ export const getStyles = () =>
     },
     textFieldWrapper: {
       paddingHorizontal: 10,
+      marginBottom: 20,
     },
     questionInput: {
       backgroundColor: COLORS.cream,
@@ -292,6 +293,11 @@ export const getStyles = () =>
       paddingLeft: 10,
       zIndex: 99,
     },
+    cardDetailModalContainer: {
+      width: '100%',
+      alignItems: 'center',
+      height: SIZES.height - 250,
+    },
     cardDetailModalBg: {
       width: '100%',
       height: '100%',
@@ -301,77 +307,49 @@ export const getStyles = () =>
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
     },
-    cardDetailModalCardTitleVertical: {
-      transform: [{rotate: '180deg'}],
-      backgroundColor: COLORS.blackOpacity1,
-      borderRadius: 10,
-      marginTop: 10,
-      paddingHorizontal: 20,
-      paddingVertical: 5,
-      zIndex: 3,
-    },
     cardDetailModalCardTitle: {
-      color: COLORS.cream,
-      fontFamily: FONTS.NotoSerifBold,
-      textAlign: 'center',
-      fontSize: SIZES.body3,
+      zIndex: 3,
+      marginVertical: 5,
     },
     cardDetailModalCardWrapper: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingHorizontal: 10,
-    },
-    cardDetailModalCardLeftWrapper: {
-      justifyContent: 'center',
+      justifyContent: 'space-around',
+      height: SIZES.height / 2.5,
     },
     cardDetailModalCard: {
-      width: SIZES.width / 1.4,
-      height: SIZES.height / 2.3,
-      marginTop: 10,
-      marginLeft: 30,
+      width: SIZES.width / 1.5,
+      resizeMode: 'contain',
     },
     cardDetailModalCardRightWrapper: {
-      paddingTop: 20,
       justifyContent: 'space-around',
-      gap: 20,
+      alignItems: 'center',
     },
-    cardDetailModalCardRightWrapperItem: {},
+    cardDetailModalCardRightWrapperItem: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     cardDetailModalCardRightWrapperItemText: {
       color: COLORS.cream,
       fontFamily: FONTS.NotoSerifBold,
       lineHeight: 20,
       textAlign: 'center',
-      marginTop: 5,
     },
     cardDetailModalCardNumber: {
       height: 40,
       width: 40,
       tintColor: COLORS.cream,
     },
-    cardDetailModalCardLeftTitleVertical: {
-      backgroundColor: 'transparent',
-      left: 0,
-      position: 'absolute',
-      transform: [{rotate: '-90deg'}],
-      height: '100%',
-      width: '100%',
-      justifyContent: 'flex-start',
-    },
-    cardDetailModalWrapper: {},
-    cardDetailModalContainer: {
-      height: SIZES.height / 3.5,
-      width: '100%',
-      alignItems: 'center',
-    },
     cardDetailModalCardLeftTitle: {
       color: COLORS.cream,
       fontFamily: FONTS.NotoSerifCondensedMediumItalic,
-      fontSize: SIZES.subTitle,
-      letterSpacing: 1,
+      fontSize: SIZES.body2,
+      textAlign: 'center',
     },
     cardDetailModalContent: {
       width: '100%',
-      padding: 20,
+      paddingHorizontal: 20,
+      height: 150,
+      marginTop: 20,
     },
     cardDetailModalDescription: {
       backgroundColor: COLORS.blackOpacity1,

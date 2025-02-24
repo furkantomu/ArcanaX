@@ -1,4 +1,10 @@
-import {StyleSheet, View, FlatList, ViewToken, useWindowDimensions} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  ViewToken,
+  useWindowDimensions,
+} from 'react-native';
 import React from 'react';
 import Animated, {
   useSharedValue,
@@ -8,13 +14,10 @@ import Animated, {
   interpolateColor,
 } from 'react-native-reanimated';
 
-
 import Pagination from './components/Pagination';
 import CustomButton from './components/CustomButton';
 import RenderItem from './components/OnboardingItem';
-import { data, OnboardingData } from './data';
-
-
+import {data, OnboardingData} from './data';
 
 function Onboarding() {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
@@ -42,7 +45,7 @@ function Onboarding() {
     const backgroundColor = interpolateColor(
       x.value,
       [0, SCREEN_WIDTH, 2 * SCREEN_WIDTH],
-      ['#ad6f8aee', '#f5f5dcc9', '#c0c0c0cd']
+      ['#ad6f8aee', '#f5f5dcc9', '#c0c0c0cd'],
     );
 
     return {
@@ -58,7 +61,7 @@ function Onboarding() {
         renderItem={({item, index}) => (
           <RenderItem item={item} index={index} x={x} />
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         scrollEventThrottle={16}
         horizontal
         bounces={false}
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 30,
-    paddingVertical: 40,
+    paddingVertical: 20,
     position: 'absolute',
     bottom: 0,
     left: 0,

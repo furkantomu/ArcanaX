@@ -5,7 +5,6 @@ export const getStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: SIZES.height * 0.05,
     },
     bg: {
       width: SIZES.width,
@@ -13,13 +12,9 @@ export const getStyles = () =>
       position: 'absolute',
       zIndex: 0,
     },
-    headerWrapper: {
-      marginTop: 70,
-    },
+    headerWrapper: {},
     headerTitle: {
       textAlign: 'center',
-      fontSize: SIZES.title,
-      color: COLORS.cream,
     },
     headerNameInfo: {
       flexDirection: 'row',
@@ -27,13 +22,10 @@ export const getStyles = () =>
       marginVertical: 20,
     },
     headerNameInfoText: {
-      color: COLORS.cream,
-      fontSize: SIZES.body2,
-      backgroundColor:COLORS.darkGray,
+      backgroundColor: COLORS.darkGray,
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 20,
-
     },
     cardContainer: {
       gap: 10,
@@ -57,8 +49,6 @@ export const getStyles = () =>
     },
     cardText: {
       textAlign: 'center',
-      fontSize: SIZES.body2,
-      color: COLORS.cream,
       marginTop: 5,
     },
     footer: {
@@ -72,22 +62,20 @@ export const getStyles = () =>
       borderTopRightRadius: 20,
       backgroundColor: COLORS.blackOpacity1,
       paddingHorizontal: 20,
-      paddingVertical: 30,
+      paddingTop: 40,
       gap: 20,
     },
     description: {
       color: COLORS.cream,
-      fontSize: SIZES.body3,
-      textAlign:'center',
+      textAlign: 'center',
     },
     descriptionPremiumButton: {
-      backgroundColor:COLORS.darkGray,
+      backgroundColor: COLORS.darkGray,
       padding: 20,
       borderRadius: 10,
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems:'center',
-     
+      alignItems: 'center',
     },
     descriptionPremiumButtonIcon: {
       width: 50,

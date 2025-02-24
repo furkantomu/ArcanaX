@@ -7,9 +7,8 @@ import {apiService} from '@/services/APIService';
 
 const FooterButton = () => {
   const styles = getStyles();
-  const {messages, dream, setMessages, setModalVisible, setSpreadID} =
+  const {messages, dream, setMessages, setModalVisible, setSpreadID, setLoading, loading} =
     useDreamContext();
-  const [loading, setLoading] = useState(false);
 
   const handlePress = async (params: string) => {
     if (params === 'completed') {

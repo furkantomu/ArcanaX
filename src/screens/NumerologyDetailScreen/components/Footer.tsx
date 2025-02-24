@@ -1,4 +1,4 @@
-import {IconButton} from '@/components';
+import {IconButton, Typography} from '@/components';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import React from 'react';
@@ -35,18 +35,23 @@ const Footer = () => {
   return (
     <View style={styles.footer}>
       <View style={styles.footerWrapper}>
-        <Text style={styles.description}>
-          <Text style={styles.description}>{numerologyDetail.name}: </Text>{' '}
+        <Typography size="large" style={styles.description}>
+          <Typography
+            size="large"
+            weight="NotoSerifCondensedBoldItalic"
+            style={styles.description}>
+            {numerologyDetail.name}:{' '}
+          </Typography>{' '}
           Yaşam yolu numarası, doğum tarihinizden hesaplanan ve hayatınızdaki
           ana temaları, güçlü yönlerinizi ve zorluklarınızı gösteren bir
           numeroloji kavramıdır. Bu sayı, doğduğunuz günden itibaren sizi
           yönlendiren enerjiyi belirler ve yaşamınızdaki genel yönelimleri,
           kişisel hedefleri ve potansiyeli ortaya çıkarır. Yaşam yolu numarası,
           kim olduğunuzu ve hayat amacınızı anlamada önemli bir rehberdir.
-        </Text>
-        <Text style={styles.description}>
+        </Typography>
+        <Typography style={styles.description}>
           {lifePathDetail[numerologyDetail.lifePath]}
-        </Text>
+        </Typography>
         <IconButton
           text="Daha fazla ayrıntı ve derinlemesine analiz için premium içeriğimize
             göz atın!"
