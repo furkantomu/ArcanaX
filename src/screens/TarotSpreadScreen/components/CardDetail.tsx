@@ -19,14 +19,14 @@ const CardDetail = () => {
   return (
     <>
       <Image
-        source={{uri: isSelectedCard?.frontImageSource || back}}
+        source={{uri: isSelectedCard?.frontImageSource}}
         style={styles.cardDetailModalBg}
         resizeMode={'cover'}
         blurRadius={5}
       />
       <View style={styles.cardDetailModalCardWrapper}>
         <Image
-          source={{uri: isSelectedCard?.frontImageSource || back}}
+          source={{uri: isSelectedCard?.frontImageSource}}
           style={styles.cardDetailModalCard}
         />
         <View style={styles.cardDetailModalCardRightWrapper}>

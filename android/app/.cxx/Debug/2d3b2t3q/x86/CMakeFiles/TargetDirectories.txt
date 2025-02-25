@@ -1,3 +1,0 @@
-/Users/furkantomu/Desktop/ArcanaX/android/app/.cxx/Debug/2d3b2t3q/x86/CMakeFiles/appmodules.dir
-/Users/furkantomu/Desktop/ArcanaX/android/app/.cxx/Debug/2d3b2t3q/x86/CMakeFiles/edit_cache.dir
-/Users/furkantomu/Desktop/ArcanaX/android/app/.cxx/Debug/2d3b2t3q/x86/CMakeFiles/rebuild_cache.dir
