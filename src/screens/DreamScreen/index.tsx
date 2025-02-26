@@ -24,14 +24,15 @@ const DreamScreen = () => {
     return () =>
       navigation.getParent()?.setOptions({
         tabBarStyle: {
-          display: '',
+          backgroundColor: '#f5f5dc4f',
           position: 'absolute',
-          backgroundColor: COLORS.blackOpacity,
-          borderRadius: 50,
-          borderTopWidth: 0,
           marginHorizontal: 30,
-          marginVertical: 20,
+          marginBottom: 20,
+          borderTopWidth: 0,
           height: 50,
+          borderBottomWidth: 0,
+          borderRadius: 50,
+          elevation: 0,
         },
       });
   }, [navigation]);

@@ -1,31 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image} from 'react-native';
-import Animated, {
-  useAnimatedScrollHandler,
-  useSharedValue,
-} from 'react-native-reanimated';
-
-import {SIZES} from '@/styles/theme';
 
 import {getStyles} from '../style';
 import Card from './Card';
 import {useTarotContext} from '../TarotContext';
+import { FlatList } from 'react-native-gesture-handler';
 
 const CartSelection = () => {
   const [shuffledCards, setShuffledCards] = useState<any>([]);
   const {tarotCards} = useTarotContext();
   const styles = getStyles();
-  const scrollX = useSharedValue(0);
 
   const rightArrows = require('../../../../assets/icon/rightArrows.png');
   const back = require('../../../../assets//card/back.webp');
 
-
-  const onScrollHandler = useAnimatedScrollHandler({
-    onScroll: (e: any) => {
-      scrollX.value = e.contentOffset.x / (SIZES.width * 0.7 + 12);
-    },
-  });
 
   useEffect(() => {
     const shuffleArray = (array: any) => {
@@ -43,21 +31,20 @@ const CartSelection = () => {
     setShuffledCards(shuffleArray(tarotCards));
   }, [tarotCards]);
   return (
-    <View>
-      <Animated.FlatList
+    <>
+      <FlatList
         data={shuffledCards}
         horizontal
         showsHorizontalScrollIndicator={false}
-        snapToInterval={SIZES.width * 0.7 + 12}
-        onScroll={onScrollHandler}
-        contentContainerStyle={styles.flatList}
+        decelerationRate={'fast'}
+        //onScroll={onScrollHandler}
+        scrollEventThrottle={1000 / 60}
+        snapToAlignment="center"
+        bounces={false}
+        keyExtractor={item => item.id}
+       contentContainerStyle={styles.flatList}
         renderItem={({item, index}) => (
-          <Card
-            key={index}
-            backImageSource={back}
-            index={index}
-            item={item}
-          />
+          <Card key={index} backImageSource={back} index={index} item={item} />
         )}
       />
 
@@ -69,7 +56,7 @@ const CartSelection = () => {
         <Text style={styles.scrollInfoText}>Yana Kaydır</Text>
         <Image source={rightArrows} style={styles.scrollInfoRightArrows} />
       </View>
-    </View>
+    </>
   );
 };
 export default CartSelection;

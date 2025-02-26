@@ -73,9 +73,6 @@ function RenderItem({index, x, item}: Props) {
       <LinearGradient
         colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
         style={styles.linearGradient}
-        start={{x: 0.5, y: 0}}
-        end={{x: 0.5, y: 1}}
-        locations={[1, 0.5, 0.1]}
       />
       <Animated.Image
         source={item.image}

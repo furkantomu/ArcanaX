@@ -12,8 +12,11 @@ interface RefsContextType {
   lifePathAccordionScrollViewRef: React.RefObject<ScrollView>;
   uploadTypeSheetRef: React.RefObject<BottomSheetRefProps>;
   tokenSheetRef: React.RefObject<BottomSheetRefProps>;
-
   FaqSectionScrollViewRef: React.RefObject<ScrollView>;
+
+  saveTarotSheetRef: React.RefObject<BottomSheetRefProps>;
+  saveNumerologySheetRef: React.RefObject<BottomSheetRefProps>;
+  saveDreamSheetRef: React.RefObject<BottomSheetRefProps>;
 
 }
 
@@ -38,6 +41,10 @@ const RefsProvider: React.FC<Partial<RefsContextType & { children: React.ReactNo
   const uploadTypeSheetRef = useRef<BottomSheetRefProps>(null);
   const tokenSheetRef = useRef<BottomSheetRefProps>(null);
   const FaqSectionScrollViewRef = useRef<ScrollView>(null);
+  const saveTarotSheetRef = useRef<BottomSheetRefProps>(null);
+  const saveNumerologySheetRef = useRef<BottomSheetRefProps>(null);
+  const saveDreamSheetRef = useRef<BottomSheetRefProps>(null);
+
 
   const { children } = props;
 
@@ -49,6 +56,9 @@ const RefsProvider: React.FC<Partial<RefsContextType & { children: React.ReactNo
     uploadTypeSheetRef,
     tokenSheetRef,
     FaqSectionScrollViewRef,
+    saveTarotSheetRef,
+    saveNumerologySheetRef,
+    saveDreamSheetRef,
   };
 
   return <RefsContext.Provider value={contextRefValues}>{children}</RefsContext.Provider>;

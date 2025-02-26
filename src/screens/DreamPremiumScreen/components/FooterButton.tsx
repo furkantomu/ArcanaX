@@ -4,15 +4,18 @@ import {getStyles} from '../styles';
 import {Button} from '@/components';
 import {useDreamContext} from '../DreamScreenContext';
 import {apiService} from '@/services/APIService';
+import {SIZES} from '@/styles/theme';
+import {useRefsContext} from '@/context';
 
 const FooterButton = () => {
   const styles = getStyles();
-  const {messages, dream, setMessages, setModalVisible, setSpreadID, setLoading, loading} =
+  const {messages, dream, setMessages, setSpreadID, setLoading, loading} =
     useDreamContext();
+  const {saveDreamSheetRef} = useRefsContext();
 
   const handlePress = async (params: string) => {
     if (params === 'completed') {
-      setModalVisible(true);
+      saveDreamSheetRef.current?.scrollTo(-SIZES.height / 2);
     } else {
       const oldMessage = {
         role: 'user',

@@ -8,7 +8,6 @@ import Content from './components/Content';
 
 import {getStyles} from './styles';
 import {useDreamContext} from './DreamScreenContext';
-import SaveModal from './components/SaveModal';
 
 const DreamWrapper = () => {
   const styles = getStyles();
@@ -21,7 +20,6 @@ const DreamWrapper = () => {
       </View>
       <Content />
       <FooterButton />
-      <SaveModal/>
     </View>
   );
 };

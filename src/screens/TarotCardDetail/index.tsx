@@ -44,7 +44,6 @@ type TarotCardScreenRouteProp = RouteProp<
 const TarotCardDetail = () => {
   const [card, setCard] = useState<TarotCard>();
   const [loading, setLoading] = useState({});
-  console.log('card', card?.details.number);
   const {params} = useRoute<TarotCardScreenRouteProp>();
   const {id, category} = params;
   const styles = getStyles();

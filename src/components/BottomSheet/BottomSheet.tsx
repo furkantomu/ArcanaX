@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet, View} from 'react-native';
-import React, {useCallback, useImperativeHandle} from 'react';
+import React, {JSX, useCallback, useImperativeHandle} from 'react';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     top: SCREEN_HEIGHT,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    zIndex: 20,
+    zIndex: 30,
   },
   line: {
     height: 4,

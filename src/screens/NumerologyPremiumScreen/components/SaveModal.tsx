@@ -2,12 +2,18 @@ import {View, TextInput} from 'react-native';
 import React from 'react';
 import {Button, Typography} from '@/components';
 import {getStyles} from '../styles';
-import {useDreamContext} from '../DreamScreenContext';
+import { useNumerologyPremiumContext } from '../NumerologyPremiumContext';
 
 const SaveModal = () => {
   const styles = getStyles();
-  const {setSaveName, saveLoading, saveName, saveData} =
-    useDreamContext();
+    const {
+      saveData,
+      saveName,
+      setSaveName,
+      saveLoading,
+      setCompleted,
+    } = useNumerologyPremiumContext();
+
   return (
     <View style={styles.modalContainer}>
       <View style={styles.modalContent}>
@@ -27,6 +33,7 @@ const SaveModal = () => {
             text="Onayla"
             handlePress={() => {
               saveData();
+              setCompleted(true);
             }}
             disabled={saveLoading}
             buttonStyle={styles.button}

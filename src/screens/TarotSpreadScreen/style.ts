@@ -13,33 +13,32 @@ export const getStyles = () =>
       position: 'relative',
       height: SIZES.height / 3,
       paddingHorizontal: 20,
-    },
-    linearGradient: {
-      position: 'absolute',
-      width: SIZES.width,
-      height: SIZES.height / 1.5,
-      zIndex: 0,
-    },
-    title: {
-      textAlign: 'center',
-      zIndex: 2,
-    },
-    info: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 20,
-      zIndex: 1,
-    },
-    infoTitle: {
-      textAlign: 'center',
-      lineHeight: 0,
+      zIndex: 3,
     },
     tarotSpreadBG: {
       width: SIZES.width,
       position: 'absolute',
       height: SIZES.height / 1.5,
-      zIndex: -1,
+      zIndex: 0,
     },
+    linearGradient: {
+      position: 'absolute',
+      width: SIZES.width,
+      height: SIZES.height / 1.5,
+      zIndex: 1,
+    },
+    title: {
+      textAlign: 'center',
+    },
+    info: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 20,
+    },
+    infoTitle: {
+      textAlign: 'center',
+    },
+
     content: {
       zIndex: 1,
       paddingHorizontal: 10,
@@ -95,8 +94,8 @@ export const getStyles = () =>
       //paddingHorizontal: (SIZES.width - SIZES.width * 0.7) / 2,
       justifyContent: 'center',
       alignItems: 'flex-end',
-      backgroundColor: 'transparent',
       height: imageHeight * 1.5,
+      width: 'auto',
     },
     scrollInfo: {
       flexDirection: 'row',
@@ -125,14 +124,14 @@ export const getStyles = () =>
     },
     cardSelectionSheet: {
       justifyContent: 'space-between',
-      height: SIZES.height - 250,
+      height: SIZES.height / 1.5,
     },
     bottomSheetHeader: {
       alignItems: 'center',
-      gap: 30,
+      gap: 50,
     },
     bottomSheetText: {
-      marginTop: 30,
+      marginTop: 20,
       textAlign: 'center',
     },
     buttonContainer: {
@@ -296,7 +295,7 @@ export const getStyles = () =>
     cardDetailModalContainer: {
       width: '100%',
       alignItems: 'center',
-      height: SIZES.height - 250,
+      height: SIZES.height / 1.2,
     },
     cardDetailModalBg: {
       width: '100%',
@@ -348,7 +347,7 @@ export const getStyles = () =>
     cardDetailModalContent: {
       width: '100%',
       paddingHorizontal: 20,
-      height: 150,
+      height: SIZES.height / 4,
       marginTop: 20,
     },
     cardDetailModalDescription: {
@@ -365,15 +364,15 @@ export const getStyles = () =>
     },
     modalContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'transparent',
+      justifyContent: 'flex-start',
+      paddingHorizontal: 30,
+      backgroundColor: 'white',
     },
     modalContent: {
       backgroundColor: 'white',
       padding: 20,
       borderRadius: 10,
-      width: '80%',
+      zIndex: 33,
     },
     modalTitle: {
       color: COLORS.black,
@@ -385,11 +384,9 @@ export const getStyles = () =>
       fontFamily: FONTS.NotoSerifBold,
     },
     modalButton: {
-      flexDirection: 'row',
       width: '100%',
-      justifyContent: 'space-around',
     },
     button: {
-      width: 100,
+      width: '100%',
     },
   });

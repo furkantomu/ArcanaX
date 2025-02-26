@@ -1,7 +1,5 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import {FC} from 'react';
 
 import {
   ProfileScreen,
@@ -14,9 +12,6 @@ import {
   DreamHistoryScreen,
   FAQScreen,
 } from '@/screens';
-import {COLORS} from '@/styles/theme';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Icon} from '@/components';
 
 export type RouteTypes = {
   name: string;
@@ -36,203 +31,49 @@ export const routes: RouteTypes[] = [
     name: 'ProfileUserScreen',
     component: ProfileUserScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
   {
     name: 'ProfilePasswordScreen',
     component: ProfilePasswordScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
   {
     name: 'SaveServicesScreen',
     component: SaveServicesScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
   {
     name: 'TarotHistoryScreen',
     component: TarotHistoryScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
   {
     name: 'NumerologyHistoryScreen',
     component: NumerologyHistoryScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
   {
     name: 'BalanceScreen',
     component: BalanceScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
   {
     name: 'DreamHistoryScreen',
     component: DreamHistoryScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
 
@@ -240,29 +81,7 @@ export const routes: RouteTypes[] = [
     name: 'FAQScreen',
     component: FAQScreen,
     options: {
-      headerShown: true,
-      headerBackButtonDisplayMode: 'minimal',
-      headerStyle: {
-        backgroundColor: COLORS.black,
-      },
-      headerTitleStyle: {
-        color: COLORS.cream,
-      },
-      title: 'ArcanaX',
-      headerLeft: (props: any) => (
-        <TouchableOpacity {...props}>
-          {/* eslint-disable-next-line react-native/no-inline-styles */}
-          <Icon
-            name="rightArrow"
-            size={50}
-            style={{
-              tintColor: COLORS.cream,
-              marginLeft: 10,
-              transform: [{rotate: '180deg'}],
-            }}
-          />
-        </TouchableOpacity>
-      ),
+      headerShown: false,
     },
   },
 ];

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Alert,
+  Pressable,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
@@ -56,7 +57,7 @@ const CartReveal = () => {
   const isFlipped = useSharedValue(false);
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0);
-  const {detailCardSheetRef} = useRefsContext();
+  const {detailCardSheetRef, saveTarotSheetRef} = useRefsContext();
   const haptic = useHaptic('soft');
   const navigation = useNavigation();
   const tarotSpreadBG = require('../../../assets/background/tarotspread5.webp');
@@ -100,7 +101,7 @@ const CartReveal = () => {
             {
               text: 'Evet',
               onPress: () => {
-                setModalVisible(true);
+                 saveTarotSheetRef.current?.scrollTo(-SIZES.height / 2);
               },
             }, // Çıkışı onaylarsa devam eder
           ],
@@ -109,7 +110,7 @@ const CartReveal = () => {
 
       return unsubscribe;
     }
-  }, [navigation, readingCompleted, setModalVisible]);
+  }, [navigation, readingCompleted, saveTarotSheetRef]);
   const handleSendMessage = async () => {
     if (!message.trim()) return;
     setLoading(true);
@@ -159,9 +160,6 @@ const CartReveal = () => {
       <LinearGradient
         colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
         style={styles.linearGradient}
-        start={{x: 0.5, y: 0}}
-        end={{x: 0.5, y: 1}}
-        locations={[0.05, 0.5, 0.95]}
       />
       <Image
         source={tarotSpreadBG}
@@ -169,11 +167,13 @@ const CartReveal = () => {
         resizeMode={'cover'}
         blurRadius={5}
       />
-      <SafeAreaView>
+      <SafeAreaView style={{zIndex:2}}>
         <View style={styles.cardRevealHeader}>
+          <Pressable onPress={() => setModalVisible(true)}>
           <Text style={styles.cardRevealHeaderText}>
             Seçilen Kartlar Açmak İçin Dokun
           </Text>
+          </Pressable>
         </View>
         <Animated.FlatList
           data={selectedCards}

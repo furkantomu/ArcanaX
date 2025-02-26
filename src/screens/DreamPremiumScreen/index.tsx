@@ -1,19 +1,23 @@
 import React from 'react';
 import {
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    TouchableWithoutFeedback,
-    Keyboard,
-  } from 'react-native';
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import DreamWrapper from './DreamWrapper';
 
 import {AppProvider} from './DreamScreenContext';
 import {COLORS} from '@/styles/theme';
+import {BottomSheet} from '@/components';
+import SaveModal from './components/SaveModal';
+import {useRefsContext} from '@/context';
 
 const DreamPremiumScreen = () => {
+  const {saveDreamSheetRef} = useRefsContext();
   return (
     <AppProvider>
       <KeyboardAvoidingView
@@ -30,6 +34,9 @@ const DreamPremiumScreen = () => {
           </TouchableWithoutFeedback>
         </ScrollView>
       </KeyboardAvoidingView>
+      <BottomSheet ref={saveDreamSheetRef}>
+        <SaveModal />
+      </BottomSheet>
     </AppProvider>
   );
 };

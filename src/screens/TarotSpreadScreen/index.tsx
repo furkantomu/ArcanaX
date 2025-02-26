@@ -7,7 +7,6 @@ import {
   Platform,
   View,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 import TarotSpreadWrapper from './TarotSpreadWrapper';
 import {AppProvider} from './TarotContext';
@@ -20,10 +19,15 @@ import SheetHeader from './components/SheetHeader';
 import CartSelection from './components/SelectedCardSheet';
 import SheetFooter from './components/SheetFooter';
 import CardDetail from './components/CardDetail';
+import SaveModal from './components/SaveModal';
 
 const TarotSpreadScreen = ({route}: any) => {
-  const {tarotSpreadScrollViewRef, selectCardSheetRef, detailCardSheetRef} =
-    useRefsContext();
+  const {
+    tarotSpreadScrollViewRef,
+    selectCardSheetRef,
+    detailCardSheetRef,
+    saveTarotSheetRef,
+  } = useRefsContext();
 
   const styles = getStyles();
 
@@ -51,6 +55,9 @@ const TarotSpreadScreen = ({route}: any) => {
         </BottomSheet>
         <BottomSheet ref={detailCardSheetRef}>
           <CardDetail />
+        </BottomSheet>
+        <BottomSheet ref={saveTarotSheetRef}>
+          <SaveModal />
         </BottomSheet>
       </KeyboardAvoidingView>
     </AppProvider>

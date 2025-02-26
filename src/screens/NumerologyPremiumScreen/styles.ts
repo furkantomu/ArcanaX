@@ -174,6 +174,7 @@ export const getStyles = () =>
     },
     saveButton: {
       height: 50,
+      marginBottom: 5,
     },
     footerButtonText: {
       color: COLORS.black,
@@ -182,15 +183,15 @@ export const getStyles = () =>
     },
     modalContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'transparent',
+      justifyContent: 'flex-start',
+      paddingHorizontal: 30,
+      backgroundColor: 'white',
     },
     modalContent: {
       backgroundColor: 'white',
       padding: 20,
       borderRadius: 10,
-      width: '80%',
+      zIndex: 33,
     },
     modalTitle: {
       color:COLORS.black,
@@ -202,11 +203,9 @@ export const getStyles = () =>
       fontFamily: FONTS.NotoSerifBold,
     },
     modalButton: {
-      flexDirection: 'row',
       width: '100%',
-      justifyContent: 'space-around',
     },
     button: {
-      width: 100,
+      width: '100%',
     },
   });

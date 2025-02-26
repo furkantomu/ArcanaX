@@ -8,15 +8,20 @@ export const getStyles = () =>
       backgroundColor: COLORS.black,
     },
     scrollView: {},
+    safeAreaView: {
+      zIndex: 2,
+    },
     ImageBackground: {
       width: SIZES.width,
       height: SIZES.height / 2,
       position: 'absolute',
+
     },
     linearGradient: {
       width: SIZES.width,
       height: SIZES.height / 2,
       position: 'absolute',
+      zIndex: 1,
     },
     cardContainer: {
       flexDirection: 'row',
@@ -49,6 +54,7 @@ export const getStyles = () =>
     description: {
       textAlign: 'center',
       marginTop: 30,
+      zIndex:2,
     },
     subTitle: {
       marginTop: 30,

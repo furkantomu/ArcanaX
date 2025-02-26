@@ -6,7 +6,7 @@ export const getStyles = () =>
     container: {
       flex: 1,
       paddingHorizontal: 30,
-      gap: 20,
+      gap: 30,
       paddingBottom: 100,
     },
     header: {
@@ -15,6 +15,7 @@ export const getStyles = () =>
       paddingHorizontal: 20,
       paddingVertical: 20,
       gap: 10,
+      marginTop: 20,
     },
     iconContainer: {
       alignItems: 'center',

@@ -21,16 +21,15 @@ import {useTarotContext} from './TarotContext';
 import {getStyles} from './style';
 
 import {apiService} from '@/services/APIService';
-import SaveModal from './components/SaveModal';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
-import {COLORS} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 
 const tarotSpreadBG = require('../../../assets/background/tarotspread.webp');
 
 const TarotSpreadWrapper = ({route}: any) => {
   const [newMessage, setNewMessage] = useState<string>('');
-  const {tarotSpreadScrollViewRef} = useRefsContext();
+  const {tarotSpreadScrollViewRef, saveTarotSheetRef} = useRefsContext();
   const {
     spreadID,
     readingStarted,
@@ -38,7 +37,6 @@ const TarotSpreadWrapper = ({route}: any) => {
     setMessages,
     showOpenButton,
     setWritingLoading,
-    setModalVisible,
   } = useTarotContext();
   const styles = getStyles();
   const sendIcon = require('../../../assets/icon/send.png');
@@ -61,6 +59,9 @@ const TarotSpreadWrapper = ({route}: any) => {
       }
 
       setMessages(prevMessages => [...prevMessages, newMsg]);
+      setTimeout(() => {
+        tarotSpreadScrollViewRef.current?.scrollToEnd({animated: true});
+      }, 100);
       setNewMessage('');
       Keyboard.dismiss();
 
@@ -83,7 +84,7 @@ const TarotSpreadWrapper = ({route}: any) => {
     }
   };
   const handleCompleted = () => {
-    setModalVisible(true);
+    saveTarotSheetRef.current?.scrollTo(-SIZES.height / 2);
   };
   return (
     <>
@@ -99,11 +100,8 @@ const TarotSpreadWrapper = ({route}: any) => {
           <LinearGradient
             colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
             style={styles.linearGradient}
-            start={{x: 0.5, y: 0}}
-            end={{x: 0.5, y: 1}}
-            locations={[0.05, 0.5, 0.95]}
           />
-          <SafeAreaView>
+          <SafeAreaView style={{zIndex: 3}}>
             <CustomHeader leftIcon={true} title={false} rightIcon={true} />
             <Header route={route} />
             <Content />
@@ -143,7 +141,6 @@ const TarotSpreadWrapper = ({route}: any) => {
             />
           </View>
         )}
-        <SaveModal />
       </SafeAreaView>
     </>
   );

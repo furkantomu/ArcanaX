@@ -1,28 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {View, TouchableWithoutFeedback, Modal, Alert} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {getStyles} from '../styles';
-import {Button, Typography} from '@/components';
+import {Button} from '@/components';
 import {useNumerologyPremiumContext} from '../NumerologyPremiumContext';
-import {TextInput} from 'react-native-gesture-handler';
-import {COLORS} from '@/styles/theme';
+import {useRefsContext} from '@/context';
+import {SIZES} from '@/styles/theme';
+
 const Footer = () => {
   const styles = getStyles();
   const navigation = useNavigation();
+  const {saveNumerologySheetRef} = useRefsContext();
 
-  const {
-    saveData,
-    saveName,
-    setSaveName,
-    saveLoading,
-    setCompleted,
-    completed,
-  } = useNumerologyPremiumContext();
-  const [modalVisible, setModalVisible] = useState(false);
+  const {completed} = useNumerologyPremiumContext();
 
   const handlePress = () => {
-    setModalVisible(true);
+    saveNumerologySheetRef.current?.scrollTo(-SIZES.height / 2);
   };
 
   useEffect(() => {
@@ -37,7 +31,7 @@ const Footer = () => {
             {
               text: 'Evet',
               onPress: () => {
-                setModalVisible(true);
+                saveNumerologySheetRef.current?.scrollTo(-SIZES.height / 2);
               },
             },
           ],
@@ -45,7 +39,7 @@ const Footer = () => {
       });
       return unsubscribe;
     }
-  }, [completed, navigation]);
+  }, [completed, navigation, saveNumerologySheetRef]);
 
   return (
     <View style={styles.footer}>
@@ -55,49 +49,6 @@ const Footer = () => {
         variant={'secondary'}
         buttonStyle={styles.saveButton}
       />
-
-      <Modal
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-        transparent
-        animationType="fade">
-        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Typography
-                weight="NotoSerifCondensedBoldItalic"
-                style={styles.modalTitle}>
-                Kayıt İsmi:
-              </Typography>
-              <TextInput
-                style={styles.input}
-                value={saveName}
-                onChangeText={(text: string) => setSaveName(text)}
-                placeholder="Metin girin..."
-              />
-              <View style={styles.modalButton}>
-                <Button
-                  text="Kapat"
-                  handlePress={() => {
-                    setModalVisible(false);
-                  }}
-                  buttonStyle={styles.button}
-                />
-                <Button
-                  text="Onayla"
-                  handlePress={() => {
-                    saveData();
-                    setCompleted(true);
-                    setModalVisible(false);
-                  }}
-                  disabled={saveLoading}
-                  buttonStyle={styles.button}
-                />
-              </View>
-            </View>
-          </View>
-        </TouchableWithoutFeedback>
-      </Modal>
     </View>
   );
 };

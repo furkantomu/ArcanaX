@@ -7,6 +7,8 @@ import Wrapper from './Wrapper';
 import {COLORS} from '@/styles/theme';
 import {AppProvider} from './NumerologyHistoryContext';
 import {useRefsContext} from '@/context';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import { CustomHeader } from '@/components';
 
 const NumerologyHistoryScreen = () => {
   const {lifePathAccordionScrollViewRef} = useRefsContext();
@@ -17,7 +19,10 @@ const NumerologyHistoryScreen = () => {
         <ScrollView
           ref={lifePathAccordionScrollViewRef}
           showsVerticalScrollIndicator={false}>
-          <Wrapper />
+          <SafeAreaView>
+          <CustomHeader leftIcon={true} title={true} rightIcon={false} />
+            <Wrapper />
+          </SafeAreaView>
         </ScrollView>
       </LinearGradient>
     </AppProvider>

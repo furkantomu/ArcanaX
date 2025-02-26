@@ -8,7 +8,7 @@ import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, SIZES} from '@/styles/theme';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Typography} from '@/components';
+import {CustomHeader, Typography} from '@/components';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {apiService} from '@/services/APIService';
 import {showToast} from '@/utils/showToast';
@@ -86,6 +86,7 @@ const DreamHistoryScreen = () => {
     <LinearGradient colors={[COLORS.black, '#3F2305']} style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <SafeAreaView style={styles.container}>
+        <CustomHeader leftIcon={true} title={true} rightIcon={false} />
           {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Typography style={{textAlign: 'center'}}>
             İşlem Tarihi: {dayjs(messages.createdAt).format('DD MMMM YYYY')}

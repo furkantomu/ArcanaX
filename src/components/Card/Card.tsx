@@ -1,4 +1,4 @@
-import { COLORS } from '@/styles/theme';
+import {COLORS} from '@/styles/theme';
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,7 +8,6 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import Typography from '../Typography/Typography';
-
 
 interface CardProps {
   imageSource: any;
@@ -73,11 +72,8 @@ const Card: React.FC<CardProps> = ({
           style={[styles.image, rnAnimatedImageStyle]}
         />
         <LinearGradient
-          colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
-          style={{width: width, height: height}}
-          start={{x: 0.5, y: 0}}
-          end={{x: 0.5, y: 1}}
-          locations={[1, 0.05, 1]}>
+          colors={[COLORS.blackOpacity, COLORS.black]}
+          style={{width: width, height: height}}>
           <View style={styles.cardContent}>
             <Typography
               size={'large'}
@@ -85,9 +81,7 @@ const Card: React.FC<CardProps> = ({
               style={styles.title}>
               {cardTitle}
             </Typography>
-            <Typography
-          weight={'NotoSerifCondensedBoldItalic'}
-            >
+            <Typography weight={'NotoSerifCondensedBoldItalic'}>
               {cardDescription}
             </Typography>
             <View style={styles.cardButtonContainer}>

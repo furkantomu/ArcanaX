@@ -33,14 +33,15 @@ const TarotScreenWrapper = () => {
     return () =>
       navigation.getParent()?.setOptions({
         tabBarStyle: {
-          display: '',
+          backgroundColor: '#f5f5dc4f',
           position: 'absolute',
-          backgroundColor: COLORS.blackOpacity,
-          borderRadius: 50,
-          borderTopWidth: 0,
           marginHorizontal: 30,
-          marginVertical: 20,
+          marginBottom: 20,
+          borderTopWidth: 0,
           height: 50,
+          borderBottomWidth: 0,
+          borderRadius: 50,
+          elevation: 0,
         },
       });
   }, [navigation]);
@@ -66,19 +67,16 @@ const TarotScreenWrapper = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container}>
+        <LinearGradient
+          colors={[COLORS.blackOpacity, COLORS.black]}
+          style={styles.linearGradient}
+        />
         <Animated.Image
           source={image}
           style={[styles.ImageBackground, animatedStyle]}
         />
-        <LinearGradient
-          colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
-          style={styles.linearGradient}
-          start={{x: 0.5, y: 0}}
-          end={{x: 0.5, y: 1}}
-          locations={[1, 0.05, 1]}
-        />
 
-        <SafeAreaView>
+        <SafeAreaView style={styles.safeAreaView}>
           <CustomHeader leftIcon={true} title={false} rightIcon={true} />
           <Animated.View style={[styles.content, animatedStyle]}>
             <Typography

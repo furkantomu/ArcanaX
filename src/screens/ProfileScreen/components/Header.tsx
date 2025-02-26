@@ -48,18 +48,15 @@ const Header = () => {
   };
   return (
     <View>
-      <Image
-        source={zodiacImage}
-        style={[styles.ImageBackground]}
-        resizeMode={'cover'}
-      />
       <LinearGradient
         colors={[COLORS.black, COLORS.blackOpacity, COLORS.black]}
         style={styles.linearGradient}
-        start={{x: 0.5, y: 0}}
-        end={{x: 0.5, y: 1}}
-        locations={[1, 0.5, 0.04]}
       />
+      <Image
+          source={zodiacImage}
+          style={[styles.ImageBackground]}
+          resizeMode={'cover'}
+        />
       <View style={styles.headerTextWrapper}>
         <Typography weight={'NotoSerifCondensedMediumItalic'} size={'heading'}>
           Profilim

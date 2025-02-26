@@ -10,10 +10,13 @@ import {useRefsContext} from '@/context';
 
 import {getStyles} from './styles';
 import { COLORS } from '@/styles/theme';
+import { BottomSheet } from '@/components';
+import SaveModal from './components/SaveModal';
 
 const NumerologyPremiumScreen = () => {
   const navigation = useNavigation();
-  const {lifePathAccordionScrollViewRef} = useRefsContext();
+  const {lifePathAccordionScrollViewRef, saveNumerologySheetRef} = useRefsContext();
+  
   const styles = getStyles();
   const bg = require('../../../assets/background/bg4.webp');
 
@@ -25,14 +28,15 @@ const NumerologyPremiumScreen = () => {
     return () =>
       navigation.getParent()?.setOptions({
         tabBarStyle: {
-          display: '',
+          backgroundColor: '#f5f5dc4f',
           position: 'absolute',
-          backgroundColor: COLORS.blackOpacity,
-          borderRadius: 50,
-          borderTopWidth: 0,
           marginHorizontal: 30,
-          marginVertical: 20,
+          marginBottom: 20,
+          borderTopWidth: 0,
           height: 50,
+          borderBottomWidth: 0,
+          borderRadius: 50,
+          elevation: 0,
         },
       });
   }, [navigation]);
@@ -50,6 +54,9 @@ const NumerologyPremiumScreen = () => {
           <Wrapper />
         </ScrollView>
       </SafeAreaView>
+      <BottomSheet ref={saveNumerologySheetRef}>
+        <SaveModal/>
+      </BottomSheet>
     </AppProvider>
   );
 };

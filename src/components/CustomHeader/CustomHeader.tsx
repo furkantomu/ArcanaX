@@ -53,7 +53,7 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
 
       {/* Right Icons */}
       <View style={styles.rightIconsContainer}>
-        {rightIcon && (
+        {rightIcon ? (
           <IconButton
             handlePress={() => openModal()}
             iconName={'token'}
@@ -63,6 +63,8 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
             buttonStyle={styles.iconContainer}
             variant={'secondary'}
           />
+        ) : (
+          <View style={styles.iconContainer} />
         )}
       </View>
     </View>
@@ -81,10 +83,10 @@ const styles = StyleSheet.create({
     // iOS shadow
     shadowColor: COLORS.gold,
     shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.2,
     shadowRadius: 6,
     // Android shadow
-    elevation: 5,
+    elevation: 0.5,
   },
   iconContainer: {
     backgroundColor: 'transparent',

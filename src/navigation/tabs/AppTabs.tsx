@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ImageSourcePropType} from 'react-native';
+import {Image, ImageSourcePropType, Pressable} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -11,7 +11,6 @@ import {selectLoggedIn} from '@/store/auth/authSelectors';
 import {AuthStack} from '../stack/AuthStack';
 import {COLORS} from '@/styles/theme';
 
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -19,7 +18,7 @@ type TabBarIconProps = {
   source: ImageSourcePropType;
   focused: boolean;
 };
-const TabBarIcon: React.FC<TabBarIconProps> = ({ source, focused }) => (
+const TabBarIcon: React.FC<TabBarIconProps> = ({source, focused}) => (
   <Image
     source={source}
     resizeMode="cover"
@@ -28,9 +27,22 @@ const TabBarIcon: React.FC<TabBarIconProps> = ({ source, focused }) => (
       width: 25,
       height: 25,
       tintColor: focused ? COLORS.gold : COLORS.cream,
-      marginTop: 10,
     }}
   />
+);
+
+const CustomTabButton = ({children, onPress}: any) => (
+  <Pressable
+    style={{
+      backgroundColor: 'transparent',
+      borderRadius: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 50,
+    }}
+    onPress={onPress}>
+    {children}
+  </Pressable>
 );
 
 const Tabs = () => {
@@ -40,21 +52,25 @@ const Tabs = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
+         backgroundColor: '#f5f5dc4f',
           position: 'absolute',
-          backgroundColor: COLORS.blackOpacity,
-          borderRadius: 50,
-          borderTopWidth: 0,
           marginHorizontal: 30,
-          marginVertical: 20,
+          marginBottom: 20,
+          borderTopWidth: 0,
           height: 50,
+          borderBottomWidth: 0,
+          borderRadius: 50,
+          elevation: 0,
         },
+        // eslint-disable-next-line react/no-unstable-nested-components
+        tabBarButton: props => <CustomTabButton {...props} />,
       }}>
       <Tab.Screen
         name="Astroloji"
         component={HomeStack}
         options={{
           // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({ focused }: { focused: boolean }) => (
+          tabBarIcon: ({focused}: {focused: boolean}) => (
             <TabBarIcon
               focused={focused}
               source={require('../../../assets/tab/app.png')}
@@ -67,7 +83,7 @@ const Tabs = () => {
         component={HomeStack}
         options={{
           // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({ focused }: { focused: boolean }) => (
+          tabBarIcon: ({focused}: {focused: boolean}) => (
             <TabBarIcon
               focused={focused}
               source={require('../../../assets/tab/zodiac.png')}
@@ -80,7 +96,7 @@ const Tabs = () => {
         component={ProfileStack}
         options={{
           // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({ focused }: { focused: boolean }) => (
+          tabBarIcon: ({focused}: {focused: boolean}) => (
             <TabBarIcon
               focused={focused}
               source={require('../../../assets/tab/profile2.png')}

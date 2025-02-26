@@ -15,15 +15,15 @@ import {Typography} from '@/components';
 const Header = ({route}) => {
   const styles = getStyles();
 
-  const opacity = useSharedValue(1);
-  const scale = useSharedValue(1);
+  const opacity = useSharedValue(0);
+  const scale = useSharedValue(0);
 
   useEffect(() => {
     opacity.value = withDelay(
-      500,
+      200,
       withSpring(1, {damping: 12, stiffness: 100}),
     );
-    scale.value = withDelay(600, withSpring(1, {damping: 12, stiffness: 100}));
+    scale.value = withDelay(300, withSpring(1, {damping: 12, stiffness: 100}));
   }, [opacity, scale]);
 
   const animatedTextStyle = useAnimatedStyle(() => {
@@ -41,22 +41,16 @@ const Header = ({route}) => {
         {route.params.name}
       </Typography>
       <Animated.View style={[styles.info, animatedTextStyle]}>
-        <Typography
-          size={'medium'}
-          weight={'NotoSerifCondensedBoldItalic'}
-          style={styles.infoTitle}>
+        <Typography size={'medium'} style={styles.infoTitle}>
           Bir soru belirleyin ve kartlarınızı seçin:
         </Typography>
         <Typography
           size={'heading'}
-          weight={'NotoSerifCondensedThin'}
+          weight={'NotoSerifCondensedItalic'}
           style={{...styles.infoTitle, color: COLORS.gold}}>
           'Kariyerimle ilgili nasıl bir yol izlemeliyim?'
         </Typography>
-        <Typography
-          size={'medium'}
-          weight={'NotoSerifCondensedBoldItalic'}
-          style={styles.infoTitle}>
+        <Typography size={'medium'} style={styles.infoTitle}>
           Seçtiğiniz kartları inceleyin ve mesajlarını keşfedin.
         </Typography>
       </Animated.View>

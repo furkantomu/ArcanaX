@@ -17,7 +17,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
-import {Typography} from '@/components';
+import {CustomHeader, Typography} from '@/components';
 
 import {apiService} from '@/services/APIService';
 import {showToast} from '@/utils/showToast';
@@ -91,6 +91,7 @@ const TarotHistoryScreen = () => {
     <LinearGradient colors={[COLORS.black, '#3F2305']} style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <SafeAreaView style={styles.container}>
+        <CustomHeader leftIcon={true} title={true} rightIcon={false} />
           {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Typography style={{textAlign: 'center'}}>
             İşlem Tarihi: {dayjs(messages.createdAt).format('DD MMMM YYYY')}

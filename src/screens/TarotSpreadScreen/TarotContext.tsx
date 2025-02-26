@@ -70,9 +70,6 @@ interface AppContextType {
   spreadID: string;
   setSpreadID: (value: string) => void;
 
-  setModalVisible: (value: boolean) => void;
-  modalVisible: boolean;
-
   setSaveName: (value: string) => void;
   saveName: string;
 
@@ -101,7 +98,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const [saveLoading, setSaveLoading] = useState(false);
 
   const [spreadID, setSpreadID] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
   const [saveName, setSaveName] = useState('');
 
   const [messages, setMessages] = useState<Messages[]>([]);
@@ -222,9 +218,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
     setSpreadID,
     spreadID,
-
-    setModalVisible,
-    modalVisible,
 
     setSaveName,
     saveName,
