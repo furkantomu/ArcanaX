@@ -129,6 +129,7 @@ export const getStyles = () =>
     bottomSheetHeader: {
       alignItems: 'center',
       gap: 50,
+      paddingHorizontal: 10,
     },
     bottomSheetText: {
       marginTop: 20,
@@ -296,6 +297,7 @@ export const getStyles = () =>
       width: '100%',
       alignItems: 'center',
       height: SIZES.height / 1.2,
+      backgroundColor:'red'
     },
     cardDetailModalBg: {
       width: '100%',
@@ -305,23 +307,32 @@ export const getStyles = () =>
       top: 0,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
+      resizeMode: 'cover',
     },
     cardDetailModalCardTitle: {
       zIndex: 3,
       marginVertical: 5,
+      justifyContent:'center',
+      alignItems:'center',
     },
     cardDetailModalCardWrapper: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      height: SIZES.height / 2.5,
     },
     cardDetailModalCard: {
       width: SIZES.width / 1.5,
+      height: 400,
       resizeMode: 'contain',
+      position:'absolute',
+
     },
     cardDetailModalCardRightWrapper: {
       justifyContent: 'space-around',
-      alignItems: 'center',
+      height: 100,
+      backgroundColor:COLORS.blackOpacity1,
+      flexDirection:'row',
+      width: '80%',
+      borderRadius:10
     },
     cardDetailModalCardRightWrapperItem: {
       alignItems: 'center',
@@ -341,14 +352,18 @@ export const getStyles = () =>
     cardDetailModalCardLeftTitle: {
       color: COLORS.cream,
       fontFamily: FONTS.NotoSerifCondensedMediumItalic,
-      fontSize: SIZES.body2,
+      fontSize: SIZES.body3,
       textAlign: 'center',
+      backgroundColor:COLORS.blackOpacity1,
+      width: '80%',
+      borderRadius:10,
+      padding:5,
     },
     cardDetailModalContent: {
       width: '100%',
       paddingHorizontal: 20,
-      height: SIZES.height / 4,
       marginTop: 20,
+
     },
     cardDetailModalDescription: {
       backgroundColor: COLORS.blackOpacity1,

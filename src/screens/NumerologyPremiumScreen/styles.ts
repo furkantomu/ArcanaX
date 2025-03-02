@@ -163,6 +163,7 @@ export const getStyles = () =>
     },
     footer: {
       paddingHorizontal: 20,
+      paddingBottom: 5,
     },
     footerButton: {
       paddingVertical: 20,

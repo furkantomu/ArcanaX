@@ -14,21 +14,24 @@ const CardDetail = () => {
   const {isSelectedCard} = useTarotContext();
   const styles = getStyles();
   const planet = require('../../../../assets/card/planet/galaxy.png');
-  const back = require('../../../../assets/card/back.webp');
 
   return (
     <>
       <Image
         source={{uri: isSelectedCard?.frontImageSource}}
         style={styles.cardDetailModalBg}
-        resizeMode={'cover'}
-        blurRadius={5}
+        blurRadius={10}
       />
+      <View style={styles.cardDetailModalCardTitle}>
+        <Text style={styles.cardDetailModalCardLeftTitle}>
+          "{isSelectedCard?.details?.title}"
+        </Text>
+      </View>
       <View style={styles.cardDetailModalCardWrapper}>
-        <Image
+        {/* <Image
           source={{uri: isSelectedCard?.frontImageSource}}
           style={styles.cardDetailModalCard}
-        />
+        /> */}
         <View style={styles.cardDetailModalCardRightWrapper}>
           <View style={styles.cardDetailModalCardRightWrapperItem}>
             <Image
@@ -76,11 +79,6 @@ const CardDetail = () => {
             </Text>
           </View>
         </View>
-      </View>
-      <View style={styles.cardDetailModalCardTitle}>
-        <Text style={styles.cardDetailModalCardLeftTitle}>
-          "{isSelectedCard?.details?.title}"
-        </Text>
       </View>
 
       <View style={styles.cardDetailModalContent}>

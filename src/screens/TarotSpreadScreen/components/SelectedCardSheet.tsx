@@ -5,6 +5,7 @@ import {getStyles} from '../style';
 import Card from './Card';
 import {useTarotContext} from '../TarotContext';
 import { FlatList } from 'react-native-gesture-handler';
+import { SIZES } from '@/styles/theme';
 
 const CartSelection = () => {
   const [shuffledCards, setShuffledCards] = useState<any>([]);
@@ -37,6 +38,7 @@ const CartSelection = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         decelerationRate={'fast'}
+        snapToInterval={SIZES.width * 0.7 + 12}
         //onScroll={onScrollHandler}
         scrollEventThrottle={1000 / 60}
         snapToAlignment="center"

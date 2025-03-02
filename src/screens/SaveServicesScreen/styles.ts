@@ -4,7 +4,7 @@ import {COLORS, FONTS, SIZES} from 'styles/theme';
 export const getStyles = () =>
   StyleSheet.create({
     container: {
-      paddingBottom: 100,
+      paddingBottom: 220,
     },
     collapsibleMenu: {
       justifyContent: 'space-between',

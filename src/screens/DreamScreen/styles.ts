@@ -75,6 +75,7 @@ export const getStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 3,
+      paddingBottom: 5,
 
     },
     footerButton: {

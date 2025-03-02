@@ -8,6 +8,7 @@ export const getStyles = () =>
   StyleSheet.create({
     wrapper: {
       flex: 1,
+      paddingBottom:10,
     },
     collapsibleMenu: {
       justifyContent: 'space-between',

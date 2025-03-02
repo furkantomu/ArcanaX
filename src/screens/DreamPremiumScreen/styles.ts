@@ -41,6 +41,7 @@ export const getStyles = () =>
     footerWrapper: {
       zIndex: 3,
       marginHorizontal: 10,
+      paddingBottom: 5,
     },
     contentContainer: {
       zIndex:3,

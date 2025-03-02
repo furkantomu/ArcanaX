@@ -130,6 +130,7 @@ export default DreamHistoryScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 5,
   },
   resultContainer: {
     marginTop: 30,

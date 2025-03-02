@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import {Pressable} from 'react-native-gesture-handler';
 import {useRefsContext} from '@/context';
-import {COLORS, SIZES} from '@/styles/theme';
+import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 
@@ -32,7 +32,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {FaqSectionScrollViewRef} = useRefsContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<any>(null);
   const rotation = useSharedValue(0);
 
   const animatedRotateStyle = useAnimatedStyle(() => ({
@@ -48,7 +48,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
     if (!isOpened.value) {
       itemRefs.current?.measure((height: number, pageY: number) => {
         FaqSectionScrollViewRef.current?.scrollTo({
-          y: SIZES.height + pageY,
+          y: pageY + height,
           animated: true,
         });
       });
@@ -99,4 +99,3 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
 };
 
 export default FAQAccordion;
-//style={styles.faqSectionAccordionDescription}

@@ -33,6 +33,8 @@ android/app/caches
 android/app/daemon
 android/app/native
 android/app/release
+android/app/.cxx
+android/app/.cxx/*
 
 # node.js
 #
