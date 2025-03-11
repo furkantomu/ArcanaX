@@ -17,6 +17,8 @@ import {AxiosResponse} from 'axios';
 import {COLORS} from '@/styles/theme';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import { Typography } from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -28,6 +30,7 @@ const LifePathNumber = ({numerologyDetail}) => {
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {lifePath, setLifePath} = useNumerologyPremiumContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const itemRefs = useRef();
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
@@ -93,7 +96,7 @@ const LifePathNumber = ({numerologyDetail}) => {
               />
             )}
 
-            <Typography weight="NotoSerifCondensedBoldItalic" style={styles.title}>Yaşam Yolu Sayısı</Typography>
+            <Typography weight="NotoSerifCondensedBoldItalic" style={styles.title}>{i18n.t('NUMEROLOGY_TYPE.0.LABEL', {locale:localeValue})}</Typography>
           </View>
           <View style={styles.imageContainer}>
             <Image source={image} resizeMode={'cover'} style={styles.image} />

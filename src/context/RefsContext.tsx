@@ -1,9 +1,7 @@
-import React, { useRef } from 'react';
-import { ScrollView } from 'react-native';
+import React, {useRef} from 'react';
+import {ScrollView} from 'react-native';
 
-import { BottomSheetRefProps } from '@/types';
-
-
+import {BottomSheetRefProps} from '@/types';
 
 interface RefsContextType {
   selectCardSheetRef: React.RefObject<BottomSheetRefProps>;
@@ -11,13 +9,13 @@ interface RefsContextType {
   tarotSpreadScrollViewRef: React.RefObject<ScrollView>;
   lifePathAccordionScrollViewRef: React.RefObject<ScrollView>;
   uploadTypeSheetRef: React.RefObject<BottomSheetRefProps>;
-  tokenSheetRef: React.RefObject<BottomSheetRefProps>;
+  purchasingSheetRef: React.RefObject<BottomSheetRefProps>;
   FaqSectionScrollViewRef: React.RefObject<ScrollView>;
 
   saveTarotSheetRef: React.RefObject<BottomSheetRefProps>;
   saveNumerologySheetRef: React.RefObject<BottomSheetRefProps>;
   saveDreamSheetRef: React.RefObject<BottomSheetRefProps>;
-
+  languageChangeSheetRef: React.RefObject<BottomSheetRefProps>;
 }
 
 const RefsContext = React.createContext<RefsContextType | undefined>(undefined);
@@ -33,20 +31,21 @@ const useRefsContext = (): RefsContextType => {
   return context;
 };
 
-const RefsProvider: React.FC<Partial<RefsContextType & { children: React.ReactNode }>> = props => {
+const RefsProvider: React.FC<
+  Partial<RefsContextType & {children: React.ReactNode}>
+> = props => {
   const selectCardSheetRef = useRef<BottomSheetRefProps>(null);
   const detailCardSheetRef = useRef<BottomSheetRefProps>(null);
   const tarotSpreadScrollViewRef = useRef<ScrollView>(null);
   const lifePathAccordionScrollViewRef = useRef<ScrollView>(null);
   const uploadTypeSheetRef = useRef<BottomSheetRefProps>(null);
-  const tokenSheetRef = useRef<BottomSheetRefProps>(null);
+  const purchasingSheetRef = useRef<BottomSheetRefProps>(null);
   const FaqSectionScrollViewRef = useRef<ScrollView>(null);
   const saveTarotSheetRef = useRef<BottomSheetRefProps>(null);
   const saveNumerologySheetRef = useRef<BottomSheetRefProps>(null);
   const saveDreamSheetRef = useRef<BottomSheetRefProps>(null);
-
-
-  const { children } = props;
+  const languageChangeSheetRef = useRef<BottomSheetRefProps>(null);
+  const {children} = props;
 
   const contextRefValues = {
     selectCardSheetRef,
@@ -54,14 +53,19 @@ const RefsProvider: React.FC<Partial<RefsContextType & { children: React.ReactNo
     tarotSpreadScrollViewRef,
     lifePathAccordionScrollViewRef,
     uploadTypeSheetRef,
-    tokenSheetRef,
+    purchasingSheetRef,
     FaqSectionScrollViewRef,
     saveTarotSheetRef,
     saveNumerologySheetRef,
     saveDreamSheetRef,
+    languageChangeSheetRef,
   };
 
-  return <RefsContext.Provider value={contextRefValues}>{children}</RefsContext.Provider>;
+  return (
+    <RefsContext.Provider value={contextRefValues}>
+      {children}
+    </RefsContext.Provider>
+  );
 };
 
-export { RefsProvider, useRefsContext };
+export {RefsProvider, useRefsContext};

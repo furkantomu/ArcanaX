@@ -11,6 +11,7 @@ export type TarotServiceType = {
   type: string;
   price: string;
   count: string;
+  status: string;
 };
 interface AppContextType {
   tarotService: TarotServiceType[];

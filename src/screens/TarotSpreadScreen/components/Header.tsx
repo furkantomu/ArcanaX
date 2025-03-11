@@ -11,8 +11,11 @@ import {COLORS} from '@/styles/theme';
 
 import {getStyles} from '../style';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const Header = ({route}) => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
 
   const opacity = useSharedValue(0);
@@ -42,16 +45,16 @@ const Header = ({route}) => {
       </Typography>
       <Animated.View style={[styles.info, animatedTextStyle]}>
         <Typography size={'medium'} style={styles.infoTitle}>
-          Bir soru belirleyin ve kartlarınızı seçin:
+          {i18n.t('TAROT_READ_START.TITLE', {locale: localeValue})}
         </Typography>
         <Typography
           size={'heading'}
           weight={'NotoSerifCondensedItalic'}
           style={{...styles.infoTitle, color: COLORS.gold}}>
-          'Kariyerimle ilgili nasıl bir yol izlemeliyim?'
+          '{i18n.t('TAROT_READ_START.SUB_TITLE', {locale: localeValue})}'
         </Typography>
         <Typography size={'medium'} style={styles.infoTitle}>
-          Seçtiğiniz kartları inceleyin ve mesajlarını keşfedin.
+        {i18n.t('TAROT_READ_START.BOTTOM_TITLE', {locale: localeValue})}
         </Typography>
       </Animated.View>
     </View>

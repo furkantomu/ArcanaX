@@ -6,12 +6,14 @@ import Card from './Card';
 import {useTarotContext} from '../TarotContext';
 import { FlatList } from 'react-native-gesture-handler';
 import { SIZES } from '@/styles/theme';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const CartSelection = () => {
   const [shuffledCards, setShuffledCards] = useState<any>([]);
   const {tarotCards} = useTarotContext();
   const styles = getStyles();
-
+  const {localeValue} = useAppSelector(state => state.settings);
   const rightArrows = require('../../../../assets/icon/rightArrows.png');
   const back = require('../../../../assets//card/back.webp');
 
@@ -55,7 +57,7 @@ const CartSelection = () => {
           source={rightArrows}
           style={[styles.scrollInfoRightArrows, styles.rotate]}
         />
-        <Text style={styles.scrollInfoText}>Yana Kaydır</Text>
+        <Text style={styles.scrollInfoText}>{i18n.t('TAROT_READ_START.SLIDER', {locale: localeValue})}</Text>
         <Image source={rightArrows} style={styles.scrollInfoRightArrows} />
       </View>
     </>

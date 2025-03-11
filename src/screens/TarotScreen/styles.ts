@@ -15,7 +15,6 @@ export const getStyles = () =>
       width: SIZES.width,
       height: SIZES.height / 2,
       position: 'absolute',
-
     },
     linearGradient: {
       width: SIZES.width,
@@ -54,7 +53,7 @@ export const getStyles = () =>
     description: {
       textAlign: 'center',
       marginTop: 30,
-      zIndex:2,
+      zIndex: 2,
     },
     subTitle: {
       marginTop: 30,
@@ -69,6 +68,12 @@ export const getStyles = () =>
       padding: 20,
       backgroundColor: COLORS.darkGray,
       borderRadius: 20,
+    },
+    priceWrapper: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      marginTop: 20,
     },
     cardTitle: {
       color: COLORS.cream,

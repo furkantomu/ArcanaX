@@ -6,10 +6,12 @@ import {Typography} from '@/components';
 import {useTarotContext} from '../TarotContext';
 
 import {getStyles} from '../style';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const SheetHeader = ({route}: any) => {
   const {setReadingType} = useTarotContext();
-
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
 
   useEffect(() => {
@@ -18,12 +20,14 @@ const SheetHeader = ({route}: any) => {
 
   return (
     <View style={styles.bottomSheetHeader}>
-      <Typography size={'heading'}>{route.params.type} Kart Seçin</Typography>
+      <Typography size={'heading'}>
+        {route.params.type} {i18n.t('TAROT_READ_START.CARD_SELECTION', {locale: localeValue})}
+      </Typography>
       <Typography
         size="heading"
         weight="NotoSerifCondensedThin"
         style={{textAlign: 'center'}}>
-        'Sezgilerine güven, doğru kart seni bekliyor.'
+        '{i18n.t('TAROT_READ_START.SELECT_MODAL_TITLE', {locale: localeValue})}'
       </Typography>
     </View>
   );

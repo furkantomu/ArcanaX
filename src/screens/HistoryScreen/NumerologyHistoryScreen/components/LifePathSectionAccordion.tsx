@@ -14,6 +14,8 @@ import {useRefsContext} from '@/context';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const arrow = require('../../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -33,6 +35,8 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
   content,
   loading,
 }) => {
+  const {localeValue} = useAppSelector(state => state.settings);
+
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
@@ -71,7 +75,11 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
         <View style={styles.lifePathSectionItem}>
           <View style={styles.lifePathSectionItemLeft}>
             <View>
-              <Typography size="large">{title}</Typography>
+              <Typography size="large">
+                {i18n.t(`NUMEROLOGY_PREMIUM_SCREEN.PEAK.${title}`, {
+                  locale: localeValue,
+                })}
+              </Typography>
               <Typography>{description}</Typography>
             </View>
           </View>

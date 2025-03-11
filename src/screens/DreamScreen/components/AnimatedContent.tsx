@@ -9,35 +9,29 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {Icon, Typography} from '@/components';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const AnimatedContent = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
   const opacity = useSharedValue(0);
   const translateY = useSharedValue(50);
   const scale = useSharedValue(0);
 
   useEffect(() => {
-    opacity.value = withDelay(
-      200,
-      withTiming(1, {duration: 800}),
-    );
+    opacity.value = withDelay(200, withTiming(1, {duration: 800}));
     translateY.value = withDelay(
       200,
       withSpring(0, {damping: 12, stiffness: 100}),
     );
-    scale.value = withDelay(
-      200,
-      withSpring(1, {damping: 10, stiffness: 100}),
-    );
+    scale.value = withDelay(200, withSpring(1, {damping: 10, stiffness: 100}));
   }, [opacity, scale, translateY]);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
       opacity: opacity.value,
-      transform: [
-        {translateY: translateY.value},
-        {scale: scale.value},
-      ],
+      transform: [{translateY: translateY.value}, {scale: scale.value}],
     };
   });
   return (
@@ -49,18 +43,22 @@ const AnimatedContent = () => {
               <View style={styles.row}>
                 <View>
                   <Text style={styles.cardTitle}>
-                    Rüya Analizi İçin İpuçları
+                    {i18n.t('DREAM_SCREEN.WARNING.CLUE_TITLE', {
+                      locale: localeValue,
+                    })}
                   </Text>
                 </View>
               </View>
               <Icon name={'rightArrow'} />
             </View>
             <Text style={styles.cardDescription}>
-              <Typography weight="NotoSerifCondensedThin">Açıklama:</Typography>{' '}
-              Rüyanızı paylaşırken, daha derin bir analiz yapabilmek için rüyayı
-              gördüğünüz dönemdeki duygusal durumlarınızı ve yaşadığınız
-              olayları da belirtmeniz faydalı olacaktır. Bu, bilinçaltınızdaki
-              mesajları anlamanızı kolaylaştırabilir.
+              <Typography weight="NotoSerifCondensedThin">
+                {' '}
+                {i18n.t('DREAM_SCREEN.WARNING.TITLE', {locale: localeValue})}:
+              </Typography>{' '}
+              {i18n.t('DREAM_SCREEN.WARNING.CLUE_DESCRIPTION', {
+                locale: localeValue,
+              })}
             </Text>
           </View>
         </Animated.View>
@@ -73,18 +71,21 @@ const AnimatedContent = () => {
               <View style={styles.row}>
                 <View>
                   <Text style={styles.cardTitle}>
-                  Rüya Analizi İşlem Kuralları!
+                    {i18n.t('DREAM_SCREEN.WARNING.RULES_TITLE', {
+                      locale: localeValue,
+                    })}
                   </Text>
                 </View>
               </View>
               <Icon name={'rightArrow'} />
             </View>
             <Text style={styles.cardDescription}>
-              <Typography weight="NotoSerifCondensedThin">Açıklama:</Typography>{' '}
-              "Dikkat: Rüya analizi dışında farklı sorular sormanız durumunda,
-              kullanılan jeton iadesi yapılmayacak ve yeni bir soru hakkı
-              verilmeyecektir. Lütfen yalnızca bu bilgiler ışığında işlem
-              yapın."
+              <Typography weight="NotoSerifCondensedThin">
+                {i18n.t('DREAM_SCREEN.WARNING.TITLE', {locale: localeValue})}:
+              </Typography>{' '}
+              {i18n.t('DREAM_SCREEN.WARNING.RULES_DESCRIPTION', {
+                locale: localeValue,
+              })}
             </Text>
           </View>
         </Animated.View>

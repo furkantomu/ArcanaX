@@ -24,12 +24,15 @@ import {apiService} from '@/services/APIService';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, SIZES} from '@/styles/theme';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const tarotSpreadBG = require('../../../assets/background/tarotspread.webp');
 
 const TarotSpreadWrapper = ({route}: any) => {
   const [newMessage, setNewMessage] = useState<string>('');
   const {tarotSpreadScrollViewRef, saveTarotSheetRef} = useRefsContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {
     spreadID,
     readingStarted,
@@ -49,7 +52,7 @@ const TarotSpreadWrapper = ({route}: any) => {
       };
 
       const selfCount = messages.filter(msg => msg.role === 'user').length;
-      if (selfCount === 10) {
+      if (selfCount === 5) {
         Alert.alert(
           'Tarot Okuması Tamamlandı',
           'Maksimum soru hakkınızı kullandınız. Yeni bir okuma yapmak için mevcut oturumu sonlandırmalısınız.',
@@ -89,7 +92,7 @@ const TarotSpreadWrapper = ({route}: any) => {
   return (
     <>
       {readingStarted ? (
-        <CartReveal />
+        <CartReveal route={route}/>
       ) : (
         <>
           <Image
@@ -114,7 +117,7 @@ const TarotSpreadWrapper = ({route}: any) => {
           <View style={styles.textFieldWrapper}>
             <View style={styles.textFieldContainer}>
               <TextInput
-                placeholder="Bir soru sor..."
+                placeholder= {i18n.t('TAROT_READ_START.START_INPUT', {locale: localeValue})}
                 style={styles.questionInput}
                 value={newMessage}
                 onChangeText={setNewMessage}
@@ -131,11 +134,11 @@ const TarotSpreadWrapper = ({route}: any) => {
               </TouchableOpacity>
             </View>
             <Typography size="small">
-              Soru Sayısı: 10/
+             {i18n.t('TAROT_READ_START.SPREAD_QUESTION_COUNT', {locale: localeValue})}: 5/
               {messages.filter(msg => msg.role === 'user').length}
             </Typography>
             <Button
-              text="Okumayı Bitir"
+              text= {i18n.t('TAROT_READ_START.SPREAD_COMPLETED_BUTTON', {locale: localeValue})}
               variant="secondary"
               handlePress={handleCompleted}
             />

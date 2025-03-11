@@ -1,4 +1,4 @@
-import {Typography} from '@/components';
+import {Icon, Typography} from '@/components';
 import React, {useEffect} from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import Animated, {
@@ -9,6 +9,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {getStyles} from '../styles';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 interface AnimatedContentProps {
   name: string;
@@ -17,6 +19,7 @@ interface AnimatedContentProps {
   usageArea?: string;
   feature?: string;
   index: number;
+  price: number;
   onPress: () => void;
 }
 
@@ -27,9 +30,11 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   usageArea,
   feature,
   index,
+  price,
   onPress,
 }) => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
   const card = require('../../../../assets/card/back.webp');
   const rightArrows = require('../../../../assets/icon/rightArrows.png');
 
@@ -72,36 +77,53 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
             <View style={styles.row}>
               <Image source={card} style={styles.cardImage} />
               <View>
-                <Typography size="large" style={styles.cardTitle}>
-                  {name}
-                </Typography>
-                <Typography weight="NotoSerifThin" style={styles.cardSubtitle}>
-                  {engName}
-                </Typography>
+                {localeValue === 'tr' ? (
+                  <>
+                    <Typography size="large" style={styles.cardTitle}>
+                      {name}
+                    </Typography>
+                    <Typography weight="NotoSerifThin" style={styles.cardTitle}>
+                      ({engName})
+                    </Typography>
+                  </>
+                ) : (
+                  <>
+                    <Typography size="large" style={styles.cardTitle}>
+                      {engName}
+                    </Typography>
+                    <Typography weight="NotoSerifThin" style={styles.cardTitle}>
+                      ({name})
+                    </Typography>
+                  </>
+                )}
               </View>
             </View>
             <Image source={rightArrows} style={styles.rightArrows} />
           </View>
           <Typography style={styles.cardDescription}>
             <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
-              Amaç:
+              {i18n.t('TAROT_READ.AIM', {locale: localeValue})}
             </Typography>{' '}
             {aim}
           </Typography>
           <Typography style={styles.cardDescription}>
             <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
-              Kullanım Alanı:
+              {i18n.t('TAROT_READ.AREA_OF_USE', {locale: localeValue})}:
             </Typography>{' '}
             {usageArea}
           </Typography>
           <Typography style={styles.cardDescription}>
             <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
-              Özellikleri:
+              {i18n.t('TAROT_READ.FEATURES', {locale: localeValue})}:
             </Typography>{' '}
             {feature}
           </Typography>
         </View>
       </Animated.View>
+      <View style={styles.priceWrapper}>
+        <Icon name="token" size={25} style={{resizeMode: 'cover'}} />
+        <Typography size="heading">{price}</Typography>
+      </View>
     </TouchableOpacity>
   );
 };

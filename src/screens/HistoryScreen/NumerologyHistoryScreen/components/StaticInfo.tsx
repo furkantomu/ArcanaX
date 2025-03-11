@@ -6,6 +6,8 @@ import {AxiosResponse} from 'axios';
 import {apiService} from '@/services/APIService';
 import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 interface ResponseData {
   id: string;
@@ -17,6 +19,7 @@ interface ResponseData {
 }
 
 const StaticInfo = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
   const [loading, setLoading] = useState(false);
   const [karmicNumberDetails, setKarmicNumberDetails] = useState({
@@ -93,7 +96,7 @@ const StaticInfo = () => {
         <>
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-              Yönetici Gezegen:
+             {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RULING_PLANET', {locale:localeValue})}:
               <Typography size="heading" style={styles.planetSectionResult}>
                 {' '}
                 {rulingPlanet.planet}
@@ -105,19 +108,19 @@ const StaticInfo = () => {
 
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-              Kariyer
+            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.CAREER', {locale:localeValue})}
             </Typography>
             <Typography>{rulingPlanet.career}</Typography>
           </View>
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-              İlişkiler
+            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RELATIONSHIPS', {locale:localeValue})}
             </Typography>
             <Typography>{rulingPlanet.relationships}</Typography>
           </View>
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-              Özel Aylar
+            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.SPECIAL_MONTHS', {locale:localeValue})}
             </Typography>
             <Typography>{rulingPlanet.auspiciousMonths}</Typography>
           </View>

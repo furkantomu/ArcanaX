@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -5,7 +6,6 @@ import {
   ViewToken,
   useWindowDimensions,
 } from 'react-native';
-import React from 'react';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
@@ -18,12 +18,19 @@ import Pagination from './components/Pagination';
 import CustomButton from './components/CustomButton';
 import RenderItem from './components/OnboardingItem';
 import {data, OnboardingData} from './data';
+import { useRefsContext } from '@/context';
 
 function Onboarding() {
-  const {width: SCREEN_WIDTH} = useWindowDimensions();
+  const {width: SCREEN_WIDTH, height: SCREEN_HEIGHT} = useWindowDimensions();
+  const {languageChangeSheetRef} = useRefsContext();
   const flatListRef = useAnimatedRef<FlatList<OnboardingData>>();
   const x = useSharedValue(0);
   const flatListIndex = useSharedValue(0);
+
+  const openModal = () => {
+    languageChangeSheetRef.current?.scrollTo(-SCREEN_HEIGHT / 1.2);
+  };
+
 
   const onViewableItemsChanged = ({
     viewableItems,
@@ -59,9 +66,8 @@ function Onboarding() {
         onScroll={onScroll}
         data={data}
         renderItem={({item, index}) => (
-          <RenderItem item={item} index={index} x={x} />
+          <RenderItem item={item} index={index} x={x} openSheet={openModal}/>
         )}
-        keyExtractor={item => item.id}
         scrollEventThrottle={16}
         horizontal
         bounces={false}

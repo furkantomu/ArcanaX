@@ -21,6 +21,7 @@ import Animated, {
 import dayjs from 'dayjs';
 import {DreamDetailResponse} from '@/types/service';
 import Markdown, { MarkdownIt } from 'react-native-markdown-display';
+import i18n from '@/i18n';
 
 type DreamHistoryRouteParams = {
   id: string;
@@ -89,7 +90,7 @@ const DreamHistoryScreen = () => {
         <CustomHeader leftIcon={true} title={true} rightIcon={false} />
           {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Typography style={{textAlign: 'center'}}>
-            İşlem Tarihi: {dayjs(messages.createdAt).format('DD MMMM YYYY')}
+           {i18n.t('SAVE_HISTORY.TRANSACTION_DATE')}: {dayjs(messages.createdAt).format('DD MMMM YYYY')}
           </Typography>
           {loading ? (
             <ActivityIndicator />

@@ -42,6 +42,20 @@ export const balanceSlice = createSlice({
         state.uiFlags.isBalanceLoading = false;
         state.error = action.payload?.errors ?? null;
         showToast({message: action.payload?.errors ?? '', type: 'error'});
+      })
+      .addCase(balanceActions.addBalance.pending, state => {
+        state.uiFlags.isBalanceLoading = true;
+        state.error = null;
+      })
+      .addCase(balanceActions.addBalance.fulfilled, (state, action) => {
+        showToast({message: action.payload?.message ?? '', type: 'success'});
+        state.uiFlags.isBalanceLoading = false;
+        state.error = null;
+      })
+      .addCase(balanceActions.addBalance.rejected, (state, action) => {
+        state.uiFlags.isBalanceLoading = false;
+        state.error = action.payload?.errors ?? null;
+        showToast({message: action.payload?.errors ?? '', type: 'error'});
       });
   },
 });

@@ -1,6 +1,10 @@
 import {Dimensions, StyleSheet, View} from 'react-native';
 import React, {JSX, useCallback, useImperativeHandle} from 'react';
-import {Gesture, GestureDetector} from 'react-native-gesture-handler';
+import {
+  Gesture,
+  GestureDetector,
+  Pressable,
+} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -8,7 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import {BottomSheetRefProps} from '@/types';
-import {COLORS} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 150;
@@ -90,6 +94,11 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       };
     });
 
+    const handleClose = () => {
+      scrollTo(0);
+    };
+
+
     return (
       <GestureDetector gesture={gesture}>
         <Animated.View
@@ -98,6 +107,9 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
             rBottomSheetStyles,
             {backgroundColor: backgroundColor},
           ]}>
+          <Pressable style={styles.backDrop} onPress={handleClose}>
+            <View />
+          </Pressable>
           <View style={{...styles.line, backgroundColor: lineColor}} />
           {children}
         </Animated.View>
@@ -117,6 +129,14 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     zIndex: 30,
+  },
+  backDrop: {
+    width: SIZES.width,
+    height: SIZES.height,
+    backgroundColor: COLORS.blackOpacity,
+    top: -SCREEN_HEIGHT,
+    position: 'absolute',
+    zIndex: 35
   },
   line: {
     height: 4,

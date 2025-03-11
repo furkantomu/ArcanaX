@@ -11,6 +11,7 @@ import {COLORS} from '@/styles/theme';
 import {getStyles} from '../styles';
 import {useAppSelector} from '@/hooks';
 import dayjs from 'dayjs';
+import i18n from '@/i18n';
 
 const zodiacImages = {
   Aries: require('../../../../assets/zodiac/Aries.webp'),
@@ -28,6 +29,7 @@ const zodiacImages = {
 };
 
 const Header = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const [zodiac, setZodiac] = useState({engName: '', name: ''});
   const [zodiacImage, setZodiacImage] = useState(zodiacImages.Aries);
   const {user} = useAppSelector(state => state.auth);
@@ -53,13 +55,13 @@ const Header = () => {
         style={styles.linearGradient}
       />
       <Image
-          source={zodiacImage}
-          style={[styles.ImageBackground]}
-          resizeMode={'cover'}
-        />
+        source={zodiacImage}
+        style={[styles.ImageBackground]}
+        resizeMode={'cover'}
+      />
       <View style={styles.headerTextWrapper}>
         <Typography weight={'NotoSerifCondensedMediumItalic'} size={'heading'}>
-          Profilim
+          {i18n.t('PROFILE_SCREEN.TITLE', {locale: localeValue})}
         </Typography>
         <View style={styles.profileInfoSection}>
           <View style={styles.profileImage}>
@@ -70,7 +72,8 @@ const Header = () => {
               {user?.name}
             </Typography>
             <Typography weight="NotoSerifThin" size="large">
-              {dayjs(user?.birthDate).format('DD MMMM YYYY')} - {zodiac.name}
+              {dayjs(user?.birthDate).format('DD MMMM YYYY')} -{' '}
+              {localeValue === 'tr' ? zodiac.name : zodiac.engName}
             </Typography>
           </View>
           <View style={styles.profileEdit}>

@@ -2,18 +2,16 @@ import { View } from 'react-native';
 import React from 'react';
 import { Typography } from '@/components';
 import { getStyles } from '../styles';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const Content = () => {
+    const {localeValue} = useAppSelector(state => state.settings);
     const styles = getStyles();
     return (
         <View style={styles.content}>
             <Typography size={'large'} style={styles.contentText}>
-                "Rüyalar, bilinçaltımızın derinliklerinden gelen mesajlardır.
-                Yüzyıllardır insanlar, gördükleri rüyaların anlamlarını çözmeye çalışmış
-                ve çeşitli tabirler geliştirmiştir. Rüyalar bazen kişisel duygularımızı,
-                endişelerimizi ya da geleceğe dair ipuçlarını yansıtır. Hangi tür rüyayı
-                görmüş olursanız olun, her birinin bir anlamı vardır. Şimdi rüyanızı
-                yazın ve anlamını öğrenin!"
+               {i18n.t('DREAM_SCREEN.DESCRIPTION', {locale: localeValue})}
             </Typography>
         </View>
     );

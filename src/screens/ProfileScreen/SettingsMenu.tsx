@@ -3,23 +3,25 @@ import {View} from 'react-native';
 import {getStyles} from './styles';
 import MenuItem from './components/MenuItem';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const MENU_ITEM_TOP = [
   {
     leftIcon: 'password',
-    title: 'Şifre İşlemleri',
+    title: 'PASSWORD',
     rightIcon: 'rightChevron',
     type: 'password',
   },
   {
     leftIcon: 'token',
-    title: 'Jeton İşlemleri',
+    title: 'TOKEN',
     rightIcon: 'rightChevron',
     type: 'token',
   },
   {
     leftIcon: 'save',
-    title: 'Kayıtlı İşlemler',
+    title: 'SAVE',
     rightIcon: 'rightChevron',
     type: 'history',
   },
@@ -28,13 +30,13 @@ const MENU_ITEM_TOP = [
 const MENU_ITEM_BOTTOM = [
   {
     leftIcon: 'info',
-    title: 'SSS/Destek',
+    title: 'FAQ',
     rightIcon: 'rightChevron',
     type: 'info',
   },
   {
     leftIcon: 'logout',
-    title: 'Çıkış',
+    title: 'EXIT',
     rightIcon: 'rightChevron',
     type: 'logout',
   },
@@ -42,10 +44,11 @@ const MENU_ITEM_BOTTOM = [
 
 const SettingsMenu = () => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
   return (
     <View style={styles.settingsMenu}>
       <Typography weight="NotoSerifCondensedBoldItalic" size="large">
-        Diğer Ayarlar
+        {i18n.t('PROFILE_SCREEN.OTHER_SETTINGS', {locale:localeValue})}
       </Typography>
       <View style={styles.settingsMenuItem}>
         {MENU_ITEM_TOP.map((item, idx) => (

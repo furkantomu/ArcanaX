@@ -9,6 +9,7 @@ import {COLORS} from '@/styles/theme';
 import {useAppDispatch, useAppSelector} from '@/hooks';
 import dayjs from 'dayjs';
 import {authActions} from '@/store/auth/authActions';
+import i18n from '@/i18n';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -31,48 +32,49 @@ const EditUserForm = () => {
   const styles = getStyles();
   const dispatch = useAppDispatch();
   const {user, uiFlags} = useAppSelector(state => state.auth);
+  const {localeValue} = useAppSelector(state => state.settings);
   const validation = (fieldValues: Partial<FormValues>): ValidationErrors => {
     let temp: ValidationErrors = {...errors};
 
     if ('fullName' in fieldValues) {
-      temp.fullName = fieldValues.fullName ? '' : 'Bu Alan Zorunludur';
+      temp.fullName = fieldValues.fullName ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
     }
     // if ('email' in fieldValues) {
     //   temp.email = fieldValues.email ? '' : 'Bu Alan Zorunludur';
     // }
     if ('day' in fieldValues) {
       if (!fieldValues.day) {
-        temp.day = 'Bu Alan Zorunludur';
+        temp.day = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
       } else {
         const dayValue = parseInt(fieldValues.day, 10);
         if (dayValue >= 1 && dayValue <= 31) {
           temp.day = '';
         } else {
-          temp.day = 'Geçersiz Gün';
+          temp.day = i18n.t('LOGIN.INCORRET', {locale:localeValue});
         }
       }
     }
     if ('month' in fieldValues) {
       if (!fieldValues.month) {
-        temp.month = 'Bu Alan Zorunludur';
+        temp.month = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
       } else {
         const monthValue = parseInt(fieldValues.month, 10);
         if (monthValue >= 1 && monthValue <= 12) {
           temp.month = '';
         } else {
-          temp.month = 'Geçersiz Ay';
+          temp.month = i18n.t('LOGIN.INCORRET', {locale:localeValue});
         }
       }
     }
     if ('year' in fieldValues) {
       if (!fieldValues.year) {
-        temp.year = 'Bu Alan Zorunludur';
+        temp.year = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
       } else {
         const yearValue = parseInt(fieldValues.year, 10);
         if (yearValue >= 1940 && yearValue <= new Date().getFullYear()) {
           temp.year = '';
         } else {
-          temp.year = 'Geçersiz Yıl';
+          temp.year = i18n.t('LOGIN.INCORRET', {locale:localeValue});
         }
       }
     }
@@ -113,10 +115,10 @@ const EditUserForm = () => {
   };
   return (
     <Form style={styles.form}>
-      <Typography style={styles.title}>Kullanıcı Bilgileri</Typography>
+      <Typography style={styles.title}>{i18n.t('PROFILE_SCREEN.USER_INFO', {locale:localeValue})}</Typography>
       <TextField
         inputName="fullName"
-        placeholder="İsim ve Soyisim Giriniz"
+        placeholder={i18n.t('LOGIN.FULL_NAME_PLACEHOLDER', {locale:localeValue})}
         placeholderTextColor={COLORS.silverGray}
         style={{
           ...styles.textField,
@@ -141,7 +143,7 @@ const EditUserForm = () => {
       <View style={styles.dateContainer}>
         <TextField
           inputName="day"
-          placeholder="GG"
+          placeholder={i18n.t('LOGIN.DAY_PLACEHOLDER', {locale:localeValue})}
           placeholderTextColor={COLORS.silverGray}
           style={{
             ...styles.textField,
@@ -156,7 +158,7 @@ const EditUserForm = () => {
         />
         <TextField
           inputName="month"
-          placeholder="AA"
+          placeholder={i18n.t('LOGIN.MONTH_PLACEHOLDER', {locale:localeValue})}
           placeholderTextColor={COLORS.silverGray}
           style={{
             ...styles.textField,
@@ -171,7 +173,7 @@ const EditUserForm = () => {
         />
         <TextField
           inputName="year"
-          placeholder="YYYY"
+          placeholder={i18n.t('LOGIN.YEAR_PLACEHOLDER', {locale:localeValue})}
           placeholderTextColor={COLORS.silverGray}
           style={{
             ...styles.textField,
@@ -188,7 +190,7 @@ const EditUserForm = () => {
       <Button
         disabled={!Object.values(errors).every(x => x === '') || uiFlags.isLoggingIn}
         variant="secondary"
-        text="Kaydet"
+        text={i18n.t('PROFILE_SCREEN.BUTTON_TEXT', {locale:localeValue})}
         handlePress={handlePress}
       />
     </Form>

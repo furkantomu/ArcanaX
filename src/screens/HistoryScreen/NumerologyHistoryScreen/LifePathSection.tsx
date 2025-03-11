@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {AxiosResponse} from 'axios';
 
 import {getStyles} from './styles';
@@ -7,8 +7,8 @@ import {apiService} from '@/services/APIService';
 import LifePathSectionAccordion from './components/LifePathSectionAccordion';
 import {useNumerologyHistoryContext} from './NumerologyHistoryContext';
 import {Typography} from '@/components';
-
-const SUB_TITLE = ['İlk Dönem', 'İkinci Dönem', 'Üçüncü Dönem'];
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 interface PinnacleNumber {
   id: string;
@@ -21,10 +21,13 @@ interface PinnacleNumber {
 const LifePathSection = () => {
   const [loading, setLoading] = useState(false);
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
 
-  const [pinnacleNumber, setPinnacleNumber] = useState<PinnacleNumber | null>(
-    null,
-  );
+  const [pinnacleNumber, setPinnacleNumber] = useState({
+    first: '',
+    second: '',
+    third: '',
+  });
   const [section, setSection] = useState<string[]>(['0 - 28 Yaş', '', '']);
 
   const {numerologyDetail} = useNumerologyHistoryContext();
@@ -33,25 +36,32 @@ const LifePathSection = () => {
     const secondPeriodEnd = startAge + 9;
     const thirdPeriodEnd = startAge + 18; // Mantıklı bir yaş sınırı belirlenmeli
     setSection([
-      `(0 - ${startAge}) Yaş`,
-      `(${startAge + 1} - ${secondPeriodEnd}) Yaş`,
-      `(${secondPeriodEnd + 1} - ${thirdPeriodEnd}) Yaş`,
+      `(0 - ${startAge}) ${i18n.t('NUMEROLOGY_PREMIUM_SCREEN.PEAK.AGE', {
+        locale: localeValue,
+      })}`,
+      `(${startAge + 1} - ${secondPeriodEnd}) ${i18n.t(
+        'NUMEROLOGY_PREMIUM_SCREEN.PEAK.AGE',
+        {locale: localeValue},
+      )}`,
+      `(${secondPeriodEnd + 1} - ${thirdPeriodEnd}) ${i18n.t(
+        'NUMEROLOGY_PREMIUM_SCREEN.PEAK.AGE',
+        {locale: localeValue},
+      )}`,
     ]);
   };
 
   useEffect(() => {
     const getPinnacleNumber = async () => {
-      if (!numerologyDetail.pinnacleNumber) {
-        return;
-      }
       try {
         setLoading(true);
         const response: AxiosResponse<PinnacleNumber> = await apiService.get(
-          `numerology/pinnacleNumber/${String(
-            numerologyDetail.pinnacleNumber,
-          )}`,
+          `numerology/pinnacleNumber/${numerologyDetail.pinnacleNumber}`,
         );
-        setPinnacleNumber(response.data);
+        setPinnacleNumber({
+          first: response.data.first,
+          second: response.data.second,
+          third: response.data.third,
+        });
         updateAgeSections(Number(response.data.age));
       } catch (error) {
         console.error('PinnacleNumber API hatası:', error);
@@ -59,26 +69,24 @@ const LifePathSection = () => {
         setLoading(false);
       }
     };
-
-    getPinnacleNumber();
-  }, [numerologyDetail.pinnacleNumber]);
+    if (numerologyDetail.pinnacleNumber !== '') {
+      getPinnacleNumber();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [numerologyDetail, numerologyDetail.pinnacleNumber]);
 
   return (
     <View style={styles.lifePathSection}>
       <Typography size="title" style={styles.lifePathSectionTitle}>
-        Zirve Dönemler
+        {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.PEAK.TITLE', {locale: localeValue})}
       </Typography>
       <View style={styles.lifePathSectionWrapper}>
         {['first', 'second', 'third'].map((item, idx) => (
           <LifePathSectionAccordion
             key={idx}
-            title={SUB_TITLE[idx]}
+            title={item}
             description={section[idx]}
-            content={
-              pinnacleNumber
-                ? String(pinnacleNumber[item as keyof PinnacleNumber])
-                : '-'
-            }
+            content={pinnacleNumber[item]}
             loading={loading}
           />
         ))}

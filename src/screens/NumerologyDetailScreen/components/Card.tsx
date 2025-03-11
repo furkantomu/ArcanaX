@@ -6,6 +6,8 @@ import {Typography} from '@/components';
 
 import {getStyles} from '../styles';
 import {getImageForNumber} from '@/utils/getImageForNumber';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const numerologyHeader = [
   {
@@ -25,7 +27,7 @@ const numerologyHeader = [
 const Card = () => {
   const [numerology] = useState(numerologyHeader);
   const [image, setImage] = useState<string[]>([]);
-
+  const {localeValue} = useAppSelector(state => state.settings);
   const route = useRoute();
   const {numerologyDetail} = route.params;
   const styles = getStyles();
@@ -53,7 +55,7 @@ const Card = () => {
             />
           </View>
           <Typography size="medium" style={styles.cardText}>
-            {item.label}
+            {i18n.t(`NUMEROLOGY_TYPE.${[idx]}.LABEL`, {locale:localeValue})}
           </Typography>
         </View>
       ))}

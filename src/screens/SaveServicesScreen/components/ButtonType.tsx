@@ -6,6 +6,8 @@ import Animated from 'react-native-reanimated';
 import {getStyles} from '../styles';
 import dayjs from 'dayjs';
 import {useNavigation} from '@react-navigation/native';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 interface ButtonTypeProps {
   type: string;
@@ -14,6 +16,7 @@ interface ButtonTypeProps {
 const ButtonType: React.FC<ButtonTypeProps> = ({type}) => {
   const styles = getStyles();
   const navigation = useNavigation();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {saveType, getSaveDetail, getSave, loading} = useHistoryContext();
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const ButtonType: React.FC<ButtonTypeProps> = ({type}) => {
       {loading ? (
         <ActivityIndicator />
       ) : saveType.length === 0 ? (
-        <Typography>Geçmiş Kayıt Bulunamadı.</Typography>
+        <Typography>{i18n.t('NO_HISTORY', {locale:localeValue})}</Typography>
       ) : (
         saveType.map((item, idx) => (
           <TouchableOpacity

@@ -1,17 +1,20 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {getStyles} from '../styles';
 import {Button} from '@/components';
 import {useDreamContext} from '../DreamScreenContext';
 import {apiService} from '@/services/APIService';
 import {SIZES} from '@/styles/theme';
 import {useRefsContext} from '@/context';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const FooterButton = () => {
   const styles = getStyles();
   const {messages, dream, setMessages, setSpreadID, setLoading, loading} =
     useDreamContext();
   const {saveDreamSheetRef} = useRefsContext();
+  const {localeValue} = useAppSelector(state => state.settings);
 
   const handlePress = async (params: string) => {
     if (params === 'completed') {
@@ -50,14 +53,14 @@ const FooterButton = () => {
     <View style={styles.footerWrapper}>
       {messages.length > 0 ? (
         <Button
-          text="Kaydet ve Çık"
+          text={i18n.t('DREAM_PREMIUM_SCREEN.CONFIRM_BUTTON_TEXT', {locale: localeValue})}
           variant={'secondary'}
           handlePress={() => handlePress('completed')}
         />
       ) : (
         <Button
           disabled={dream === '' || loading}
-          text="Gönder"
+          text={i18n.t('DREAM_PREMIUM_SCREEN.BUTTON_TEXT', {locale: localeValue})}
           variant={'secondary'}
           handlePress={() => handlePress('send')}
         />

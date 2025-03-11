@@ -7,9 +7,12 @@ import {useTarotContext} from '../TarotContext';
 
 import {getStyles} from '../style';
 import {useRefsContext} from '@/context';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const SheetFooter = () => {
   const {readingType, selectedCards, setReadingStarted} = useTarotContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {selectCardSheetRef} = useRefsContext();
 
   const styles = getStyles();
@@ -24,10 +27,13 @@ const SheetFooter = () => {
   return (
     <View style={styles.buttonContainer}>
       <Typography size={'large'} style={styles.bottomSheetText}>
-        {readingType}/{selectedCards.length} Kart Seçildi
+        {readingType}/{selectedCards.length}{' '}
+        {i18n.t('TAROT_READ_START.CARD_SELECTED', {locale: localeValue})}
       </Typography>
       <Button
-        text="Kartları Onayla"
+        text={i18n.t('TAROT_READ_START.SELECT_MODAL_BUTTON', {
+          locale: localeValue,
+        })}
         variant="secondary"
         textStyle={styles.bottomSheetButtonText}
         disabled={selectedCards.length !== readingType}

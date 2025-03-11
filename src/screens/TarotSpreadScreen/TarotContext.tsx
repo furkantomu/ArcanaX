@@ -1,4 +1,5 @@
 import {useAppSelector} from '@/hooks';
+import i18n from '@/i18n';
 import {apiService} from '@/services/APIService';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
@@ -65,7 +66,7 @@ interface AppContextType {
   fetchTarotCards: () => void;
   tarotCards: TarotCard[];
 
-  fetchTarotCard: (id: string, category: string) => void;
+  fetchTarotCard: (id: string) => void;
 
   spreadID: string;
   setSpreadID: (value: string) => void;
@@ -87,6 +88,7 @@ interface AppProviderProps {
 
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const {user} = useAppSelector(state => state.auth);
+  const {localeValue} = useAppSelector(state => state.settings);
   const navigation = useNavigation();
   const [tarotCards, setTarotCards] = useState<TarotCard[]>([]);
   const [question, setQuestion] = useState('');
@@ -163,13 +165,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const saveData = async () => {
     try {
       setSaveLoading(true);
-       await apiService.post('tarot/save', {
+      await apiService.post('tarot/save', {
         id: spreadID,
         userId: user.id,
         saveName,
       });
       showToast({
-        message: 'Tarot okuması başarıyla kaydedildi',
+        message: i18n.t('TOAST.SUCCESS', {locale: localeValue}),
         type: 'success',
       });
       setTimeout(() => {
@@ -177,7 +179,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
       }, 300);
     } catch (error) {
       console.log(error);
-      showToast({message: 'Bir hata oluştu', type: 'error'});
+      showToast({message: i18n.t('TOAST.ERROR', {locale: localeValue}), type: 'error'});
     } finally {
       setSaveLoading(false);
     }

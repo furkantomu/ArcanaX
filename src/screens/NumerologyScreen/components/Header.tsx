@@ -5,18 +5,24 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
-import { getStyles } from '../styles';
-
+import {getStyles} from '../styles';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const DURATION = 1000;
 const DELAY = 500;
 
-const text = ['Kişilik', 'Özelliklerinizi', 'Keşfedin'];
-
 const Header = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const opacity1 = useSharedValue<number>(0);
   const opacity2 = useSharedValue<number>(0);
   const opacity3 = useSharedValue<number>(0);
+
+  const text = [
+    i18n.t('NUMEROLOGY_SCREEN.TITLE', {locale: localeValue}),
+    i18n.t('NUMEROLOGY_SCREEN.TITLE_TWO', {locale: localeValue}),
+    i18n.t('NUMEROLOGY_SCREEN.TITLE_THREE', {locale: localeValue}),
+  ];
 
   const styles = getStyles();
 

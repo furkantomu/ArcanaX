@@ -12,8 +12,11 @@ import Animated, {
   withDelay,
   withSpring,
 } from 'react-native-reanimated';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const Header = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
 
   const translateY = useSharedValue(50);
@@ -52,7 +55,7 @@ const Header = () => {
       />
       <View style={styles.headerTextWrapper}>
         <Typography weight={'NotoSerifCondensedMediumItalic'} size={'heading'}>
-        Bugün Hangi Rüyayı Gördünüz?
+          {i18n.t('DREAM_PREMIUM_SCREEN.TITLE', {locale: localeValue})}
         </Typography>
       </View>
     </View>

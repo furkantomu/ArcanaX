@@ -6,13 +6,15 @@ import {useNavigation} from '@react-navigation/native';
 import {Icon, Typography} from '@/components';
 
 import {logout} from '@/store/auth/authSlice';
-import {useAppDispatch} from '@/hooks';
+import {useAppDispatch, useAppSelector} from '@/hooks';
 
 import {useHaptic, useScaleAnimation} from '@/utils';
 import {getStyles} from '../styles';
+import i18n from '@/i18n';
 
 const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
   const dispatch = useAppDispatch();
+  const {localeValue} = useAppSelector(state => state.settings);
   const navigation = useNavigation();
   const styles = getStyles();
   const {handlers, animatedStyle} = useScaleAnimation();
@@ -47,7 +49,9 @@ const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
         </View>
         <View
           style={[styles.rightWrapper, {borderTopWidth: index === 0 ? 0 : 1}]}>
-          <Typography size="large">{title}</Typography>
+          <Typography size="large">
+            {i18n.t(`PROFILE_SCREEN.${title}`, {locale:localeValue})}
+          </Typography>
           <Icon name={rightIcon} size={20} style={styles.rightIcon} />
         </View>
       </Animated.View>

@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, TouchableOpacity, Pressable} from 'react-native';
 
 import TextField from '@/components/TextField/TextField';
 
 import {Button, Icon, Typography} from '@/components';
 
-import {useAppDispatch} from '@/hooks';
+import {useAppDispatch, useAppSelector} from '@/hooks';
 import {Form, useForm} from '@/hooks/useForm';
 import {useLoginContext} from './LoginContext';
 
 import {authActions} from '@/store/auth/authActions';
 
-import {COLORS, FONTS} from '@/styles/theme';
+import {COLORS, FONTS, SIZES} from '@/styles/theme';
 import {useSelector} from 'react-redux';
+import i18n from '@/i18n';
+import { useRefsContext } from '@/context';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -29,7 +31,9 @@ const initialFieldValues: FormValues = {
 };
 
 const Login = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const {setLoginType, setPasswordVisible, passwordVisible} = useLoginContext();
+  const {languageChangeSheetRef} = useRefsContext();
   const [validateOnChange, setValidateOnChange] = useState(false);
   const dispatch = useAppDispatch();
   const {error, uiFlags} = useSelector((state: any) => state.auth);
@@ -39,10 +43,10 @@ const Login = () => {
     if ('email' in fieldValues) {
       temp.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(fieldValues.email))
         ? ''
-        : 'Geçersiz email adresi.';
+        : i18n.t('LOGIN.EMAIL_REQUIRED', {locale:localeValue});
     }
     if ('password' in fieldValues) {
-      temp.password = fieldValues.password ? '' : 'Bu Alan Zorunludur';
+      temp.password = fieldValues.password ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
     }
 
     setErrors({...temp});
@@ -59,8 +63,8 @@ const Login = () => {
     const validationErrors = validation(values);
     let temp: ValidationErrors = {...validationErrors};
     setErrors({...temp});
-      if (Object.values(validationErrors).some((x) => x !== '')) {
-        setValidateOnChange(true);
+    if (Object.values(validationErrors).some(x => x !== '')) {
+      setValidateOnChange(true);
       return;
     }
     const {email, password} = values;
@@ -69,10 +73,10 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <Form style={styles.form}>
-        <Typography style={styles.label}>Email</Typography>
+        <Typography style={styles.label}>{i18n.t('LOGIN.EMAIL', {locale:localeValue})}</Typography>
         <TextField
           inputName="email"
-          placeholder="Email Adresiniz"
+          placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', {locale:localeValue})}
           style={{
             ...styles.textField,
             borderColor: errors.email ? COLORS.red : COLORS.darkGray,
@@ -81,7 +85,7 @@ const Login = () => {
           value={values.email}
           errorMessage={errors.email}
         />
-        <Typography style={styles.label}>Parola</Typography>
+        <Typography style={styles.label}>{i18n.t('LOGIN.PASSWORD', {locale:localeValue})}</Typography>
         <View style={styles.securePassword}>
           <Pressable
             onPress={() => setPasswordVisible(!passwordVisible)}
@@ -93,7 +97,7 @@ const Login = () => {
 
           <TextField
             inputName="password"
-            placeholder="Parola Giriniz"
+            placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {locale:localeValue})}
             secureTextEntry={passwordVisible}
             style={{
               ...styles.textField,
@@ -107,7 +111,7 @@ const Login = () => {
 
         <TouchableOpacity>
           <Typography style={styles.passwordChangeText}>
-            Parolanızı mı unuttunuz?
+            {i18n.t('LOGIN.FORGOT_PASSWORD', {locale:localeValue})}
           </Typography>
         </TouchableOpacity>
       </Form>
@@ -115,11 +119,22 @@ const Login = () => {
         {error && <Typography style={styles.errorMessage}>{error}</Typography>}
         <Button
           disabled={uiFlags.isLoggingIn}
-          text="Giriş Yap"
+          text={i18n.t('LOGIN.LOGIN_BUTTON', {locale:localeValue})}
           handlePress={handlePress}
         />
         <TouchableOpacity onPress={() => setLoginType('register')}>
-          <Typography style={styles.newAccount}>Yeni Hesap Oluştur</Typography>
+          <Typography style={styles.newAccount}>
+            {i18n.t('LOGIN.NEW_ACCOUNT', {locale:localeValue})}
+          </Typography>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() =>
+            languageChangeSheetRef.current?.scrollTo(-SIZES.height / 1.2)
+          }>
+          <Typography style={styles.newAccount}>
+            {i18n.t('CHANGE_LANGUAGE', {locale:localeValue})}
+          </Typography>
         </TouchableOpacity>
       </View>
     </View>
@@ -135,7 +150,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   form: {
-    marginTop:20,
+    marginTop: 20,
   },
   passwordChangeContainer: {
     alignItems: 'flex-end',

@@ -7,6 +7,8 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 interface TarotProps {
   index: number;
@@ -16,6 +18,7 @@ interface TarotProps {
 const Tarot: React.FC<TarotProps> = ({index, scrollX}) => {
   const styles = getStyles();
   const navigation = useNavigation();
+  const {localeValue} = useAppSelector(state => state.settings);
 
   const rnAnimatedImageStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1];
@@ -26,7 +29,7 @@ const Tarot: React.FC<TarotProps> = ({index, scrollX}) => {
   return (
     <Animated.View style={[styles.homeContainer, rnAnimatedImageStyle]}>
       <Button
-        text="Tarot Rehberliği"
+        text={i18n.t('HOME_SCREEN.BUTTON', {locale:localeValue})}
         buttonStyle={styles.tarotButton}
         variant={'secondary'}
         handlePress={() => navigation.navigate('TarotDetail')}

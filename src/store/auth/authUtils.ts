@@ -1,6 +1,7 @@
 import {AxiosError} from 'axios';
 
 import type {ApiErrorResponse} from './authTypes';
+import i18n from '@/i18n';
 
 export const handleApiError = (error: unknown, customErrorMsg?: string) => {
   const {response} = error as AxiosError<ApiErrorResponse>;
@@ -13,7 +14,7 @@ export const handleApiError = (error: unknown, customErrorMsg?: string) => {
     }
   }
   if (response?.status === 401) {
-    const {errors} = response.data;
+    const errors = i18n.t('LOGIN.ERROR.LOGIN_ERROR');
 
     if (errors) {
       return {success: false, errors};

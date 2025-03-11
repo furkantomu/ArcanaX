@@ -10,8 +10,10 @@ import {apiService} from '@/services/APIService';
 import {calculatePinnacleNumber} from '@/utils/calculateNumerology';
 import {useNumerologyPremiumContext} from './NumerologyPremiumContext';
 import { Typography } from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
-const SUB_TITLE = ['İlk Dönem', 'İkinci Dönem', 'Üçüncü Dönem'];
+const SUB_TITLE = ['FIRST', 'SECOND', 'THREE'];
 
 interface Message {
   userId: string;
@@ -26,6 +28,7 @@ const LifePathSection = () => {
   const styles = getStyles();
   const route = useRoute();
   const {setPinnacleNumber, pinnacleNumber} = useNumerologyPremiumContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {numerologyDetail} = route.params;
   const [pinnacleNumberValue, setPinnacleNumberValue] = useState([0, 0, 0]);
 
@@ -33,9 +36,9 @@ const LifePathSection = () => {
 
   const updateAgeSections = (startAge: number) => {
     const ageRanges = [
-      `(0 - ${startAge}) Yaş`,
-      `(${startAge + 1} - ${startAge + 9}) Yaş`,
-      `(${startAge + 10} - *) Yaş`,
+      `(0 - ${startAge}) ${i18n.t('NUMEROLOGY_PREMIUM_SCREEN.PEAK.AGE', {locale:localeValue})}`,
+      `(${startAge + 1} - ${startAge + 9}) ${i18n.t('NUMEROLOGY_PREMIUM_SCREEN.PEAK.AGE', {locale:localeValue})}`,
+      `(${startAge + 10} - *) ${i18n.t('NUMEROLOGY_PREMIUM_SCREEN.PEAK.AGE', {locale:localeValue})}`,
     ];
     setSection(ageRanges);
   };
@@ -79,7 +82,7 @@ const LifePathSection = () => {
   return (
     <View style={styles.lifePathSection}>
       <StaticInfo />
-      <Typography style={styles.lifePathSectionTitle}>Zirve Dönemler</Typography>
+      <Typography style={styles.lifePathSectionTitle}>{i18n.t('NUMEROLOGY_PREMIUM_SCREEN.PEAK.TITLE', {locale:localeValue})}</Typography>
       <View style={styles.lifePathSectionWrapper}>
         {(['first', 'second', 'third'] as (keyof Message)[]).map(
           (item, idx) => (

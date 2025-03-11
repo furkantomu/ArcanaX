@@ -50,9 +50,6 @@ const Slider: React.FC<SliderProps> = ({scrollX}) => {
           <Card
             key={index}
             imageSource={item.imageSource}
-            cardTitle={item.cardTitle}
-            cardDescription={item.cardDescription}
-            cardButtonText={item.cardButtonText}
             index={index}
             onPress={() => {
               navigation.navigate(item.navigation);

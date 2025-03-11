@@ -8,6 +8,7 @@ import {Button, Icon, Typography} from '@/components';
 import {useAppDispatch, useAppSelector} from '@/hooks';
 import {usePasswordContext} from './ProfilePasswordScreenContext';
 import {authActions} from '@/store/auth/authActions';
+import i18n from '@/i18n';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -28,6 +29,7 @@ const initialFieldValues: FormValues = {
 const EditWrapper = () => {
   const styles = getStyles();
   const {user, uiFlags, error} = useAppSelector(state => state.auth);
+  const {localeValue} = useAppSelector(state => state.settings);
   const {updatePasswordVisible, passwordVisible} = usePasswordContext();
   const dispatch = useAppDispatch();
   const validation = (fieldValues: Partial<FormValues>): ValidationErrors => {
@@ -36,16 +38,16 @@ const EditWrapper = () => {
     if ('currentPassword' in fieldValues) {
       temp.currentPassword = fieldValues.currentPassword
         ? ''
-        : 'Bu Alan Zorunludur';
+        : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
     }
     if ('newPassword' in fieldValues) {
-      temp.newPassword = fieldValues.newPassword ? '' : 'Bu Alan Zorunludur';
+      temp.newPassword = fieldValues.newPassword ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
     }
     if ('confirmNewPassword' in fieldValues) {
       if (!fieldValues.confirmNewPassword) {
-        temp.confirmNewPassword = 'Bu Alan Zorunludur';
+        temp.confirmNewPassword = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
       } else if (fieldValues.newPassword !== fieldValues.confirmNewPassword) {
-        temp.confirmNewPassword = 'Şifreler Eşleşmiyor';
+        temp.confirmNewPassword = i18n.t('LOGIN.ERROR.REGISTER_ERROR_PASSWORD', {locale:localeValue});
       } else {
         temp.confirmNewPassword = '';
       }
@@ -78,7 +80,7 @@ const EditWrapper = () => {
   };
   return (
     <Form style={styles.form}>
-      <Typography style={styles.title}>Şifre İşlemleri</Typography>
+      <Typography style={styles.title}>{i18n.t('PROFILE_SCREEN.PASSWORD_TITLE', {locale:localeValue})}</Typography>
       <View style={styles.securePassword}>
         <Pressable
           onPress={() =>
@@ -97,7 +99,7 @@ const EditWrapper = () => {
         </Pressable>
         <TextField
           inputName="currentPassword"
-          placeholder="Mevcut Şifrenizi Giriniz"
+          placeholder={i18n.t('PROFILE_SCREEN.CURRENT_PASSWORD', {locale:localeValue})}
           placeholderTextColor={COLORS.silverGray}
           style={{
             ...styles.textField,
@@ -126,7 +128,7 @@ const EditWrapper = () => {
         </Pressable>
         <TextField
           inputName="newPassword"
-          placeholder="Yeni Şifrenizi Giriniz"
+          placeholder={i18n.t('PROFILE_SCREEN.NEW_PASSWORD', {locale:localeValue})}
           placeholderTextColor={COLORS.silverGray}
           style={{
             ...styles.textField,
@@ -156,7 +158,7 @@ const EditWrapper = () => {
         </Pressable>
         <TextField
           inputName="confirmNewPassword"
-          placeholder="Yeni Şifrenizi Doğrulayınız"
+          placeholder={i18n.t('PROFILE_SCREEN.CONFIRM_PASSWORD', {locale:localeValue})}
           placeholderTextColor={COLORS.silverGray}
           style={{
             ...styles.textField,
@@ -172,7 +174,7 @@ const EditWrapper = () => {
       </View>
       <Button
         variant="secondary"
-        text="Kaydet"
+        text={i18n.t('PROFILE_SCREEN.BUTTON_TEXT', {locale:localeValue})}
         handlePress={handlePress}
         disabled={
           !Object.values(errors).every(x => x === '') || uiFlags.isLoggingIn

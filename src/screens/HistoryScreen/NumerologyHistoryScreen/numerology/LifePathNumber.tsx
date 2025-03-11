@@ -17,6 +17,8 @@ import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../../assets/icon/downArrow.png');
 
@@ -27,6 +29,7 @@ const markdownStyles = {
 
 const LifePathNumber = () => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {numerologyDetail} = useNumerologyHistoryContext();
@@ -62,7 +65,7 @@ const LifePathNumber = () => {
       }
     };
 
-    if (numerologyDetail.lifePath !== 0) {
+    if (numerologyDetail.lifePath !==  '') {
       getLifePath();
     }
   }, [numerologyDetail.lifePath]);
@@ -106,7 +109,7 @@ const LifePathNumber = () => {
               size="large"
               weight="NotoSerifCondensedBoldItalic"
               style={styles.title}>
-              Yaşam Yolu Sayısı
+              {i18n.t('NUMEROLOGY_TYPE.0.LABEL', {locale:localeValue})}
             </Typography>
           </View>
           <View style={styles.imageContainer}>

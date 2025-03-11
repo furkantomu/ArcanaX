@@ -9,16 +9,14 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-
-
-
 import {useNumerologyContext} from '../NumerologyContext';
 
 import {getStyles} from '../styles';
-import { useNavigation } from '@react-navigation/native';
-import { SIZES } from '@/styles/theme';
-import { Loading, Successful } from 'components';
-
+import {useNavigation} from '@react-navigation/native';
+import {SIZES} from '@/styles/theme';
+import {Loading, Successful} from 'components';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const SPRING_CONFIG = {
   damping: 40,
@@ -26,7 +24,9 @@ const SPRING_CONFIG = {
 };
 
 const AnimatedLoading = () => {
-  const {height, isCalculate, setCalculate, numerologyDetail} = useNumerologyContext();
+  const {height, isCalculate, setCalculate, numerologyDetail} =
+    useNumerologyContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const loading = useSharedValue(1);
   const navigation = useNavigation();
 
@@ -35,7 +35,9 @@ const AnimatedLoading = () => {
       isCalculate &&
       withTiming(0, {duration: 5000}, () => {
         runOnJS(setCalculate)(false);
-        runOnJS(navigation.navigate)('NumerologyDetailScreen', {numerologyDetail});
+        runOnJS(navigation.navigate)('NumerologyDetailScreen', {
+          numerologyDetail,
+        });
       }),
   );
 
@@ -72,13 +74,21 @@ const AnimatedLoading = () => {
       {isCalculate && (
         <>
           <Animated.View style={displayStyle}>
-            <Successful style={styles.animated}/>
-            <Text style={styles.calculateText}>Hesaplandı</Text>
+            <Successful style={styles.animated} />
+            <Text style={styles.calculateText}>
+              {i18n.t('NUMEROLOGY_SCREEN.LOADING.CALCULATED', {
+                locale: localeValue,
+              })}
+            </Text>
           </Animated.View>
 
           <Animated.View style={displayCalculateStyle}>
-            <Loading style={styles.animated}/>
-            <Text style={styles.calculateText}>Hesaplanıyor...</Text>
+            <Loading style={styles.animated} />
+            <Text style={styles.calculateText}>
+              {i18n.t('NUMEROLOGY_SCREEN.LOADING.CALCULATING', {
+                locale: localeValue,
+              })}
+            </Text>
           </Animated.View>
         </>
       )}

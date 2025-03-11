@@ -19,6 +19,8 @@ import {apiService} from '@/services/APIService';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -27,6 +29,7 @@ const markdownStyles = {
 };
 const ExpressionNumber = ({numerologyDetail}) => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {expressionNumber, setExpressionNumber} = useNumerologyPremiumContext();
@@ -104,7 +107,7 @@ const ExpressionNumber = ({numerologyDetail}) => {
             <Typography
               weight="NotoSerifCondensedBoldItalic"
               style={styles.title}>
-              İsim Sayısı
+            {i18n.t('NUMEROLOGY_TYPE.1.LABEL', {locale:localeValue})}
             </Typography>
           </View>
           <View style={styles.imageContainer}>

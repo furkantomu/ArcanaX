@@ -5,6 +5,7 @@ import {User} from '@/types/User';
 
 import {AuthHeaders} from './authTypes';
 import {showToast} from '@/utils/showToast';
+import i18n from '@/i18n';
 export interface AuthState {
   user: User | null;
   uiFlags: {
@@ -60,7 +61,7 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.headers = action.payload.headers;
         state.uiFlags.isLoggingIn = false;
-        showToast({message: 'Başarıyla kayıt olundu. Giriş yapılıyor...'});
+        showToast({message: i18n.t('LOGIN.SUCCESS_REGISTER')});
       })
       .addCase(authActions.register.rejected, (state, action) => {
         state.uiFlags.isLoggingIn = false;
@@ -92,7 +93,7 @@ export const authSlice = createSlice({
         };
         state.uiFlags.isLoggingIn = false;
         state.error = null;
-        showToast({message: 'Kullanıcı bilgileriniz güncellendi.'});
+        showToast({message: i18n.t('PROFILE_SCREEN.USER_UPDATE_SUCCESS')});
       })
       .addCase(authActions.update.rejected, (state, action) => {
         state.uiFlags.isLoggingIn = false;
@@ -106,7 +107,7 @@ export const authSlice = createSlice({
       .addCase(authActions.resetPassword.fulfilled, state => {
         state.uiFlags.isLoggingIn = false;
         state.error = null;
-        showToast({message: 'Parolanız değiştirildi.'});
+        showToast({message: i18n.t('PROFILE_SCREEN.USER_UPDATE_SUCCESS')});
       })
       .addCase(authActions.resetPassword.rejected, (state, action) => {
         state.uiFlags.isLoggingIn = false;

@@ -1,25 +1,36 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {StyleSheet, View} from 'react-native';
-
 import {NavigationContainer} from '@react-navigation/native';
-
-import {navigationRef} from '@/utils/navigationUtils';
-
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {RefsProvider} from '@/context';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { setup } from 'react-native-iap';
+import dayjs from 'dayjs';
 
-import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import {BottomSheet, ChangeLanguage, Purchasing} from '@/components';
 import {AppTabs} from './tabs/AppTabs';
 
-import dayjs from 'dayjs';
-import 'dayjs/locale/tr';
-import { COLORS } from '@/styles/theme';
+import {navigationRef} from '@/utils/navigationUtils';
+import {RefsProvider, useRefsContext} from '@/context';
+import {useAppSelector} from '@/hooks';
 
-dayjs.locale('tr');
+import {COLORS} from '@/styles/theme';
+import i18n from '@/i18n';
+
+import 'dayjs/locale/tr';
+
+
+setup({storekitMode: 'STOREKIT2_MODE'});
 
 export const AppNavigationContainer = () => {
   const routeNameRef = useRef<string | undefined>(undefined);
+  const {localeValue} = useAppSelector(state => state.settings);
+  const {languageChangeSheetRef, purchasingSheetRef} = useRefsContext();
 
+  console.log('render App');
+  useEffect(() => {
+    i18n.locale = localeValue;
+    dayjs.locale(localeValue);
+  }, [localeValue]);
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -28,11 +39,16 @@ export const AppNavigationContainer = () => {
       }}
       onStateChange={async () => {
         routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name;
-      }}
-    >
+      }}>
       <View style={styles.navigationLayout}>
         <AppTabs />
       </View>
+      <BottomSheet ref={languageChangeSheetRef}>
+        <ChangeLanguage />
+      </BottomSheet>
+      <BottomSheet ref={purchasingSheetRef}>
+        <Purchasing />
+      </BottomSheet>
     </NavigationContainer>
   );
 };
@@ -52,6 +68,6 @@ export const AppNavigator = () => {
 const styles = StyleSheet.create({
   navigationLayout: {
     flex: 1,
-    backgroundColor:COLORS.black,
+    backgroundColor: COLORS.black,
   },
 });

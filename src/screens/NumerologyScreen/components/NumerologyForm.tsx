@@ -9,9 +9,11 @@ import {getStyles} from '../styles';
 import {AnimatedTextField, Button} from '@/components';
 import {useAppSelector} from '@/hooks';
 import dayjs from 'dayjs';
+import i18n from '@/i18n';
 
 const NumerologyForm = () => {
   const {user} = useAppSelector(state => state.auth);
+  const {localeValue} = useAppSelector(state => state.settings);
   const {setCalculate, setNumerologyDetail} = useNumerologyContext();
 
   const [formData, setFormData] = useState({
@@ -63,7 +65,7 @@ const NumerologyForm = () => {
       <AnimatedTextField
         style={styles.textField}
         value={formData.fullName}
-        label="Lütfen Tam Adınızı ve Soyadınızı Girin"
+        label={i18n.t('NUMEROLOGY_SCREEN.FULL_NAME', {locale:localeValue})}
         //errorText={error}
         onChangeText={text => handleInputChange('fullName', text)}
       />
@@ -71,7 +73,7 @@ const NumerologyForm = () => {
         <AnimatedTextField
           style={[styles.textField, styles.day]}
           value={formData.day}
-          label="GG"
+          label={i18n.t('NUMEROLOGY_SCREEN.DAY', {locale:localeValue})}
           //errorText={error}
           onChangeText={text => handleInputChange('day', text)}
           keyboardType={'number-pad'}
@@ -80,7 +82,7 @@ const NumerologyForm = () => {
         <AnimatedTextField
           style={[styles.textField, styles.month]}
           value={formData.month}
-          label="AA"
+          label={i18n.t('NUMEROLOGY_SCREEN.MONTH', {locale:localeValue})}
           //errorText={error}
           onChangeText={text => handleInputChange('month', text)}
           keyboardType={'number-pad'}
@@ -89,7 +91,7 @@ const NumerologyForm = () => {
         <AnimatedTextField
           style={[styles.textField, styles.year]}
           value={formData.year}
-          label="YYYY"
+          label={i18n.t('NUMEROLOGY_SCREEN.YEAR', {locale:localeValue})}
           //errorText={error}
           onChangeText={text => handleInputChange('year', text)}
           keyboardType={'number-pad'}
@@ -97,7 +99,7 @@ const NumerologyForm = () => {
         />
       </View>
       <Button
-        text="Hesapla"
+        text={i18n.t('NUMEROLOGY_SCREEN.BUTTON_TEXT', {locale:localeValue})}
         handlePress={handlePress}
         variant={'secondary'}
         disabled={!Object.values(formData).every(x => x !== '')}

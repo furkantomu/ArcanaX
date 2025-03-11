@@ -30,20 +30,22 @@ import {getReadingTypeText} from '@/utils/getReadingTypeText';
 import {apiService} from '@/services/APIService';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import i18n from '@/i18n';
+import {useAppDispatch, useAppSelector} from '@/hooks';
+import {balanceActions} from '@/store/balance/balanceActions';
 
 const markdownStyles = {
   body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 
-const CartReveal = () => {
+const CartReveal = ({route}) => {
   const {
     selectedCards,
     showOpenButton,
     setShowOpenButton,
     messages,
     setMessages,
-    setSelectedCard,
     question,
     isWritingLoading,
     readingCompleted,
@@ -57,9 +59,14 @@ const CartReveal = () => {
   const isFlipped = useSharedValue(false);
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0);
-  const {detailCardSheetRef, saveTarotSheetRef} = useRefsContext();
+  const {detailCardSheetRef, saveTarotSheetRef, purchasingSheetRef} =
+    useRefsContext();
+  const {localeValue} = useAppSelector(state => state.settings);
+  const {balance} = useAppSelector(state => state.balance);
+  const {user} = useAppSelector(state => state.auth);
   const haptic = useHaptic('soft');
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const tarotSpreadBG = require('../../../assets/background/tarotspread5.webp');
   const back = require('../../../assets/card/back.webp');
 
@@ -82,26 +89,26 @@ const CartReveal = () => {
   useEffect(() => {
     let MESSAGE = '';
     if (question === '') {
-      MESSAGE = 'Genel Açılım';
+      MESSAGE = localeValue === 'tr' ? 'Genel Açılım' : 'General Spread';
     } else {
       MESSAGE = `${question}`;
     }
 
     setMessage(MESSAGE);
-  }, [question, readingType, selectedCards]);
+  }, [localeValue, question, readingType, selectedCards]);
   useEffect(() => {
-    if (!readingCompleted) {
+    if (!readingCompleted && !showOpenButton) {
       const unsubscribe = navigation.addListener('beforeRemove', e => {
         e.preventDefault();
         Alert.alert(
-          'Okuma Devam Ediyor',
-          'Bu sayfadan çıkmak istediğinize emin misiniz?',
+          i18n.t('ALERT.TITLE', {locale: localeValue}),
+          i18n.t('ALERT.DESCRIPTION', {locale: localeValue}),
           [
-            {text: 'Hayır', style: 'cancel'}, // Kullanıcı çıkışı iptal edebilir
+            {text: i18n.t('ALERT.NO', {locale: localeValue}), style: 'cancel'},
             {
-              text: 'Evet',
+              text: i18n.t('ALERT.YES', {locale: localeValue}),
               onPress: () => {
-                 saveTarotSheetRef.current?.scrollTo(-SIZES.height / 2);
+                saveTarotSheetRef.current?.scrollTo(-SIZES.height / 2);
               },
             }, // Çıkışı onaylarsa devam eder
           ],
@@ -110,7 +117,13 @@ const CartReveal = () => {
 
       return unsubscribe;
     }
-  }, [navigation, readingCompleted, saveTarotSheetRef]);
+  }, [
+    localeValue,
+    navigation,
+    readingCompleted,
+    saveTarotSheetRef,
+    showOpenButton,
+  ]);
   const handleSendMessage = async () => {
     if (!message.trim()) return;
     setLoading(true);
@@ -124,6 +137,14 @@ const CartReveal = () => {
       });
       setMessages(prevMessages => [...prevMessages, ...result.data.messages]);
       setSpreadID(result?.data.id);
+
+      const data = {
+        userId: user.id,
+        accountId: user.accountId,
+        balance: Number(-route.params.price),
+        amount: 0,
+      };
+      await dispatch(balanceActions.addBalance(data));
     } catch (err) {
       setError('Bir hata oluştu');
     } finally {
@@ -136,12 +157,29 @@ const CartReveal = () => {
   };
 
   const handlePress = () => {
+    if (balance.totalBalance < route.params.price) {
+      Alert.alert(
+        'Yetersiz Bakiye',
+        'Devam etmek için daha fazla token satın alın.',
+        [
+          {
+            text: 'İptal',
+            style: 'cancel',
+          },
+          {
+            text: 'Satın Al',
+            onPress: () =>
+              purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2),
+          },
+        ],
+      );
+      return;
+    }
     if (!isFlipped.value) {
       isFlipped.value = !isFlipped.value;
     }
     setShowOpenButton(false);
     handleSendMessage();
-    //isFlipped.value = !isFlipped.value;
     opacity.value = withDelay(
       300,
       withSpring(1, {damping: 12, stiffness: 100}),
@@ -151,8 +189,7 @@ const CartReveal = () => {
   };
 
   const handleCardDetail = item => {
-    setSelectedCard(item);
-    fetchTarotCard(item.id, item.category);
+    fetchTarotCard(item.id);
     openModal();
   };
   return (
@@ -167,12 +204,12 @@ const CartReveal = () => {
         resizeMode={'cover'}
         blurRadius={5}
       />
-      <SafeAreaView style={{zIndex:2}}>
+      <SafeAreaView style={{zIndex: 2}}>
         <View style={styles.cardRevealHeader}>
           <Pressable onPress={() => setModalVisible(true)}>
-          <Text style={styles.cardRevealHeaderText}>
-            Seçilen Kartlar Açmak İçin Dokun
-          </Text>
+            <Text style={styles.cardRevealHeaderText}>
+              {i18n.t('TAROT_READ_START.SPREAD_TITLE', {locale: localeValue})}
+            </Text>
           </Pressable>
         </View>
         <Animated.FlatList
@@ -199,7 +236,11 @@ const CartReveal = () => {
               style={styles.isFlippedAllButton}
               //</View>disabled={isFlipped.value}
             >
-              <Text style={styles.isFlippedAllButtonText}>Okumayı Başlat</Text>
+              <Text style={styles.isFlippedAllButtonText}>
+                {i18n.t('TAROT_READ_START.SPREAD_BUTTON', {
+                  locale: localeValue,
+                })}
+              </Text>
             </TouchableOpacity>
           </View>
         )}
@@ -210,7 +251,6 @@ const CartReveal = () => {
               onPress={() => handleCardDetail(item)}>
               <Animated.View style={[styles.badge, animatedBadgeStyle]}>
                 <Text style={styles.badgeText}>{item.name}</Text>
-                <Text style={styles.badgeTextEng}>({item.engName})</Text>
               </Animated.View>
             </TouchableOpacity>
           ))}

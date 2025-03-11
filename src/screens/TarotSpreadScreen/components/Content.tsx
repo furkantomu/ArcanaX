@@ -11,9 +11,12 @@ import {AnimatedTextField} from '@/components';
 
 import {getStyles} from '../style';
 import { useTarotContext } from '../TarotContext';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const Content = () => {
   const {setQuestion, question} = useTarotContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
   const cardBG = require('../../../../assets/card/back.webp');
 
@@ -101,7 +104,7 @@ const Content = () => {
     <Animated.View style={[styles.content, animatedTextStyle]}>
       <AnimatedTextField
         value={question}
-        label="Hangi soruya cevap arıyorsun?"
+        label={i18n.t('TAROT_READ_START.INPUT', {locale: localeValue})}
         //errorText={error}
         onChangeText={text => setQuestion(text)}
         maxLength={50}

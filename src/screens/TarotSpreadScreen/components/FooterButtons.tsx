@@ -13,10 +13,13 @@ import {getStyles} from '../style';
 import {SIZES} from '@/styles/theme';
 import {useHaptic} from '@/utils';
 import {useRefsContext} from '@/context';
-import { useTarotContext } from '../TarotContext';
+import {useTarotContext} from '../TarotContext';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const FooterButtons = () => {
   const {selectCardSheetRef} = useRefsContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {fetchTarotCards} = useTarotContext();
   const haptic = useHaptic('soft');
   const styles = getStyles();
@@ -113,9 +116,9 @@ const FooterButtons = () => {
   return (
     <View style={styles.buttons}>
       <Pressable onPress={handleStartSpread}>
-      <Animated.Text style={[styles.subTitle, animatedTextStyle]}>
-        Kartını seçmek için dokun
-      </Animated.Text>
+        <Animated.Text style={[styles.subTitle, animatedTextStyle]}>
+          {i18n.t('TAROT_READ_START.SELECT_BUTTON', {locale: localeValue})}
+        </Animated.Text>
       </Pressable>
       <View style={styles.imageContainer}>
         <Animated.Image

@@ -1,0 +1,342 @@
+{
+  "NAVIGATION_BACK": "Back",
+  "ONBOARDING": {
+    "ITEM": [
+      {
+        "text": "Are You Ready for a Mysterious Journey?",
+        "description": "Start discovering yourself and your future! Let the ancient wisdom of Tarot, numerology, and astrology guide your life."
+      },
+      {
+        "text": "Tarot Cards: Your Future Whispers to You",
+        "description": "Love, career, health, or spiritual guidance... The cards will guide you by strengthening your intuition."
+      },
+      {
+        "text": "Numerology: The Mysterious Messages of Numbers",
+        "description": "Your life path, destiny number, and spiritual vibration... Numbers tell you who you are."
+      },
+      {
+        "text": "A Personalized Experience for You",
+        "description": "Enter your birth information to get the most accurate predictions! Illuminate your future with personalized analyses."
+      },
+      {
+        "text": "Let’s Begin Your Journey!",
+        "description": "Open up to universal energies and start exploring!"
+      }
+    ],
+    "BUTTON": "Get Started"
+  },
+  "LOGIN": {
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Enter your email address",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter your password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "EMAIL_REQUIRED": "Invalid email",
+    "REQUIRED": "Required field",
+    "INCORRET": "Invalid",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "NEW_ACCOUNT": "Create New Account",
+    "LOGIN_BUTTON": "Log In",
+    "REGISTER_BUTTON": "Create Account",
+    "FULL_NAME": "Full Name",
+    "FULL_NAME_PLACEHOLDER": "Enter your full name",
+    "SUCCESS_REGISTER": "Registration successful. Logging in...",
+    "MONTH": "Month",
+    "MONTH_PLACEHOLDER": "MM",
+    "DAY": "Day",
+    "DAY_PLACEHOLDER": "DD",
+    "YEAR": "Year",
+    "YEAR_PLACEHOLDER": "YYYY",
+    "GENDER": {
+      "TITLE": "Gender",
+      "FEMALE": "Female",
+      "MALE": "Male"
+    },
+    "ERROR": {
+      "LOGIN_ERROR": "Incorrect Email / Password",
+      "NETWORK_ERROR": "Unable to connect to the server. Please try again.",
+      "REGISTER_ERROR": "This email address is already registered",
+      "REGISTER_ERROR_PASSWORD": "Passwords do not match"
+    }
+  },
+  "HOME_SCREEN": {
+    "ITEM": [
+      {
+        "cardTitle": "Magical Cards",
+        "cardDescription": "The cards will shed light on your questions and uncertainties; all you need to do is open them and listen to what they have to tell you.",
+        "cardButtonText": "Tarot Reading"
+      },
+      {
+        "cardTitle": "Let the Numbers Illuminate Your Path.",
+        "cardDescription": "Numbers hold the keys to your destiny. Through numerology, you can find these keys and achieve balance and harmony in all aspects of your life.",
+        "cardButtonText": "Numerology"
+      },
+      {
+        "cardTitle": "Dreams are Messages from Your Subconscious.",
+        "cardDescription": "Dreams are messages from your subconscious. Every symbol sheds light on changes in your life. Discover your inner guide with dream interpretations and illuminate your path.",
+        "cardButtonText": "Dream Interpretation"
+      }
+    ],
+    "BUTTON": "Tarot Guidance"
+  },
+  "TAROT_DETAIL": {
+    "FIRST": {
+      "TITLE": "Description",
+      "DETAIL_ONE": {
+        "SUB_TITLE": "1. Getting to Know the Tarot Cards",
+        "DESCRIPTION": "First, it's crucial to understand the structure of Tarot cards. Tarot generally consists of 78 cards, which are divided into two groups: Major Arcana (22 cards) and Minor Arcana (56 cards).",
+        "ITEM": {
+          "TITLE": "Major Arcana",
+          "DESCRIPTION": "Represents the main themes of life, major changes, spiritual growth, and significant life journeys. For example, cards like The Fool, The Lovers, and Death."
+        },
+        "ITEM_TWO": {
+          "TITLE": "Minor Arcana",
+          "DESCRIPTION": "Represents the situations, feelings, and small changes we encounter in daily life. These are divided into four suits: Cups, Swords, Pentacles, and Wands. Each suit represents a different aspect of life (emotions, thoughts, material matters, and actions)."
+        }
+      },
+      "DETAIL_TWO": {
+        "SUB_TITLE": "2. Developing Intuition",
+        "DESCRIPTION": "The main power of Tarot lies in intuition and inner knowledge. Going beyond the direct meaning of each card and reading intuitively through symbols and images is important. This depends on how you perceive the cards. Some readers interpret the cards analytically, while others read them purely intuitively, listening to their inner voice.",
+        "ITEM": {
+          "TITLE": "Practice Meditation",
+          "DESCRIPTION": "Sit in a quiet space and try to listen to your inner voice while holding the cards in your hands."
+        },
+        "ITEM_TWO": {
+          "TITLE": "Review the Cards Regularly",
+          "DESCRIPTION": "Spend a few minutes each day examining the cards and write down how you feel."
+        }
+      },
+      "DETAIL_THREE": {
+        "SUB_TITLE": "3. Learning the Basic Meanings of the Cards",
+        "DESCRIPTION": "Initially, learning the traditional meanings of each card provides a good foundation. However, over time, these meanings will become more flexible and shape according to your personal intuition. You can see all the cards from the menu above to learn about them. It might also be helpful to keep a personal notebook of meanings for each card. When interpreting the meanings of the cards, you can ask yourself the following questions:",
+        "ITEM": {
+          "TITLE": "What does this card symbolize?"
+        },
+        "ITEM_TWO": {
+          "TITLE": "What is the timing of this card?"
+        },
+        "ITEM_THREE": {
+          "TITLE": "What emotion does this card bring me?"
+        },
+        "ITEM_FOUR": {
+          "TITLE": "Is there a pattern or theme between the cards?"
+        }
+      }
+    },
+    "SECOND": {
+      "TITLE": "Major Arcana"
+    },
+    "THIRD": {
+      "TITLE": "Cups"
+    },
+    "FOUR": {
+      "TITLE": "Pentacles"
+    },
+    "FIVE": {
+      "TITLE": "Swords"
+    },
+    "SIX": {
+      "TITLE": "Wands"
+    },
+    "NUMBER": "Number",
+    "ZODIAC": "Zodiac",
+    "ELEMENT": "Element",
+    "PLANET": "Planet"
+  },
+  "TAROT_READ": {
+    "TITLE": "Access Premium Content",
+    "DESCRIPTION": "Your Tarot cards have been carefully prepared with symbols and deep meanings, each selected with care. Every reading offers guidance that will lead you on your inner journey, illuminating your past, present, and future. Trust your intuition and stay open to the messages your cards offer. We are here to shed light on every moment of your life.",
+    "SUB_TITLE": "Tarot Reading Guide",
+    "AIM": "Aim",
+    "AREA_OF_USE": "Area of Use",
+    "FEATURES": "Features",
+     "ALERT_TITLE": "Service Unavailable",
+    "ALERT_DESCRIPTION": "This service is currently unavailable. Please try again later."
+  },
+  "TAROT_READ_TYPE": {
+    "SINGLE_CARD": "Single Card Spread",
+    "CELTIC_CROSS": "Celtic Cross",
+    "THREE_CARD": "Three Card Spread",
+    "RELATIONSHIP_SPREAD": "Relationship Spread"
+  },
+  "TAROT_READ_START": {
+    "TITLE": "Choose a question and draw the cards",
+    "SUB_TITLE": "What path should I take regarding my career?",
+    "BOTTOM_TITLE": "Examine the cards you selected and discover their messages",
+    "INPUT": "What question are you seeking an answer to?",
+    "START_INPUT": "Ask a question...",
+    "SELECT_BUTTON": "Tap to choose your card",
+    "CARD_SELECTION": "Select a Card",
+    "CARD_SELECTED": "Card Selected",
+    "SELECT_MODAL_TITLE": "Trust your intuition, the right card is waiting for you",
+    "SELECT_MODAL_BUTTON": "Confirm Cards",
+    "SLIDER": "Slide",
+    "SPREAD_TITLE": "Tap to reveal the selected cards",
+    "SPREAD_BUTTON": "Start Reading",
+    "SPREAD_QUESTION_COUNT": "Number of Questions",
+    "SPREAD_COMPLETED_BUTTON": "Finish Reading"
+  },
+  "SAVE_MODAL": {
+    "SAVE_NAME": "Save Name",
+    "BUTTON": "Confirm",
+    "ENTER_NAME": "Enter name"
+  },
+  "ALERT": {
+    "TITLE": "Alert",
+    "DESCRIPTION": "Are you sure you want to leave this page?",
+    "YES": "Yes",
+    "NO": "No"
+  },
+  "TOAST": {
+    "SUCCESS": "Successfully saved",
+    "ERROR": "An error occurred"
+  },
+
+  "NUMEROLOGY_TYPE": [
+    {"LABEL": "Life Path Number"},
+    {"LABEL": "Expression Number"},
+    {"LABEL": "Radical Number"},
+    {"LABEL": "Personal Year Number"}
+  ],
+  "NUMEROLOGY_SCREEN": {
+    "TITLE": "Personality",
+    "TITLE_TWO": "Discover Your",
+    "TITLE_THREE": "Traits",
+    "FULL_NAME": "Please Enter Your Full Name",
+    "DAY": "DD",
+    "MONTH": "MM",
+    "YEAR": "YYYY",
+    "BUTTON_TEXT": "Calculate",
+    "LOADING": {
+      "CALCULATING": "Calculating...",
+      "CALCULATED": "Calculated"
+    }
+  },
+  "NUMEROLOGY_DETAIL_SCREEN": {
+    "TITLE": "Your Numerology Report",
+    "DESCRIPTION": "The Life Path Number is a numerology concept calculated from your birth date, which shows the main themes, strengths, and challenges in your life. This number determines the energy that has been guiding you since the day you were born and reveals the general direction of your life, personal goals, and potential. The Life Path Number is an important guide in understanding who you are and your life purpose.",
+    "BUTTON_TEXT": "Check out our premium content for more details and in-depth analysis!"
+  },
+  "NUMEROLOGY_PREMIUM_SCREEN": {
+    "RULING_PLANET": "Ruling Planet",
+    "CAREER": "Career",
+    "RELATIONSHIPS": "Relationships",
+    "SPECIAL_MONTHS": "Special Months",
+    "KARMIC_NUMBER": "Karmic Number",
+    "PEAK": {
+      "TITLE": "Peak Periods",
+      "first": "First Period",
+      "second": "Second Period",
+      "third": "Third Period",
+      "AGE": "Age"
+    },
+    "BUTTON_TEXT": "Save and Return to Homepage"
+  },
+  "DREAM_SCREEN": {
+    "TITLE": "Discover the Meaning of Your Dreams!",
+    "DESCRIPTION": "Dreams are messages from the depths of our subconscious. For centuries, people have tried to decipher the meanings of the dreams they have seen and developed various interpretations. Dreams sometimes reflect our personal feelings, anxieties, or clues about the future. No matter what type of dream you've had, each one has a meaning. Now, write down your dream and discover its meaning!",
+    "WARNING": {
+      "TITLE": "Description",
+      "CLUE_TITLE": "Clues for Dream Analysis",
+      "CLUE_DESCRIPTION": "When sharing your dream, it will be helpful to mention your emotional state and events you experienced during the period you had the dream. This can make it easier to understand the messages from your subconscious.",
+      "RULES_TITLE": "Dream Analysis Process Rules!",
+      "RULES_DESCRIPTION": "Attention: If you ask questions unrelated to dream analysis, the tokens used will not be refunded, and no new question will be allowed. Please proceed with your request only based on this information."
+    },
+    "BUTTON_TEXT": "Get Started"
+  },
+  "DREAM_PREMIUM_SCREEN": {
+    "TITLE": "What Dream Did You Have Today?",
+    "DESCRIPTION": "Write the details of your dream",
+    "BUTTON_TEXT": "Submit",
+    "CONFIRM_BUTTON_TEXT": "Save and Exit"
+  },
+  "PROFILE_SCREEN": {
+    "TITLE": "My Profile",
+    "OTHER_SETTINGS": "Other Settings",
+    "PASSWORD": "Password Management",
+    "TOKEN": "Token Management",
+    "SAVE": "Saved Actions",
+    "FAQ": "FAQ / Support",
+    "EXIT": "Log Out",
+    "USER_INFO": "User Information",
+    "USER_UPDATE_SUCCESS": "Your user information has been updated.",
+    "BUTTON_TEXT": "Save",
+    "CURRENT_PASSWORD": "Enter Your Current Password",
+    "NEW_PASSWORD": "Enter Your New Password",
+    "CONFIRM_PASSWORD": "Confirm Your New Password",
+    "PASSWORD_TITLE": "Password Management"
+  },
+  "BALANCE_SCREEN": {
+    "CURRENT_BALANCE": "Current Balance",
+    "ACCOUNT_OPENING": "Account Opening Date",
+    "ADD_TOKEN": "Add Token",
+    "TRANSACTION": "Transaction History",
+    "ADD": "Top Up",
+    "SPENDING": "Spending"
+  },
+  "SAVE_HISTORY": {
+    "TAROT_SPREAD": "Tarot Spread",
+    "NUMEROLOGY": "Numerology Analysis",
+    "DREAM": "Dream Interpretation",
+    "TRANSACTION_DATE": "Transaction Date"
+  },
+  "FAQ_TITLE": "The FAQ section provides quick answers to topics you may wonder about while using our app. You can find details here regarding tarot, numerology, dream interpretation, and membership procedures. For more information, you can contact our support team!",
+  "FAQ": [
+    {
+      "title": "1. How Does the Application Work?",
+      "content": "Our app is a platform that offers tarot readings, numerology, and horoscope interpretations. Users can purchase tokens to access various readings."
+    },
+    {
+      "title": "2. Is Membership Paid?",
+      "content": "No, registering on the app is completely free. However, to access some premium features, you may need to purchase tokens."
+    },
+    {
+      "title": "3. How Does Tarot Reading Work?",
+      "content": "Performing a tarot reading in our app is quite simple:\n\n**Choose a Reading Method:**\n The user selects one of the different tarot spread methods to begin the reading.\n\n**Define Your Question:**\n The user personalizes the tarot reading by writing down their question. If no question is written, a general spread is made.\n\n**Draw the Cards:**\n The selected method will determine how many cards are drawn.\n\n**Analysis Starts:**\n The drawn cards are interpreted, and a detailed analysis is provided. The user can review the meaning of the spread and read the interpretations.\n\n**Ask Questions During the Analysis:**\n The user can ask questions during the analysis, but the questions must be relevant to the spread's original question. Questions on other topics will not be answered, and the question right will not be refunded."
+    },
+    {
+      "title": "4. How Does Numerology Analysis Work?",
+      "content": "**Enter Full Name and Birthdate:**\n To perform a numerology analysis, you need to enter your full name and birthdate. It is important to provide accurate and complete information for the analysis. Incorrect information will not be refunded.\n\n**Analysis Provided:**\n Based on the results, a detailed analysis of your personality, strengths, and life path will be provided."
+    },
+    {
+      "title": "5. How Does Dream Interpretation Work?",
+      "content": "**Write Your Dream in Detail:**\n To interpret your dream accurately, you need to write it in detail and clearly. However, you can only ask questions related to the dream itself. Other questions will not be answered, and tokens will not be refunded.\n\n**Analysis Provided:**\n The possible messages in your dream and the meanings related to your subconscious will be explained in detail."
+    },
+    {
+      "title": "6. Can I Save My Activities?",
+      "content": "Yes! You can save your tarot readings, numerology analyses, and dream interpretations. During the saving process, you can enter an optional name for the record. If no name is entered, the record will be saved with the analysis date. You can access your saved activities from the **Saved Activities** section in the **My Profile** menu."
+    },
+    {
+      "title": "7. Are My Personal Data Secure?",
+      "content": "Yes, all the information you enter is kept confidential and is only used to perform your analyses. Your personal data will never be shared with any third party."
+    },
+    {
+      "title": "8. How Can I Purchase Tokens?",
+      "content": "You can purchase tokens within the app. Available payment options include:\n**✅ Apple In-App Purchase**\n**✅ Google Play Billing**\n\nOnce the purchase is completed, tokens will be automatically credited to your account. Tokens cannot be purchased by any other methods."
+    },
+    {
+      "title": "9. How Can I Delete My Account?",
+      "content": "**You can delete your account using the following methods:**\n\n**App Settings:** Click the “Delete Account” button in the Profile section.\n**Support Team:** If you encounter any issues during the process, you can contact the support team to delete your account."
+    }
+  ],
+  "CONTACT_BUTTON": "Contact Us",
+  "NO_HISTORY": "No History Found.",
+  "CHANGE_LANGUAGE": "Change Language",
+  "ADD_BALANCE_SHEET": {
+    "TITLE": "Your intuition guides you... Get your tokens and find the answers!"
+  },
+  "LIFE_PATH_DETAIL": {
+    "1": "Life path 1 is shaped by independence, leadership, and an innovative spirit. Those with this path are bold, determined individuals who carve their own way. They seek to be one step ahead, create innovations, and achieve their own freedom. However, this strong character often comes with solitude and demanding responsibilities. Life path 1s overcome challenges with their inner strength and leave a mark on the world as pioneers who forge their own path.",
+    "2": "Life path 2 is guided by balance, cooperation, and sensitivity. Those with this path prefer to be in harmony with others and adopt a sympathetic and understanding approach. Their weakness may lie in being overly self-sacrificing and neglecting their own needs. However, their true strength lies in their ability to offer support when needed and bring about peace. Life path 2s transform the world with love and tranquility by forming deep connections in their relationships.",
+    "3": "Life path 3 is shaped by creativity, joy, and self-expression. Those with this path are energetic, free-spirited, and artistic individuals. They shine in areas where they can express themselves at their best, but may sometimes struggle with a lack of discipline and continuity. However, their greatest strength lies in their positive energy and ability to influence others. Life path 3s beautify the world by bringing joy, inspiration, and creative solutions to those around them.",
+    "4": "Life path 4 is shaped by stability, discipline, and order. Those with this path are hardworking, practical individuals built on solid foundations. They are not afraid of challenges and work diligently to achieve success in life. However, they may encounter obstacles such as rigid thinking and a lack of flexibility. Their true strength lies in adopting a systematic approach and creating a reliable foundation. Life path 4s pave a resilient and trustworthy path by building life in an organized way.",
+    "5": "Life path 5 is shaped by freedom, adventure, and change. Those with this path love to explore life, experience new things, and thrive on constant change. They stand out for their flexibility, innovative thinking, and ability to take risks. However, they may struggle to find stability due to indecision and ongoing changes. Their true strength lies in their desire to embrace their freedom and live life in an exciting way. Life path 5s shape life in an interesting and unique way by adapting to changes.",
+    "6": "Life path 6 is shaped by love, responsibility, and family. Those with this path love helping others and taking on a protective role. They have a natural compassion and often make sacrifices for their families or loved ones. However, they may sometimes face issues like taking on too much responsibility and neglecting themselves. Their true strength lies in their deep love for others and their ability to create a balanced life. Life path 6s heal the world with their compassion and love.",
+    "7": "Life path 7 is shaped by deep thought, spiritual quest, and inner exploration. Those with this path are deep thinkers who seek to understand life, pursue wisdom, and uncover hidden truths. They are often inclined towards solitude and introspection, favoring mental and spiritual connections over emotional bonds. However, they may sometimes experience a sense of disconnection from the world and skepticism. Their true strength lies in their pure quest and deep intuition, which they find in their inner world. Life path 7s make the world more meaningful with their spiritual and intellectual depth.",
+    "8": "Life path 8 is shaped by power, success, and the material world. Those with this path are known for their strong leadership abilities, business acumen, and determination. They often have a desire to achieve great goals, secure powerful positions, and attain material success in their lives. However, they may sometimes face challenges such as a need for control, losing balance between work and personal life, and emotional isolation. Their true strength lies in disciplined work, perseverance through difficult times, and the ability to leave a lasting impact on the world. Life path 8s not only have great power but also immense potential to contribute to society and the business world.",
+    "9": "Life path 9 is shaped by humanism, compassion, and universal love. Those with this path have a deep desire to help others, heal the world, and contribute to the greater good. They often leave a strong impact in areas such as art, spirituality, or service. However, they may occasionally experience emotional burnout and a sense of difference, as they prioritize the love and support they give to others over their own needs. Their true strength emerges through their universal perspective and deep compassion, as they strive to make the world a better place. Life path 9s transform people and the world with compassion and selflessness.",
+    "11": "Life path 11 is shaped by spiritual awareness, inspiration, and a higher vision. Those with this path possess deep inner intuition, creativity, and an elevated spiritual potential. They often believe they exist for a greater mission or societal purpose and have the power to inspire others. However, they may experience emotional fluctuations, high expectations, and sometimes inner confusion. Their true strength lies in higher consciousness, spiritual pursuit, and the ability to offer strong guidance. Life path 11s, as inspiring leaders, have the potential to create significant change in the world.",
+    "22": "Life path 22 is known as the master builder and is shaped by grand vision, strong leadership, and tangible success. Those with this path are perfectionist and strategic individuals with the capacity to turn massive projects into reality. They focus not on small-scale endeavors, but on the big picture, striving to create lasting impacts in the world. However, they may encounter challenges such as overburdening, burnout under pressure, and occasional feelings of isolation. Their true strength lies in their strong determination, disciplined approach, and relentless drive to create revolutionary change for society. Life path 22s can be transformative leaders who build meaningful and lasting projects for humanity.",
+    "33": "Life path 33 is known as the master teacher and is shaped by love, selflessness, and social service. Those with this path possess a high level of spiritual wisdom and deep compassion, enabling them to guide others. They often dedicate themselves to a higher purpose and believe they exist to help others and make the world a better place. However, this lofty mission can sometimes bring emotional burdens and personal struggles. Their true strength lies in their ability to guide society, spread love, and rise to their potential when they find their inner balance and peace. Life path 33s create a real impact in the world not only through their emotional maturity and strong capacity for love but also by working for high ideals on behalf of humanity."
+  }
+}

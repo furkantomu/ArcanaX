@@ -19,6 +19,8 @@ import {AxiosResponse} from 'axios';
 import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -27,6 +29,7 @@ const markdownStyles = {
 };
 const PersonalYearNumber = ({numerologyDetail}) => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {personalYear, setPersonalYear} = useNumerologyPremiumContext();
@@ -101,7 +104,7 @@ const PersonalYearNumber = ({numerologyDetail}) => {
             <Typography
               weight="NotoSerifCondensedBoldItalic"
               style={styles.title}>
-              Kişisel Yıl Sayı
+              {i18n.t('NUMEROLOGY_TYPE.3.LABEL', {locale:localeValue})}
             </Typography>
           </View>
           <View style={styles.imageContainer}>

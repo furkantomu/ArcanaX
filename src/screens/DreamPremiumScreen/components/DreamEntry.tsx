@@ -4,6 +4,8 @@ import TextField from '@/components/TextField/TextField';
 import {getStyles} from '../styles';
 import {useForm} from '@/hooks/useForm';
 import {useDreamContext} from '../DreamScreenContext';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -20,6 +22,7 @@ const initialFieldValues: FormValues = {
 const DreamEntry = () => {
   const styles = getStyles();
   const {setDream} = useDreamContext();
+  const {localeValue} = useAppSelector(state => state.settings);
 
   const validation = (fieldValues: Partial<FormValues>): ValidationErrors => {
     let temp: ValidationErrors = {...errors};
@@ -44,7 +47,7 @@ const DreamEntry = () => {
     <View style={styles.textFieldWrapper}>
       <TextField
         inputName="dream"
-        placeholder="Rüyanızın detayları anlatın"
+        placeholder={i18n.t('DREAM_PREMIUM_SCREEN.DESCRIPTION', {locale: localeValue})}
         style={{
           ...styles.textField,
         }}

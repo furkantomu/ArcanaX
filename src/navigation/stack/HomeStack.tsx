@@ -17,8 +17,6 @@ import {
   DreamPremiumScreen,
   TarotCardDetail,
 } from '@/screens';
-import {BottomSheet, CustomHeader, Typography} from '@/components';
-import {useRefsContext} from '@/context';
 
 export type RouteTypes = {
   name: string;
@@ -115,7 +113,6 @@ export const routes: RouteTypes[] = [
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
-  const {tokenSheetRef} = useRefsContext();
   return (
     <>
       <Stack.Navigator>
@@ -128,9 +125,6 @@ const HomeStack = () => {
           />
         ))}
       </Stack.Navigator>
-      <BottomSheet ref={tokenSheetRef}>
-        <Typography>TOKEN İŞLEMLERİ</Typography>
-      </BottomSheet>
     </>
   );
 };

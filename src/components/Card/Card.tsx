@@ -8,12 +8,11 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import Typography from '../Typography/Typography';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 interface CardProps {
   imageSource: any;
-  cardTitle: string;
-  cardDescription: string;
-  cardButtonText: string;
   width?: number;
   height?: number;
   onPress: () => void;
@@ -26,15 +25,13 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({
   imageSource,
-  cardTitle,
-  cardDescription,
-  cardButtonText,
   onPress,
   index,
   scrollX,
   width,
   height,
 }) => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const rnAnimatedImageStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1];
     return {
@@ -79,17 +76,17 @@ const Card: React.FC<CardProps> = ({
               size={'large'}
               weight={'NotoSerifCondensedThin'}
               style={styles.title}>
-              {cardTitle}
+              {i18n.t(`HOME_SCREEN.ITEM.${[index]}.cardTitle`, {locale: localeValue})}
             </Typography>
             <Typography weight={'NotoSerifCondensedBoldItalic'}>
-              {cardDescription}
+              {i18n.t(`HOME_SCREEN.ITEM.${[index]}.cardDescription`, {locale: localeValue})}
             </Typography>
             <View style={styles.cardButtonContainer}>
               <Typography
                 size={'heading'}
                 lineHeightType={'large'}
                 weight={'NotoSerifThin'}>
-                {cardButtonText}
+                {i18n.t(`HOME_SCREEN.ITEM.${[index]}.cardButtonText`)}
               </Typography>
             </View>
           </View>

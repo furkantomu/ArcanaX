@@ -5,6 +5,7 @@ import {getStyles} from '../styles';
 import {Typography} from '@/components';
 import {useNavigation} from '@react-navigation/native';
 import {useTarotDetailContext} from '../TarotDetailScreenContext';
+import { useAppSelector } from '@/hooks';
 
 type TarotCardType = 'major' | 'cups' | 'pentacles' | 'swords' | 'wands';
 
@@ -14,6 +15,7 @@ interface TarotCardListProps {
 
 const Card: React.FC<TarotCardListProps> = ({type}) => {
   const {loading, cards, getFilteredTarotCards} = useTarotDetailContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const navigation = useNavigation();
   const styles = getStyles();
 
@@ -40,7 +42,7 @@ const Card: React.FC<TarotCardListProps> = ({type}) => {
               source={{uri: card.frontImageSource}}
               style={[styles.cardImage]}
             />
-            <Typography>{card.name}</Typography>
+            <Typography>{localeValue === 'tr' ? card.name : card.engName}</Typography>
           </Pressable>
         ))
       )}

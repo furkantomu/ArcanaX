@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, ScrollView, ActivityIndicator} from 'react-native';
+import {View, ScrollView, ActivityIndicator, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
   useAnimatedStyle,
@@ -16,10 +16,13 @@ import {CustomHeader, Typography} from '@/components';
 import {useTarotContext} from './TarotScreenContext';
 import AnimatedContent from './components/AnimatedContent';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const TarotScreenWrapper = () => {
   const styles = getStyles();
   const {fetchTarotServices, tarotService, loading} = useTarotContext();
+  const {localeValue} = useAppSelector(state => state.settings);
   const image = require('../../../assets/background/female.webp');
   const navigation = useNavigation();
 
@@ -83,18 +86,13 @@ const TarotScreenWrapper = () => {
               weight="NotoSerifThin"
               size="title"
               style={styles.title}>
-              Premium İçeriğe Erişin
+              {i18n.t('TAROT_READ.TITLE', {locale: localeValue})}
             </Typography>
             <Typography size="medium" style={styles.description}>
-              Tarot kartlarınız, her biri özenle seçilmiş semboller ve derin
-              anlamlarla hazırlandı. Her okuma, sizi içsel yolculuğunuza
-              yönlendirecek, geçmişinizi, bugününüzü ve geleceğinizi
-              aydınlatacak bir rehberlik sunar. Sezgilerinize güvenin ve
-              kartlarınızın size sunduğu mesajlara açık olun. Hayatınızın her
-              anına ışık tutmak için buradayız.
+              {i18n.t('TAROT_READ.DESCRIPTION', {locale: localeValue})}
             </Typography>
             <Typography size="large" style={styles.subTitle}>
-              Tarot Okuma Rehberi:
+              {i18n.t('TAROT_READ.SUB_TITLE', {locale: localeValue})}
             </Typography>
             {loading ? (
               <ActivityIndicator size={'large'} style={styles.loading} />
@@ -108,12 +106,23 @@ const TarotScreenWrapper = () => {
                   usageArea={item.usageArea}
                   feature={item.feature}
                   index={index}
-                  onPress={() =>
-                    navigation.navigate('TarotSpreadScreen', {
-                      type: Number(item.count),
-                      name: item.name,
-                    })
-                  }
+                  price={Number(item.price)}
+                  onPress={() => {
+                    if (item.status === 'Active') {
+                      navigation.navigate('TarotSpreadScreen', {
+                        type: Number(item.count),
+                        name: localeValue === 'tr' ? item.name : item.engName,
+                        price: item.price,
+                      });
+                    } else {
+                      Alert.alert(
+                        i18n.t('TAROT_READ.ALERT_TITLE', {locale: localeValue}),
+                        i18n.t('TAROT_READ.ALERT_DESCRIPTION', {
+                          locale: localeValue,
+                        }),
+                      );
+                    }
+                  }}
                 />
               ))
             )}

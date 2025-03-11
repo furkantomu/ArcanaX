@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {ActivityIndicator, ScrollView, StyleSheet, View} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -25,7 +19,9 @@ import {showToast} from '@/utils/showToast';
 import {TarotResponse} from '@/types/service';
 
 import {COLORS, SIZES} from '@/styles/theme';
-import Markdown, { MarkdownIt } from 'react-native-markdown-display';
+import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 type TarotHistoryRouteParams = {
   id: string;
@@ -37,10 +33,11 @@ type TarotHistoryRouteProp = RouteProp<
   'TarotHistoryScreen'
 >;
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'}, 
+  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 const TarotHistoryScreen = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const route = useRoute<TarotHistoryRouteProp>();
   const {type, id} = route.params;
   const opacity = useSharedValue(0);
@@ -91,10 +88,11 @@ const TarotHistoryScreen = () => {
     <LinearGradient colors={[COLORS.black, '#3F2305']} style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <SafeAreaView style={styles.container}>
-        <CustomHeader leftIcon={true} title={true} rightIcon={false} />
+          <CustomHeader leftIcon={true} title={true} rightIcon={false} />
           {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Typography style={{textAlign: 'center'}}>
-            İşlem Tarihi: {dayjs(messages.createdAt).format('DD MMMM YYYY')}
+            {i18n.t('SAVE_HISTORY.TRANSACTION_DATE', {locale: localeValue})}:{' '}
+            {dayjs(messages.createdAt).format('DD MMMM YYYY')}
           </Typography>
           {loading ? (
             <ActivityIndicator />

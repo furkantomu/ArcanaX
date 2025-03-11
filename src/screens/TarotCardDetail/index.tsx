@@ -6,13 +6,15 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 import {getStyles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS} from '@/styles/theme';
-import {CustomHeader, Icon, Typography} from '@/components';
+import {CustomHeader, Typography} from '@/components';
 import {apiService} from '@/services/APIService';
 import {
   getImageForCardElement,
   getImageForCardNumber,
   getImageForCardZodiac,
 } from '@/utils/getImageForNumber';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 type TarotCard = {
   id: string;
@@ -42,10 +44,11 @@ type TarotCardScreenRouteProp = RouteProp<
 >;
 
 const TarotCardDetail = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const [card, setCard] = useState<TarotCard>();
   const [loading, setLoading] = useState({});
   const {params} = useRoute<TarotCardScreenRouteProp>();
-  const {id, category} = params;
+  const {id} = params;
   const styles = getStyles();
 
   useEffect(() => {
@@ -68,10 +71,10 @@ const TarotCardDetail = () => {
   return (
     <LinearGradient colors={[COLORS.black, '#3F2305']} style={styles.container}>
       <SafeAreaView style={styles.container}>
-      <CustomHeader leftIcon={true} title={false} rightIcon={false} />
+        <CustomHeader leftIcon={true} title={false} rightIcon={false} />
         <ScrollView>
           <View style={styles.imageContainer}>
-            <Typography size="heading">{card?.name}</Typography>
+            <Typography size="heading">{localeValue === 'tr' ? card?.name : card?.engName}</Typography>
 
             {loading ? (
               <ActivityIndicator size={'large'} style={styles.loading} />
@@ -84,7 +87,9 @@ const TarotCardDetail = () => {
           </View>
           <View style={styles.imageIconContainer}>
             <View style={styles.iconWrapper}>
-              <Typography size="large">Sayı</Typography>
+              <Typography size="large">
+                {i18n.t('TAROT_DETAIL.NUMBER', {locale:localeValue})}
+              </Typography>
               <Image
                 source={getImageForCardNumber(String(card?.details.number))}
                 style={styles.icon}
@@ -92,7 +97,9 @@ const TarotCardDetail = () => {
               <Typography size="large">{card?.details.number}</Typography>
             </View>
             <View style={styles.iconWrapper}>
-              <Typography size="large">Burç</Typography>
+              <Typography size="large">
+                {i18n.t('TAROT_DETAIL.ZODIAC', {locale:localeValue})}
+              </Typography>
               <Image
                 source={getImageForCardZodiac(String(card?.details.zodiac))}
                 style={styles.icon}
@@ -100,7 +107,9 @@ const TarotCardDetail = () => {
               <Typography size="large">{card?.details.zodiac}</Typography>
             </View>
             <View style={styles.iconWrapper}>
-              <Typography size="large">Element</Typography>
+              <Typography size="large">
+                {i18n.t('TAROT_DETAIL.ELEMENT', {locale:localeValue})}
+              </Typography>
               <Image
                 source={getImageForCardElement(String(card?.details.element))}
                 style={styles.icon}
@@ -108,7 +117,10 @@ const TarotCardDetail = () => {
               <Typography size="large">{card?.details.element}</Typography>
             </View>
             <View style={styles.iconWrapper}>
-              <Typography size="large">Gezegen</Typography>
+              <Typography size="large">
+                {' '}
+                {i18n.t('TAROT_DETAIL.PLANET', {locale:localeValue})}
+              </Typography>
               <Image source={planet} style={styles.icon} />
               <Typography size="large">{card?.details.planet}</Typography>
             </View>

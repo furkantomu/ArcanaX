@@ -6,7 +6,7 @@ import axios, {
 } from 'axios';
 
 import {getStore} from '@/store/storeAccessor';
-import { showToast } from '@/utils/showToast';
+import {showToast} from '@/utils/showToast';
 
 class APIService {
   private static instance: APIService;
@@ -36,6 +36,7 @@ class APIService {
 
     return {
       Authorization: `Bearer ${headers.accessToken}`,
+      'Accept-Language': state.settings.localeValue,
     };
   }
 
@@ -65,12 +66,18 @@ class APIService {
         console.log('error.status', error.status);
         if (error.code === 'ECONNABORTED') {
           console.error('İstek zaman aşımına uğradı:', error.message);
-          showToast({message:'Sunucuya ulaşılamıyor. Lütfen bağlantınızı kontrol edin.', type:'error'});
+          showToast({
+            message: 'Sunucuya ulaşılamıyor. Lütfen bağlantınızı kontrol edin.',
+            type: 'error',
+          });
         }
         if (error.response?.status === 401) {
           const store = getStore();
           store.dispatch({type: 'auth/logout'});
         }
+        console.log(error)
+        console.log(error.response)
+
         return Promise.reject(error);
       },
     );

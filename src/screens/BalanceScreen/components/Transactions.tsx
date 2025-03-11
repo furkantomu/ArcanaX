@@ -8,13 +8,15 @@ import {apiService} from '@/services/APIService';
 
 import {useAppSelector} from '@/hooks';
 
-import { TransactionsResponse } from '@/types/service';
+import {TransactionsResponse} from '@/types/service';
 
-import { COLORS } from '@/styles/theme';
+import {COLORS} from '@/styles/theme';
 import {getStyles} from '../styles';
+import i18n from '@/i18n';
 
 const Transactions = () => {
   const {user} = useAppSelector(state => state.auth);
+  const {localeValue} = useAppSelector(state => state.settings);
   const [transactions, setTransactions] = useState([
     {
       id: '',
@@ -43,51 +45,62 @@ const Transactions = () => {
       }
     };
     getTransactions();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const styles = getStyles();
+
   return (
     <View style={styles.header}>
-     {loading ? (
-  <ActivityIndicator />
-) : transactions.length > 0 ? (
-  transactions.map((item, idx) => (
-    <View style={styles.transactionCard} key={idx}>
-      <View style={styles.leftWrapper}>
-        <View style={styles.amountTypeIconWrapper}>
-          <Icon
-            name="rightArrow"
-            style={[
-              styles.amountTypeIcon,
-              item.balance < 0 ? styles.spending : styles.add,
-            ]}
-          />
-        </View>
-        <View>
-          <Typography
-            weight="NotoSerifCondensedBoldItalic"
-            style={styles.color}>
-            {item.balance < 0 ? 'Harcama' : 'Yükleme'}
-          </Typography>
-          <Typography style={styles.color}>
-            {dayjs(item.createdAt).format('DD MMMM YYYY HH:mm')}
-          </Typography>
-        </View>
-      </View>
-      <View style={styles.infoWrapper}>
-        <Typography size="large" style={styles.color}>
-          {item.balance}
+      {loading ? (
+        <ActivityIndicator />
+      ) : transactions.length > 0 ? (
+        transactions.map((item, idx) => (
+          <View style={styles.transactionCard} key={idx}>
+            <View style={styles.leftWrapper}>
+              <View style={styles.amountTypeIconWrapper}>
+                <Icon
+                  name="rightArrow"
+                  style={[
+                    styles.amountTypeIcon,
+                    item.balance < 0 ? styles.spending : styles.add,
+                  ]}
+                />
+              </View>
+              <View>
+                <Typography
+                  weight="NotoSerifCondensedBoldItalic"
+                  style={styles.color}>
+                  {item.balance < 0
+                    ? i18n.t('BALANCE_SCREEN.SPENDING', {locale: localeValue})
+                    : i18n.t('BALANCE_SCREEN.ADD', {locale: localeValue})}
+                </Typography>
+                <Typography style={styles.color}>
+                  {dayjs(item.createdAt).format('DD MMMM YYYY HH:mm')}
+                </Typography>
+              </View>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoWrapperToken}>
+                <Icon name="token" />
+                <Typography size="large" style={styles.color}>
+                  {item.balance}
+                </Typography>
+              </View>
+              <Typography size="medium" style={styles.color}>
+                {/* ₺{parseFloat(item.amount.toFixed(2))} */}
+                {new Intl.NumberFormat(localeValue === 'tr' ? 'tr-TR' : 'en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }).format(item.amount)}
+              </Typography>
+            </View>
+          </View>
+        ))
+      ) : (
+        <Typography style={{color: COLORS.blackOpacity1}}>
+         {i18n.t('NO_HISTORY', {locale: localeValue})}
         </Typography>
-        <Typography size="medium" style={styles.color}>
-          ₺{item.amount}
-        </Typography>
-      </View>
-    </View>
-  ))
-) : (
-  <Typography style={{color: COLORS.blackOpacity1}}>İşlem geçmişi bulunmuyor.</Typography>
-)}
-
+      )}
     </View>
   );
 };

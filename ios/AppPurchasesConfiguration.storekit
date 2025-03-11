@@ -1,0 +1,226 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "0F08E741",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "6743003873",
+      "localizations" : [
+        {
+          "description" : "ArcanaX app 100 Token Pack",
+          "displayName" : "100 Token",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "ArcanaX uygulaması 100 Jeton paketi",
+          "displayName" : "100 Jeton",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_100",
+      "referenceName" : "arcanaX_app_token_100",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "49.99",
+      "familyShareable" : false,
+      "internalID" : "6743030091",
+      "localizations" : [
+        {
+          "description" : "ArcanaX uygulaması 1000 Jeton paketi",
+          "displayName" : "1000 Jeton",
+          "locale" : "tr"
+        },
+        {
+          "description" : "ArcanaX app 1000 Token Pack",
+          "displayName" : "1000 Token",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "arcanaX_app_token_1000",
+      "referenceName" : "arcanaX_app_token_1000",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "6743029893",
+      "localizations" : [
+        {
+          "description" : "ArcanaX app 200 Token Pack",
+          "displayName" : "200 Token",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "ArcanaX uygulaması 200 Jeton paketi",
+          "displayName" : "200 Jeton",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_200",
+      "referenceName" : "arcanaX_app_token_200",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "6743027210",
+      "localizations" : [
+        {
+          "description" : "ArcanaX uygulaması 25 Jeton paketi",
+          "displayName" : "25 Jeton",
+          "locale" : "tr"
+        },
+        {
+          "description" : "ArcanaX app 25 Token Pack",
+          "displayName" : "25 Token",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "arcanaX_app_token_25",
+      "referenceName" : "arcanaX_app_token_25",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "6743003486",
+      "localizations" : [
+        {
+          "description" : "ArcanaX app 50 Token Pack",
+          "displayName" : "50 Token",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "ArcanaX uygulaması 50 Jeton paketi",
+          "displayName" : "50 Jeton",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token",
+      "referenceName" : "arcanaX_app_token_50",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "6743030004",
+      "localizations" : [
+        {
+          "description" : "ArcanaX uygulaması 500 Jeton paketi",
+          "displayName" : "500 Jeton",
+          "locale" : "tr"
+        },
+        {
+          "description" : "ArcanaX app 500 Token Pack",
+          "displayName" : "500 Token",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "arcanaX_app_token_500",
+      "referenceName" : "arcanaX_app_token_500",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "6743003649",
+      "localizations" : [
+        {
+          "description" : "ArcanaX app 75 Token Pack",
+          "displayName" : "75 Token",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "ArcanaX uygulaması 75 Jeton paketi",
+          "displayName" : "75 Jeton",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_75",
+      "referenceName" : "arcanaX_app_token_75",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6743003256",
+    "_developerTeamID" : "8X53LUQSRV",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 763251997.77957201,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : {
+          "index" : 1,
+          "type" : "purchase"
+        },
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

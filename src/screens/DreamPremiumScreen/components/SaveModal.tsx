@@ -3,28 +3,30 @@ import React from 'react';
 import {Button, Typography} from '@/components';
 import {getStyles} from '../styles';
 import {useDreamContext} from '../DreamScreenContext';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const SaveModal = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
-  const {setSaveName, saveLoading, saveName, saveData} =
-    useDreamContext();
+  const {setSaveName, saveLoading, saveName, saveData} = useDreamContext();
   return (
     <View style={styles.modalContainer}>
       <View style={styles.modalContent}>
         <Typography
           weight="NotoSerifCondensedBoldItalic"
           style={styles.modalTitle}>
-          Kayıt İsmi:
+          {i18n.t('SAVE_MODAL.SAVE_NAME', {locale: localeValue})}
         </Typography>
         <TextInput
           style={styles.input}
           value={saveName}
           onChangeText={(text: string) => setSaveName(text)}
-          placeholder="Metin girin..."
+          placeholder={i18n.t('SAVE_MODAL.ENTER_NAME', {locale: localeValue})}
         />
         <View style={styles.modalButton}>
           <Button
-            text="Onayla"
+            text={i18n.t('SAVE_MODAL.BUTTON', {locale: localeValue})}
             handlePress={() => {
               saveData();
             }}

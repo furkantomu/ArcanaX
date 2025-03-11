@@ -1,25 +1,35 @@
-import {StyleSheet, View, useWindowDimensions, Image} from 'react-native';
 import React from 'react';
+import {
+  StyleSheet,
+  View,
+  useWindowDimensions,
+  Image,
+  Pressable,
+} from 'react-native';
 import Animated, {
   Extrapolation,
   SharedValue,
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import LinearGradient from 'react-native-linear-gradient';
+import {IconButton, Typography} from '@/components';
+import i18n from '@/i18n';
 
 import {OnboardingData} from '../data';
-import LinearGradient from 'react-native-linear-gradient';
 import {COLORS} from '@/styles/theme';
-import {Typography} from '@/components';
+import {useAppSelector} from '@/hooks';
 
 type Props = {
   index: number;
   x: SharedValue<number>;
   item: OnboardingData;
+  openSheet: () => void;
 };
 
-function RenderItem({index, x, item}: Props) {
+function RenderItem({index, x, item, openSheet}: Props) {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
+  const {localeValue} = useAppSelector(state => state.settings);
 
   const lottieAnimationStyle = useAnimatedStyle(() => {
     const translateYAnimation = interpolate(
@@ -80,18 +90,28 @@ function RenderItem({index, x, item}: Props) {
         style={[styles.image, lottieAnimationStyle]}
       />
       <View style={styles.logoContainer}>
+        <View style={styles.translateButton} />
         <Image
           source={require('../../../../assets/logo/logo.png')}
           style={styles.logo}
           resizeMode={'contain'}
         />
+        <IconButton
+          text=""
+          iconName="translate"
+          buttonStyle={styles.translateButton}
+          iconStyle={styles.translateButtonIcon}
+          iconSize={25}
+          handlePress={openSheet}
+        />
       </View>
+
       <View style={styles.content}>
         <Typography
           style={{...styles.itemText, color: item.textColor}}
           size={'title'}
           weight={'NotoSerifCondensedBoldItalic'}>
-          {item.text}
+          {i18n.t(`ONBOARDING.ITEM.${index}.text`, {locale: localeValue})}
         </Typography>
 
         <Animated.View
@@ -100,7 +120,9 @@ function RenderItem({index, x, item}: Props) {
             weight={'regular'}
             size={'medium'}
             style={{...styles.itemDescription, color: item.textColor}}>
-            {item.description}
+            {i18n.t(`ONBOARDING.ITEM.${index}.description`, {
+              locale: localeValue,
+            })}
           </Typography>
         </Animated.View>
       </View>
@@ -110,6 +132,7 @@ function RenderItem({index, x, item}: Props) {
 
 export default RenderItem;
 
+const newLocal = 'red';
 const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
@@ -129,15 +152,24 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     width: '100%',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     zIndex: 2,
-    position:'absolute',
-    top: 60,
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 65,
   },
   logo: {
     height: 30,
     width: 120,
+  },
+  translateButton: {
+    backgroundColor: 'transparent',
+    right: 10,
+    width: 50,
+  },
+  translateButtonIcon: {
+    tintColor: COLORS.cream,
   },
   content: {
     gap: 30,

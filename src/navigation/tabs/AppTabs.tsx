@@ -52,7 +52,7 @@ const Tabs = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-         backgroundColor: '#f5f5dc4f',
+          backgroundColor: '#f5f5dc4f',
           position: 'absolute',
           marginHorizontal: 30,
           marginBottom: 20,
@@ -78,7 +78,7 @@ const Tabs = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Kişisel"
         component={HomeStack}
         options={{
@@ -90,7 +90,7 @@ const Tabs = () => {
             />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Profil"
         component={ProfileStack}

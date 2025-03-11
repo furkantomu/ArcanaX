@@ -1,4 +1,5 @@
 import {useAppSelector} from '@/hooks';
+import i18n from '@/i18n';
 import {apiService} from '@/services/APIService';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
@@ -93,6 +94,7 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const navigation = useNavigation();
   const {user} = useAppSelector(state => state.auth);
+  const {localeValue} = useAppSelector(state => state.settings);
   const [numerologyDetail, setNumerologyDetail] = useState<NumerologyDetail>({
     name: '',
     birthDate: '',
@@ -166,13 +168,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
         message: string;
       }> = await apiService.post('numerology/save', values);
       showToast({
-        message: response.data.message,
+        message: i18n.t('TOAST.SUCCESS', {locale:localeValue}),
         type: 'success',
       });
       navigation.popToTop();
     } catch (error) {
       showToast({
-        message: 'Bir hata oluştu.',
+        message: i18n.t('TOAST.ERROR', {locale:localeValue}),
         type: 'error',
       });
     } finally {

@@ -7,6 +7,8 @@ import {useNumerologyPremiumContext} from '../NumerologyPremiumContext';
 import {AxiosResponse} from 'axios';
 import {apiService} from '@/services/APIService';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 interface ResponseData {
   id: string;
@@ -19,6 +21,7 @@ interface ResponseData {
 
 const StaticInfo = () => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
   const [loading, setLoading] = useState(false);
 
   const route = useRoute();
@@ -87,9 +90,8 @@ const StaticInfo = () => {
         <>
           <View>
             <Typography style={styles.planetSectionTitle}>
-              Yönetici Gezegen:
+              {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RULING_PLANET', {locale:localeValue})}:
               <Text style={styles.planetSectionTResult}>
-                {' '}
                 {rulingPlanet.planet}
               </Text>
             </Typography>
@@ -98,16 +100,16 @@ const StaticInfo = () => {
           </View>
 
           <View>
-            <Typography style={styles.planetSectionTitle}>Kariyer</Typography>
+            <Typography style={styles.planetSectionTitle}>{i18n.t('NUMEROLOGY_PREMIUM_SCREEN.CAREER', {locale:localeValue})}</Typography>
             <Typography size="medium">{rulingPlanet.career}</Typography>
           </View>
           <View>
-            <Typography style={styles.planetSectionTitle}>İlişkiler</Typography>
+            <Typography style={styles.planetSectionTitle}>{i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RELATIONSHIPS', {locale:localeValue})}</Typography>
             <Typography size="medium">{rulingPlanet.relationships}</Typography>
           </View>
           <View>
             <Typography style={styles.planetSectionTitle}>
-              Özel Aylar
+            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.SPECIAL_MONTHS', {locale:localeValue})}
             </Typography>
             <Typography size="medium">
               {rulingPlanet.auspiciousMonths}

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>ArcanaX</string>
 	<key>CFBundleExecutable</key>
@@ -31,8 +31,12 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Fincanınızın fotoğrafını çekmek için kameranızı kullanmamıza izin verir misiniz?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fincanınızın fotoğrafını yüklemek için fotoğraf kütüphanenize erişim gerekiyor.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSerif-Bold.ttf</string>
@@ -59,9 +63,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSPhotoLibraryUsageDescription</key>
-<string>Fincanınızın fotoğrafını yüklemek için fotoğraf kütüphanenize erişim gerekiyor.</string>
-<key>NSCameraUsageDescription</key>
-<string>Fincanınızın fotoğrafını çekmek için kameranızı kullanmamıza izin verir misiniz?</string>
 </dict>
 </plist>

@@ -14,6 +14,8 @@ import {useRefsContext} from '@/context';
 import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
+import i18n from '@/i18n';
+import {useAppSelector} from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 
@@ -23,11 +25,12 @@ const markdownStyles = {
 };
 
 interface FAQAccordionProps {
-  title: string;
-  content: string;
+  index: number;
 }
 
-const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
+const FAQAccordion: React.FC<FAQAccordionProps> = ({index}) => {
+  const {localeValue} = useAppSelector(state => state.settings);
+
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
@@ -65,7 +68,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
                 weight="NotoSerifCondensedBoldItalic"
                 size="large"
                 style={styles.faqSectionItemTitle}>
-                {title}
+                {i18n.t(`FAQ.${[index]}.title`, {locale: localeValue})}
               </Typography>
             </View>
           </View>
@@ -89,7 +92,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({title, content}) => {
               }).disable(['blockquote', 'list', 'code'])}
               //rules={rules}
               style={markdownStyles}>
-              {content}
+              {i18n.t(`FAQ.${[index]}.content`, {locale: localeValue})}
             </Markdown>
           </View>
         </View>

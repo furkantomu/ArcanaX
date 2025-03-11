@@ -3,9 +3,12 @@ import React from 'react';
 import {Button, Typography} from '@/components';
 import {getStyles} from '../styles';
 import { useNumerologyPremiumContext } from '../NumerologyPremiumContext';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const SaveModal = () => {
   const styles = getStyles();
+  const {localeValue} = useAppSelector(state => state.settings);
     const {
       saveData,
       saveName,
@@ -20,17 +23,17 @@ const SaveModal = () => {
         <Typography
           weight="NotoSerifCondensedBoldItalic"
           style={styles.modalTitle}>
-          Kayıt İsmi:
+         {i18n.t('SAVE_MODAL.SAVE_NAME', {locale:localeValue})}
         </Typography>
         <TextInput
           style={styles.input}
           value={saveName}
           onChangeText={(text: string) => setSaveName(text)}
-          placeholder="Metin girin..."
+          placeholder={i18n.t('SAVE_MODAL.ENTER_NAME', {locale:localeValue})}
         />
         <View style={styles.modalButton}>
           <Button
-            text="Onayla"
+            text= {i18n.t('SAVE_MODAL.BUTTON', {locale:localeValue})}
             handlePress={() => {
               saveData();
               setCompleted(true);

@@ -17,6 +17,8 @@ import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
 import {COLORS} from '@/styles/theme';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {Typography} from '@/components';
+import i18n from '@/i18n';
+import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -25,6 +27,7 @@ const markdownStyles = {
 };
 
 const RadicalNumber = () => {
+  const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
@@ -61,7 +64,7 @@ const RadicalNumber = () => {
       }
     };
 
-    if (numerologyDetail.radicalNumber !== 0) {
+    if (numerologyDetail.radicalNumber !== '') {
       getRadicalNumber();
     }
   }, [numerologyDetail.radicalNumber]);
@@ -100,12 +103,11 @@ const RadicalNumber = () => {
                 style={[styles.textContainerIcon, animatedRotateStyle]}
               />
             )}
-
             <Typography
               size="large"
               weight="NotoSerifCondensedBoldItalic"
               style={styles.title}>
-              Kök Sayı
+              {i18n.t('NUMEROLOGY_TYPE.2.LABEL', {locale:localeValue})}
             </Typography>
           </View>
           <View style={styles.imageContainer}>

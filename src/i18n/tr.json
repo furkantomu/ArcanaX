@@ -1,0 +1,346 @@
+{
+  "NAVIGATION_BACK": "Geri",
+  "ONBOARDING": {
+    "ITEM": [
+      {
+        "text": "Gizemli Bir Yolculuğa Hazır Mısınız?",
+        "description": "Kendinizi ve geleceğinizi keşfetmeye başlayın! Tarot, numeroloji ve astrolojinin kadim bilgeliğiyle hayatınıza rehberlik edin."
+      },
+      {
+        "text": "Tarot Kartları: Geleceğiniz Size Fısıldıyor",
+        "description": "Aşk, kariyer, sağlık veya spiritüel rehberlik… Kartlar, sezgilerinizi güçlendirerek size yol gösterecek."
+      },
+      {
+        "text": "Numeroloji: Sayıların Gizemli Mesajları",
+        "description": "Hayat yolunuz, kader sayınız ve ruhsal titreşiminiz… Sayılar size kim olduğunuzu anlatıyor."
+      },
+      {
+        "text": "Size Özel Bir Deneyim",
+        "description": "Kendi doğum bilgilerinizi girerek en doğru öngörülere ulaşın! Geleceğinizi kişiselleştirilmiş analizlerle aydınlatın."
+      },
+      {
+        "text": "Haydi, Yolculuğunuzu Başlatalım!",
+        "description": "Evrensel enerjilere açılın ve keşfetmeye başlayın!"
+      }
+    ],
+    "BUTTON": "Keşfe Başla"
+  },
+  "LOGIN": {
+    "EMAIL": "E-posta",
+    "EMAIL_PLACEHOLDER": "E-posta adresi giriniz",
+    "PASSWORD": "Parola",
+    "PASSWORD_PLACEHOLDER": "Parola Giriniz",
+    "CONFIRM_PASSWORD": "Parolayı Doğrula",
+    "EMAIL_REQUIRED": "Geçersiz E-posta adresi",
+    "REQUIRED": "Zorunlu alan",
+    "INCORRET": "Geçersiz",
+    "FORGOT_PASSWORD": "Parolanızı mı unuttunuz?",
+    "NEW_ACCOUNT": "Yeni Hesap Oluştur",
+    "LOGIN_BUTTON": "Giriş Yap",
+    "REGISTER_BUTTON": "Hesap Oluştur",
+    "FULL_NAME": "Tam Adınız",
+    "FULL_NAME_PLACEHOLDER": "Tam Adınızı giriniz",
+    "SUCCESS_REGISTER": "Başarıyla kayıt olundu. Giriş yapılıyor...",
+    "MONTH": "Ay",
+    "MONTH_PLACEHOLDER": "AA",
+
+    "DAY": "Gün",
+    "DAY_PLACEHOLDER": "GG",
+
+    "YEAR": "Yıl",
+    "YEAR_PLACEHOLDER": "YYYY",
+
+    "GENDER": {
+      "TITLE": "Cinsiyet",
+      "FEMALE": "Kadın",
+      "MALE": "Erkek"
+    },
+    "ERROR": {
+      "LOGIN_ERROR": "E-posta Adresi / Parola Yanlış",
+      "NETWORK_ERROR": "Sunucuya bağlanılamadı. Lütfen tekrar deneyin.",
+      "REGISTER_ERROR": "Bu E-posta adresi zaten kayıtlı",
+      "REGISTER_ERROR_PASSWORD": "Parola uyuşmuyor"
+    }
+  },
+  "HOME_SCREEN": {
+    "ITEM": [
+      {
+        "cardTitle": "Sihirli Kartlar",
+        "cardDescription": "Kartlar, senin sorularına ve içindeki belirsizliklere ışık tutacak; tek yapman gereken, onları açmak ve onların sana anlatmak istediklerine kulak vermek.",
+        "cardButtonText": "Tarot Okuma"
+      },
+      {
+        "cardTitle": "Rakamlar, yolunuzu aydınlatsın.",
+        "cardDescription": "Sayılar, kaderin anahtarlarını saklar. Numeroloji sayesinde bu anahtarları bulabilir, hayatının tüm yönlerinde dengeyi ve uyumu yakalayabilirsin.",
+        "cardButtonText": "Numeroloji"
+      },
+      {
+        "cardTitle": "Rüyalar, bilinçaltının mesajıdır.",
+        "cardDescription": "Rüyalar, bilinçaltının mesajlarıdır. Her sembol, hayatındaki değişimlere ışık tutar. Rüya yorumlarıyla içsel rehberini keşfet, yolunu aydınlat.",
+        "cardButtonText": "Rüya Tabiri"
+      }
+    ],
+    "BUTTON": "Tarot Rehberliği"
+  },
+  "TAROT_DETAIL": {
+    "FIRST": {
+      "TITLE": "Açıklama",
+      "DETAIL_ONE": {
+        "SUB_TITLE": "1. Tarot Kartlarını Tanımak",
+        "DESCRIPTION": "Öncelikle Tarot kartlarının yapısını anlamanız çok önemli. Tarot, genellikle 78 karttan oluşur. Bunlar, Büyük Arkana (22 kart) ve Küçük Arkana (56 kart) olarak iki gruba ayrılır.",
+        "ITEM": {
+          "TITLE": "Büyük Arkana",
+          "DESCRIPTION": "Yaşamın ana temalarına, büyük değişimlere, ruhsal büyümeye ve hayattaki önemli yolculuklara işaret eder. Örneğin, Deli, Aşıklar, Ölüm gibi kartlar."
+        },
+        "ITEM_TWO": {
+          "TITLE": "Küçük Arkana",
+          "DESCRIPTION": "Günlük yaşamda karşılaştığımız durumları, hisleri ve küçük değişimleri anlatır. Bunlar dört takıma ayrılır: Kupa, Kılıç, Tılsım ve Asalar.Her biri farklı bir yaşam alanını simgeler (duygular, düşünceler,maddi durumlar ve eylemler)."
+        }
+      },
+      "DETAIL_TWO": {
+        "SUB_TITLE": "2. Sezgiyi Geliştirmek",
+        "DESCRIPTION": "Tarot'un ana gücü sezgide ve içsel bilgide yatar. Her bir kartın doğrudan anlamına bakmanın ötesine geçmek, semboller ve imgeler üzerinden sezgisel okuma yapmak önemlidir. Bu, kartları ne şekilde gördüğünüzle ilgilidir. Bazı okurlar kartları çok analitik bir şekilde okur, bazıları ise tamamen sezgisel olarak, doğrudan iç seslerini dinleyerek okurlar.",
+        "ITEM": {
+          "TITLE": "Meditasyon yapın",
+          "DESCRIPTION": "sakin bir ortamda oturun ve kartları elinizde tutarak içsel sesinizi dinlemeye çalışın."
+        },
+        "ITEM_TWO": {
+          "TITLE": "Kartları düzenli olarak gözden geçirin",
+          "DESCRIPTION": "her gün birkaç dakika kartları inceleyerek ne hissettiğinizi yazın."
+        }
+      },
+      "DETAIL_THREE": {
+        "SUB_TITLE": "3. Kartların Temel Anlamlarını Öğrenmek",
+        "DESCRIPTION": "Başlangıçta, her kartın geleneksel anlamlarını öğrenmek iyi bir temel oluşturur. Bununla birlikte, zamanla bu anlamlar esnekleşecek ve sizin kişisel sezgilerinize göre şekillenecektir. Kartlar hakkında bilgi edinmek için yukardaki menüden tüm kartları görebilirsiniz. Ayrıca, her kart için özel bir anlam defteri tutmak faydalı olabilir. Her kartın anlamını yorumlarken şu soruları sorabilirsiniz:",
+        "ITEM": {
+          "TITLE": "Bu kart neyi simgeliyor?"
+        },
+        "ITEM_TWO": {
+          "TITLE": "Bunun zamanlaması nedir?"
+        },
+        "ITEM_THREE": {
+          "TITLE": "Bu kart bana hangi duyguyu getiriyor?"
+        },
+        "ITEM_FOUR": {
+          "TITLE": "Kartlar arasında bir desen veya tema var mı?"
+        }
+      }
+    },
+    "SECOND": {
+      "TITLE": "Büyük Arkana"
+    },
+    "THIRD": {
+      "TITLE": "Kupa"
+    },
+    "FOUR": {
+      "TITLE": "Tılsım"
+    },
+    "FIVE": {
+      "TITLE": "Kılıç"
+    },
+    "SIX": {
+      "TITLE": "Asa"
+    },
+    "NUMBER": "Sayı",
+    "ZODIAC": "Burç",
+    "ELEMENT": "Element",
+    "PLANET": "Gezegen"
+  },
+  "TAROT_READ": {
+    "TITLE": "Premium İçeriğe Erişin",
+    "DESCRIPTION": "Tarot kartlarınız, her biri özenle seçilmiş semboller ve derin anlamlarla hazırlandı. Her okuma, sizi içsel yolculuğunuza yönlendirecek, geçmişinizi, bugününüzü ve geleceğinizi aydınlatacak bir rehberlik sunar. Sezgilerinize güvenin ve kartlarınızın size sunduğu mesajlara açık olun. Hayatınızın her anına ışık tutmak için buradayız.",
+    "SUB_TITLE": "Tarot Okuma Rehberi",
+    "AIM": "Amaç",
+    "AREA_OF_USE": "Kullanım Alanı",
+    "FEATURES": "Özellikleri",
+    "ALERT_TITLE": "Servis Kullanılamıyor",
+    "ALERT_DESCRIPTION": "Şu anda bu servise erişilemiyor. Lütfen daha sonra tekrar deneyin."
+
+  },
+  "TAROT_READ_TYPE": {
+    "SINGLE_CARD": "Tek Kart Okuması",
+    "CELTIC_CROSS": "Kelt Haçı",
+    "THREE_CARD": "3 Kart Okuması",
+    "RELATIONSHIP_SPREAD": "İlişki Okumas"
+  },
+  "TAROT_READ_START": {
+    "TITLE": "Bir soru belirleyin ve kartları çekin",
+    "SUB_TITLE": "Kariyerimle ilgili nasıl bir yol izlemeliyim?",
+    "BOTTOM_TITLE": "Seçtiğiniz kartları inceleyin ve mesajlarını keşfedin",
+    "INPUT": "Hangi soruya cevap arıyorsun",
+    "START_INPUT": "Bir soru sor...",
+    "SELECT_BUTTON": "Kartını seçmek için dokun",
+    "CARD_SELECTION": "Kart Seçin",
+    "CARD_SELECTED": "Kart Seçildi",
+    "SELECT_MODAL_TITLE": "Sezgilerine güven, doğru kart seni bekliyor",
+    "SELECT_MODAL_BUTTON": "Kartları Onayla",
+    "SLIDER": "Yana Kaydır",
+    "SPREAD_TITLE": "Seçilen Kartları Açmak İçin Dokun",
+    "SPREAD_BUTTON": "Okumayı Başlat",
+    "SPREAD_QUESTION_COUNT": "Soru Sayısı",
+    "SPREAD_COMPLETED_BUTTON": "Okumayı Bitir"
+  },
+  "SAVE_MODAL": {
+    "SAVE_NAME": "Kayıt İsmi",
+    "BUTTON": "Onayla",
+    "ENTER_NAME": "Kayıt ismi giriniz"
+  },
+  "ALERT": {
+    "TITLE": "Uyarı",
+    "DESCRIPTION": "Bu sayfadan çıkmak istediğine emin misin?",
+    "YES": "Evet",
+    "NO": "Hayır"
+  },
+  "TOAST": {
+    "SUCCESS": "Başarıyla Kaydedildi",
+    "ERROR": "Bir Hata Oluştu"
+  },
+  "NUMEROLOGY_TYPE": [
+    {"LABEL": "Yaşam Yolu Sayısı"},
+    {"LABEL": "İsim Sayısı"},
+    {"LABEL": "Kök Sayı"},
+    {"LABEL": "Kişisel Yıl Sayısı"}
+  ],
+  "NUMEROLOGY_SCREEN": {
+    "TITLE": "Kişilik",
+    "TITLE_TWO": "Özelliklerinizi",
+    "TITLE_THREE": "Keşfedin",
+    "FULL_NAME": "Lütfen Tam Adınızı ve Soyadınızı Giriniz",
+    "DAY": "DD",
+    "MONTH": "AA",
+    "YEAR": "YYYY",
+    "BUTTON_TEXT": "Hesapla",
+    "LOADING": {
+      "CALCULATING": "Calculating...",
+      "CALCULATED": "Calculated"
+    }
+  },
+  "NUMEROLOGY_DETAIL_SCREEN": {
+    "TITLE": "Numeroloji Raporunuz",
+    "DESCRIPTION": "Yaşam yolu numarası, doğum tarihinizden hesaplanan ve hayatınızdaki ana temaları, güçlü yönlerinizi ve zorluklarınızı gösteren bir numeroloji kavramıdır. Bu sayı, doğduğunuz günden itibaren sizi yönlendiren enerjiyi belirler ve yaşamınızdaki genel yönelimleri, kişisel hedefleri ve potansiyeli ortaya çıkarır. Yaşam yolu numarası, kim olduğunuzu ve hayat amacınızı anlamada önemli bir rehberdir.",
+    "BUTTON_TEXT": "Daha fazla ayrıntı ve derinlemesine analiz için premium içeriğimize göz atın!"
+  },
+  "NUMEROLOGY_PREMIUM_SCREEN": {
+    "RULING_PLANET": "Yönetici Gezegen",
+    "CAREER": "Kariyer",
+    "RELATIONSHIPS": "İlişkiler",
+    "SPECIAL_MONTHS": "Özel Aylar",
+    "KARMIC_NUMBER": "Karmik Sayı",
+    "PEAK": {
+      "TITLE": "Zirve Dönemler",
+      "first": "İlk Dönem",
+      "second": "İkinci Dönem",
+      "third": "Üçüncü Dönem",
+      "AGE": "Yaş"
+    },
+    "BUTTON_TEXT": "Kaydet ve Anasayfaya Dön"
+  },
+  "DREAM_SCREEN": {
+    "TITLE": "Rüyalarınızın Anlamını Keşfedin!",
+    "DESCRIPTION": "Rüyalar, bilinçaltımızın derinliklerinden gelen mesajlardır. Yüzyıllardır insanlar, gördükleri rüyaların anlamlarını çözmeye çalışmış ve çeşitli tabirler geliştirmiştir. Rüyalar bazen kişisel duygularımızı, endişelerimizi ya da geleceğe dair ipuçlarını yansıtır. Hangi tür rüyayı görmüş olursanız olun, her birinin bir anlamı vardır. Şimdi rüyanızı yazın ve anlamını öğrenin!",
+    "WARNING": {
+      "TITLE": "Açıklama",
+      "CLUE_TITLE": "Rüya Analizi için İpuçları",
+      "CLUE_DESCRIPTION": "Rüyanızı paylaşırken, daha derin bir analiz yapabilmek için rüyayı gördüğünüz dönemdeki duygusal durumlarınızı ve yaşadığınız olayları da belirtmeniz faydalı olacaktır. Bu, bilinçaltınızdaki mesajları anlamanızı kolaylaştırabilir.",
+      "RULES_TITLE": "Rüya Analizi İşlem Kuralları!",
+      "RULES_DESCRIPTION": "Dikkat: Rüya analizi dışında farklı sorular sormanız durumunda, kullanılan jeton iadesi yapılmayacak ve yeni bir soru hakkı verilmeyecektir. Lütfen yalnızca bu bilgiler ışığında işlem yapın."
+    },
+    "BUTTON_TEXT": "Hemen Başlayın"
+  },
+  "DREAM_PREMIUM_SCREEN": {
+    "TITLE": "Bugün Hangi Rüyayı Gördünüz?",
+    "DESCRIPTION": "Rüyanızın detaylarını yazın",
+    "BUTTON_TEXT": "Gönder",
+    "CONFIRM_BUTTON_TEXT": "Kaydet ve Çık"
+  },
+  "PROFILE_SCREEN": {
+    "TITLE": "Profilim",
+    "OTHER_SETTINGS": "Diğer Ayarlar",
+    "PASSWORD": "Şifre İşlemleri",
+    "TOKEN": "Jeton İşlemleri",
+    "SAVE": "Kayıtlı İşlemler",
+    "FAQ": "SSS / Destek",
+    "EXIT": "Çıkış",
+    "USER_INFO": "Kullanıcı Bilgileri",
+    "USER_UPDATE_SUCCESS": "Kullanıcı bilgileriniz güncellendi.",
+    "BUTTON_TEXT": "Kaydet",
+    "CURRENT_PASSWORD": "Mevcut Şifrenizi Giriniz",
+    "NEW_PASSWORD": "Yeni Şifrenizi Giriniz",
+    "CONFIRM_PASSWORD": "Yeni Şifrenizi Doğrulayınız",
+    "PASSWORD_TITLE": "Şifre İşlemleri"
+  },
+  "BALANCE_SCREEN": {
+    "CURRENT_BALANCE": "Mevcut Bakiye",
+    "ACCOUNT_OPENING": "Hesap Açılış Tarihi",
+    "ADD_TOKEN": "Jeton Yükle",
+    "TRANSACTION": "İşlem Geçmişi",
+    "ADD": "Yükleme",
+    "SPENDING": "Harcama"
+  },
+  "SAVE_HISTORY": {
+    "TAROT_SPREAD": "Tarot Okuma",
+    "NUMEROLOGY": "Numerology Analizi",
+    "DREAM": "Rüya TAbiri",
+    "TRANSACTION_DATE": "İşlem Tarihi"
+  },
+  "FAQ_TITLE": "Sıkça Sorulan Sorular bölümü, uygulamamızı kullanırken merak edebileceğiniz konulara hızlı yanıtlar sunar. Tarot, numeroloji, rüya tabiri ve üyelik işlemleriyle ilgili detayları burada bulabilirsiniz. Daha fazla bilgi için destek ekibimizle iletişime geçebilirsiniz!",
+  "FAQ": [
+    {
+      "title": "1. Uygulama Nasıl Çalışır?",
+      "content": "Uygulamamız, tarot okuma, numeroloji ve burç yorumları sunan bir platformdur. Kullanıcılar jeton satın alarak çeşitli okumalardan faydalanabilir."
+    },
+    {
+      "title": "2. Üyelik Ücretli mi?",
+      "content": "Hayır, uygulamaya kaydolmak tamamen ücretsizdir. Ancak, bazı premium özelliklere erişmek için jeton satın almanız gerekebilir."
+    },
+    {
+      "title": "3. Tarot Okuması Nasıl Çalışır?",
+      "content": "Uygulamamızda tarot okuması yapmak oldukça basittir:\n\n**Okuma Yöntemini Seçin:**\n Kullanıcı, farklı tarot açılım yöntemlerinden birini seçerek okumaya başlar.\n\n**Sorunuzu Belirleyin:**\n Kullanıcı, aklındaki soruyu yazarak tarot okumasını kişiselleştirebilir. Eğer bir soru yazılmazsa, genel bir açılım yapılır.\n\n**Kartları Çekin:**\n Seçilen yönteme göre belirli sayıda kart çekilir.\n\n**Analiz Başlatılır:**\n Seçilen kartlar yorumlanarak detaylı bir analiz sunulur. Kullanıcı, açılımın anlamını inceleyebilir ve yorumları okuyabilir.\n\n**Analiz Sırasında Soru Sorma:**\n Analiz sırasında kullanıcı soru sorabilir, ancak bu sorular açılım sorusuna uygun olmalıdır. Başka konularla ilgili sorular cevaplanmaz ve soru hakkı iade edilmez."
+    },
+    {
+      "title": "4. Numeroloji Analizi Nasıl Çalışır?",
+      "content": "**Tam İsim ve Doğum Tarihini Girin:**\n Numeroloji analizi için tam adınızı ve doğum tarihinizi girmeniz gerekir. Doğru analiz için bilgilerinizi eksiksiz ve hatasız girmeniz önemlidir. Yanlış girilen bilgilerle yapılan analizler için jeton iadesi yapılmaz.\n\n**Analiz Sunulur:**\n Elde edilen sonuçlar doğrultusunda kişiliğiniz, güçlü yönleriniz ve hayat yolunuz hakkında detaylı bir analiz sunulur."
+    },
+    {
+      "title": "5. Rüya Tabiri Nasıl Çalışır?",
+      "content": "**Rüyanızı Detaylı Bir Şekilde Yazın:**\n Rüyanızın doğru şekilde yorumlanabilmesi için detaylı ve açık bir şekilde yazmanız gerekir. Ancak, yalnızca rüyanızla bağlantılı sorular sorabilirsiniz. Rüya tabiri dışında başka konularla ilgili sorular yanıtlanmaz ve jeton iadesi yapılmaz.\n\n**Analiz Sunulur:**\n Rüyanızın taşıdığı olası mesajlar ve bilinçaltınızla ilgili anlamlar detaylı bir şekilde açıklanır."
+    },
+    {
+      "title": "6. Yaptığım işlemleri kaydedebilir miyim?",
+      "content": "Evet! Yaptığınız tarot açılımlarını, numeroloji analizlerini ve rüya tabirlerini kaydedebilirsiniz. Kaydetme işlemi sırasında isteğe bağlı olarak bir kayıt ismi girebilirsiniz. Eğer kayıt ismi girilmezse, işlem analiz tarihi ile kaydedilir. Kayıtlı işlemlerinize **Profilim** menüsündeki **Kayıtlı İşlemler** bölümünden ulaşabilirsiniz."
+    },
+    {
+      "title": "7. Kişisel verilerim güvende mi?",
+      "content": "Evet, girdiğiniz tüm bilgiler gizli tutulur ve yalnızca analizlerinizi gerçekleştirmek için kullanılır. Kişisel verileriniz hiçbir üçüncü tarafla paylaşılmaz."
+    },
+    {
+      "title": "8. Jetonları Nasıl Satın Alabilirim?",
+      "content": "Jetonları uygulama içinden satın alabilirsiniz. Ödeme seçenekleri arasında:\n**✅ Apple In-App Purchase (Uygulama İçi Satın Alma)**\n**✅ Google Play Billing (Google Play Faturalandırma Sistemi)**\n\nSatın alma işlemi tamamlandıktan sonra jetonlar hesabınıza otomatik olarak yüklenir. Farklı yöntemlerle jeton satışı yoktur."
+    },
+    {
+      "title": "9. Hesabımı Nasıl Silebilirim?",
+      "content": "**Hesabınızı aşağıdaki yöntemlerle silebilirsiniz:**\n\n**Uygulama Ayarları:** Profil sekmesinden “Hesabı Sil” butonuna tıklayarak.\n**Destek Ekibi:** Eğer işlemde sorun yaşarsanız, destek ekibi ile iletişime geçerek hesabınızı sildirebilirsiniz."
+    }
+  ],
+  "CONTACT_BUTTON": "İletişime Geç",
+  "NO_HISTORY": "Geçmiş Kayıt Bulunamadı.",
+  "CHANGE_LANGUAGE": "Dili Değiştir",
+  "ADD_BALANCE_SHEET": {
+    "TITLE": "Sezgilerin seni yönlendiriyor… Jetonlarını al, cevapları bul!"
+  },
+
+  "LIFE_PATH_DETAIL": {
+    "1": "Yaşam yolu 1, bağımsızlık, liderlik ve yenilikçi ruh ile şekillenen bir yoldur. 1'ler, kendi yolunu çizen, cesur ve kararlı bireylerdir. Hep bir adım önde olmak, yenilikler yaratmak ve kendi özgürlüklerini kazanmak isterler. Ancak bu güçlü karakter, bazen yalnızlık ve zorlayıcı sorumluluklarla gelir. 1'ler, içsel güçleriyle zorlukların üstesinden gelirken, kendi yolunu açan öncüler olarak dünyada iz bırakır.",
+    "2": "Yaşam yolu 2, denge, işbirliği ve hassasiyet ile yönlendirilir. 2'ler, başkalarıyla uyum içinde olmayı, sempatik ve anlayışlı bir yaklaşım benimsemeyi tercih ederler. Zayıf yönleri, bazen fazla fedakâr olabilmeleri ve kendi ihtiyaçlarını ihmal etmeleri olabilir. Ancak, gerçek güçleri, ihtiyaç duyulduğunda destek olma ve barışı sağlama yeteneklerinde yatar. 2'ler, ilişkilerinde derin bağlar kurarak, dünyayı sevgiyle ve huzurla dönüştürürler.",
+    "3": "Yaşam yolu 3, yaratıcılık, neşe ve kendini ifade etme ile şekillenir. 3'ler, içsel bir enerjiye sahip, özgür ruhlu ve sanatçı kişilerdir. Kendilerini en iyi şekilde ifade edebilecekleri alanlarda parlarken, bazen disiplin eksikliği ve süreklilik sorunları yaşayabilirler. Ancak, en büyük güçleri, pozitif enerjileri ve insanları etkileme yeteneklerinde yatar. 3'ler, etraflarına neşe, ilham ve yaratıcı çözümler sunarak dünyayı güzelleştirirler.",
+    "4": "Yaşam yolu 4, istikrar, disiplin ve düzen ile şekillenir. 4'ler, sağlam temeller üzerine kurulu, çalışkan ve pratik bireylerdir. Zorluklardan korkmazlar ve hayatta başarıya ulaşmak için azimle çalışırlar. Ancak, bazen katı düşünme ve esneklik eksikliği gibi engellerle karşılaşabilirler. Gerçek güçleri, sistemli bir yaklaşım benimsemeleri ve güvenilir bir temel oluşturmalarındadır. 4'ler, hayatı düzenli bir şekilde inşa ederek, dayanıklı ve güvenilir bir yol açarlar.",
+    "5": "Yaşam yolu 5, özgürlük, macera ve değişim ile şekillenir. 5'ler, hayatı keşfetmeye, yeni deneyimler yaşamaya ve sürekli değişimden beslenmeye bayılırlar. Esneklikleri, yenilikçi düşünme ve risk alma yetenekleriyle dikkat çekerler. Ancak, bazen kararsızlık ve sürekli değişim nedeniyle istikrar bulmakta zorlanabilirler. Gerçek güçleri, özgürlüklerine sahip çıkma ve hayatı heyecan verici bir şekilde yaşama arzularındadır. 5'ler, değişimlere ayak uydurarak, hayatı ilginç ve farklı bir şekilde şekillendirirler.",
+    "6": "Yaşam yolu 6, sevgi, sorumluluk ve aile ile şekillenir. 6'lar, başkalarına yardım etmeye ve koruyucu bir rol üstlenmeye bayılırlar. Doğal bir şefkatleri vardır ve sıkça aileleri ya da sevdikleri için fedakarlık yaparlar. Ancak bazen, fazla sorumluluk almak ve kendilerini ihmal etmek gibi sorunlarla karşılaşabilirler. Gerçek güçleri, başkalarına olan derin sevgileri ve dengeli bir yaşam yaratma yeteneklerinde yatar. 6'lar, dünyayı merhametle ve sevgileriyle iyileştirirler.",
+    "7": "Yaşam yolu 7, derin düşünce, ruhsal arayış ve içsel keşif ile şekillenir. 7'ler, hayatı anlamak, bilgelik arayışında olmak ve gizli gerçekleri keşfetmek isteyen derin düşünen bireylerdir. Sıklıkla yalnızlık ve içe dönüklük eğilimleriyle, duygusal bağlardan çok zihinsel ve spiritüel bağlantılara yönelirler. Ancak, bazen dünya ile uyumsuzluk hissi ve şüphecilik yaşayabilirler. Gerçek güçleri, saf bir arayış ve derin sezgileri ile içsel dünyalarında bulurlar. 7'ler, ruhsal ve entelektüel derinlikleriyle dünyayı daha anlamlı kılarlar.",
+    "8": "Yaşam yolu 8, güç, başarı ve maddi dünya ile şekillenir. 8'ler, güçlü bir liderlik yeteneği, iş zekâsı ve kararlılık ile dikkat çekerler. Hayatlarında genellikle büyük hedeflere ulaşma, güçlü pozisyonlar elde etme ve maddi başarı sağlama arzusu vardır. Ancak, bazen kontrol takıntısı, iş ile özel yaşam arasındaki dengenin kaybolması ve duygusal izolasyon gibi zorluklarla karşılaşabilirler. Gerçek güçleri, disiplinli çalışma, zor zamanlarda bile kararlılıkla ilerleme ve dünya üzerinde kalıcı bir etki bırakma yeteneklerinde yatar. 8'ler, sadece kendi gücünü değil, aynı zamanda topluma ve iş dünyasına katkı sağlama konusunda da büyük bir potansiyele sahiptirler.",
+    "9": "Yaşam yolu 9, humanizm, şefkat ve evrensel sevgi ile şekillenir. 9'lar, başkalarına yardım etme, dünyayı iyileştirme ve toplumsal fayda sağlama konusunda derin bir arzuya sahiptirler. Genellikle sanat, maneviyat veya hizmet alanlarında güçlü bir etki bırakırlar. Ancak, zaman zaman duygusal tükenmişlik ve farklılık hissi yaşayabilirler, çünkü sürekli başkalarına verdikleri sevgi ve desteği kendi ihtiyaçlarından önce tutarlar. Gerçek güçleri, evrensel bir bakış açısı ve derin şefkat ile dünyayı daha iyi bir yer yapmak için çabalarıyla ortaya çıkar. 9'lar, merhamet ve fedakârlık ile insanları ve dünyayı dönüştürürler.",
+    "11": "Yaşam yolu 11, spiritüel farkındalık, ilham ve yüksek vizyon ile şekillenir. 11'ler, derin bir içsel sezgiye sahip, yaratıcı ve yükselmiş bir ruhsal potansiyele sahip insanlardır. Kendilerini genellikle büyük bir misyon veya toplumsal amaç için var olduklarına inandırırlar ve başkalarına ilham verme gücüne sahiptirler. Ancak, duygusal dalgalanmalar, yüksek beklentiler ve bazen içsel karışıklık yaşama eğilimleri olabilir. Gerçek güçleri, yüksek bilinç, spiritüel arayış ve güçlü bir rehberlik sunabilme yeteneklerinde yatar. 11'ler, ilham veren liderler olarak, dünya üzerinde önemli bir değişim yaratma potansiyeline sahiptirler.",
+    "22": "Yaşam yolu 22, master builder (usta inşaatçı) olarak bilinir ve büyük vizyon, güçlü liderlik ve somut başarı ile şekillenir. 22'ler, devasa projeleri gerçeğe dönüştürebilme kapasitesine sahip, mükemmeliyetçi ve stratejik bireylerdir. Onlar, küçük ölçekli değil, büyük resimlere odaklanarak dünyada kalıcı etkiler yaratmaya çalışırlar. Ancak bu yolda, aşırı yüklenme, baskı altında tükenmişlik ve zaman zaman kendilerini yalnız hissetme gibi zorluklarla karşılaşabilirler. Gerçek güçleri, güçlü kararlılıkları, disiplinli yaklaşımları ve toplum için devrim yaratma konusundaki azimlerinde yatar. 22'ler, insanlık için anlamlı ve kalıcı projeler inşa ederek, dünyayı dönüştüren liderler olabilirler.",
+    "33": "Yaşam yolu 33, master teacher (usta öğretmen) olarak bilinir ve sevgi, fedakârlık ve toplumsal hizmet ile şekillenir. 33'ler, yüksek bir spiritüel bilgelik ve derin şefkat ile başkalarına rehberlik etme yeteneğine sahiptir. Kendilerini genellikle daha büyük bir amaca adar, başkalarına yardım etmek ve dünyayı daha iyi bir yer haline getirmek için var olduklarına inanırlar. Ancak bu yüksek misyon bazen onları duygusal yükler ve kişisel sıkıntılar ile karşı karşıya bırakabilir. Gerçek güçleri, kendi içsel denge ve huzurlarını bulduğunda, topluma rehberlik etme, sevgiyi yayma ve yükselme potansiyellerinde yatar. 33'ler, sadece duygusal olgunlukları ve güçlü sevgi kapasiteleri ile değil, aynı zamanda insanlık adına yüksek idealler için çalışarak dünyada gerçek bir etki yaratırlar."
+  }
+}

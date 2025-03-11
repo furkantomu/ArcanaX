@@ -1,6 +1,11 @@
 import {apiService} from '@/services/APIService';
 
-import type {BalancePayload, BalanceResponse} from './balanceTypes';
+import type {
+  AddBalancePayload,
+  AddBalanceResponse,
+  BalancePayload,
+  BalanceResponse,
+} from './balanceTypes';
 
 export async function balance(
   credentials: BalancePayload,
@@ -20,5 +25,13 @@ export async function balance(
 
   return {
     balance: data,
+  };
+}
+export async function addBalance(
+  credentials: AddBalancePayload,
+): Promise<AddBalanceResponse> {
+  const response = await apiService.post('token/add-balance', credentials);
+  return {
+    message: response.data.message,
   };
 }

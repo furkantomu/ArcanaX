@@ -17,4 +17,5 @@ export const Icons = {
   hide: require('../../../assets/icon/hide.png'),
   show: require('../../../assets/icon/show.png'),
   plus: require('../../../assets/icon/plus.png'),
+  translate: require('../../../assets/icon/translate.png'),
 };

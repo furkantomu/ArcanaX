@@ -1,7 +1,9 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {balance} from './balanceService';
+import {addBalance, balance} from './balanceService';
 
 import type {
+  AddBalancePayload,
+  AddBalanceResponse,
   ApiErrorResponse,
   BalancePayload,
   BalanceResponse,
@@ -29,5 +31,9 @@ export const balanceActions = {
   getBalance: createAuthThunk<BalanceResponse, BalancePayload>(
     'token/balance',
     balance,
+  ),
+  addBalance: createAuthThunk<AddBalanceResponse, AddBalancePayload>(
+    'token/add-balance',
+    addBalance,
   ),
 };

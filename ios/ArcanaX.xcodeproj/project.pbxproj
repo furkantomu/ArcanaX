@@ -12,6 +12,8 @@
 		0C80B921A6F3F58F76C31292 /* libPods-ArcanaX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-ArcanaX.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		299EC6B10CE04924BEAE4FD6 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB96E65E15B14EAEA2367127 /* NotoSerif-Bold.ttf */; };
+		4428B4A12D7DE72E008E1685 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4428B4A02D7DE72E008E1685 /* StoreKit.framework */; };
+		44BBEEE32D7E717400A5B0F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BBEEE12D7E717400A5B0F7 /* Localizable.strings */; };
 		7441485A90674A1C8818A8F6 /* NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E8B1EC46C44B5DA738CDFC /* NotoSerif-Regular.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -32,6 +34,8 @@
 		19E8B1EC46C44B5DA738CDFC /* NotoSerif-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSerif-Regular.ttf"; path = "../assets/fonts/NotoSerif-Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ArcanaX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcanaX.debug.xcconfig"; path = "Target Support Files/Pods-ArcanaX/Pods-ArcanaX.debug.xcconfig"; sourceTree = "<group>"; };
 		3E56E92B892F4616ADA55F7B /* NotoSerifCondensed-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSerifCondensed-Thin.ttf"; path = "../assets/fonts/NotoSerifCondensed-Thin.ttf"; sourceTree = "<group>"; };
+		4428B4A02D7DE72E008E1685 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		44BBEEE42D7E71A500A5B0F7 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ArcanaX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcanaX.release.xcconfig"; path = "Target Support Files/Pods-ArcanaX/Pods-ArcanaX.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ArcanaX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArcanaX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ArcanaX/AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-ArcanaX.a in Frameworks */,
+				4428B4A12D7DE72E008E1685 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				44BBEEE12D7E717400A5B0F7 /* Localizable.strings */,
 			);
 			name = ArcanaX;
 			sourceTree = "<group>";
@@ -73,6 +79,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4428B4A02D7DE72E008E1685 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-ArcanaX.a */,
 			);
@@ -175,11 +182,12 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ArcanaX" */;
 			compatibilityVersion = "Xcode 12.0";
-			developmentRegion = en;
+			developmentRegion = tr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -205,6 +213,7 @@
 				BBCE0F3EABE04D05A8DE3063 /* NotoSerifCondensed-BoldItalic.ttf in Resources */,
 				0578B7D326004FBCA4A15407 /* NotoSerifCondensed-Italic.ttf in Resources */,
 				0A28CDB788B94C03814C34A1 /* NotoSerifCondensed-LightItalic.ttf in Resources */,
+				44BBEEE32D7E717400A5B0F7 /* Localizable.strings in Resources */,
 				96C54D5545804707B0D4A5AB /* NotoSerifCondensed-Medium.ttf in Resources */,
 				E4AD446E133C4BF1A563FA05 /* NotoSerifCondensed-MediumItalic.ttf in Resources */,
 				EFFBB8BC8CDE4E8FA8926FB7 /* NotoSerifCondensed-Thin.ttf in Resources */,
@@ -299,6 +308,17 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		44BBEEE12D7E717400A5B0F7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44BBEEE42D7E71A500A5B0F7 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -307,7 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYX8L37SJN;
+				DEVELOPMENT_TEAM = 8X53LUQSRV;
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = ArcanaX/Info.plist;
@@ -323,7 +343,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tomu.--PRODUCT-NAME-rfc1034identifier-";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.tomuArcanaX;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.tomu.ArcanaXApp;
 				PRODUCT_NAME = ArcanaX;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -338,7 +358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYX8L37SJN;
+				DEVELOPMENT_TEAM = 8X53LUQSRV;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = ArcanaX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -353,7 +373,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tomu.--PRODUCT-NAME-rfc1034identifier-";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.tomuArcanaX;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.tomu.ArcanaXApp;
 				PRODUCT_NAME = ArcanaX;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

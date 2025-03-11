@@ -7,6 +7,7 @@ import {View, StyleSheet} from 'react-native';
 import {COLORS, SIZES} from 'styles/theme';
 import {IconButton} from '../button/IconButton';
 import Typography from '../Typography/Typography';
+import i18n from '@/i18n';
 
 interface CustomHeaderProps {
   leftIcon?: boolean; // Prop to show left icon
@@ -20,15 +21,15 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
   title,
 }) => {
   const navigation = useNavigation();
-  const {tokenSheetRef} = useRefsContext();
+  const {purchasingSheetRef} = useRefsContext();
   const {balance} = useAppSelector(state => state.balance);
-
+  const {localeValue} = useAppSelector(state => state.settings);
   const openModal = () => {
-    tokenSheetRef.current?.scrollTo(-SIZES.height / 2);
+    purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
 
   // const closeModal = () => {
-  //   tokenSheetRef.current?.scrollTo(0);
+  //   purchasingSheetRef.current?.scrollTo(0);
   // };
 
   return (
@@ -40,7 +41,7 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
           iconName={'left'}
           iconStyle={styles.icon}
           iconSize={25}
-          text={'Geri'}
+          text={i18n.t('NAVIGATION_BACK', {locale: localeValue})}
           buttonStyle={styles.iconContainer}
           variant={'secondary'}
         />

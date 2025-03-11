@@ -75,7 +75,7 @@ const CardDetail = () => {
               resizeMode={'contain'}
             />
             <Text style={styles.cardDetailModalCardRightWrapperItemText}>
-              AY
+              {isSelectedCard?.details?.planet}
             </Text>
           </View>
         </View>

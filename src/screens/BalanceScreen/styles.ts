@@ -85,4 +85,7 @@ export const getStyles = () =>
     infoWrapper: {
       alignItems: 'flex-end',
     },
+    infoWrapperToken: {
+      flexDirection:'row',
+    },
   });
