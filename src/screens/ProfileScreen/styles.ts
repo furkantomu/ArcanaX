@@ -20,6 +20,7 @@ export const getStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: 20,
+
     },
     profileInfoSection: {
       zIndex: 3,
@@ -32,7 +33,7 @@ export const getStyles = () =>
       alignItems: 'center',
       paddingHorizontal: 10,
       paddingVertical: 20,
-      gap: 20,
+      gap: 10,
       borderRadius: 10,
       marginTop: 20,
     },
@@ -49,7 +50,7 @@ export const getStyles = () =>
     settingsMenu: {
       zIndex: 3,
       marginTop: SIZES.height / 4.5,
-      marginHorizontal: 30,
+      marginHorizontal: 20,
       gap: 30,
       backgroundColor: COLORS.darkGray,
       padding: 10,

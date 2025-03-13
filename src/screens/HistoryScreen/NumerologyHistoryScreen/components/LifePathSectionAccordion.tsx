@@ -75,7 +75,7 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
         <View style={styles.lifePathSectionItem}>
           <View style={styles.lifePathSectionItemLeft}>
             <View>
-              <Typography size="large">
+              <Typography size="heading">
                 {i18n.t(`NUMEROLOGY_PREMIUM_SCREEN.PEAK.${title}`, {
                   locale: localeValue,
                 })}

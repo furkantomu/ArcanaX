@@ -1,11 +1,20 @@
 import React, {useCallback} from 'react';
-import {Pressable, Text, StyleSheet, View, StyleProp, TextStyle, ViewStyle, ImageStyle} from 'react-native';
+import {
+  Pressable,
+  Text,
+  StyleSheet,
+  View,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+  ImageStyle,
+} from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import {useHaptic, useScaleAnimation} from '@/utils';
 import Icon from '../Icon';
 import {Icons} from '../Icon/Icons';
-import {COLORS} from '@/styles/theme';
+import {COLORS, FONTS, SIZES} from '@/styles/theme';
 import Typography from '../Typography/Typography';
 
 type ButtonProps = {
@@ -21,14 +30,22 @@ type ButtonProps = {
   buttonStyle?: StyleProp<ViewStyle>;
 };
 
-const getButtonStyles = (isPrimary: boolean, pressed: boolean, buttonStyle?: StyleProp<ViewStyle>) => [
+const getButtonStyles = (
+  isPrimary: boolean,
+  pressed: boolean,
+  buttonStyle?: StyleProp<ViewStyle>,
+) => [
   styles.baseButton,
   isPrimary ? styles.primaryButton : styles.secondaryButton,
   pressed && !isPrimary ? styles.pressedSecondary : null,
   buttonStyle, // Eklenen stil
 ];
 
-const getTextStyles = (isPrimary: boolean, isDestructive: boolean, textStyle?: StyleProp<TextStyle>) => [
+const getTextStyles = (
+  isPrimary: boolean,
+  isDestructive: boolean,
+  textStyle?: StyleProp<TextStyle>,
+) => [
   styles.baseText,
   isPrimary
     ? isDestructive
@@ -76,7 +93,10 @@ export const IconButton = ({
           <Icon name={iconName} size={iconSize} style={[iconStyle]} />
         </View>
         <View style={styles.iconTextContainer}>
-          <Typography style={getTextStyles(isPrimary, isDestructive, textStyle)}>{text}</Typography>
+          <Typography
+            style={getTextStyles(isPrimary, isDestructive, textStyle)}>
+            {text}
+          </Typography>
         </View>
       </Pressable>
     </Animated.View>
@@ -88,9 +108,9 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent:'center',
     borderRadius: 13,
-    paddingLeft: 10,
-    paddingRight: 40,
+    paddingHorizontal: 10,
   },
   primaryButton: {
     backgroundColor: COLORS.cream,
@@ -105,14 +125,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '80%',
   },
   iconContainer: {
-    width: '20%',
+    position: 'absolute',
+    left: 10,
   },
   baseText: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: SIZES.body3,
+    fontWeight: 'bold',
+    fontFamily: FONTS.NotoSerifBold,
     letterSpacing: 0.16,
     lineHeight: 22,
     textAlign: 'center',

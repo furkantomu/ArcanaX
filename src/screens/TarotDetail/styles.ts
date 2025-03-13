@@ -21,7 +21,7 @@ export const getStyles = () =>
       borderRadius: 10,
     },
     collapsibleMenuItemText: {
-      fontSize: 20,
+      fontSize: SIZES.body2,
       fontFamily: FONTS.NotoSerifCondensedBoldItalic,
       color: COLORS.cream,
     },

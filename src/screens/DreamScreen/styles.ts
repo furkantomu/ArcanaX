@@ -5,7 +5,7 @@ export const getStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent:'space-between',
+      justifyContent: 'space-between',
       gap: 40,
     },
     ImageBackground: {
@@ -75,11 +75,28 @@ export const getStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 3,
-      paddingBottom: 5,
 
+      paddingHorizontal: 20,
     },
     footerButton: {
-      marginHorizontal: 20,
+      zIndex: 3,
+      width: SIZES.width - 20,
+      borderBottomLeftRadius:0,
+      borderBottomRightRadius:0,
+    },
+    tokenIcon: {
+      width: 30,
+      height: 30,
+      resizeMode: 'cover',
+    },
+    priceInfo: {
+      backgroundColor: COLORS.darkGray,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderBottomLeftRadius: 20,
+      borderBottomRightRadius: 20,
+      width: SIZES.width - 20,
       zIndex: 3,
     },
   });

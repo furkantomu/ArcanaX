@@ -29,7 +29,11 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    logout: state => {},
+    logout: state => {
+      state.user = null;
+      state.headers = null;
+      state.error = null;
+    },
     resetAuth: state => {
       state.user = null;
       state.headers = null;

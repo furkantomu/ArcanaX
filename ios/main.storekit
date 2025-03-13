@@ -1,0 +1,220 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "4FDCDBF5",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "6743003873",
+      "localizations" : [
+        {
+          "description" : "The power to uncover secrets is here.",
+          "displayName" : "100 Tokens \"Ancient Discovery\"",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Sırları çözmek için gereken güç burada.",
+          "displayName" : "100 Jeton \"Kadim Keşif Paketi\"",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_100",
+      "referenceName" : "arcanaX_app_token_100",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "49.99",
+      "familyShareable" : false,
+      "internalID" : "6743030091",
+      "localizations" : [
+        {
+          "description" : "Sınırsız potansiyeli açığa çıkar!",
+          "displayName" : "1000 Jeton \"Kozmik Güç Paketi\"",
+          "locale" : "tr"
+        },
+        {
+          "description" : "Unleash limitless potential!",
+          "displayName" : "1000 Tokens \"Cosmic Pack\"",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "arcanaX_app_token_1000",
+      "referenceName" : "arcanaX_app_token_1000",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "6743029893",
+      "localizations" : [
+        {
+          "description" : "Endless discovery, unlimited answers!",
+          "displayName" : "200 Tokens \"Eternal Discovery\"",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Sonsuz keşif, sınırsız cevap!",
+          "displayName" : "200 Jeton \"Ebedi Keşif Paketi\"",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_200",
+      "referenceName" : "arcanaX_app_token_200",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "6743027210",
+      "localizations" : [
+        {
+          "description" : "Küçük ama güçlü bir başlangıç.",
+          "displayName" : "25 Jeton \"İlk Adım Paketi\"",
+          "locale" : "tr"
+        },
+        {
+          "description" : "A small but powerful start.",
+          "displayName" : "25 Tokens \"First Step Pack\"",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "arcanaX_app_token_25",
+      "referenceName" : "arcanaX_app_token_25",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "6743190667",
+      "localizations" : [
+        {
+          "description" : "More reveals, more insights!",
+          "displayName" : "50 Tokens \"Discovery Pack\"",
+          "locale" : "en_US"
+        },
+        {
+          "description" : " Daha fazla açılım, daha fazla içgörü!",
+          "displayName" : "50 Jeton \"Keşif Paketi\"",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_50",
+      "referenceName" : "arcanaX_app_token_50",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "6743030004",
+      "localizations" : [
+        {
+          "description" : "Kapıları aç, tüm sırları çöz!",
+          "displayName" : "500 Jeton \"Anahtar Paketi\"",
+          "locale" : "tr"
+        },
+        {
+          "description" : "Open the doors, uncover all secrets!",
+          "displayName" : "500 Tokens \"Key Pack\"",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "arcanaX_app_token_500",
+      "referenceName" : "arcanaX_app_token_500",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "6743003649",
+      "localizations" : [
+        {
+          "description" : "A strong step, more light!",
+          "displayName" : "75 Tokens \"Balance Pack\"",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Güçlü bir adım, daha fazla ışık!",
+          "displayName" : "75 Jeton \"Denge Keşfi Paketi\"",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "arcanaX_app_token_75",
+      "referenceName" : "arcanaX_app_token_75",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6743003256",
+    "_developerTeamID" : "8X53LUQSRV",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 763571807.028139,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

@@ -18,9 +18,9 @@ export {default as ProfilePasswordScreen} from './ProfilePasswordScreen/index';
 export {default as SaveServicesScreen} from './SaveServicesScreen/index';
 export {default as BalanceScreen} from './BalanceScreen/index';
 export {default as FAQScreen} from './FAQScreen/index';
+export {default as AccountSettings} from './AccountSettings/index';
 
 
 export {default as TarotHistoryScreen} from './HistoryScreen/TarotHistoryScreen/index';
 export {default as NumerologyHistoryScreen} from './HistoryScreen/NumerologyHistoryScreen/index';
 export {default as DreamHistoryScreen} from './HistoryScreen/DreamHistoryScreen/index';
-

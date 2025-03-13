@@ -78,12 +78,36 @@ export const getStyles = () =>
       alignItems: 'center',
     },
     descriptionPremiumButtonIcon: {
-      width: 50,
-      height: 50,
+      width: 40,
+      height: 40,
+      zIndex:3,
     },
     descriptionPremiumText: {
       textAlign: 'center',
       paddingHorizontal: 30,
       color: COLORS.cream,
+    },
+    priceButton: {
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+
+    },
+    priceButtonText: {
+      zIndex:2,
+    },
+    tokenIcon: {
+      width: 30,
+      height: 30,
+      resizeMode: 'cover',
+    },
+    priceInfo: {
+      backgroundColor: COLORS.darkGray,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderBottomLeftRadius: 20,
+      borderBottomRightRadius: 20,
+
+      zIndex: 3,
     },
   });

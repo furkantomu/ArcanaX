@@ -155,7 +155,6 @@
     "FEATURES": "Özellikleri",
     "ALERT_TITLE": "Servis Kullanılamıyor",
     "ALERT_DESCRIPTION": "Şu anda bu servise erişilemiyor. Lütfen daha sonra tekrar deneyin."
-
   },
   "TAROT_READ_TYPE": {
     "SINGLE_CARD": "Tek Kart Okuması",
@@ -211,8 +210,8 @@
     "YEAR": "YYYY",
     "BUTTON_TEXT": "Hesapla",
     "LOADING": {
-      "CALCULATING": "Calculating...",
-      "CALCULATED": "Calculated"
+      "CALCULATING": "Hesaplanıyor...",
+      "CALCULATED": "Hesaplandı"
     }
   },
   "NUMEROLOGY_DETAIL_SCREEN": {
@@ -259,6 +258,7 @@
     "PASSWORD": "Şifre İşlemleri",
     "TOKEN": "Jeton İşlemleri",
     "SAVE": "Kayıtlı İşlemler",
+    "ACCOUNT_SETTINGS": "Hesap Ayarları",
     "FAQ": "SSS / Destek",
     "EXIT": "Çıkış",
     "USER_INFO": "Kullanıcı Bilgileri",
@@ -280,7 +280,7 @@
   "SAVE_HISTORY": {
     "TAROT_SPREAD": "Tarot Okuma",
     "NUMEROLOGY": "Numerology Analizi",
-    "DREAM": "Rüya TAbiri",
+    "DREAM": "Rüya Tabiri",
     "TRANSACTION_DATE": "İşlem Tarihi"
   },
   "FAQ_TITLE": "Sıkça Sorulan Sorular bölümü, uygulamamızı kullanırken merak edebileceğiniz konulara hızlı yanıtlar sunar. Tarot, numeroloji, rüya tabiri ve üyelik işlemleriyle ilgili detayları burada bulabilirsiniz. Daha fazla bilgi için destek ekibimizle iletişime geçebilirsiniz!",
@@ -325,9 +325,26 @@
   "CONTACT_BUTTON": "İletişime Geç",
   "NO_HISTORY": "Geçmiş Kayıt Bulunamadı.",
   "CHANGE_LANGUAGE": "Dili Değiştir",
-  "ADD_BALANCE_SHEET": {
-    "TITLE": "Sezgilerin seni yönlendiriyor… Jetonlarını al, cevapları bul!"
+  "ACCOUNT": "Hesap",
+  "ACCOUNT_DELETE": "Hesabı Sil",
+  "ACCOUNT_DELETE_DESCRIPTION": "Hesabınızı kalıcı olarak silmek istediğinize emin misiniz?",
+  "ACCOUNT_DELETE_ALERT": {
+    "CANCEL": "İptal",
+    "ACCEPT": "Evet, Sil"
   },
+
+  "ADD_BALANCE_SHEET": {
+    "TITLE": "Sezgilerin seni yönlendiriyor… Jetonlarını al, cevapları bul!",
+    "ADD": "Hesabınıza başarıyla jeton eklendi."
+  },
+
+  "BALANCE_CONTROL": {
+    "TITLE": "Yetersiz Bakiye",
+    "DESCRIPTION": "Devam etmek için daha fazla jeton satın alın.",
+    "BUY": "Satın Al",
+    "CANCEL": "İptal"
+  },
+  "NOT_CONNECT": "Sunucuya bağlanamadı. Jeton iadesi yapılacaktır.",
 
   "LIFE_PATH_DETAIL": {
     "1": "Yaşam yolu 1, bağımsızlık, liderlik ve yenilikçi ruh ile şekillenen bir yoldur. 1'ler, kendi yolunu çizen, cesur ve kararlı bireylerdir. Hep bir adım önde olmak, yenilikler yaratmak ve kendi özgürlüklerini kazanmak isterler. Ancak bu güçlü karakter, bazen yalnızlık ve zorlayıcı sorumluluklarla gelir. 1'ler, içsel güçleriyle zorlukların üstesinden gelirken, kendi yolunu açan öncüler olarak dünyada iz bırakır.",

@@ -1,6 +1,7 @@
-import {useAppSelector} from '@/hooks';
+import {useAppDispatch, useAppSelector} from '@/hooks';
 import i18n from '@/i18n';
 import {apiService} from '@/services/APIService';
+import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
 import React, {createContext, useContext, ReactNode, useState} from 'react';
@@ -90,6 +91,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const {user} = useAppSelector(state => state.auth);
   const {localeValue} = useAppSelector(state => state.settings);
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const [tarotCards, setTarotCards] = useState<TarotCard[]>([]);
   const [question, setQuestion] = useState('');
   const [readingType, setReadingType] = useState<number>(0);
@@ -170,6 +172,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
         userId: user.id,
         saveName,
       });
+      await dispatch(
+        balanceActions.getBalance({accountId: String(user?.accountId)}),
+      );
       showToast({
         message: i18n.t('TOAST.SUCCESS', {locale: localeValue}),
         type: 'success',
@@ -179,7 +184,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
       }, 300);
     } catch (error) {
       console.log(error);
-      showToast({message: i18n.t('TOAST.ERROR', {locale: localeValue}), type: 'error'});
+      showToast({
+        message: i18n.t('TOAST.ERROR', {locale: localeValue}),
+        type: 'error',
+      });
     } finally {
       setSaveLoading(false);
     }

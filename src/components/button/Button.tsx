@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {Pressable, StyleProp, StyleSheet, TextStyle} from 'react-native';
 import Animated from 'react-native-reanimated';
 import {useHaptic, useScaleAnimation} from '@/utils';
-import { FONTS } from '@/styles/theme';
+import {FONTS, SIZES} from '@/styles/theme';
 
 type ButtonProps = {
   isDestructive?: boolean;
@@ -90,15 +90,15 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   baseText: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: SIZES.body3,
+    fontWeight: 'bold',
     letterSpacing: 0.16,
     lineHeight: 22,
     fontFamily: FONTS.NotoSerifBold,
+    textAlign: 'center',
   },
   primaryText: {
     color: '#FFFFFF', // text-white
-
   },
   primaryDestructiveText: {
     color: '#DC2626', // text-tomato-800
@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
   secondaryText: {
     color: '#111827', // text-gray-950
     fontFamily: FONTS.NotoSerifBold,
-
   },
   secondaryDestructiveText: {
     color: '#9B111E', // text-ruby-800

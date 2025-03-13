@@ -1,6 +1,7 @@
-import {useAppSelector} from '@/hooks';
+import {useAppDispatch, useAppSelector} from '@/hooks';
 import i18n from '@/i18n';
 import {apiService} from '@/services/APIService';
+import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
 import {AxiosResponse} from 'axios';
@@ -93,6 +94,7 @@ interface AppProviderProps {
 
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const {user} = useAppSelector(state => state.auth);
   const {localeValue} = useAppSelector(state => state.settings);
   const [numerologyDetail, setNumerologyDetail] = useState<NumerologyDetail>({
@@ -168,13 +170,16 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
         message: string;
       }> = await apiService.post('numerology/save', values);
       showToast({
-        message: i18n.t('TOAST.SUCCESS', {locale:localeValue}),
+        message: i18n.t('TOAST.SUCCESS', {locale: localeValue}),
         type: 'success',
       });
       navigation.popToTop();
+      await dispatch(
+        balanceActions.getBalance({accountId: String(user?.accountId)}),
+      ).unwrap();
     } catch (error) {
       showToast({
-        message: i18n.t('TOAST.ERROR', {locale:localeValue}),
+        message: i18n.t('TOAST.ERROR', {locale: localeValue}),
         type: 'error',
       });
     } finally {

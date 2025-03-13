@@ -19,7 +19,8 @@ import {COLORS} from '@/styles/theme';
 import {useHaptic, useScaleAnimation} from '@/utils';
 import {useNavigation} from '@react-navigation/native';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppDispatch, useAppSelector} from '@/hooks';
+import {setOnboardingCompleted} from '@/store/settings/settingsSlice';
 
 type Props = {
   dataLength: number;
@@ -30,7 +31,9 @@ type Props = {
 
 function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const {localeValue} = useAppSelector(state => state.settings);
+
   const {width: SCREEN_WIDTH} = useWindowDimensions();
   const haptic = useHaptic('soft');
   const {handlers, animatedStyle} = useScaleAnimation();
@@ -87,6 +90,7 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
       });
     } else {
       navigation.navigate('Login');
+      dispatch(setOnboardingCompleted());
     }
 
     //await AsyncStorage.setItem('onboardingCompleted', 'true');
@@ -103,7 +107,7 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
           animatedStyle,
         ]}>
         <Animated.Text style={[styles.textButton, textAnimationStyle]}>
-          {i18n.t('ONBOARDING.BUTTON', {locale:localeValue})}
+          {i18n.t('ONBOARDING.BUTTON', {locale: localeValue})}
         </Animated.Text>
         <Animated.View style={[styles.iconContainer, arrowAnimationStyle]}>
           <Icon name="rightArrow" size={40} style={styles.arrow} />

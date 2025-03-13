@@ -48,7 +48,6 @@ export const balanceSlice = createSlice({
         state.error = null;
       })
       .addCase(balanceActions.addBalance.fulfilled, (state, action) => {
-        showToast({message: action.payload?.message ?? '', type: 'success'});
         state.uiFlags.isBalanceLoading = false;
         state.error = null;
       })

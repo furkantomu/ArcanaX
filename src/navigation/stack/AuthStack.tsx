@@ -1,12 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {LoginScreen, Onboarding} from '@/screens';
-
+import {useAppSelector} from '@/hooks';
 
 const Stack = createStackNavigator();
 
 export const AuthStack = () => {
-  const isOnboardingCompleted = false;
+  const {isOnboardingCompleted} = useAppSelector(state => state.settings);
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}

@@ -29,6 +29,12 @@ const MENU_ITEM_TOP = [
 
 const MENU_ITEM_BOTTOM = [
   {
+    leftIcon: 'accountSettings',
+    title: 'ACCOUNT_SETTINGS',
+    rightIcon: 'rightChevron',
+    type: 'accountSettings',
+  },
+  {
     leftIcon: 'info',
     title: 'FAQ',
     rightIcon: 'rightChevron',

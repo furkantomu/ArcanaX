@@ -21,6 +21,7 @@ const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
   const haptic = useHaptic('soft');
 
   const handlePress = (buttonType: string) => {
+    console.log(buttonType);
     haptic?.();
     if (buttonType === 'logout') {
       dispatch(logout());
@@ -37,6 +38,9 @@ const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
     if (buttonType === 'info') {
       navigation.navigate('FAQScreen');
     }
+    if (buttonType === 'accountSettings') {
+      navigation.navigate('AccountSettings');
+    }
   };
   return (
     <TouchableOpacity
@@ -50,7 +54,7 @@ const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
         <View
           style={[styles.rightWrapper, {borderTopWidth: index === 0 ? 0 : 1}]}>
           <Typography size="large">
-            {i18n.t(`PROFILE_SCREEN.${title}`, {locale:localeValue})}
+            {i18n.t(`PROFILE_SCREEN.${title}`, {locale: localeValue})}
           </Typography>
           <Icon name={rightIcon} size={20} style={styles.rightIcon} />
         </View>

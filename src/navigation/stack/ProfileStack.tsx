@@ -11,6 +11,7 @@ import {
   BalanceScreen,
   DreamHistoryScreen,
   FAQScreen,
+  AccountSettings,
 } from '@/screens';
 
 export type RouteTypes = {
@@ -80,6 +81,13 @@ export const routes: RouteTypes[] = [
   {
     name: 'FAQScreen',
     component: FAQScreen,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'AccountSettings',
+    component: AccountSettings,
     options: {
       headerShown: false,
     },

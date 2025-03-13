@@ -86,7 +86,7 @@ const Card: React.FC<CardProps> = ({
                 size={'heading'}
                 lineHeightType={'large'}
                 weight={'NotoSerifThin'}>
-                {i18n.t(`HOME_SCREEN.ITEM.${[index]}.cardButtonText`)}
+                {i18n.t(`HOME_SCREEN.ITEM.${[index]}.cardButtonText`, {locale: localeValue})}
               </Typography>
             </View>
           </View>

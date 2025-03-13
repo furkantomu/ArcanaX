@@ -2,12 +2,14 @@ import {useRefsContext} from '@/context';
 import {useAppSelector} from '@/hooks';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Pressable} from 'react-native';
 
 import {COLORS, SIZES} from 'styles/theme';
 import {IconButton} from '../button/IconButton';
 import Typography from '../Typography/Typography';
 import i18n from '@/i18n';
+import Icon from '../Icon';
+import {useHaptic} from '@/utils';
 
 interface CustomHeaderProps {
   leftIcon?: boolean; // Prop to show left icon
@@ -24,6 +26,7 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
   const {purchasingSheetRef} = useRefsContext();
   const {balance} = useAppSelector(state => state.balance);
   const {localeValue} = useAppSelector(state => state.settings);
+  const haptic = useHaptic('soft');
   const openModal = () => {
     purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
@@ -36,15 +39,17 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
     <View style={styles.headerContainer}>
       {/* Left Icon */}
       {leftIcon ? (
-        <IconButton
-          handlePress={() => navigation.goBack()}
-          iconName={'left'}
-          iconStyle={styles.icon}
-          iconSize={25}
-          text={i18n.t('NAVIGATION_BACK', {locale: localeValue})}
-          buttonStyle={styles.iconContainer}
-          variant={'secondary'}
-        />
+        <Pressable
+          style={styles.leftIcon}
+          onPress={() => {
+            haptic?.();
+            navigation.goBack();
+          }}>
+          <Icon name="left" style={styles.icon} />
+          <Typography size="large" style={styles.iconContainer}>
+            {i18n.t('NAVIGATION_BACK', {locale: localeValue})}
+          </Typography>
+        </Pressable>
       ) : (
         <View style={styles.iconContainer} />
       )}
@@ -55,15 +60,17 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
       {/* Right Icons */}
       <View style={styles.rightIconsContainer}>
         {rightIcon ? (
-          <IconButton
-            handlePress={() => openModal()}
-            iconName={'token'}
-            iconStyle={styles.tokenIcon}
-            iconSize={25}
-            text={String(balance?.totalBalance)}
-            buttonStyle={styles.iconContainer}
-            variant={'secondary'}
-          />
+          <View>
+            <Pressable
+              onPress={() => {
+                haptic?.();
+                openModal();
+              }}
+              style={styles.iconContainer}>
+              <Icon name="token" style={styles.tokenIcon} />
+              <Typography size="large">{balance?.totalBalance}</Typography>
+            </Pressable>
+          </View>
         ) : (
           <View style={styles.iconContainer} />
         )}
@@ -88,32 +95,38 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     // Android shadow
     elevation: 0.5,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
   },
   iconContainer: {
-    backgroundColor: 'transparent',
-    width: 80,
+    width: 60,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent:'center',
     borderRadius: 13,
-    paddingLeft: 0,
-    paddingRight: 0,
-    gap: 2,
+
     color: COLORS.cream,
   },
   icon: {
     width: 25,
     height: 25,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     tintColor: COLORS.cream,
   },
   tokenIcon: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     resizeMode: 'cover',
   },
   rightIconsContainer: {
     flexDirection: 'row',
+
+  },
+  leftIcon: {
+     flexDirection: 'row',
+     justifyContent:'center',
+     alignItems:'center',
   },
 });
 

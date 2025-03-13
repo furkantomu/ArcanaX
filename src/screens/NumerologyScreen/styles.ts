@@ -18,7 +18,7 @@ export const getStyles = () =>
       padding: 20,
     },
     headerText: {
-      fontSize: responsiveSize(40),
+      fontSize: responsiveSize(50),
       color: COLORS.cream,
       textAlign: 'left',
 

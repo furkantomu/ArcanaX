@@ -98,7 +98,10 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
                 )}
               </View>
             </View>
-            <Image source={rightArrows} style={styles.rightArrows} />
+            <View style={styles.priceWrapper}>
+              <Icon name="token" size={40} style={{resizeMode: 'cover'}} />
+              <Typography size="heading">{price}</Typography>
+            </View>
           </View>
           <Typography style={styles.cardDescription}>
             <Typography weight="NotoSerifThin" style={styles.descriptionTitle}>
@@ -120,10 +123,6 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
           </Typography>
         </View>
       </Animated.View>
-      <View style={styles.priceWrapper}>
-        <Icon name="token" size={25} style={{resizeMode: 'cover'}} />
-        <Typography size="heading">{price}</Typography>
-      </View>
     </TouchableOpacity>
   );
 };

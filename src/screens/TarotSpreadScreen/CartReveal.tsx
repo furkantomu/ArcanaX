@@ -62,7 +62,6 @@ const CartReveal = ({route}) => {
   const {detailCardSheetRef, saveTarotSheetRef, purchasingSheetRef} =
     useRefsContext();
   const {localeValue} = useAppSelector(state => state.settings);
-  const {balance} = useAppSelector(state => state.balance);
   const {user} = useAppSelector(state => state.auth);
   const haptic = useHaptic('soft');
   const navigation = useNavigation();
@@ -147,6 +146,21 @@ const CartReveal = ({route}) => {
       await dispatch(balanceActions.addBalance(data));
     } catch (err) {
       setError('Bir hata oluştu');
+      setMessages(prevMessages => [
+        ...prevMessages,
+        oldMessage,
+        {
+          role: 'assistant',
+          content: i18n.t('NOT_CONNECT', {locale: localeValue}),
+        },
+      ]);
+      const data = {
+        userId: user.id,
+        accountId: user.accountId,
+        balance: Number(route.params.price),
+        amount: 0,
+      };
+      await dispatch(balanceActions.addBalance(data));
     } finally {
       setLoading(false);
     }
@@ -156,18 +170,29 @@ const CartReveal = ({route}) => {
     detailCardSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
 
-  const handlePress = () => {
-    if (balance.totalBalance < route.params.price) {
+  const handlePress = async () => {
+    const {balance} = await dispatch(
+        balanceActions.getBalance({accountId: String(user?.accountId)}),
+      ).unwrap();
+    if (Number(balance.totalBalance) < Number(route.params.price)) {
       Alert.alert(
-        'Yetersiz Bakiye',
-        'Devam etmek için daha fazla token satın alın.',
+        i18n.t('BALANCE_CONTROL.TITLE', {
+          locale: localeValue,
+        }),
+        i18n.t('BALANCE_CONTROL.DESCRIPTION', {
+          locale: localeValue,
+        }),
         [
           {
-            text: 'İptal',
+            text: i18n.t('BALANCE_CONTROL.CANCEL', {
+              locale: localeValue,
+            }),
             style: 'cancel',
           },
           {
-            text: 'Satın Al',
+            text: i18n.t('BALANCE_CONTROL.BUY', {
+              locale: localeValue,
+            }),
             onPress: () =>
               purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2),
           },

@@ -72,8 +72,7 @@ export const getStyles = () =>
     priceWrapper: {
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'flex-end',
-      marginTop: 20,
+      alignItems: 'center',
     },
     cardTitle: {
       color: COLORS.cream,

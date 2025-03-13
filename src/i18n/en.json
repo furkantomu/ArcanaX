@@ -150,7 +150,7 @@
     "AIM": "Aim",
     "AREA_OF_USE": "Area of Use",
     "FEATURES": "Features",
-     "ALERT_TITLE": "Service Unavailable",
+    "ALERT_TITLE": "Service Unavailable",
     "ALERT_DESCRIPTION": "This service is currently unavailable. Please try again later."
   },
   "TAROT_READ_TYPE": {
@@ -256,6 +256,7 @@
     "PASSWORD": "Password Management",
     "TOKEN": "Token Management",
     "SAVE": "Saved Actions",
+    "ACCOUNT_SETTINGS": "Account Settings",
     "FAQ": "FAQ / Support",
     "EXIT": "Log Out",
     "USER_INFO": "User Information",
@@ -322,9 +323,25 @@
   "CONTACT_BUTTON": "Contact Us",
   "NO_HISTORY": "No History Found.",
   "CHANGE_LANGUAGE": "Change Language",
-  "ADD_BALANCE_SHEET": {
-    "TITLE": "Your intuition guides you... Get your tokens and find the answers!"
+  "ACCOUNT": "Account",
+  "ACCOUNT_DELETE": "Account Delete",
+  "ACCOUNT_DELETE_DESCRIPTION": "Are you sure you want to permanently delete your account?",
+  "ACCOUNT_DELETE_ALERT": {
+    "CANCEL": "Cancel",
+    "ACCEPT": "Yes, Delete"
   },
+  "ADD_BALANCE_SHEET": {
+    "TITLE": "Your intuition guides you... Get your tokens and find the answers!",
+    "ADD": "Jetons have been successfully added to your account."
+  },
+  "BALANCE_CONTROL": {
+    "TITLE": "Insufficient Balance",
+    "DESCRIPTION": "Purchase more tokens to continue.",
+    "BUY": "Buy",
+    "CANCEL": "Cancel"
+  },
+  "NOT_CONNECT": "Could not connect to the server. A token refund will be issued.",
+
   "LIFE_PATH_DETAIL": {
     "1": "Life path 1 is shaped by independence, leadership, and an innovative spirit. Those with this path are bold, determined individuals who carve their own way. They seek to be one step ahead, create innovations, and achieve their own freedom. However, this strong character often comes with solitude and demanding responsibilities. Life path 1s overcome challenges with their inner strength and leave a mark on the world as pioneers who forge their own path.",
     "2": "Life path 2 is guided by balance, cooperation, and sensitivity. Those with this path prefer to be in harmony with others and adopt a sympathetic and understanding approach. Their weakness may lie in being overly self-sacrificing and neglecting their own needs. However, their true strength lies in their ability to offer support when needed and bring about peace. Life path 2s transform the world with love and tranquility by forming deep connections in their relationships.",

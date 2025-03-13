@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from 'styles/theme';
+import {COLORS, SIZES} from 'styles/theme';
 
 export const getStyles = () =>
   StyleSheet.create({
@@ -48,7 +48,7 @@ export const getStyles = () =>
       resizeMode: 'cover',
     },
     addBalanceButtonText: {
-      fontSize: 20,
+      fontSize: SIZES.body2,
       fontWeight: 'bold',
     },
     transactionCard: {

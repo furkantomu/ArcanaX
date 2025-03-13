@@ -14,7 +14,7 @@ import {
   getImageForCardZodiac,
 } from '@/utils/getImageForNumber';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
 
 type TarotCard = {
   id: string;
@@ -74,7 +74,9 @@ const TarotCardDetail = () => {
         <CustomHeader leftIcon={true} title={false} rightIcon={false} />
         <ScrollView>
           <View style={styles.imageContainer}>
-            <Typography size="heading">{localeValue === 'tr' ? card?.name : card?.engName}</Typography>
+            <Typography size="heading">
+              {localeValue === 'tr' ? card?.name : card?.engName}
+            </Typography>
 
             {loading ? (
               <ActivityIndicator size={'large'} style={styles.loading} />
@@ -88,7 +90,7 @@ const TarotCardDetail = () => {
           <View style={styles.imageIconContainer}>
             <View style={styles.iconWrapper}>
               <Typography size="large">
-                {i18n.t('TAROT_DETAIL.NUMBER', {locale:localeValue})}
+                {i18n.t('TAROT_DETAIL.NUMBER', {locale: localeValue})}
               </Typography>
               <Image
                 source={getImageForCardNumber(String(card?.details.number))}
@@ -98,7 +100,7 @@ const TarotCardDetail = () => {
             </View>
             <View style={styles.iconWrapper}>
               <Typography size="large">
-                {i18n.t('TAROT_DETAIL.ZODIAC', {locale:localeValue})}
+                {i18n.t('TAROT_DETAIL.ZODIAC', {locale: localeValue})}
               </Typography>
               <Image
                 source={getImageForCardZodiac(String(card?.details.zodiac))}
@@ -108,7 +110,7 @@ const TarotCardDetail = () => {
             </View>
             <View style={styles.iconWrapper}>
               <Typography size="large">
-                {i18n.t('TAROT_DETAIL.ELEMENT', {locale:localeValue})}
+                {i18n.t('TAROT_DETAIL.ELEMENT', {locale: localeValue})}
               </Typography>
               <Image
                 source={getImageForCardElement(String(card?.details.element))}
@@ -119,14 +121,14 @@ const TarotCardDetail = () => {
             <View style={styles.iconWrapper}>
               <Typography size="large">
                 {' '}
-                {i18n.t('TAROT_DETAIL.PLANET', {locale:localeValue})}
+                {i18n.t('TAROT_DETAIL.PLANET', {locale: localeValue})}
               </Typography>
               <Image source={planet} style={styles.icon} />
               <Typography size="large">{card?.details.planet}</Typography>
             </View>
           </View>
           <View style={styles.descriptionContainer}>
-            <Typography>{card?.details.description}</Typography>
+            <Typography size="medium">{card?.details.description}</Typography>
           </View>
         </ScrollView>
       </SafeAreaView>

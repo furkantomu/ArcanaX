@@ -42,10 +42,10 @@ const rootReducer = (
   state: ReturnType<typeof appReducer>,
   action: AnyAction,
 ) => {
-  if (action.type === 'auth/logout') {
-    const initialState = appReducer(undefined, {type: 'INIT'});
-    return {...initialState};
-  }
+  // if (action.type === 'auth/logout') {
+  //   const initialState = appReducer(undefined, {type: 'INIT'});
+  //   return {...initialState};
+  // }
   return appReducer(state, action);
 };
 

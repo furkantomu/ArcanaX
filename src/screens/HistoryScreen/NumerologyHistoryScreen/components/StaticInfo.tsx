@@ -7,7 +7,7 @@ import {apiService} from '@/services/APIService';
 import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
 import {Typography} from '@/components';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
 
 interface ResponseData {
   id: string;
@@ -96,33 +96,44 @@ const StaticInfo = () => {
         <>
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-             {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RULING_PLANET', {locale:localeValue})}:
+              {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RULING_PLANET', {
+                locale: localeValue,
+              })}
+              :
               <Typography size="heading" style={styles.planetSectionResult}>
                 {' '}
                 {rulingPlanet.planet}
               </Typography>
             </Typography>
 
-            <Typography size="medium">{rulingPlanet.description}</Typography>
+            <Typography size="large">{rulingPlanet.description}</Typography>
           </View>
 
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.CAREER', {locale:localeValue})}
+              {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.CAREER', {
+                locale: localeValue,
+              })}
             </Typography>
-            <Typography>{rulingPlanet.career}</Typography>
+            <Typography size="large">{rulingPlanet.career}</Typography>
           </View>
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RELATIONSHIPS', {locale:localeValue})}
+              {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RELATIONSHIPS', {
+                locale: localeValue,
+              })}
             </Typography>
-            <Typography>{rulingPlanet.relationships}</Typography>
+            <Typography size="large">{rulingPlanet.relationships}</Typography>
           </View>
           <View>
             <Typography size="heading" style={styles.planetSectionTitle}>
-            {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.SPECIAL_MONTHS', {locale:localeValue})}
+              {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.SPECIAL_MONTHS', {
+                locale: localeValue,
+              })}
             </Typography>
-            <Typography>{rulingPlanet.auspiciousMonths}</Typography>
+            <Typography size="large">
+              {rulingPlanet.auspiciousMonths}
+            </Typography>
           </View>
         </>
       )}
@@ -134,7 +145,7 @@ const StaticInfo = () => {
           <Typography size="large" style={styles.karmicNumberLabel}>
             '{karmicNumberDetails.label}'
           </Typography>
-          <Typography>{karmicNumberDetails.description}</Typography>
+          <Typography  size="large">{karmicNumberDetails.description}</Typography>
         </View>
       )}
     </View>

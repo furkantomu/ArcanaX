@@ -13,7 +13,7 @@ export async function balance(
   const response = await apiService.get(
     `token/balance/${credentials.accountId}`,
   );
-
+console.log('res', response);
   const data = {
     id: response?.data.id,
     userId: response.data.userId,

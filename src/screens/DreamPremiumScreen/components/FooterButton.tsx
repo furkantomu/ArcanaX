@@ -7,14 +7,17 @@ import {apiService} from '@/services/APIService';
 import {SIZES} from '@/styles/theme';
 import {useRefsContext} from '@/context';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppDispatch, useAppSelector} from '@/hooks';
+import {balanceActions} from '@/store/balance/balanceActions';
 
 const FooterButton = () => {
   const styles = getStyles();
+  const dispatch = useAppDispatch();
   const {messages, dream, setMessages, setSpreadID, setLoading, loading} =
     useDreamContext();
   const {saveDreamSheetRef} = useRefsContext();
   const {localeValue} = useAppSelector(state => state.settings);
+  const {user} = useAppSelector(state => state.auth);
 
   const handlePress = async (params: string) => {
     if (params === 'completed') {
@@ -35,15 +38,29 @@ const FooterButton = () => {
           oldMessage,
           ...result.data.messages,
         ]);
+        const data = {
+          userId: user.id,
+          accountId: user.accountId,
+          balance: Number(-10),
+          amount: 0,
+        };
+        await dispatch(balanceActions.addBalance(data));
       } catch (error) {
         setMessages(prevMessages => [
           ...prevMessages,
           oldMessage,
           {
             role: 'assistant',
-            content: 'Sunucuya bağlanamadı. Jeton iadesi yapılacaktır.',
+            content: i18n.t('NOT_CONNECT', {locale: localeValue}),
           },
         ]);
+        const data = {
+          userId: user.id,
+          accountId: user.accountId,
+          balance: Number(10),
+          amount: 0,
+        };
+        await dispatch(balanceActions.addBalance(data));
       } finally {
         setLoading(false);
       }
@@ -53,14 +70,18 @@ const FooterButton = () => {
     <View style={styles.footerWrapper}>
       {messages.length > 0 ? (
         <Button
-          text={i18n.t('DREAM_PREMIUM_SCREEN.CONFIRM_BUTTON_TEXT', {locale: localeValue})}
+          text={i18n.t('DREAM_PREMIUM_SCREEN.CONFIRM_BUTTON_TEXT', {
+            locale: localeValue,
+          })}
           variant={'secondary'}
           handlePress={() => handlePress('completed')}
         />
       ) : (
         <Button
           disabled={dream === '' || loading}
-          text={i18n.t('DREAM_PREMIUM_SCREEN.BUTTON_TEXT', {locale: localeValue})}
+          text={i18n.t('DREAM_PREMIUM_SCREEN.BUTTON_TEXT', {
+            locale: localeValue,
+          })}
           variant={'secondary'}
           handlePress={() => handlePress('send')}
         />

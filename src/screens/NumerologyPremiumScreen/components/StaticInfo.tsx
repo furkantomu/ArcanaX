@@ -96,22 +96,22 @@ const StaticInfo = () => {
               </Text>
             </Typography>
 
-            <Typography size="medium">{rulingPlanet.description}</Typography>
+            <Typography size="large">{rulingPlanet.description}</Typography>
           </View>
 
           <View>
             <Typography style={styles.planetSectionTitle}>{i18n.t('NUMEROLOGY_PREMIUM_SCREEN.CAREER', {locale:localeValue})}</Typography>
-            <Typography size="medium">{rulingPlanet.career}</Typography>
+            <Typography size="large">{rulingPlanet.career}</Typography>
           </View>
           <View>
             <Typography style={styles.planetSectionTitle}>{i18n.t('NUMEROLOGY_PREMIUM_SCREEN.RELATIONSHIPS', {locale:localeValue})}</Typography>
-            <Typography size="medium">{rulingPlanet.relationships}</Typography>
+            <Typography size="large">{rulingPlanet.relationships}</Typography>
           </View>
           <View>
             <Typography style={styles.planetSectionTitle}>
             {i18n.t('NUMEROLOGY_PREMIUM_SCREEN.SPECIAL_MONTHS', {locale:localeValue})}
             </Typography>
-            <Typography size="medium">
+            <Typography size="large">
               {rulingPlanet.auspiciousMonths}
             </Typography>
           </View>
@@ -125,7 +125,7 @@ const StaticInfo = () => {
           <Typography style={styles.karmicNumberLabel}>
             '{karmicNumberDetails.label}'
           </Typography>
-          <Typography size="medium" >
+          <Typography size="large" >
             {karmicNumberDetails.description}
           </Typography>
         </View>
