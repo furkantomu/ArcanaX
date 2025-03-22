@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {CustomHeader} from '@/components';
+import { CustomHeader} from '@/components';
 import Slider from './components/Slider';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {getStyles} from './styles';

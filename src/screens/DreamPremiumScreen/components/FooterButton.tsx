@@ -21,7 +21,7 @@ const FooterButton = () => {
 
   const handlePress = async (params: string) => {
     if (params === 'completed') {
-      saveDreamSheetRef.current?.scrollTo(-SIZES.height / 2);
+      saveDreamSheetRef.current?.scrollTo(-SIZES.height / 1.2);
     } else {
       const oldMessage = {
         role: 'user',
@@ -48,19 +48,11 @@ const FooterButton = () => {
       } catch (error) {
         setMessages(prevMessages => [
           ...prevMessages,
-          oldMessage,
           {
             role: 'assistant',
             content: i18n.t('NOT_CONNECT', {locale: localeValue}),
           },
         ]);
-        const data = {
-          userId: user.id,
-          accountId: user.accountId,
-          balance: Number(10),
-          amount: 0,
-        };
-        await dispatch(balanceActions.addBalance(data));
       } finally {
         setLoading(false);
       }

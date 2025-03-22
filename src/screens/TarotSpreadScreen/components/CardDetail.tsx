@@ -28,10 +28,6 @@ const CardDetail = () => {
         </Text>
       </View>
       <View style={styles.cardDetailModalCardWrapper}>
-        {/* <Image
-          source={{uri: isSelectedCard?.frontImageSource}}
-          style={styles.cardDetailModalCard}
-        /> */}
         <View style={styles.cardDetailModalCardRightWrapper}>
           <View style={styles.cardDetailModalCardRightWrapperItem}>
             <Image

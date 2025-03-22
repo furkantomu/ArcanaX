@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import { setup } from 'react-native-iap';
+import {setup} from 'react-native-iap';
 import dayjs from 'dayjs';
 
 import {BottomSheet, ChangeLanguage, Purchasing} from '@/components';
@@ -17,7 +17,6 @@ import {COLORS} from '@/styles/theme';
 import i18n from '@/i18n';
 
 import 'dayjs/locale/tr';
-
 
 setup({storekitMode: 'STOREKIT2_MODE'});
 
@@ -54,14 +53,17 @@ export const AppNavigationContainer = () => {
 };
 
 export const AppNavigator = () => {
+
   return (
-    <GestureHandlerRootView style={styles.navigationLayout}>
-      <RefsProvider>
-        <SafeAreaProvider>
-          <AppNavigationContainer />
-        </SafeAreaProvider>
-      </RefsProvider>
-    </GestureHandlerRootView>
+    <>
+      <GestureHandlerRootView style={styles.navigationLayout}>
+        <RefsProvider>
+          <SafeAreaProvider>
+            <AppNavigationContainer />
+          </SafeAreaProvider>
+        </RefsProvider>
+      </GestureHandlerRootView>
+    </>
   );
 };
 

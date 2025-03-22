@@ -110,7 +110,6 @@ const Tabs = () => {
 
 export const AppTabs = () => {
   const isLoggedIn = useAppSelector(selectLoggedIn);
-
   return isLoggedIn ? (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen

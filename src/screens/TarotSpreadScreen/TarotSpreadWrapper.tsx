@@ -87,7 +87,7 @@ const TarotSpreadWrapper = ({route}: any) => {
     }
   };
   const handleCompleted = () => {
-    saveTarotSheetRef.current?.scrollTo(-SIZES.height / 2);
+    saveTarotSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
   return (
     <>

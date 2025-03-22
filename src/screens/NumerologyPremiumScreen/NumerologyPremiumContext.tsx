@@ -84,6 +84,12 @@ interface AppContextType {
 
   setCompleted: (value: boolean) => void;
   completed: boolean;
+
+  rating: number;
+  setRating: (params: number) => void;
+
+  comment: string;
+  setComment: (comment: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -147,11 +153,15 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const [saveName, setSaveName] = useState('');
   const [saveLoading, setSaveLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [rating, setRating] = useState(null);
+  const [comment, setComment] = useState('');
 
   const saveData = async () => {
     const values = {
       userId: user?.id,
       saveName,
+      rating: rating === null ? -1 : rating,
+      comment,
       numerologyData: {
         name: numerologyDetail.name,
         birthDate: numerologyDetail.birthDate,
@@ -220,6 +230,12 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
     completed,
     setCompleted,
+
+    comment,
+    setComment,
+
+    rating,
+    setRating,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -7,11 +7,12 @@ const Stack = createStackNavigator();
 
 export const AuthStack = () => {
   const {isOnboardingCompleted} = useAppSelector(state => state.settings);
+
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={isOnboardingCompleted ? 'Login' : 'OnboardingScreen'}>
-      {!isOnboardingCompleted && (
+     {!isOnboardingCompleted && (
         <Stack.Screen
           options={{
             headerShown: false,

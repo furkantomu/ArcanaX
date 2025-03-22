@@ -38,7 +38,7 @@ const AccountSettings = () => {
       <LinearGradient colors={[COLORS.black, '#3F2305']} style={{flex: 1}}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <SafeAreaView>
-            <CustomHeader leftIcon={true} title={true} rightIcon={false} />
+            <CustomHeader leftIcon={true} title={false} rightIcon={false} />
             <View style={styles.settingsMenuItem}>
               <List />
               <DeleteAccount />

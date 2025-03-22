@@ -9,7 +9,7 @@
       }
     ]
   },
-  "identifier" : "0F08E741",
+  "identifier" : "26885E0F",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -20,13 +20,13 @@
       "internalID" : "6743003873",
       "localizations" : [
         {
-          "description" : "ArcanaX app 100 Token Pack",
-          "displayName" : "100 Token",
+          "description" : "The power to uncover secrets is here.",
+          "displayName" : "100 Tokens \"Ancient Discovery\"",
           "locale" : "en_US"
         },
         {
-          "description" : "ArcanaX uygulaması 100 Jeton paketi",
-          "displayName" : "100 Jeton",
+          "description" : "Sırları çözmek için gereken güç burada.",
+          "displayName" : "100 Jeton \"Kadim Keşif Paketi\"",
           "locale" : "tr"
         }
       ],
@@ -40,13 +40,13 @@
       "internalID" : "6743030091",
       "localizations" : [
         {
-          "description" : "ArcanaX uygulaması 1000 Jeton paketi",
-          "displayName" : "1000 Jeton",
+          "description" : "Sınırsız potansiyeli açığa çıkar!",
+          "displayName" : "1000 Jeton \"Kozmik Güç Paketi\"",
           "locale" : "tr"
         },
         {
-          "description" : "ArcanaX app 1000 Token Pack",
-          "displayName" : "1000 Token",
+          "description" : "Unleash limitless potential!",
+          "displayName" : "1000 Tokens \"Cosmic Pack\"",
           "locale" : "en_US"
         }
       ],
@@ -60,13 +60,13 @@
       "internalID" : "6743029893",
       "localizations" : [
         {
-          "description" : "ArcanaX app 200 Token Pack",
-          "displayName" : "200 Token",
+          "description" : "Endless discovery, unlimited answers!",
+          "displayName" : "200 Tokens \"Eternal Discovery\"",
           "locale" : "en_US"
         },
         {
-          "description" : "ArcanaX uygulaması 200 Jeton paketi",
-          "displayName" : "200 Jeton",
+          "description" : "Sonsuz keşif, sınırsız cevap!",
+          "displayName" : "200 Jeton \"Ebedi Keşif Paketi\"",
           "locale" : "tr"
         }
       ],
@@ -80,13 +80,13 @@
       "internalID" : "6743027210",
       "localizations" : [
         {
-          "description" : "ArcanaX uygulaması 25 Jeton paketi",
-          "displayName" : "25 Jeton",
+          "description" : "Küçük ama güçlü bir başlangıç.",
+          "displayName" : "25 Jeton \"İlk Adım Paketi\"",
           "locale" : "tr"
         },
         {
-          "description" : "ArcanaX app 25 Token Pack",
-          "displayName" : "25 Token",
+          "description" : "A small but powerful start.",
+          "displayName" : "25 Tokens \"First Step Pack\"",
           "locale" : "en_US"
         }
       ],
@@ -97,20 +97,20 @@
     {
       "displayPrice" : "3.99",
       "familyShareable" : false,
-      "internalID" : "6743003486",
+      "internalID" : "6743190667",
       "localizations" : [
         {
-          "description" : "ArcanaX app 50 Token Pack",
-          "displayName" : "50 Token",
+          "description" : "More reveals, more insights!",
+          "displayName" : "50 Tokens \"Discovery Pack\"",
           "locale" : "en_US"
         },
         {
-          "description" : "ArcanaX uygulaması 50 Jeton paketi",
-          "displayName" : "50 Jeton",
+          "description" : " Daha fazla açılım, daha fazla içgörü!",
+          "displayName" : "50 Jeton \"Keşif Paketi\"",
           "locale" : "tr"
         }
       ],
-      "productID" : "arcanaX_app_token",
+      "productID" : "arcanaX_app_token_50",
       "referenceName" : "arcanaX_app_token_50",
       "type" : "Consumable"
     },
@@ -120,13 +120,13 @@
       "internalID" : "6743030004",
       "localizations" : [
         {
-          "description" : "ArcanaX uygulaması 500 Jeton paketi",
-          "displayName" : "500 Jeton",
+          "description" : "Kapıları aç, tüm sırları çöz!",
+          "displayName" : "500 Jeton \"Anahtar Paketi\"",
           "locale" : "tr"
         },
         {
-          "description" : "ArcanaX app 500 Token Pack",
-          "displayName" : "500 Token",
+          "description" : "Open the doors, uncover all secrets!",
+          "displayName" : "500 Tokens \"Key Pack\"",
           "locale" : "en_US"
         }
       ],
@@ -140,13 +140,13 @@
       "internalID" : "6743003649",
       "localizations" : [
         {
-          "description" : "ArcanaX app 75 Token Pack",
-          "displayName" : "75 Token",
+          "description" : "A strong step, more light!",
+          "displayName" : "75 Tokens \"Balance Pack\"",
           "locale" : "en_US"
         },
         {
-          "description" : "ArcanaX uygulaması 75 Jeton paketi",
-          "displayName" : "75 Jeton",
+          "description" : "Güçlü bir adım, daha fazla ışık!",
+          "displayName" : "75 Jeton \"Denge Keşfi Paketi\"",
           "locale" : "tr"
         }
       ],
@@ -159,23 +159,17 @@
     "_applicationInternalID" : "6743003256",
     "_developerTeamID" : "8X53LUQSRV",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 763251997.77957201,
+    "_lastSynchronizedDate" : 764216921.64698005,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
       {
-        "current" : {
-          "index" : 2,
-          "type" : "generic"
-        },
+        "current" : null,
         "enabled" : false,
         "name" : "Load Products"
       },
       {
-        "current" : {
-          "index" : 1,
-          "type" : "purchase"
-        },
+        "current" : null,
         "enabled" : false,
         "name" : "Purchase"
       },

@@ -14,7 +14,8 @@ import {authActions} from '@/store/auth/authActions';
 import {COLORS, FONTS, SIZES} from '@/styles/theme';
 import {useSelector} from 'react-redux';
 import i18n from '@/i18n';
-import { useRefsContext } from '@/context';
+import {useRefsContext} from '@/context';
+import { setOnboardingCompleted } from '@/store/settings/settingsSlice';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -43,10 +44,12 @@ const Login = () => {
     if ('email' in fieldValues) {
       temp.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(fieldValues.email))
         ? ''
-        : i18n.t('LOGIN.EMAIL_REQUIRED', {locale:localeValue});
+        : i18n.t('LOGIN.EMAIL_REQUIRED', {locale: localeValue});
     }
     if ('password' in fieldValues) {
-      temp.password = fieldValues.password ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+      temp.password = fieldValues.password
+        ? ''
+        : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
     }
 
     setErrors({...temp});
@@ -68,15 +71,18 @@ const Login = () => {
       return;
     }
     const {email, password} = values;
+       dispatch(setOnboardingCompleted());
     dispatch(authActions.login({email, password}));
   };
   return (
     <View style={styles.container}>
       <Form style={styles.form}>
-        <Typography style={styles.label}>{i18n.t('LOGIN.EMAIL', {locale:localeValue})}</Typography>
+        <Typography style={styles.label}>
+          {i18n.t('LOGIN.EMAIL', {locale: localeValue})}
+        </Typography>
         <TextField
           inputName="email"
-          placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', {locale:localeValue})}
+          placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', {locale: localeValue})}
           style={{
             ...styles.textField,
             borderColor: errors.email ? COLORS.red : COLORS.darkGray,
@@ -85,7 +91,9 @@ const Login = () => {
           value={values.email}
           errorMessage={errors.email}
         />
-        <Typography style={styles.label}>{i18n.t('LOGIN.PASSWORD', {locale:localeValue})}</Typography>
+        <Typography style={styles.label}>
+          {i18n.t('LOGIN.PASSWORD', {locale: localeValue})}
+        </Typography>
         <View style={styles.securePassword}>
           <Pressable
             onPress={() => setPasswordVisible(!passwordVisible)}
@@ -97,7 +105,9 @@ const Login = () => {
 
           <TextField
             inputName="password"
-            placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {locale:localeValue})}
+            placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {
+              locale: localeValue,
+            })}
             secureTextEntry={passwordVisible}
             style={{
               ...styles.textField,
@@ -109,9 +119,9 @@ const Login = () => {
           />
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setLoginType('password')}>
           <Typography style={styles.passwordChangeText}>
-            {i18n.t('LOGIN.FORGOT_PASSWORD', {locale:localeValue})}
+            {i18n.t('LOGIN.FORGOT_PASSWORD', {locale: localeValue})}
           </Typography>
         </TouchableOpacity>
       </Form>
@@ -119,12 +129,12 @@ const Login = () => {
         {error && <Typography style={styles.errorMessage}>{error}</Typography>}
         <Button
           disabled={uiFlags.isLoggingIn}
-          text={i18n.t('LOGIN.LOGIN_BUTTON', {locale:localeValue})}
+          text={i18n.t('LOGIN.LOGIN_BUTTON', {locale: localeValue})}
           handlePress={handlePress}
         />
         <TouchableOpacity onPress={() => setLoginType('register')}>
           <Typography style={styles.newAccount}>
-            {i18n.t('LOGIN.NEW_ACCOUNT', {locale:localeValue})}
+            {i18n.t('LOGIN.NEW_ACCOUNT', {locale: localeValue})}
           </Typography>
         </TouchableOpacity>
 
@@ -133,7 +143,7 @@ const Login = () => {
             languageChangeSheetRef.current?.scrollTo(-SIZES.height / 1.2)
           }>
           <Typography style={styles.newAccount}>
-            {i18n.t('CHANGE_LANGUAGE', {locale:localeValue})}
+            {i18n.t('CHANGE_LANGUAGE', {locale: localeValue})}
           </Typography>
         </TouchableOpacity>
       </View>

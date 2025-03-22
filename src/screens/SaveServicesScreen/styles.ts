@@ -15,7 +15,6 @@ export const getStyles = () =>
       paddingVertical: 10,
       paddingHorizontal: 5,
       borderRadius: 10,
-      marginBottom: 20,
     },
     collapsibleMenuItemText: {
       fontSize: SIZES.body2,

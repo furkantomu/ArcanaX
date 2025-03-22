@@ -43,9 +43,6 @@ export const getStyles = () =>
       height: 130,
     },
     title: {
-      fontSize: SIZES.body3,
-      fontWeight: 'bold',
-      color: COLORS.cream,
       textAlign: 'left',
       width: '100%',
       paddingLeft: 20,

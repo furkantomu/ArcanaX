@@ -16,7 +16,7 @@ import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {COLORS} from '@/styles/theme';
 import {Typography} from '@/components';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -41,7 +41,7 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
-    const {localeValue} = useAppSelector(state => state.settings);
+  const {localeValue} = useAppSelector(state => state.settings);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const itemRefs = useRef();
   const rotation = useSharedValue(0);
@@ -79,8 +79,10 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
         <View style={styles.lifePathSectionItem}>
           <View style={styles.lifePathSectionItemLeft}>
             <View>
-              <Typography size="large" weight="NotoSerifCondensedBoldItalic">
-                {i18n.t(`NUMEROLOGY_PREMIUM_SCREEN.PEAK.${title}`, {locale:localeValue})}
+              <Typography size="heading">
+                {i18n.t(`NUMEROLOGY_PREMIUM_SCREEN.PEAK.${title}`, {
+                  locale: localeValue,
+                })}
               </Typography>
               <Typography style={styles.lifePathSectionItemDescription}>
                 {description}

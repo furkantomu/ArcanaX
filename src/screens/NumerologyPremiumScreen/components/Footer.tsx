@@ -18,7 +18,7 @@ const Footer = () => {
   const {completed} = useNumerologyPremiumContext();
 
   const handlePress = () => {
-    saveNumerologySheetRef.current?.scrollTo(-SIZES.height / 2);
+    saveNumerologySheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Footer = () => {
             {
               text:  i18n.t('ALERT.YES', {locale:localeValue}),
               onPress: () => {
-                saveNumerologySheetRef.current?.scrollTo(-SIZES.height / 2);
+                saveNumerologySheetRef.current?.scrollTo(-SIZES.height / 1.2);
               },
             },
           ],

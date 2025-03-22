@@ -70,6 +70,8 @@ export const authSlice = createSlice({
       .addCase(authActions.register.rejected, (state, action) => {
         state.uiFlags.isLoggingIn = false;
         state.error = action.payload?.errors ?? null;
+        showToast({message: String(action.payload?.errors), type:'error' });
+
       })
       .addCase(authActions.user.pending, state => {
         state.uiFlags.isLoggingIn = true;

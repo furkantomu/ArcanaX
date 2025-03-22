@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent:'center',
     borderRadius: 13,
-
     color: COLORS.cream,
   },
   icon: {

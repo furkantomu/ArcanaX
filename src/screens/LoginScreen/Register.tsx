@@ -19,6 +19,7 @@ import {useAppDispatch, useAppSelector} from '@/hooks';
 import {authActions} from '@/store/auth/authActions';
 import {useSelector} from 'react-redux';
 import i18n from '@/i18n';
+import {setOnboardingCompleted} from '@/store/settings/settingsSlice';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -61,58 +62,66 @@ const Register = () => {
     if ('email' in fieldValues) {
       temp.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(fieldValues.email))
         ? ''
-        : i18n.t('LOGIN.EMAIL_REQUIRED', {locale:localeValue});
+        : i18n.t('LOGIN.EMAIL_REQUIRED', {locale: localeValue});
     }
     if ('fullName' in fieldValues) {
-      temp.fullName = fieldValues.fullName ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+      temp.fullName = fieldValues.fullName
+        ? ''
+        : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
     }
     if ('gender' in fieldValues) {
-      temp.gender = fieldValues.gender ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+      temp.gender = fieldValues.gender
+        ? ''
+        : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
     }
     if ('day' in fieldValues) {
       if (!fieldValues.day) {
-        temp.day = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+        temp.day = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
       } else {
         const dayValue = parseInt(fieldValues.day, 10);
         if (dayValue >= 1 && dayValue <= 31) {
           temp.day = '';
         } else {
-          temp.day = i18n.t('LOGIN.INCORRET', {locale:localeValue});
+          temp.day = i18n.t('LOGIN.INCORRET', {locale: localeValue});
         }
       }
     }
     if ('month' in fieldValues) {
       if (!fieldValues.month) {
-        temp.month = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+        temp.month = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
       } else {
         const monthValue = parseInt(fieldValues.month, 10);
         if (monthValue >= 1 && monthValue <= 12) {
           temp.month = '';
         } else {
-          temp.month =  i18n.t('LOGIN.INCORRET', {locale:localeValue});
+          temp.month = i18n.t('LOGIN.INCORRET', {locale: localeValue});
         }
       }
     }
     if ('year' in fieldValues) {
       if (!fieldValues.year) {
-        temp.year = i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+        temp.year = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
       } else {
         const yearValue = parseInt(fieldValues.year, 10);
         if (yearValue >= 1940 && yearValue <= new Date().getFullYear()) {
           temp.year = '';
         } else {
-          temp.year = i18n.t('LOGIN.INCORRET', {locale:localeValue});
+          temp.year = i18n.t('LOGIN.INCORRET', {locale: localeValue});
         }
       }
     }
     if ('password' in fieldValues) {
-      temp.password = fieldValues.password ? '' : i18n.t('LOGIN.REQUIRED', {locale:localeValue});
+      temp.password = fieldValues.password
+        ? ''
+        : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
     }
     if ('confirmPassword' in fieldValues) {
       temp.confirmPassword =
         fieldValues.password === fieldValues.confirmPassword
           ? ''
-          : i18n.t('LOGIN.ERROR.REGISTER_ERROR_PASSWORD', {locale:localeValue});
+          : i18n.t('LOGIN.ERROR.REGISTER_ERROR_PASSWORD', {
+              locale: localeValue,
+            });
     }
 
     setErrors({
@@ -142,6 +151,7 @@ const Register = () => {
       password: values.password,
       gender: values.gender,
     };
+    dispatch(setOnboardingCompleted());
     dispatch(authActions.register(data));
   };
   const handleGenderSelection = (gender: string) => {
@@ -153,10 +163,14 @@ const Register = () => {
       <ScrollView ref={scrollViewRef} showsVerticalScrollIndicator={false}>
         <>
           <Form style={styles.form}>
-            <Typography style={styles.label}>{i18n.t('LOGIN.FULL_NAME', {locale:localeValue})}</Typography>
+            <Typography style={styles.label}>
+              {i18n.t('LOGIN.FULL_NAME', {locale: localeValue})}
+            </Typography>
             <TextField
               inputName="fullName"
-              placeholder={i18n.t('LOGIN.FULL_NAME_PLACEHOLDER', {locale:localeValue})}
+              placeholder={i18n.t('LOGIN.FULL_NAME_PLACEHOLDER', {
+                locale: localeValue,
+              })}
               style={{
                 ...styles.textField,
                 borderColor: errors.fullName ? COLORS.red : COLORS.darkGray,
@@ -165,10 +179,14 @@ const Register = () => {
               value={values.fullName}
               errorMessage={errors.fullName}
             />
-            <Typography style={styles.label}>{i18n.t('LOGIN.EMAIL', {locale:localeValue})}</Typography>
+            <Typography style={styles.label}>
+              {i18n.t('LOGIN.EMAIL', {locale: localeValue})}
+            </Typography>
             <TextField
               inputName="email"
-              placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', {locale:localeValue})}
+              placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', {
+                locale: localeValue,
+              })}
               style={{
                 ...styles.textField,
                 borderColor: errors.email ? COLORS.red : COLORS.darkGray,
@@ -179,10 +197,14 @@ const Register = () => {
             />
             <View style={styles.dateContainer}>
               <View>
-                <Typography style={styles.label}>{i18n.t('LOGIN.DAY', {locale:localeValue})}</Typography>
+                <Typography style={styles.label}>
+                  {i18n.t('LOGIN.DAY', {locale: localeValue})}
+                </Typography>
                 <TextField
                   inputName="day"
-                  placeholder={i18n.t('LOGIN.DAY_PLACEHOLDER', {locale:localeValue})}
+                  placeholder={i18n.t('LOGIN.DAY_PLACEHOLDER', {
+                    locale: localeValue,
+                  })}
                   style={{
                     ...styles.textField,
                     ...styles.day,
@@ -196,10 +218,14 @@ const Register = () => {
                 />
               </View>
               <View>
-                <Typography style={styles.label}>{i18n.t('LOGIN.MONTH', {locale:localeValue})}</Typography>
+                <Typography style={styles.label}>
+                  {i18n.t('LOGIN.MONTH', {locale: localeValue})}
+                </Typography>
                 <TextField
                   inputName="month"
-                  placeholder={i18n.t('LOGIN.MONTH_PLACEHOLDER', {locale:localeValue})}
+                  placeholder={i18n.t('LOGIN.MONTH_PLACEHOLDER', {
+                    locale: localeValue,
+                  })}
                   style={{
                     ...styles.textField,
                     ...styles.month,
@@ -213,10 +239,14 @@ const Register = () => {
                 />
               </View>
               <View>
-                <Typography style={styles.label}>{i18n.t('LOGIN.YEAR', {locale:localeValue})}</Typography>
+                <Typography style={styles.label}>
+                  {i18n.t('LOGIN.YEAR', {locale: localeValue})}
+                </Typography>
                 <TextField
                   inputName="year"
-                  placeholder={i18n.t('LOGIN.YEAR_PLACEHOLDER', {locale:localeValue})}
+                  placeholder={i18n.t('LOGIN.YEAR_PLACEHOLDER', {
+                    locale: localeValue,
+                  })}
                   style={{
                     ...styles.textField,
                     ...styles.year,
@@ -230,7 +260,9 @@ const Register = () => {
                 />
               </View>
             </View>
-            <Typography style={styles.label}>{i18n.t('LOGIN.GENDER.TITLE', {locale:localeValue})}</Typography>
+            <Typography style={styles.label}>
+              {i18n.t('LOGIN.GENDER.TITLE', {locale: localeValue})}
+            </Typography>
             <View
               style={[
                 styles.genderButtonWrapper,
@@ -242,17 +274,19 @@ const Register = () => {
               <Button
                 variant={values.gender === 'male' ? 'primary' : 'secondary'}
                 buttonStyle={[styles.genderButton, styles.genderButtonLeft]}
-                text={i18n.t('LOGIN.GENDER.MALE', {locale:localeValue})}
+                text={i18n.t('LOGIN.GENDER.MALE', {locale: localeValue})}
                 handlePress={() => handleGenderSelection('male')}
               />
               <Button
                 variant={values.gender === 'female' ? 'primary' : 'secondary'}
                 buttonStyle={[styles.genderButton, styles.genderButtonRight]}
-                text={i18n.t('LOGIN.GENDER.FEMALE', {locale:localeValue})}
+                text={i18n.t('LOGIN.GENDER.FEMALE', {locale: localeValue})}
                 handlePress={() => handleGenderSelection('female')}
               />
             </View>
-            <Typography style={styles.label}>{i18n.t('LOGIN.PASSWORD', {locale:localeValue})}</Typography>
+            <Typography style={styles.label}>
+              {i18n.t('LOGIN.PASSWORD', {locale: localeValue})}
+            </Typography>
             <View style={styles.securePassword}>
               <Pressable
                 onPress={() =>
@@ -270,7 +304,9 @@ const Register = () => {
               </Pressable>
               <TextField
                 inputName="password"
-                placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {locale:localeValue})}
+                placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {
+                  locale: localeValue,
+                })}
                 style={{
                   ...styles.textField,
                   borderColor: errors.year ? COLORS.red : COLORS.darkGray,
@@ -285,7 +321,9 @@ const Register = () => {
               />
             </View>
 
-            <Typography style={styles.label}>{i18n.t('LOGIN.CONFIRM_PASSWORD', {locale:localeValue})}</Typography>
+            <Typography style={styles.label}>
+              {i18n.t('LOGIN.CONFIRM_PASSWORD', {locale: localeValue})}
+            </Typography>
             <View style={styles.securePassword}>
               <Pressable
                 onPress={() =>
@@ -305,7 +343,9 @@ const Register = () => {
               </Pressable>
               <TextField
                 inputName="confirmPassword"
-                placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {locale:localeValue})}
+                placeholder={i18n.t('LOGIN.PASSWORD_PLACEHOLDER', {
+                  locale: localeValue,
+                })}
                 style={{
                   ...styles.textField,
                   borderColor: errors.year ? COLORS.red : COLORS.darkGray,
@@ -325,10 +365,12 @@ const Register = () => {
             <Button
               disabled={uiFlags.isLoggingIn}
               handlePress={handlePress}
-              text={i18n.t('LOGIN.REGISTER_BUTTON', {locale:localeValue})}
+              text={i18n.t('LOGIN.REGISTER_BUTTON', {locale: localeValue})}
             />
             <TouchableOpacity onPress={() => setLoginType('login')}>
-              <Typography style={styles.newAccount}>{i18n.t('LOGIN.LOGIN_BUTTON', {locale:localeValue})}</Typography>
+              <Typography style={styles.newAccount}>
+                {i18n.t('LOGIN.LOGIN_BUTTON', {locale: localeValue})}
+              </Typography>
             </TouchableOpacity>
           </View>
         </>

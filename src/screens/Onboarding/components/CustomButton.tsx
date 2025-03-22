@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ActivityIndicator,
   FlatList,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -21,6 +22,9 @@ import {useNavigation} from '@react-navigation/native';
 import i18n from '@/i18n';
 import {useAppDispatch, useAppSelector} from '@/hooks';
 import {setOnboardingCompleted} from '@/store/settings/settingsSlice';
+import {useOnboardingContext} from '../OnboardingContext';
+import {authActions} from '@/store/auth/authActions';
+import {useSelector} from 'react-redux';
 
 type Props = {
   dataLength: number;
@@ -33,6 +37,10 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const {localeValue} = useAppSelector(state => state.settings);
+  const {uiFlags} = useSelector((state: any) => state.auth);
+
+  const {isScrollEnabled, contextErrors, fullName, email, birthdate, password} =
+    useOnboardingContext();
 
   const {width: SCREEN_WIDTH} = useWindowDimensions();
   const haptic = useHaptic('soft');
@@ -82,23 +90,35 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
       backgroundColor,
     };
   });
+console.log('isScrollEnabled', isScrollEnabled);
+console.log('contextErrors', contextErrors);
 
   const handlePress = async () => {
+    if (!isScrollEnabled) return;
+    if (contextErrors) return;
+
     if (flatListIndex.value < dataLength - 1) {
       flatListRef.current?.scrollToIndex({
         index: flatListIndex.value + 1,
       });
     } else {
-      navigation.navigate('Login');
+      const data = {
+        name: fullName,
+        email: email,
+        birthDate: `${birthdate.day}-${birthdate.month}-${birthdate.year}`,
+        password: password,
+        gender: birthdate.gender,
+      };
+      const response = await dispatch(authActions.register(data)).unwrap();
+      if(response.status === 409){
+        return;
+      }
       dispatch(setOnboardingCompleted());
     }
-
-    //await AsyncStorage.setItem('onboardingCompleted', 'true');
     haptic?.();
   };
-
   return (
-    <TouchableWithoutFeedback onPress={handlePress} {...handlers}>
+    <TouchableWithoutFeedback onPress={handlePress} {...handlers} disabled={uiFlags.isLoggingIn}>
       <Animated.View
         style={[
           styles.container,
@@ -107,7 +127,11 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
           animatedStyle,
         ]}>
         <Animated.Text style={[styles.textButton, textAnimationStyle]}>
-          {i18n.t('ONBOARDING.BUTTON', {locale: localeValue})}
+          {uiFlags.isLoggingIn ? (
+            <ActivityIndicator color={COLORS.cream}/>
+          ) : (
+            i18n.t('ONBOARDING.BUTTON', {locale: localeValue})
+          )}
         </Animated.Text>
         <Animated.View style={[styles.iconContainer, arrowAnimationStyle]}>
           <Icon name="rightArrow" size={40} style={styles.arrow} />

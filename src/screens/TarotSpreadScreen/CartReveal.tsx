@@ -52,7 +52,7 @@ const CartReveal = ({route}) => {
     readingType,
     setSpreadID,
     fetchTarotCard,
-    setModalVisible,
+    setReadingCompleted,
   } = useTarotContext();
   const styles = getStyles();
   const scrollX = useSharedValue(0);
@@ -107,7 +107,7 @@ const CartReveal = ({route}) => {
             {
               text: i18n.t('ALERT.YES', {locale: localeValue}),
               onPress: () => {
-                saveTarotSheetRef.current?.scrollTo(-SIZES.height / 2);
+                saveTarotSheetRef.current?.scrollTo(-SIZES.height / 1.2);
               },
             }, // Çıkışı onaylarsa devam eder
           ],
@@ -146,21 +146,14 @@ const CartReveal = ({route}) => {
       await dispatch(balanceActions.addBalance(data));
     } catch (err) {
       setError('Bir hata oluştu');
+      setReadingCompleted(true);
       setMessages(prevMessages => [
         ...prevMessages,
-        oldMessage,
         {
           role: 'assistant',
           content: i18n.t('NOT_CONNECT', {locale: localeValue}),
         },
       ]);
-      const data = {
-        userId: user.id,
-        accountId: user.accountId,
-        balance: Number(route.params.price),
-        amount: 0,
-      };
-      await dispatch(balanceActions.addBalance(data));
     } finally {
       setLoading(false);
     }
@@ -172,8 +165,8 @@ const CartReveal = ({route}) => {
 
   const handlePress = async () => {
     const {balance} = await dispatch(
-        balanceActions.getBalance({accountId: String(user?.accountId)}),
-      ).unwrap();
+      balanceActions.getBalance({accountId: String(user?.accountId)}),
+    ).unwrap();
     if (Number(balance.totalBalance) < Number(route.params.price)) {
       Alert.alert(
         i18n.t('BALANCE_CONTROL.TITLE', {
@@ -231,11 +224,9 @@ const CartReveal = ({route}) => {
       />
       <SafeAreaView style={{zIndex: 2}}>
         <View style={styles.cardRevealHeader}>
-          <Pressable onPress={() => setModalVisible(true)}>
-            <Text style={styles.cardRevealHeaderText}>
-              {i18n.t('TAROT_READ_START.SPREAD_TITLE', {locale: localeValue})}
-            </Text>
-          </Pressable>
+          <Text style={styles.cardRevealHeaderText}>
+            {i18n.t('TAROT_READ_START.SPREAD_TITLE', {locale: localeValue})}
+          </Text>
         </View>
         <Animated.FlatList
           data={selectedCards}

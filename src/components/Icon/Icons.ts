@@ -19,4 +19,6 @@ export const Icons = {
   plus: require('../../../assets/icon/plus.png'),
   translate: require('../../../assets/icon/translate.png'),
   accountSettings: require('../../../assets/icon/accountSettings.png'),
+  advert: require('../../../assets/icon/adsens.png'),
+
 };

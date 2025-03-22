@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  useWindowDimensions,
-  Image,
-  Pressable,
-} from 'react-native';
+import {StyleSheet, View, useWindowDimensions, Image} from 'react-native';
 import Animated, {
   Extrapolation,
   SharedValue,
@@ -13,12 +7,16 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
-import {IconButton, Typography} from '@/components';
+import { IconButton, Typography} from '@/components';
 import i18n from '@/i18n';
 
 import {OnboardingData} from '../data';
 import {COLORS} from '@/styles/theme';
 import {useAppSelector} from '@/hooks';
+import FullName from './FullName';
+import Birthdate from './Birthdate';
+import Email from './Email';
+import Password from './Password';
 
 type Props = {
   index: number;
@@ -106,25 +104,40 @@ function RenderItem({index, x, item, openSheet}: Props) {
         />
       </View>
 
-      <View style={styles.content}>
+      <View
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          ...styles.content,
+          backgroundColor:
+            item.id === 1
+              ? '#ad6f8aee'
+              : item.id === 2
+              ? '#f5f5dcc9'
+              : item.id === 3
+              ? '#c0c0c0cd'
+              : '#c0c0c0cd',
+        }}>
         <Typography
           style={{...styles.itemText, color: item.textColor}}
           size={'title'}
           weight={'NotoSerifCondensedBoldItalic'}>
           {i18n.t(`ONBOARDING.ITEM.${index}.text`, {locale: localeValue})}
         </Typography>
-
         <Animated.View
           style={[styles.descriptionContainer, lottieAnimationStyle]}>
           <Typography
             weight={'regular'}
-            size={'medium'}
+            size={'large'}
             style={{...styles.itemDescription, color: item.textColor}}>
             {i18n.t(`ONBOARDING.ITEM.${index}.description`, {
               locale: localeValue,
             })}
           </Typography>
         </Animated.View>
+        {item.type === 'email' && <Email />}
+        {item.type === 'fullName' && <FullName />}
+        {item.type === 'birthdate' && <Birthdate />}
+        {item.type === 'password' && <Password />}
       </View>
     </View>
   );
@@ -132,7 +145,6 @@ function RenderItem({index, x, item, openSheet}: Props) {
 
 export default RenderItem;
 
-const newLocal = 'red';
 const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
@@ -142,19 +154,19 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
-    zIndex: 0,
+    zIndex: -1,
   },
   linearGradient: {
     width: '100%',
     height: '100%',
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 0,
   },
   logoContainer: {
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
-    zIndex: 2,
+    zIndex: 3,
     position: 'absolute',
     flexDirection: 'row',
     top: 65,
@@ -167,23 +179,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     right: 10,
     width: 50,
+    zIndex: 99,
   },
   translateButtonIcon: {
     tintColor: COLORS.cream,
   },
   content: {
     gap: 30,
+    paddingVertical: 10,
+    justifyContent: 'center',
   },
   itemText: {
     textAlign: 'left',
     marginHorizontal: 20,
-    zIndex: 2,
   },
   descriptionContainer: {
-    zIndex: 2,
     marginHorizontal: 20,
-    backgroundColor: COLORS.blackOpacity1,
-    paddingHorizontal: 10,
     paddingVertical: 20,
     borderRadius: 20,
   },

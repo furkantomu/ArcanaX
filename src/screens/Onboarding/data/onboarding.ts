@@ -8,6 +8,7 @@ export interface OnboardingData {
   textColor: string;
   description: string;
   backgroundColor: string;
+  type?: string;
 }
 
 const data: OnboardingData[] = [
@@ -26,8 +27,9 @@ const data: OnboardingData[] = [
     text: 'Tarot Kartları: Geleceğiniz Size Fısıldıyor',
     description:
       'Aşk, kariyer, sağlık veya spiritüel rehberlik… Kartlar, sezgilerinizi güçlendirerek size yol gösterecek.',
-    textColor: COLORS.cream,
+    textColor: COLORS.darkBlue,
     backgroundColor: '#e586af76',
+    type: 'email',
   },
   {
     id: 3,
@@ -35,8 +37,9 @@ const data: OnboardingData[] = [
     text: 'Numeroloji: Sayıların Gizemli Mesajları',
     description:
       'Hayat yolunuz, kader sayınız ve ruhsal titreşiminiz… Sayılar size kim olduğunuzu anlatıyor.',
-    textColor: COLORS.cream,
+    textColor: COLORS.darkBlue,
     backgroundColor: '#f5f5dc86',
+    type: 'fullName',
   },
   {
     id: 4,
@@ -44,16 +47,18 @@ const data: OnboardingData[] = [
     text: 'Size Özel Bir Deneyim',
     description:
       'Kendi doğum bilgilerinizi girerek en doğru öngörülere ulaşın! Geleceğinizi kişiselleştirilmiş analizlerle aydınlatın.',
-    textColor: COLORS.cream,
+    textColor: COLORS.darkBlue,
     backgroundColor: '#c0c0c09f',
+    type: 'birthdate',
   },
   {
     id: 5,
     image: require('../../../../assets/onboarding/onboarding4.webp'),
     text: 'Haydi, Yolculuğunuzu Başlatalım!',
     description: 'Evrensel enerjilere açılın ve keşfetmeye başlayın!',
-    textColor: COLORS.cream,
+    textColor: COLORS.darkBlue,
     backgroundColor: '#c0c0c09f',
+    type: 'password',
   },
 ];
 

@@ -5,6 +5,7 @@ import {getStyles} from '../style';
 import {useTarotContext} from '../TarotContext';
 import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
+import EmojiRating from './EmojiRating';
 
 const SaveModal = () => {
   const styles = getStyles();
@@ -30,6 +31,7 @@ const SaveModal = () => {
             onChangeText={(text: string) => setSaveName(text)}
             placeholder={i18n.t('SAVE_MODAL.ENTER_NAME', {locale: localeValue})}
           />
+          <EmojiRating/>
           <View style={styles.modalButton}>
             <Button
               text={i18n.t('SAVE_MODAL.BUTTON', {locale: localeValue})}

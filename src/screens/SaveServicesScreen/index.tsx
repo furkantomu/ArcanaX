@@ -34,7 +34,7 @@ const SaveServicesScreen = () => {
     <AppProvider>
       <LinearGradient colors={[COLORS.black, '#3F2305']} style={{flex: 1}}>
         <SafeAreaView>
-          <CustomHeader leftIcon={true} title={true} rightIcon={false} />
+          <CustomHeader leftIcon={true} title={false} rightIcon={false} />
           <HistoryWrapper />
         </SafeAreaView>
       </LinearGradient>

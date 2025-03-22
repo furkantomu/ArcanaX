@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -12,9 +12,11 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import i18n from '@/i18n';
 import {useAppSelector} from '@/hooks';
+import ContactModal from './components/ContactModal';
 
 const FAQScreen = () => {
   const {localeValue} = useAppSelector(state => state.settings);
+  const [isModalVisible, setModalVisible] = useState(false);
   const styles = getStyles();
   const {FaqSectionScrollViewRef} = useRefsContext();
   const navigation = useNavigation();
@@ -45,7 +47,7 @@ const FAQScreen = () => {
         ref={FaqSectionScrollViewRef}
         showsVerticalScrollIndicator={false}>
         <SafeAreaView>
-          <CustomHeader leftIcon={true} title={true} rightIcon={false} />
+          <CustomHeader leftIcon={true} title={false} rightIcon={false} />
           <View style={styles.container}>
             <Typography style={styles.faqTitle}>
               {i18n.t('FAQ_TITLE', {locale: localeValue})}
@@ -53,8 +55,9 @@ const FAQScreen = () => {
             {FAQ.map((question, idx) => (
               <FAQAccordion key={idx} index={idx} />
             ))}
-            <Button text={i18n.t('CONTACT_BUTTON', {locale: localeValue})} variant="secondary" />
+            <Button handlePress={() => setModalVisible(true)}  text={i18n.t('CONTACT_BUTTON', {locale: localeValue})} variant="secondary" />
           </View>
+          <ContactModal isVisible={isModalVisible} onClose={() => setModalVisible(false)} />
         </SafeAreaView>
       </ScrollView>
     </LinearGradient>

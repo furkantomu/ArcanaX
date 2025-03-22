@@ -1,7 +1,7 @@
 import {useAppDispatch, useAppSelector} from '@/hooks';
 import i18n from '@/i18n';
 import {apiService} from '@/services/APIService';
-import { balanceActions } from '@/store/balance/balanceActions';
+import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
 import React, {createContext, useContext, ReactNode, useState} from 'react';
@@ -34,6 +34,12 @@ interface AppContextType {
   setSpreadID: (value: string) => void;
 
   saveData: () => void;
+
+  rating: number;
+  setRating: (params: number) => void;
+
+  comment: string;
+  setComment: (comment: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -53,6 +59,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [saveName, setSaveName] = useState('');
   const [saveLoading, setSaveLoading] = useState(false);
+  const [rating, setRating] = useState(null);
+  const [comment, setComment] = useState('');
 
   const [spreadID, setSpreadID] = useState('');
 
@@ -63,20 +71,26 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
         id: spreadID,
         userId: user?.id,
         saveName,
+        rating: rating === null ? -1 : rating,
+        comment,
       });
       showToast({
         message: i18n.t('TOAST.SUCCESS', {locale: localeValue}),
         type: 'success',
       });
+
       setTimeout(() => {
         navigation.goBack();
       }, 300);
-        await dispatch(
-              balanceActions.getBalance({accountId: String(user?.accountId)}),
-            );
+      await dispatch(
+        balanceActions.getBalance({accountId: String(user?.accountId)}),
+      );
     } catch (error) {
       console.log(error);
-      showToast({message: i18n.t('TOAST.ERROR', {locale: localeValue}), type: 'error'});
+      showToast({
+        message: i18n.t('TOAST.ERROR', {locale: localeValue}),
+        type: 'error',
+      });
     } finally {
       setSaveLoading(false);
     }
@@ -105,6 +119,12 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
     spreadID,
     setSpreadID,
+
+    comment,
+    setComment,
+
+    rating,
+    setRating,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from 'styles/theme';
+import {COLORS, SIZES} from 'styles/theme';
 
 export const getStyles = () =>
   StyleSheet.create({
@@ -21,12 +21,12 @@ export const getStyles = () =>
       justifyContent: 'space-between',
     },
     day: {
-      width: 100,
+      width: SIZES.width * 0.20,
     },
     month: {
-      width: 100,
+      width: SIZES.width * 0.20,
     },
     year: {
-      width: 150,
+      width: SIZES.width * 0.30,
     },
   });

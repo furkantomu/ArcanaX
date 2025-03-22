@@ -14,7 +14,7 @@ import {useNumerologyPremiumContext} from '../NumerologyPremiumContext';
 import {getImageForNumber} from '@/utils/getImageForNumber';
 import {apiService} from '@/services/APIService';
 import {AxiosResponse} from 'axios';
-import {COLORS} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import { Typography } from '@/components';
 import i18n from '@/i18n';
@@ -22,7 +22,7 @@ import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
+  body: {color: COLORS.cream, fontSize: SIZES.body2, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 const LifePathNumber = ({numerologyDetail}) => {
@@ -96,7 +96,8 @@ const LifePathNumber = ({numerologyDetail}) => {
               />
             )}
 
-            <Typography weight="NotoSerifCondensedBoldItalic" style={styles.title}>{i18n.t('NUMEROLOGY_TYPE.0.LABEL', {locale:localeValue})}</Typography>
+            <Typography  size="large"
+              weight="NotoSerifCondensedBoldItalic" style={styles.title}>{i18n.t('NUMEROLOGY_TYPE.0.LABEL', {locale:localeValue})}</Typography>
           </View>
           <View style={styles.imageContainer}>
             <Image source={image} resizeMode={'cover'} style={styles.image} />

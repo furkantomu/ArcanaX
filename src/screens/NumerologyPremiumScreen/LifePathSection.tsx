@@ -13,8 +13,6 @@ import { Typography } from '@/components';
 import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
 
-const SUB_TITLE = ['FIRST', 'SECOND', 'THREE'];
-
 interface Message {
   userId: string;
   first: string;
@@ -88,7 +86,7 @@ const LifePathSection = () => {
           (item, idx) => (
             <LifePathSectionAccordion
               key={idx}
-              title={SUB_TITLE[idx]}
+              title={item}
               description={section[idx]}
               content={String(pinnacleNumber?.message[item])}
               loading={loading}

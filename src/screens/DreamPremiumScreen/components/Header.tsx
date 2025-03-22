@@ -13,7 +13,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
 
 const Header = () => {
   const {localeValue} = useAppSelector(state => state.settings);
@@ -53,6 +53,7 @@ const Header = () => {
         end={{x: 0.5, y: 1}}
         locations={[1, 0.5, 0.04]}
       />
+
       <View style={styles.headerTextWrapper}>
         <Typography weight={'NotoSerifCondensedMediumItalic'} size={'heading'}>
           {i18n.t('DREAM_PREMIUM_SCREEN.TITLE', {locale: localeValue})}

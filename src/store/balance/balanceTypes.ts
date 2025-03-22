@@ -13,6 +13,11 @@ export interface AddBalancePayload {
   accountId: string;
   balance: number;
   amount: number;
+  transactionId: string;
+  appTransactionId: string;
+  originalTransactionId: string;
+  storefrontId: string;
+  productId: string;
 }
 export interface AddBalanceResponse {
   message: string;

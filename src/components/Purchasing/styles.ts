@@ -30,6 +30,7 @@ export const getStyles = () =>
     currentBalance: {
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'space-between',
     },
     title: {
       justifyContent: 'center',

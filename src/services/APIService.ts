@@ -15,6 +15,7 @@ class APIService {
   private constructor() {
     this.api = axios.create({
       baseURL: 'https://www.arcanaxapp.xyz/',
+      //baseURL: 'http://192.168.0.106:3002/',
     });
     this.setupInterceptors();
   }
@@ -75,8 +76,8 @@ class APIService {
           const store = getStore();
           store.dispatch({type: 'auth/logout'});
         }
-        console.log(error)
-        console.log(error.response)
+        console.log(error);
+        console.log(error.response);
 
         return Promise.reject(error);
       },

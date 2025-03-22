@@ -23,11 +23,14 @@
         "description": "Evrensel enerjilere açılın ve keşfetmeye başlayın!"
       }
     ],
-    "BUTTON": "Keşfe Başla"
+    "BUTTON": "Keşfe Başla",
+    "HAVE_ACCOUNT": "Hesabınız Var mı? Giriş Yapın!"
   },
   "LOGIN": {
     "EMAIL": "E-posta",
     "EMAIL_PLACEHOLDER": "E-posta adresi giriniz",
+    "VERIFY_CODE": "Doğrulama Kodu",
+    "VERIFY_CODE_PLACEHOLDER": "Doğrulama kodunu giriniz",
     "PASSWORD": "Parola",
     "PASSWORD_PLACEHOLDER": "Parola Giriniz",
     "CONFIRM_PASSWORD": "Parolayı Doğrula",
@@ -37,12 +40,17 @@
     "FORGOT_PASSWORD": "Parolanızı mı unuttunuz?",
     "NEW_ACCOUNT": "Yeni Hesap Oluştur",
     "LOGIN_BUTTON": "Giriş Yap",
+    "FORGOT_PASSWORD_BUTTON": "Kod Gönder",
+    "AGAIN_FORGOT_PASSWORD_BUTTON": "Tekrar Kod Gönder",
+    "RESET_PASSWORD_BUTTON": "Şifreyi Değiştir",
+    "VERIFY_BUTTON": "Kodu Onayla",
     "REGISTER_BUTTON": "Hesap Oluştur",
     "FULL_NAME": "Tam Adınız",
     "FULL_NAME_PLACEHOLDER": "Tam Adınızı giriniz",
     "SUCCESS_REGISTER": "Başarıyla kayıt olundu. Giriş yapılıyor...",
     "MONTH": "Ay",
     "MONTH_PLACEHOLDER": "AA",
+    "BIRTHDATE": "Doğum Tarihi",
 
     "DAY": "Gün",
     "DAY_PLACEHOLDER": "GG",
@@ -283,6 +291,7 @@
     "DREAM": "Rüya Tabiri",
     "TRANSACTION_DATE": "İşlem Tarihi"
   },
+  "ADS_BUTTON": "Ödüllü Reklam",
   "FAQ_TITLE": "Sıkça Sorulan Sorular bölümü, uygulamamızı kullanırken merak edebileceğiniz konulara hızlı yanıtlar sunar. Tarot, numeroloji, rüya tabiri ve üyelik işlemleriyle ilgili detayları burada bulabilirsiniz. Daha fazla bilgi için destek ekibimizle iletişime geçebilirsiniz!",
   "FAQ": [
     {
@@ -332,12 +341,22 @@
     "CANCEL": "İptal",
     "ACCEPT": "Evet, Sil"
   },
-
+  "FEEDBACK_RESPONSE": "Mesajınız bize ulaştı. Görüşleriniz bizim için değerli!",
   "ADD_BALANCE_SHEET": {
     "TITLE": "Sezgilerin seni yönlendiriyor… Jetonlarını al, cevapları bul!",
     "ADD": "Hesabınıza başarıyla jeton eklendi."
   },
-
+  "CONTACT_MODAL": {
+    "TITLE": "İletişim",
+    "PLACEHOLDER": "Mesajınızı buraya yazın...",
+    "CANCEL": "İptal",
+    "SUBMIT": "Gönder"
+  },
+  "RATING": {
+    "TITLE": "Nasıl hissettiniz?",
+    "PLACEHOLDER": "Görüşlerinizi buraya yazın...",
+    "MESSAGE": "Geri bildiriminiz için teşekkürler! +10 jeton kazandınız."
+  },
   "BALANCE_CONTROL": {
     "TITLE": "Yetersiz Bakiye",
     "DESCRIPTION": "Devam etmek için daha fazla jeton satın alın.",

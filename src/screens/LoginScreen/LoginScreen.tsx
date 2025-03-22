@@ -17,6 +17,7 @@ import {COLORS, SIZES} from '@/styles/theme';
 import Login from './Login';
 import {useLoginContext} from './LoginContext';
 import Register from './Register';
+import ForgotPassword from './ForgotPassword';
 
 const LoginScreen = () => {
   const height = useSharedValue(0);
@@ -27,7 +28,7 @@ const LoginScreen = () => {
   const {loginType} = useLoginContext();
 
   useEffect(() => {
-    if (loginType === 'login') {
+    if (loginType === 'login' || loginType === 'password') {
       height.value = withSpring(1.6, {
         damping: 30,
         stiffness: 200,
@@ -42,23 +43,25 @@ const LoginScreen = () => {
 
   return (
     <KeyboardAvoidingView
-    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    style={styles.container}>
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <Image
-            resizeMode={'cover'}
-            style={styles.image}
-            source={require('../../../assets/login/loginBackground1.webp')}
-          />
-        </View>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image
+              resizeMode={'cover'}
+              style={styles.image}
+              source={require('../../../assets/login/loginBackground1.webp')}
+            />
+          </View>
 
-        <Animated.View style={[styles.content, buttonAnimationStyle]}>
-          {loginType === 'login' ? <Login /> : <Register />}
-        </Animated.View>
-      </View>
-    </TouchableWithoutFeedback>
+          <Animated.View style={[styles.content, buttonAnimationStyle]}>
+            {loginType === 'login' && <Login />}
+            {loginType === 'register' && <Register />}
+            {loginType === 'password' && <ForgotPassword />}
+          </Animated.View>
+        </View>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 };

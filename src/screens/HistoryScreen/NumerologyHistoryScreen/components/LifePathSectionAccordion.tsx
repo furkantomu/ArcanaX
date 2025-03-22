@@ -36,7 +36,7 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
   loading,
 }) => {
   const {localeValue} = useAppSelector(state => state.settings);
-
+  console.log('title', title);
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();

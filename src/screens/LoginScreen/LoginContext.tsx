@@ -1,9 +1,9 @@
 import React, {createContext, useContext, ReactNode, useState} from 'react';
 
 interface AppContextType {
-  loginType: 'login' | 'register';
+  loginType: 'login' | 'register' | 'password';
 
-  setLoginType: (type: 'login' | 'register') => void;
+  setLoginType: (type: 'login' | 'register' | 'password') => void;
 
   setPasswordVisible: (value: boolean) => void;
   passwordVisible: boolean;
@@ -25,7 +25,7 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
-  const [loginType, setLoginType] = useState<'login' | 'register'>('login');
+  const [loginType, setLoginType] = useState<'login' | 'register' | 'password'>('login');
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [registerPasswordVisible, setRegisterPasswordVisible] = useState({
     password: true,

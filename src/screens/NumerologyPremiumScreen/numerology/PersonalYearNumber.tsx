@@ -16,7 +16,7 @@ import {useNumerologyPremiumContext} from '../NumerologyPremiumContext';
 import {getImageForNumber} from '@/utils/getImageForNumber';
 import {apiService} from '@/services/APIService';
 import {AxiosResponse} from 'axios';
-import {COLORS} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 import {Typography} from '@/components';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import i18n from '@/i18n';
@@ -24,7 +24,7 @@ import { useAppSelector } from '@/hooks';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
+  body: {color: COLORS.cream, fontSize: SIZES.body2, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 const PersonalYearNumber = ({numerologyDetail}) => {
@@ -102,6 +102,7 @@ const PersonalYearNumber = ({numerologyDetail}) => {
               />
             )}
             <Typography
+             size="large"
               weight="NotoSerifCondensedBoldItalic"
               style={styles.title}>
               {i18n.t('NUMEROLOGY_TYPE.3.LABEL', {locale:localeValue})}

@@ -47,7 +47,7 @@ const ProfileUserScreen = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <SafeAreaView>
-              <CustomHeader leftIcon={true} title={true} rightIcon={false} />
+              <CustomHeader leftIcon={true} title={false} rightIcon={false} />
               <EditUserForm />
             </SafeAreaView>
           </TouchableWithoutFeedback>

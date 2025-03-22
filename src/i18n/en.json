@@ -23,13 +23,16 @@
         "description": "Open up to universal energies and start exploring!"
       }
     ],
-    "BUTTON": "Get Started"
+    "BUTTON": "Get Started",
+    "HAVE_ACCOUNT": "Do You Have an Account? Log In!"
   },
   "LOGIN": {
     "EMAIL": "Email",
     "EMAIL_PLACEHOLDER": "Enter your email address",
     "PASSWORD": "Password",
     "PASSWORD_PLACEHOLDER": "Enter your password",
+    "VERIFY_CODE": "Verification Code",
+    "VERIFY_CODE_PLACEHOLDER": "Enter the verification code",
     "CONFIRM_PASSWORD": "Confirm Password",
     "EMAIL_REQUIRED": "Invalid email",
     "REQUIRED": "Required field",
@@ -38,6 +41,10 @@
     "NEW_ACCOUNT": "Create New Account",
     "LOGIN_BUTTON": "Log In",
     "REGISTER_BUTTON": "Create Account",
+    "FORGOT_PASSWORD_BUTTON": "Next",
+    "VERIFY_BUTTON": "Confirm Code",
+    "AGAIN_FORGOT_PASSWORD_BUTTON": "Resend Code",
+    "RESET_PASSWORD_BUTTON": "Change Password",
     "FULL_NAME": "Full Name",
     "FULL_NAME_PLACEHOLDER": "Enter your full name",
     "SUCCESS_REGISTER": "Registration successful. Logging in...",
@@ -47,6 +54,7 @@
     "DAY_PLACEHOLDER": "DD",
     "YEAR": "Year",
     "YEAR_PLACEHOLDER": "YYYY",
+    "BIRTHDATE": "Date of Birth",
     "GENDER": {
       "TITLE": "Gender",
       "FEMALE": "Female",
@@ -282,6 +290,7 @@
     "TRANSACTION_DATE": "Transaction Date"
   },
   "FAQ_TITLE": "The FAQ section provides quick answers to topics you may wonder about while using our app. You can find details here regarding tarot, numerology, dream interpretation, and membership procedures. For more information, you can contact our support team!",
+  "ADS_BUTTON": "Rewarded Ad",
   "FAQ": [
     {
       "title": "1. How Does the Application Work?",
@@ -330,6 +339,18 @@
     "CANCEL": "Cancel",
     "ACCEPT": "Yes, Delete"
   },
+  "CONTACT_MODAL": {
+    "TITLE": "Contact",
+    "PLACEHOLDER": "Write your message here...",
+    "CANCEL": "Cancel",
+    "SUBMIT": "Submit"
+  },
+  "RATING": {
+    "TITLE": "How Did You Feel?",
+    "PLACEHOLDER": "Write your feedback here...",
+    "MESSAGE": "Thank you for your feedback! You’ve earned +10 tokens."
+  },
+  "FEEDBACK_RESPONSE": "Your message has reached us. Your feedback is valuable to us!",
   "ADD_BALANCE_SHEET": {
     "TITLE": "Your intuition guides you... Get your tokens and find the answers!",
     "ADD": "Jetons have been successfully added to your account."

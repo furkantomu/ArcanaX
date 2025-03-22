@@ -4,6 +4,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
+
       android:name=".MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
@@ -11,6 +12,9 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme"
       android:supportsRtl="true">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4348716433106304~7402049118"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
