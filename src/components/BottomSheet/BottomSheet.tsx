@@ -3,7 +3,6 @@ import React, {JSX, useCallback, useImperativeHandle} from 'react';
 import {
   Gesture,
   GestureDetector,
-  Pressable,
 } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -12,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import {BottomSheetRefProps} from '@/types';
-import {COLORS, SIZES} from '@/styles/theme';
+import {COLORS} from '@/styles/theme';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 150;
@@ -21,6 +20,7 @@ type BottomSheetProps = {
   children?: JSX.Element;
   backgroundColor?: string;
   lineColor?: string;
+  onScroll?: () => void;
 };
 
 const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
@@ -94,9 +94,9 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       };
     });
 
-    const handleClose = () => {
-      scrollTo(0);
-    };
+    // const handleClose = () => {
+    //   scrollTo(0);
+    // };
 
     return (
       <GestureDetector gesture={gesture}>

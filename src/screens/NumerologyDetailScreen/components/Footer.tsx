@@ -91,6 +91,11 @@ const Footer = () => {
                 accountId: user.accountId,
                 balance: Number(-route.params.price),
                 amount: 0,
+                transactionId: '',
+                appTransactionId: '',
+                originalTransactionId: '',
+                storefrontId: '',
+                productId: '',
               };
               await dispatch(balanceActions.addBalance(data));
               navigation.navigate('NumerologyPremiumScreen', {

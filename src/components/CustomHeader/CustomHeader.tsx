@@ -2,14 +2,18 @@ import {useRefsContext} from '@/context';
 import {useAppSelector} from '@/hooks';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {View, StyleSheet, Pressable} from 'react-native';
+import {View, StyleSheet, Pressable, Platform} from 'react-native';
 
 import {COLORS, SIZES} from 'styles/theme';
-import {IconButton} from '../button/IconButton';
 import Typography from '../Typography/Typography';
 import i18n from '@/i18n';
 import Icon from '../Icon';
 import {useHaptic} from '@/utils';
+import {
+  flushFailedPurchasesCachedAsPendingAndroid,
+  initConnection,
+  PurchaseError,
+} from 'react-native-iap';
 
 interface CustomHeaderProps {
   leftIcon?: boolean; // Prop to show left icon
@@ -27,7 +31,19 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
   const {balance} = useAppSelector(state => state.balance);
   const {localeValue} = useAppSelector(state => state.settings);
   const haptic = useHaptic('soft');
-  const openModal = () => {
+  const openModal = async () => {
+    try {
+      await initConnection();
+
+      Platform.OS === 'android' &&
+        (await flushFailedPurchasesCachedAsPendingAndroid());
+    } catch (error) {
+      if (error instanceof PurchaseError) {
+        console.log({message: `[${error.code}]: ${error.message}`, error});
+      } else {
+        console.log({message: 'finishTransaction', error});
+      }
+    }
     purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
 
@@ -103,7 +119,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     borderRadius: 13,
     color: COLORS.cream,
   },
@@ -120,12 +136,11 @@ const styles = StyleSheet.create({
   },
   rightIconsContainer: {
     flexDirection: 'row',
-
   },
   leftIcon: {
-     flexDirection: 'row',
-     justifyContent:'center',
-     alignItems:'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

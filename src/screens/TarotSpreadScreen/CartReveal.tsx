@@ -142,6 +142,11 @@ const CartReveal = ({route}) => {
         accountId: user.accountId,
         balance: Number(-route.params.price),
         amount: 0,
+        transactionId: '',
+        appTransactionId: '',
+        originalTransactionId: '',
+        storefrontId: '',
+        productId: '',
       };
       await dispatch(balanceActions.addBalance(data));
     } catch (err) {

@@ -335,6 +335,7 @@
   "ACCOUNT": "Account",
   "ACCOUNT_DELETE": "Account Delete",
   "ACCOUNT_DELETE_DESCRIPTION": "Are you sure you want to permanently delete your account?",
+  "ACCOUNT_DELETED_DESCRIPTION": "Your request has been received. You will be notified via email once your account is deleted.",
   "ACCOUNT_DELETE_ALERT": {
     "CANCEL": "Cancel",
     "ACCEPT": "Yes, Delete"
@@ -353,7 +354,11 @@
   "FEEDBACK_RESPONSE": "Your message has reached us. Your feedback is valuable to us!",
   "ADD_BALANCE_SHEET": {
     "TITLE": "Your intuition guides you... Get your tokens and find the answers!",
-    "ADD": "Jetons have been successfully added to your account."
+    "ADD": "Jetons have been successfully added to your account.",
+    "ERROR": "Payment verification failed, please try again.",
+    "AMOUNT": "Select the amount you want to deposit",
+    "BONUS": "Make a deposit now to earn bonus tokens!",
+    "PRIVACY": "By making a purchase, you agree to our privacy policy."
   },
   "BALANCE_CONTROL": {
     "TITLE": "Insufficient Balance",

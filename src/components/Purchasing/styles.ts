@@ -19,7 +19,8 @@ export const getStyles = () =>
     content: {
       zIndex: 2,
       paddingHorizontal: 20,
-      paddingVertical: 20,
+      height: SIZES.height / 1.4,
+      justifyContent: 'space-between',
     },
     tokenIcon: {
       resizeMode: 'cover',
@@ -32,45 +33,29 @@ export const getStyles = () =>
       alignItems: 'center',
       justifyContent: 'space-between',
     },
-    title: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 30,
-    },
+    title: {},
     titleText: {
       textAlign: 'center',
-    },
-    productList: {
-      gap: 10,
-      marginTop: 20,
-    },
-    productListItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingVertical: 10,
-      paddingHorizontal: 5,
-      borderRadius: 10,
-      borderBottomWidth: 0.5,
-      borderColor: COLORS.cream,
-    },
-    productListItemIcon: {
-      resizeMode: 'cover',
-      height: 40,
-      width: 40,
-    },
-    productListItemDescription: {
-      marginLeft: 20,
-    },
-    productDescription: {
-      color: COLORS.silverGray,
+
     },
     loading: {
       position: 'absolute',
-      width:SIZES.width,
+      width: SIZES.width,
       height: SIZES.height,
       zIndex: 99,
-      backgroundColor:COLORS.blackOpacity1,
+      backgroundColor: COLORS.blackOpacity1,
       paddingTop: 200,
+    },
+    balanceAddWrapper: {
+      marginTop: 0,
+      gap: 3,
+    },
+    balanceAdddesc: {
+      color: COLORS.silverGray,
+    },
+    privacy: {
+
+      color: COLORS.silverGray,
+      textAlign: 'center',
     },
   });

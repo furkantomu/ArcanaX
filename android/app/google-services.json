@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "595822149218",
+    "project_id": "arcanax-c6fe347f",
+    "storage_bucket": "arcanax-c6fe347f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595822149218:android:11d69aeb6a33c412869b3b",
+        "android_client_info": {
+          "package_name": "com.arcanax"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCthbe5wQLt37IYMF_yXk1WI5KKbj8479Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

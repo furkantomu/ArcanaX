@@ -7,6 +7,7 @@ import axios, {
 
 import {getStore} from '@/store/storeAccessor';
 import {showToast} from '@/utils/showToast';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 class APIService {
   private static instance: APIService;
@@ -14,8 +15,8 @@ class APIService {
 
   private constructor() {
     this.api = axios.create({
-      baseURL: 'https://www.arcanaxapp.xyz/',
-      //baseURL: 'http://192.168.0.106:3002/',
+      //baseURL: 'https://www.arcanaxapp.xyz/',
+      baseURL: 'http://192.168.0.107:3002/',
     });
     this.setupInterceptors();
   }
@@ -62,9 +63,13 @@ class APIService {
     this.api.interceptors.response.use(
       (response: AxiosResponse) => response,
       async (error: AxiosError) => {
-        console.log('error.code', error.code);
-        console.log('error.message', error.message);
-        console.log('error.status', error.status);
+        const store = getStore();
+        const state = store.getState();
+        crashlytics().recordError(
+          new Error(
+            `email:${state.auth.user.email} url: ${error.config?.url}, errorMessage: ${error.response?.data}`,
+          ),
+        );
         if (error.code === 'ECONNABORTED') {
           console.error('İstek zaman aşımına uğradı:', error.message);
           showToast({
@@ -76,8 +81,6 @@ class APIService {
           const store = getStore();
           store.dispatch({type: 'auth/logout'});
         }
-        console.log(error);
-        console.log(error.response);
 
         return Promise.reject(error);
       },

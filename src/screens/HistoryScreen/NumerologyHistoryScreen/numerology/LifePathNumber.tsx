@@ -15,7 +15,7 @@ import {getImageForNumber} from '@/utils/getImageForNumber';
 import {apiService} from '@/services/APIService';
 import {useNumerologyHistoryContext} from '../NumerologyHistoryContext';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
-import {COLORS} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 import {Typography} from '@/components';
 import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
@@ -23,7 +23,7 @@ import { useAppSelector } from '@/hooks';
 const arrow = require('../../../../../assets/icon/downArrow.png');
 
 const markdownStyles = {
-  body: {color: COLORS.cream, fontSize: 15, fontFamily: 'NotoSerif-Regular'},
+  body: {color: COLORS.cream, fontSize: SIZES.body2, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
 

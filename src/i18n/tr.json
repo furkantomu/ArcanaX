@@ -337,6 +337,8 @@
   "ACCOUNT": "Hesap",
   "ACCOUNT_DELETE": "Hesabı Sil",
   "ACCOUNT_DELETE_DESCRIPTION": "Hesabınızı kalıcı olarak silmek istediğinize emin misiniz?",
+  "ACCOUNT_DELETED_DESCRIPTION": "Talebiniz alınmıştır. Hesabınız silindiğinde e-posta ile bilgilendirileceksiniz.",
+
   "ACCOUNT_DELETE_ALERT": {
     "CANCEL": "İptal",
     "ACCEPT": "Evet, Sil"
@@ -344,7 +346,12 @@
   "FEEDBACK_RESPONSE": "Mesajınız bize ulaştı. Görüşleriniz bizim için değerli!",
   "ADD_BALANCE_SHEET": {
     "TITLE": "Sezgilerin seni yönlendiriyor… Jetonlarını al, cevapları bul!",
-    "ADD": "Hesabınıza başarıyla jeton eklendi."
+    "ADD": "Hesabınıza başarıyla jeton eklendi",
+    "ERROR": "Ödeme işlemi doğrulanamadı, lütfen tekrar deneyin.",
+    "AMOUNT": "Yüklemek istediğiniz tutarı seçin",
+    "BONUS": "Bonus jeton kazanmak için şimdi yükleme yapın!",
+    "PRIVACY": "Satın alım yaparak, gizlilik politikamızı kabul etmiş oluyorsunuz"
+
   },
   "CONTACT_MODAL": {
     "TITLE": "İletişim",

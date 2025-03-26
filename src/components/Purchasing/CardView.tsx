@@ -1,0 +1,109 @@
+/* eslint-disable react-native/no-inline-styles */
+import * as React from 'react';
+import {Animated, View, StyleSheet, Pressable} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
+
+import Typography from '../Typography/Typography';
+import Icon from '../Icon';
+import {COLORS} from '@/styles/theme';
+
+
+export const CardView = ({products, selectedProduct, setSelectedProduct}) => {
+  const pan = React.useRef(new Animated.ValueXY()).current;
+
+  const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
+
+  const boxWidth = scrollViewWidth * 0.5;
+
+  return (
+    <View style={styles.container}>
+      <View style={{width: '100%'}}>
+        <FlatList
+          horizontal
+          data={products}
+          style={styles.flatList}
+          contentContainerStyle={styles.flatListContainer}
+          contentInsetAdjustmentBehavior="never"
+          snapToAlignment="center"
+          decelerationRate="fast"
+          automaticallyAdjustContentInsets={false}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          scrollEventThrottle={16}
+          onLayout={e => {
+            setScrollViewWidth(e.nativeEvent.layout.width);
+          }}
+          onScroll={Animated.event([
+            {nativeEvent: {contentOffset: {x: pan.x}}},
+          ])}
+          keyExtractor={(item, index) => `${index}-${item}`}
+          renderItem={props => {
+            const {item} = props;
+            return (
+              <Pressable onPress={() => setSelectedProduct(item)}>
+                <Animated.View>
+                  <Animated.View
+                    key={item}
+                    style={[
+                      styles.box,
+                      {
+                        width: boxWidth,
+                        borderColor:
+                          selectedProduct?.productId === item.productId
+                            ? COLORS.cream
+                            : 'transparent',
+                      },
+                    ]}>
+                    <Icon name="token" style={styles.productListItemIcon} />
+                    <Typography size="large" style={styles.titleText}>
+                      {item.title}
+                    </Typography>
+                    <Typography size="small" style={styles.boxText}>
+                      {item.description}
+                    </Typography>
+                    <Typography size="heading" style={styles.priceText}>
+                      {item.localizedPrice}
+                    </Typography>
+                  </Animated.View>
+                </Animated.View>
+              </Pressable>
+            );
+          }}
+        />
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    zIndex: 3,
+  },
+  titleText: {
+    textAlign: 'center',
+    marginBottom: 3,
+    color: COLORS.gold,
+  },
+  boxText: {
+    color: COLORS.silverGray,
+  },
+  box: {
+    height: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 24,
+    backgroundColor: COLORS.blackOpacity1,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+  },
+  priceText: {
+    marginTop: 10,
+  },
+  productListItemIcon: {
+    resizeMode: 'cover',
+    width: 50,
+    height: 50,
+  },
+  flatList: {height: 200},
+  flatListContainer: {paddingVertical: 16, backgroundColor: 'transparent', gap: 12},
+});

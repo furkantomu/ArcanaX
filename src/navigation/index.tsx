@@ -15,8 +15,9 @@ import {useAppSelector} from '@/hooks';
 
 import {COLORS} from '@/styles/theme';
 import i18n from '@/i18n';
-
+import crashlytics from '@react-native-firebase/crashlytics';
 import 'dayjs/locale/tr';
+
 
 setup({storekitMode: 'STOREKIT2_MODE'});
 
@@ -25,11 +26,15 @@ export const AppNavigationContainer = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const {languageChangeSheetRef, purchasingSheetRef} = useRefsContext();
 
+//   crashlytics().log('Testing Crashlytics');
+// crashlytics().crash();
+
   console.log('render App');
   useEffect(() => {
     i18n.locale = localeValue;
     dayjs.locale(localeValue);
   }, [localeValue]);
+
   return (
     <NavigationContainer
       ref={navigationRef}

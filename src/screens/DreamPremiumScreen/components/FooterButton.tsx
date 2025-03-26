@@ -43,6 +43,11 @@ const FooterButton = () => {
           accountId: user.accountId,
           balance: Number(-10),
           amount: 0,
+          transactionId: '',
+          appTransactionId: '',
+          originalTransactionId: '',
+          storefrontId: '',
+          productId: '',
         };
         await dispatch(balanceActions.addBalance(data));
       } catch (error) {
