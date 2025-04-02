@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Alert,
-  Pressable,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
@@ -130,7 +129,7 @@ const CartReveal = ({route}) => {
 
     try {
       const result = await apiService.post('/tarot/read/start', {
-        readingType: getReadingTypeText(readingType),
+        readingType: getReadingTypeText(readingType, localeValue),
         questions: message,
         tarotCards: selectedCards.map(card => card.engName),
       });
@@ -138,8 +137,8 @@ const CartReveal = ({route}) => {
       setSpreadID(result?.data.id);
 
       const data = {
-        userId: user.id,
-        accountId: user.accountId,
+        userId: String(user?.id),
+        accountId: String(user?.accountId),
         balance: Number(-route.params.price),
         amount: 0,
         transactionId: '',
@@ -271,7 +270,9 @@ const CartReveal = ({route}) => {
               key={index}
               onPress={() => handleCardDetail(item)}>
               <Animated.View style={[styles.badge, animatedBadgeStyle]}>
-                <Text style={styles.badgeText}>{item.name}</Text>
+                <Text style={styles.badgeText}>
+                  {localeValue === 'tr' ? item.name : item.engName}
+                </Text>
               </Animated.View>
             </TouchableOpacity>
           ))}

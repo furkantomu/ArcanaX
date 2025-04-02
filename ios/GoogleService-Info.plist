@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBy5H4thmPFd0k_vbmOJ5Q6qzu7twn1-vk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>595822149218</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.tomu.ArcanaXApp</string>
+	<key>PROJECT_ID</key>
+	<string>arcanax-c6fe347f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>arcanax-c6fe347f.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:595822149218:ios:07b3cc8fccb7a308869b3b</string>
+</dict>
+</plist>

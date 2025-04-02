@@ -1,21 +1,25 @@
-export function getReadingTypeText(readingType: number) {
+export function getReadingTypeText(readingType: number, localeValue: string) {
   let readingText = '';
 
   switch (readingType) {
     case 1:
-      readingText = 'Tek Kart Okuması';
+      readingText =
+        localeValue === 'tr' ? 'Tek Kart Okuması' : 'Single Card Reading';
       break;
     case 3:
-      readingText = 'Üç Kart Okuması';
+      readingText =
+        localeValue === 'tr' ? 'Üç Kart Okuması' : 'Three Card Reading';
       break;
     case 10:
-      readingText = 'Kelt Haçı Yöntemi';
+      readingText =
+        localeValue === 'tr' ? 'Kelt Haçı Yöntemi' : 'Celtic Cross Method';
       break;
     case 6:
-      readingText = 'İlişki Okuması';
+      readingText =
+        localeValue === 'tr' ? 'İlişki Okuması' : 'Relationship Reading';
       break;
     default:
-      return 'Bilinmeyen Okuma Türü';
+      return 'General Reading';
   }
 
   return readingText;

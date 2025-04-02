@@ -15,10 +15,11 @@ class APIService {
 
   private constructor() {
     this.api = axios.create({
-      //baseURL: 'https://www.arcanaxapp.xyz/',
-      baseURL: 'http://192.168.0.107:3002/',
+      baseURL: 'https://www.arcanaxapp.xyz/',
+      //baseURL: 'http://192.168.1.103:3002/',
     });
     this.setupInterceptors();
+    
   }
 
   public static getInstance(): APIService {
@@ -67,7 +68,7 @@ class APIService {
         const state = store.getState();
         crashlytics().recordError(
           new Error(
-            `email:${state.auth.user.email} url: ${error.config?.url}, errorMessage: ${error.response?.data}`,
+            `email:${state.auth.user.email} url: ${error.config?.url}, errorMessage: ${JSON.stringify(error.response?.data)}`
           ),
         );
         if (error.code === 'ECONNABORTED') {

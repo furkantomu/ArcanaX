@@ -239,11 +239,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 21,
     marginHorizontal: 20,
-    width: 202,
+    width: 210,
     zIndex: 10,
   },
   genderButton: {
-    width: 100,
+    width: 104,
     borderRadius: 0,
     padding: 24,
   },
