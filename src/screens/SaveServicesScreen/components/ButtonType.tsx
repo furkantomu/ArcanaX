@@ -7,7 +7,7 @@ import {getStyles} from '../styles';
 import dayjs from 'dayjs';
 import {useNavigation} from '@react-navigation/native';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
 
 interface ButtonTypeProps {
   type: string;
@@ -42,7 +42,7 @@ const ButtonType: React.FC<ButtonTypeProps> = ({type}) => {
       {loading ? (
         <ActivityIndicator />
       ) : saveType.length === 0 ? (
-        <Typography>{i18n.t('NO_HISTORY', {locale:localeValue})}</Typography>
+        <Typography>{i18n.t('NO_HISTORY', {locale: localeValue})}</Typography>
       ) : (
         saveType.map((item, idx) => (
           <TouchableOpacity
@@ -54,9 +54,11 @@ const ButtonType: React.FC<ButtonTypeProps> = ({type}) => {
                 <Typography size="large">
                   {item.saveName
                     ? item.saveName
-                    : `${dayjs(item.createdAt).format(
-                        'DD MMMM YYYY HH:mm',
-                      )} Tarihli Analiz`}
+                    : `${dayjs(item.createdAt).format('DD MMMM YYYY HH:mm')} ${
+                        localeValue === 'tr'
+                          ? 'Tarihli Analiz'
+                          : 'Dated Analysis'
+                      }`}
                 </Typography>
                 <Icon name="rightChevron" size={20} style={styles.rightIcon} />
               </View>

@@ -6,6 +6,7 @@ import {useDreamContext} from '../DreamScreenContext';
 import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
 import EmojiRating from './EmojiRating';
+import { COLORS } from '@/styles/theme';
 
 const SaveModal = () => {
   const {localeValue} = useAppSelector(state => state.settings);
@@ -24,6 +25,7 @@ const SaveModal = () => {
           value={saveName}
           onChangeText={(text: string) => setSaveName(text)}
           placeholder={i18n.t('SAVE_MODAL.ENTER_NAME', {locale: localeValue})}
+          placeholderTextColor={COLORS.blackOpacity1}
         />
         <EmojiRating/>
         <View style={styles.modalButton}>

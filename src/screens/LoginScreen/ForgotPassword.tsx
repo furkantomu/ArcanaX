@@ -95,7 +95,6 @@ const ForgotPassword = () => {
         'auth/forgot-password',
         {email},
       );
-      console.log('res', response);
       showToast({message: response.data.message, type: 'success'});
       setStep(1);
       return response.data;

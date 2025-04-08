@@ -220,7 +220,7 @@ export const getStyles = () =>
       shadowOffset: {width: 0, height: 2}, // Gölgenin yönü
       shadowOpacity: 0.1, // Gölgenin şeffaflığı
       shadowRadius: 5, // Gölgenin yayılma yarıçapı (iOS)
-      elevation: 8, // Android için gölge
+      // elevation: 8, // Android için gölge
     },
     badgeText: {
       color: COLORS.cream,

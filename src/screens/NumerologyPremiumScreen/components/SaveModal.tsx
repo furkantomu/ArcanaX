@@ -6,6 +6,7 @@ import { useNumerologyPremiumContext } from '../NumerologyPremiumContext';
 import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
 import EmojiRating from './EmojiRating';
+import { COLORS } from '@/styles/theme';
 
 const SaveModal = () => {
   const styles = getStyles();
@@ -31,6 +32,7 @@ const SaveModal = () => {
           value={saveName}
           onChangeText={(text: string) => setSaveName(text)}
           placeholder={i18n.t('SAVE_MODAL.ENTER_NAME', {locale:localeValue})}
+          placeholderTextColor={COLORS.blackOpacity1}
         />
         <EmojiRating/>
         <View style={styles.modalButton}>
@@ -42,6 +44,7 @@ const SaveModal = () => {
             }}
             disabled={saveLoading}
             buttonStyle={styles.button}
+
           />
         </View>
       </View>

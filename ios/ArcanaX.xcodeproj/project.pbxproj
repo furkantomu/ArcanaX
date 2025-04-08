@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,11 +11,11 @@
 		0A28CDB788B94C03814C34A1 /* NotoSerifCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1326AE108D7D4995A63549B8 /* NotoSerifCondensed-LightItalic.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		299EC6B10CE04924BEAE4FD6 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB96E65E15B14EAEA2367127 /* NotoSerif-Bold.ttf */; };
-		2D3EF60ABAECC6CEDDAD9579 /* Pods_ArcanaX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2BEA9FBB27FF1CEF50D271 /* Pods_ArcanaX.framework */; };
 		4400F7312D8D0644002CF46A /* AppPurchasesConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4400F7302D8D0644002CF46A /* AppPurchasesConfiguration.storekit */; };
 		4428B4A12D7DE72E008E1685 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4428B4A02D7DE72E008E1685 /* StoreKit.framework */; };
+		442DC52E2DA2C3D700472111 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 442DC52C2DA2C3D700472111 /* InfoPlist.strings */; };
 		445E396C2D93C9CE00BE6355 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 445E396B2D93C9CD00BE6355 /* GoogleService-Info.plist */; };
-		44BBEEE32D7E717400A5B0F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BBEEE12D7E717400A5B0F7 /* Localizable.strings */; };
+		6F0D1EB12002157269895370 /* libPods-ArcanaX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9D386463F81BFE554E880F /* libPods-ArcanaX.a */; };
 		7441485A90674A1C8818A8F6 /* NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E8B1EC46C44B5DA738CDFC /* NotoSerif-Regular.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F9D386463F81BFE554E880F /* libPods-ArcanaX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArcanaX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1326AE108D7D4995A63549B8 /* NotoSerifCondensed-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSerifCondensed-LightItalic.ttf"; path = "../assets/fonts/NotoSerifCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ArcanaX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcanaX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ArcanaX/Images.xcassets; sourceTree = "<group>"; };
@@ -38,11 +39,11 @@
 		3E56E92B892F4616ADA55F7B /* NotoSerifCondensed-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSerifCondensed-Thin.ttf"; path = "../assets/fonts/NotoSerifCondensed-Thin.ttf"; sourceTree = "<group>"; };
 		4400F7302D8D0644002CF46A /* AppPurchasesConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppPurchasesConfiguration.storekit; sourceTree = "<group>"; };
 		4428B4A02D7DE72E008E1685 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		442DC52D2DA2C3D700472111 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		442DC52F2DA2C3E300472111 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		445E396B2D93C9CD00BE6355 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		44BBEEE42D7E71A500A5B0F7 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ArcanaX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcanaX.release.xcconfig"; path = "Target Support Files/Pods-ArcanaX/Pods-ArcanaX.release.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ArcanaX/AppDelegate.swift; sourceTree = "<group>"; };
-		7F2BEA9FBB27FF1CEF50D271 /* Pods_ArcanaX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArcanaX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ArcanaX/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C131A8E32223424EB2A5A436 /* NotoSerifCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSerifCondensed-BoldItalic.ttf"; path = "../assets/fonts/NotoSerifCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C31A6F8C156C4ECCA72AC388 /* NotoSerifCondensed-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSerifCondensed-Italic.ttf"; path = "../assets/fonts/NotoSerifCondensed-Italic.ttf"; sourceTree = "<group>"; };
@@ -60,7 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4428B4A12D7DE72E008E1685 /* StoreKit.framework in Frameworks */,
-				2D3EF60ABAECC6CEDDAD9579 /* Pods_ArcanaX.framework in Frameworks */,
+				6F0D1EB12002157269895370 /* libPods-ArcanaX.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +76,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
-				44BBEEE12D7E717400A5B0F7 /* Localizable.strings */,
+				442DC52C2DA2C3D700472111 /* InfoPlist.strings */,
 			);
 			name = ArcanaX;
 			sourceTree = "<group>";
@@ -85,7 +86,7 @@
 			children = (
 				4428B4A02D7DE72E008E1685 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7F2BEA9FBB27FF1CEF50D271 /* Pods_ArcanaX.framework */,
+				0F9D386463F81BFE554E880F /* libPods-ArcanaX.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,15 +194,14 @@
 				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ArcanaX" */;
-			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = tr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
-				Base,
 				tr,
+				en,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -220,6 +220,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				445E396C2D93C9CE00BE6355 /* GoogleService-Info.plist in Resources */,
 				E592FF3888AA6B0D5F39F05B /* PrivacyInfo.xcprivacy in Resources */,
+				442DC52E2DA2C3D700472111 /* InfoPlist.strings in Resources */,
 				299EC6B10CE04924BEAE4FD6 /* NotoSerif-Bold.ttf in Resources */,
 				7441485A90674A1C8818A8F6 /* NotoSerif-Regular.ttf in Resources */,
 				8F15C48B834A4E07AC2814A2 /* NotoSerif-Thin.ttf in Resources */,
@@ -227,7 +228,6 @@
 				0578B7D326004FBCA4A15407 /* NotoSerifCondensed-Italic.ttf in Resources */,
 				4400F7312D8D0644002CF46A /* AppPurchasesConfiguration.storekit in Resources */,
 				0A28CDB788B94C03814C34A1 /* NotoSerifCondensed-LightItalic.ttf in Resources */,
-				44BBEEE32D7E717400A5B0F7 /* Localizable.strings in Resources */,
 				96C54D5545804707B0D4A5AB /* NotoSerifCondensed-Medium.ttf in Resources */,
 				E4AD446E133C4BF1A563FA05 /* NotoSerifCondensed-MediumItalic.ttf in Resources */,
 				EFFBB8BC8CDE4E8FA8926FB7 /* NotoSerifCondensed-Thin.ttf in Resources */,
@@ -363,12 +363,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		44BBEEE12D7E717400A5B0F7 /* Localizable.strings */ = {
+		442DC52C2DA2C3D700472111 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				44BBEEE42D7E71A500A5B0F7 /* tr */,
+				442DC52D2DA2C3D700472111 /* tr */,
+				442DC52F2DA2C3E300472111 /* en */,
 			);
-			name = Localizable.strings;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -385,12 +386,13 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = ArcanaX/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -415,12 +417,13 @@
 				DEVELOPMENT_TEAM = 8X53LUQSRV;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = ArcanaX/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

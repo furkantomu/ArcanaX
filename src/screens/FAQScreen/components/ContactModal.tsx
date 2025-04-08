@@ -6,6 +6,7 @@ import {COLORS, SIZES} from '@/styles/theme';
 import {showToast} from '@/utils/showToast';
 import React, {useState} from 'react';
 import {Modal, View, Text, TextInput, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const ContactModal = ({isVisible, onClose}) => {
   const {user} = useAppSelector(state => state.auth);
@@ -26,7 +27,7 @@ const ContactModal = ({isVisible, onClose}) => {
         type: 'success',
       });
       onClose();
-      console.log('res', response);
+      setMessage('');
       return response.data;
     } catch (error) {
       showToast({
@@ -43,58 +44,64 @@ const ContactModal = ({isVisible, onClose}) => {
   };
 
   return (
-    <Modal transparent visible={isVisible} animationType="slide">
-      <View style={styles.overlay}>
-        <View style={styles.modalContainer}>
-          <Text style={styles.title}>
-            {i18n.t('CONTACT_MODAL.TITLE', {locale: localeValue})}
-          </Text>
-          <TextInput
-            style={styles.textarea}
-            placeholder={i18n.t('CONTACT_MODAL.PLACEHOLDER', {
-              locale: localeValue,
-            })}
-            value={message}
-            onChangeText={setMessage}
-            multiline
-            placeholderTextColor={COLORS.silverGray}
-          />
-          <View style={styles.buttonContainer}>
-            <Button
-              text={i18n.t('CONTACT_MODAL.CANCEL', {locale: localeValue})}
-              buttonStyle={styles.buttonOutline}
-              handlePress={onClose}
-              variant="secondary"
+    <SafeAreaView style={styles.centeredView}>
+      <Modal
+        transparent
+        visible={isVisible}
+        animationType="slide"
+        onRequestClose={onClose}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.title}>
+              {i18n.t('CONTACT_MODAL.TITLE', {locale: localeValue})}
+            </Text>
+            <TextInput
+              style={styles.textarea}
+              placeholder={i18n.t('CONTACT_MODAL.PLACEHOLDER', {
+                locale: localeValue,
+              })}
+              value={message}
+              onChangeText={setMessage}
+              multiline
+              placeholderTextColor={COLORS.silverGray}
             />
+            <View style={styles.buttonContainer}>
+              <Button
+                text={i18n.t('CONTACT_MODAL.CANCEL', {locale: localeValue})}
+                buttonStyle={styles.buttonOutline}
+                handlePress={onClose}
+                variant="secondary"
+              />
 
-            <Button
-              text={i18n.t('CONTACT_MODAL.SUBMIT', {locale: localeValue})}
-              buttonStyle={styles.button}
-              handlePress={handleSend}
-              variant="primary"
-              disabled={loading}
-            />
+              <Button
+                text={i18n.t('CONTACT_MODAL.SUBMIT', {locale: localeValue})}
+                buttonStyle={styles.button}
+                handlePress={handleSend}
+                variant="primary"
+                disabled={loading || message.length === 0}
+              />
+            </View>
           </View>
         </View>
-      </View>
-    </Modal>
+      </Modal>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  overlay: {
+  centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContainer: {
-    width: '80%',
+    width: '85%',
     backgroundColor: COLORS.darkGray,
-    padding: 30,
-    borderRadius: 10,
+    padding: 20,
+    borderRadius: 20,
     alignItems: 'center',
   },
+
   title: {
     fontSize: SIZES.body2,
     fontWeight: 'bold',

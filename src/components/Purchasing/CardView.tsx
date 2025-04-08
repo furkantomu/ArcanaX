@@ -5,7 +5,7 @@ import {FlatList} from 'react-native-gesture-handler';
 
 import Typography from '../Typography/Typography';
 import Icon from '../Icon';
-import {COLORS} from '@/styles/theme';
+import {COLORS, SIZES} from '@/styles/theme';
 
 
 export const CardView = ({products, selectedProduct, setSelectedProduct}) => {
@@ -33,9 +33,12 @@ export const CardView = ({products, selectedProduct, setSelectedProduct}) => {
           onLayout={e => {
             setScrollViewWidth(e.nativeEvent.layout.width);
           }}
-          onScroll={Animated.event([
-            {nativeEvent: {contentOffset: {x: pan.x}}},
-          ])}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: pan.x } } }],
+            {
+              useNativeDriver: false,
+            }
+          )}
           keyExtractor={(item, index) => `${index}-${item}`}
           renderItem={props => {
             const {item} = props;
@@ -86,18 +89,21 @@ const styles = StyleSheet.create({
   },
   boxText: {
     color: COLORS.silverGray,
+    height: SIZES.width * 0.08,
+    textAlign: 'center',
   },
   box: {
-    height: 150,
+    width: SIZES.width * 0.52,
+    height: SIZES.width * 0.4,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 24,
     backgroundColor: COLORS.blackOpacity1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 2,
     borderWidth: 1,
   },
   priceText: {
-    marginTop: 10,
+  marginTop:8,
   },
   productListItemIcon: {
     resizeMode: 'cover',

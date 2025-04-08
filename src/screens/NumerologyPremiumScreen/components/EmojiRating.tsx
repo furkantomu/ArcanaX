@@ -1,21 +1,23 @@
-import { COLORS } from '@/styles/theme';
+import {COLORS} from '@/styles/theme';
 import React from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
-import { useNumerologyPremiumContext } from '../NumerologyPremiumContext';
+import {useAppSelector} from '@/hooks';
+import {useNumerologyPremiumContext} from '../NumerologyPremiumContext';
 
 const emojiOptions = ['😞', '😐', '😊', '😁', '😍']; // 1-5 değerlendirme
 
 const EmojiRating = () => {
   const {localeValue} = useAppSelector(state => state.settings);
-  const {setRating, rating, setComment, comment} = useNumerologyPremiumContext();
-
+  const {setRating, rating, setComment, comment} =
+    useNumerologyPremiumContext();
 
   return (
     <View style={{alignItems: 'center', padding: 20}}>
-      <Text style={{fontSize: 18, marginBottom: 10}}>{i18n.t('RATING.TITLE', {locale: localeValue})}</Text>
+      <Text style={{fontSize: 18, marginBottom: 10}}>
+        {i18n.t('RATING.TITLE', {locale: localeValue})}
+      </Text>
       <View style={{flexDirection: 'row'}}>
         {emojiOptions.map((emoji, index) => (
           <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
@@ -32,7 +34,7 @@ const EmojiRating = () => {
       </View>
       <TextInput
         placeholder={i18n.t('RATING.PLACEHOLDER', {locale: localeValue})}
-        placeholderTextColor={COLORS.darkGray}
+        placeholderTextColor={COLORS.blackOpacity1}
         multiline
         style={{
           width: '100%',
@@ -44,7 +46,6 @@ const EmojiRating = () => {
           textAlignVertical: 'top',
           marginBottom: 10,
           marginTop: 10,
-
         }}
         value={comment}
         onChangeText={text => setComment(text)}

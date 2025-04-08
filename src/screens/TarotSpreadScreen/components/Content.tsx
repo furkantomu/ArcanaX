@@ -107,7 +107,7 @@ const Content = () => {
         label={i18n.t('TAROT_READ_START.INPUT', {locale: localeValue})}
         //errorText={error}
         onChangeText={text => setQuestion(text)}
-        maxLength={50}
+        maxLength={150}
       />
       <View style={styles.cardBgContainer}>
         <Animated.Image

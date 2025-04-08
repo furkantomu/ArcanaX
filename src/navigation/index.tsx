@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
-import { StyleSheet, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {StyleSheet, View} from 'react-native';
+import { DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {setup} from 'react-native-iap';
@@ -25,11 +25,9 @@ export const AppNavigationContainer = () => {
   const routeNameRef = useRef<string | undefined>(undefined);
   const {localeValue} = useAppSelector(state => state.settings);
   const {languageChangeSheetRef, purchasingSheetRef} = useRefsContext();
+  //   crashlytics().log('Testing Crashlytics');
+  // crashlytics().crash();
 
-//   crashlytics().log('Testing Crashlytics');
-// crashlytics().crash();
-
-  console.log('render App');
   useEffect(() => {
     i18n.locale = localeValue;
     dayjs.locale(localeValue);
@@ -58,13 +56,12 @@ export const AppNavigationContainer = () => {
 };
 
 export const AppNavigator = () => {
-
   return (
     <>
       <GestureHandlerRootView style={styles.navigationLayout}>
         <RefsProvider>
           <SafeAreaProvider>
-            <AppNavigationContainer />
+            <AppNavigationContainer/>
           </SafeAreaProvider>
         </RefsProvider>
       </GestureHandlerRootView>

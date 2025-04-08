@@ -20,7 +20,7 @@ import { useAppSelector } from '@/hooks';
 const FooterButtons = () => {
   const {selectCardSheetRef} = useRefsContext();
   const {localeValue} = useAppSelector(state => state.settings);
-  const {fetchTarotCards} = useTarotContext();
+  const {fetchTarotCards, setSelectedCards} = useTarotContext();
   const haptic = useHaptic('soft');
   const styles = getStyles();
   const rightArrows = require('../../../../assets/icon/rightArrows.png');
@@ -90,9 +90,11 @@ const FooterButtons = () => {
   });
 
   const openModal = () => {
+
     selectCardSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
   const handleStartSpread = async () => {
+    setSelectedCards([]);
     translateX.value = withDelay(
       500,
       withSpring(-SIZES.width, {damping: 12, stiffness: 100}),

@@ -56,8 +56,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
   const getSaveDetail = async (type: string, id: string) => {
     try {
-      const result = await apiService.get(`${type}/save-detail/${id}`);
-      console.log(result.data);
+       await apiService.get(`${type}/save-detail/${id}`);
     } catch (error) {
       showToast({
         message: 'Sunucuya baplanırken bir hata oluştu.',

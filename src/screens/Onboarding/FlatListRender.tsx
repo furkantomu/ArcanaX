@@ -56,9 +56,9 @@ const FlatListRender = () => {
       case 2:
         setScrollEnabled(fullName.trim() !== '');
         break;
-      case 3:
-        setScrollEnabled(isBirthdateComplete(birthdate));
-        break;
+      // case 3:
+      //   setScrollEnabled(isBirthdateComplete(birthdate));
+      //   break;
       case 4:
         setScrollEnabled(password.trim() !== '');
         break;

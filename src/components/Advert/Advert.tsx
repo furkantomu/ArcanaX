@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import MobileAds, {
   RewardedAd,
   RewardedAdEventType,
-  TestIds,
 } from 'react-native-google-mobile-ads';
 import {IconButton} from '../button/IconButton';
 import {Platform, StyleSheet, View} from 'react-native';
@@ -11,14 +10,21 @@ import i18n from '@/i18n';
 import {useAppDispatch, useAppSelector} from '@/hooks';
 import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
+import {requestTrackingPermission} from 'react-native-tracking-transparency';
 
 const adUnitId = Platform.select({
-  ios: TestIds.REWARDED, // 'ca-app-pub-4348716433106304/4541223694'
-  android: TestIds.REWARDED, // 'ca-app-pub-4348716433106304/7546892492'
+  ios: 'ca-app-pub-4348716433106304/4541223694', // 'ca-app-pub-4348716433106304/4541223694' TestIds.REWARDED
+  android: 'ca-app-pub-4348716433106304/7546892492', // 'ca-app-pub-4348716433106304/7546892492'
 });
 
-const createRewardedAd = (setLoaded: any, setRewarded: any) => {
-  const newRewarded = RewardedAd.createForAdRequest(String(adUnitId));
+const createRewardedAd = (
+  setLoaded: any,
+  setRewarded: any,
+  isPersonalized: boolean,
+) => {
+  const newRewarded = RewardedAd.createForAdRequest(String(adUnitId), {
+    requestNonPersonalizedAdsOnly: !isPersonalized,
+  });
 
   newRewarded.addAdEventListener(RewardedAdEventType.LOADED, () => {
     console.log('✅ Reklam Yüklendi');
@@ -27,8 +33,8 @@ const createRewardedAd = (setLoaded: any, setRewarded: any) => {
 
   newRewarded.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => {
     console.log('🚀 Reklam kapatıldı, yeni reklam yükleniyor...');
-    setLoaded(false); // Yüklenme durumunu sıfırla
-    createRewardedAd(setLoaded, setRewarded); // Yeni reklamı yükle
+    setLoaded(false);
+    createRewardedAd(setLoaded, setRewarded, isPersonalized);
   });
 
   newRewarded.load();
@@ -40,19 +46,34 @@ const Advert = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const {user} = useAppSelector(state => state.auth);
   const [rewarded, setRewarded] = useState(null);
+  const [isPersonalized, setIsPersonalized] = useState(true);
 
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    MobileAds()
-      .initialize()
-      .then(adapterStatuses => {
-        console.log('✅ Google Mobile Ads Başlatıldı:', adapterStatuses);
-      });
+    const initAds = async () => {
+      // 👉 ATT izni iste
+      const trackingStatus = await requestTrackingPermission();
+      console.log('🛡️ Tracking Permission:', trackingStatus);
 
-    createRewardedAd(setLoaded, setRewarded); // İlk reklamı yükle
+      if (trackingStatus === 'authorized') {
+        setIsPersonalized(true);
+      } else {
+        setIsPersonalized(false);
+      }
+
+      MobileAds()
+        .initialize()
+        .then(statuses => {
+          console.log('✅ Google Mobile Ads Başlatıldı:', statuses);
+        });
+
+      createRewardedAd(setLoaded, setRewarded, isPersonalized);
+    };
+
+    initAds();
 
     return () => {
-      rewarded?.removeAllListeners(); // Bellek sızıntısını önlemek için
+      rewarded?.removeAllListeners();
     };
   }, []);
 
@@ -83,7 +104,11 @@ const Advert = () => {
         );
 
         showToast({
-          message: i18n.t('ADD_BALANCE_SHEET.ADD', {locale: localeValue}) ?? '',
+          message:
+            i18n.t('ADD_BALANCE_SHEET.ADD', {
+              locale: localeValue,
+              bonus: `${reward.amount} jeton`,
+            }) ?? '',
           type: 'success',
         });
       },
@@ -99,7 +124,10 @@ const Advert = () => {
       rewarded?.show();
     } else {
       console.warn('⚠️ Reklam henüz yüklenmedi, lütfen bekleyin.');
-      showToast({message: 'Reklam yükleniyor, lütfen bekleyin...', type: 'warning'});
+      showToast({
+        message: 'Reklam yükleniyor, lütfen bekleyin...',
+        type: 'warning',
+      });
       rewarded?.load(); // Eğer yüklenmemişse tekrar yükle
     }
   };

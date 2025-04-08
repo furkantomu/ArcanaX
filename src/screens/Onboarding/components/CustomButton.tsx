@@ -90,8 +90,6 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
       backgroundColor,
     };
   });
-console.log('isScrollEnabled', isScrollEnabled);
-console.log('contextErrors', contextErrors);
 
   const handlePress = async () => {
     if (!isScrollEnabled) return;
@@ -104,13 +102,15 @@ console.log('contextErrors', contextErrors);
     } else {
       const data = {
         name: fullName,
-        email: email,
-        birthDate: `${birthdate.day}-${birthdate.month}-${birthdate.year}`,
+        email: email.toLowerCase(),
+        birthDate: `${birthdate.day || '11'}-${birthdate.month || '11'}-${
+          birthdate.year || '2011'
+        }`,
         password: password,
         gender: birthdate.gender,
       };
       const response = await dispatch(authActions.register(data)).unwrap();
-      if(response.status === 409){
+      if (response.status === 409) {
         return;
       }
       dispatch(setOnboardingCompleted());
@@ -118,7 +118,10 @@ console.log('contextErrors', contextErrors);
     haptic?.();
   };
   return (
-    <TouchableWithoutFeedback onPress={handlePress} {...handlers} disabled={uiFlags.isLoggingIn}>
+    <TouchableWithoutFeedback
+      onPress={handlePress}
+      {...handlers}
+      disabled={uiFlags.isLoggingIn}>
       <Animated.View
         style={[
           styles.container,
@@ -128,7 +131,7 @@ console.log('contextErrors', contextErrors);
         ]}>
         <Animated.Text style={[styles.textButton, textAnimationStyle]}>
           {uiFlags.isLoggingIn ? (
-            <ActivityIndicator color={COLORS.cream}/>
+            <ActivityIndicator color={COLORS.cream} />
           ) : (
             i18n.t('ONBOARDING.BUTTON', {locale: localeValue})
           )}

@@ -69,47 +69,47 @@ const Register = () => {
         ? ''
         : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
     }
-    if ('gender' in fieldValues) {
-      temp.gender = fieldValues.gender
-        ? ''
-        : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
-    }
-    if ('day' in fieldValues) {
-      if (!fieldValues.day) {
-        temp.day = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
-      } else {
-        const dayValue = parseInt(fieldValues.day, 10);
-        if (dayValue >= 1 && dayValue <= 31) {
-          temp.day = '';
-        } else {
-          temp.day = i18n.t('LOGIN.INCORRET', {locale: localeValue});
-        }
-      }
-    }
-    if ('month' in fieldValues) {
-      if (!fieldValues.month) {
-        temp.month = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
-      } else {
-        const monthValue = parseInt(fieldValues.month, 10);
-        if (monthValue >= 1 && monthValue <= 12) {
-          temp.month = '';
-        } else {
-          temp.month = i18n.t('LOGIN.INCORRET', {locale: localeValue});
-        }
-      }
-    }
-    if ('year' in fieldValues) {
-      if (!fieldValues.year) {
-        temp.year = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
-      } else {
-        const yearValue = parseInt(fieldValues.year, 10);
-        if (yearValue >= 1940 && yearValue <= new Date().getFullYear()) {
-          temp.year = '';
-        } else {
-          temp.year = i18n.t('LOGIN.INCORRET', {locale: localeValue});
-        }
-      }
-    }
+    // if ('gender' in fieldValues) {
+    //   temp.gender = fieldValues.gender
+    //     ? ''
+    //     : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
+    // }
+    // if ('day' in fieldValues) {
+    //   if (!fieldValues.day) {
+    //     temp.day = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
+    //   } else {
+    //     const dayValue = parseInt(fieldValues.day, 10);
+    //     if (dayValue >= 1 && dayValue <= 31) {
+    //       temp.day = '';
+    //     } else {
+    //       temp.day = i18n.t('LOGIN.INCORRET', {locale: localeValue});
+    //     }
+    //   }
+    // }
+    // if ('month' in fieldValues) {
+    //   if (!fieldValues.month) {
+    //     temp.month = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
+    //   } else {
+    //     const monthValue = parseInt(fieldValues.month, 10);
+    //     if (monthValue >= 1 && monthValue <= 12) {
+    //       temp.month = '';
+    //     } else {
+    //       temp.month = i18n.t('LOGIN.INCORRET', {locale: localeValue});
+    //     }
+    //   }
+    // }
+    // if ('year' in fieldValues) {
+    //   if (!fieldValues.year) {
+    //     temp.year = i18n.t('LOGIN.REQUIRED', {locale: localeValue});
+    //   } else {
+    //     const yearValue = parseInt(fieldValues.year, 10);
+    //     if (yearValue >= 1940 && yearValue <= new Date().getFullYear()) {
+    //       temp.year = '';
+    //     } else {
+    //       temp.year = i18n.t('LOGIN.INCORRET', {locale: localeValue});
+    //     }
+    //   }
+    // }
     if ('password' in fieldValues) {
       temp.password = fieldValues.password
         ? ''
@@ -146,14 +146,17 @@ const Register = () => {
     }
     const data = {
       name: values.fullName,
-      email: values.email,
-      birthDate: `${values.day}-${values.month}-${values.year}`,
+      email: values.email.toLowerCase(),
+      birthDate: `${values.day || '11'}-${values.month || '11'}-${
+        values.year || '2011'
+      }`,
       password: values.password,
       gender: values.gender,
     };
     dispatch(setOnboardingCompleted());
     dispatch(authActions.register(data));
   };
+
   const handleGenderSelection = (gender: string) => {
     setErrors({...errors, gender: ''});
     setValues({...values, gender});

@@ -69,7 +69,9 @@ const Email = () => {
       />
       <Pressable
         style={{zIndex: 99}}
-        onPress={() => {console.log('asd'); navigation.navigate('Login')}}>
+        onPress={() => {
+          navigation.navigate('Login');
+        }}>
         <Typography size="large" style={styles.account}>
           {i18n.t('ONBOARDING.HAVE_ACCOUNT', {locale: localeValue})}
         </Typography>

@@ -19,8 +19,8 @@ const Header = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
 
-  const translateY = useSharedValue(50);
-  const scale = useSharedValue(0.8);
+  const translateY = useSharedValue(30);
+  const scale = useSharedValue(0.9);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -51,7 +51,7 @@ const Header = () => {
         style={styles.linearGradient}
         start={{x: 0.5, y: 0}}
         end={{x: 0.5, y: 1}}
-        locations={[1, 0.5, 0.04]}
+        locations={[0.15, 0.5, 0.9]}
       />
 
       <View style={styles.headerTextWrapper}>

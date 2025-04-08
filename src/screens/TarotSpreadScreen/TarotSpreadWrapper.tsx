@@ -123,7 +123,7 @@ const TarotSpreadWrapper = ({route}: any) => {
                 onChangeText={setNewMessage}
                 onSubmitEditing={handleSendMessage}
                 returnKeyType="send"
-                maxLength={50}
+                maxLength={150}
               />
               <TouchableOpacity onPress={handleSendMessage}>
                 <Image

@@ -75,7 +75,7 @@ const FooterButton = () => {
         />
       ) : (
         <Button
-          disabled={dream === '' || loading}
+          disabled={dream === '' || dream.length > 1500 || loading}
           text={i18n.t('DREAM_PREMIUM_SCREEN.BUTTON_TEXT', {
             locale: localeValue,
           })}

@@ -21,6 +21,7 @@ import Advert from '../Advert/Advert';
 import {apiService} from '@/services/APIService';
 import {CardView} from './CardView';
 import {Button} from '../button/Button';
+import MyWebComponent from '../MyWebComponent';
 
 const image = require('../../../assets/background/tokenBg.webp');
 
@@ -65,53 +66,22 @@ const Purchasing = () => {
       );
     }
   }, [connected, getProducts]);
-  const processPurchase = useCallback(async () => {
-    if (!currentPurchase) return;
-    if (Platform.OS !== 'ios') return;
-    try {
-      setLoading(true);
-      const {transactionId, transactionReceipt} = currentPurchase;
-      if ((isIosStorekit2() && transactionId) || transactionReceipt) {
-        await finishTransaction({
-          purchase: currentPurchase,
-          isConsumable: true,
-        });
-
-        await apiService.post<{
-          success: boolean;
-        }>('/auth/verify-purchase', {
-          transactionId,
-        });
-
-        await dispatch(
-          balanceActions.getBalance({accountId: String(user?.accountId)}),
-        );
-        showToast({
-          message: i18n.t('ADD_BALANCE_SHEET.ADD', {locale: localeValue}) ?? '',
-          type: 'success',
-        });
-      }
-    } catch (error) {
-      console.error('Error processing purchase:', error);
-      showToast({
-        message: i18n.t('ADD_BALANCE_SHEET.ERROR', {locale: localeValue}) ?? '',
-        type: 'error',
-      });
-    } finally {
-      setLoading(false);
-    }
-  }, [
-    currentPurchase,
-    dispatch,
-    finishTransaction,
-    localeValue,
-    user?.accountId,
-  ]);
 
   useEffect(() => {
+    const processPurchase = async () => {
+      if (currentPurchase) {
+        try {
+          await finishTransaction({
+            purchase: currentPurchase,
+            isConsumable: true,
+          });
+        } catch (err) {
+          console.warn('Satın alma tamamlanamadı:', err);
+        }
+      }
+    };
     processPurchase();
-  }, [currentPurchase, processPurchase]);
-
+  }, [currentPurchase, finishTransaction]);
   const handleBuyProduct = async () => {
     if (currentPurchase?.transactionId) {
       console.log('Zaten aktif bir satın alma var, yeni işlem başlatılmıyor.');
@@ -120,12 +90,29 @@ const Purchasing = () => {
     try {
       setLoading(true);
       if (Platform.OS === 'ios') {
-        await requestPurchase({sku: selectedProduct?.productId});
+        const response = await requestPurchase({sku: selectedProduct?.productId});
+
+        const result = await apiService.post<{
+          success: boolean;
+        }>('/auth/verify-purchase', {
+          transactionId: response.transactionId,
+        });
+
+        await dispatch(
+          balanceActions.getBalance({accountId: String(user?.accountId)}),
+        );
+        showToast({
+          message: i18n.t('ADD_BALANCE_SHEET.ADD', {
+            bonus: result.data.bonus,
+            locale: localeValue,
+          }),
+          type: 'success',
+        });
       } else {
         const purchaseData = await requestPurchase({
           skus: [selectedProduct?.productId],
         });
-        await apiService.post('/auth/verify-purchase-android', {
+        const result = await apiService.post('/auth/verify-purchase-android', {
           purchaseData,
           selectedProduct,
         });
@@ -134,16 +121,22 @@ const Purchasing = () => {
           balanceActions.getBalance({accountId: String(user?.accountId)}),
         );
         showToast({
-          message: i18n.t('ADD_BALANCE_SHEET.ADD', {locale: localeValue}) ?? '',
+          message: i18n.t('ADD_BALANCE_SHEET.ADD', {
+            bonus: result.data.bonus,
+            locale: localeValue,
+          }),
           type: 'success',
         });
       }
-    } catch (error) {
-      console.error('Purchase Error:', error);
-      showToast({
-        message: i18n.t('ADD_BALANCE_SHEET.ERROR', {locale: localeValue}) ?? '',
-        type: 'error',
-      });
+    } catch (error: any) {
+      console.log(error.code)
+      if (error.code !== 'E_USER_CANCELLED') {
+        showToast({
+          message:
+            i18n.t('ADD_BALANCE_SHEET.ERROR', {locale: localeValue}) ?? '',
+          type: 'error',
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -211,15 +204,12 @@ const Purchasing = () => {
           }
         />
 
-        <Typography weight="bold" style={styles.privacy}>
-          {i18n.t('ADD_BALANCE_SHEET.PRIVACY', {locale: localeValue})}
-        </Typography>
-
+        <MyWebComponent uri="https://arcanaxapp.com/privacy" />
         <Button
           text={
             selectedProduct
               ? `${selectedProduct?.title} (${selectedProduct?.localizedPrice})`
-              : 'Satın Al'
+              :   i18n.t('BALANCE_SCREEN.ADD_TOKEN', {locale: localeValue})
           }
           disabled={selectedProduct ? false : true || loading}
           variant="secondary"

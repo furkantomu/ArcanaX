@@ -31,7 +31,7 @@ const EmojiRating = () => {
       </View>
       <TextInput
         placeholder={i18n.t('RATING.PLACEHOLDER', {locale: localeValue})}
-        placeholderTextColor={COLORS.darkGray}
+        placeholderTextColor={COLORS.blackOpacity1}
         multiline
         style={{
           width: '100%',

@@ -354,7 +354,7 @@
   "FEEDBACK_RESPONSE": "Your message has reached us. Your feedback is valuable to us!",
   "ADD_BALANCE_SHEET": {
     "TITLE": "Your intuition guides you... Get your tokens and find the answers!",
-    "ADD": "Jetons have been successfully added to your account.",
+   "ADD": "Your tokens have been successfully added to your account. You received a {{bonus}} bonus!",
     "ERROR": "Payment verification failed, please try again.",
     "AMOUNT": "Select the amount you want to deposit",
     "BONUS": "Make a deposit now to earn bonus tokens!",

@@ -3,6 +3,7 @@ import axios, {
   AxiosResponse,
   AxiosError,
   InternalAxiosRequestConfig,
+  AxiosRequestHeaders,
 } from 'axios';
 
 import {getStore} from '@/store/storeAccessor';
@@ -16,10 +17,9 @@ class APIService {
   private constructor() {
     this.api = axios.create({
       baseURL: 'https://www.arcanaxapp.xyz/',
-      //baseURL: 'http://192.168.1.103:3002/',
+      //baseURL: 'http://192.168.0.135:3002/',
     });
     this.setupInterceptors();
-    
   }
 
   public static getInstance(): APIService {
@@ -29,18 +29,18 @@ class APIService {
     return APIService.instance;
   }
 
-  private getHeaders() {
+
+  private getHeaders(): AxiosRequestHeaders {
     const store = getStore();
     const state = store.getState();
     const headers = state.auth.headers;
-    if (!headers) {
-      return {};
-    }
-
-    return {
-      Authorization: `Bearer ${headers.accessToken}`,
+    const headersObj: AxiosRequestHeaders = {
       'Accept-Language': state.settings.localeValue,
     };
+    if (headers) {
+      headersObj.Authorization = `Bearer ${headers.accessToken}`;
+    }
+    return headersObj;
   }
 
   private setupInterceptors() {
@@ -49,7 +49,6 @@ class APIService {
         config: AxiosRequestConfig,
       ): Promise<InternalAxiosRequestConfig> => {
         const headers = this.getHeaders();
-
         return {
           ...config,
           headers: {
@@ -66,11 +65,6 @@ class APIService {
       async (error: AxiosError) => {
         const store = getStore();
         const state = store.getState();
-        crashlytics().recordError(
-          new Error(
-            `email:${state.auth.user.email} url: ${error.config?.url}, errorMessage: ${JSON.stringify(error.response?.data)}`
-          ),
-        );
         if (error.code === 'ECONNABORTED') {
           console.error('İstek zaman aşımına uğradı:', error.message);
           showToast({
@@ -79,10 +73,20 @@ class APIService {
           });
         }
         if (error.response?.status === 401) {
-          const store = getStore();
           store.dispatch({type: 'auth/logout'});
         }
 
+        try {
+           crashlytics().recordError(
+            new Error(
+              `email:${state.auth.user.email} url: ${
+                error.config?.url
+              }, errorMessage: ${JSON.stringify(error.response?.data)}`,
+            ),
+          );
+        } catch (e) {
+          console.log('Failed to log error to Crashlytics:', e);
+        }
         return Promise.reject(error);
       },
     );

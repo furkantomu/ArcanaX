@@ -34,6 +34,8 @@
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.5.0",
     "react-native-snackbar": "^2.8.0",
+    "react-native-tracking-transparency": "^0.1.2",
+    "react-native-webview": "^13.13.5",
     "react-redux": "^9.2.0",
     "reactotron-redux": "^3.1.11",
     "redux-persist": "^6.0.0"

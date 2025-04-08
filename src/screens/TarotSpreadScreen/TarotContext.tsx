@@ -251,6 +251,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
     rating,
     setRating,
+
+    setSelectedCards
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

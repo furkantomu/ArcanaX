@@ -72,7 +72,7 @@ const Login = () => {
     }
     const {email, password} = values;
        dispatch(setOnboardingCompleted());
-    dispatch(authActions.login({email, password}));
+    dispatch(authActions.login({email: email.toLowerCase(), password}));
   };
   return (
     <View style={styles.container}>

@@ -48,7 +48,6 @@ const Transactions = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const styles = getStyles();
-
   return (
     <View style={styles.header}>
       {loading ? (

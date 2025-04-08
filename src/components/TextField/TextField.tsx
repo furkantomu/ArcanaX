@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {COLORS, FONTS} from '@/styles/theme';
-import { TextInputPropsTypes } from '@/types/components/input';
+import {TextInputPropsTypes} from '@/types/components/input';
 
 const TextField: React.FC<TextInputPropsTypes> = ({
   inputName,
@@ -49,7 +49,7 @@ const TextField: React.FC<TextInputPropsTypes> = ({
         value={value}
         onChangeText={text => handleInputChange(text)}
         placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor={placeholderTextColor || COLORS.blackOpacity1 }
         secureTextEntry={secureTextEntry}
         onFocus={onFocus}
         onBlur={onBlur}

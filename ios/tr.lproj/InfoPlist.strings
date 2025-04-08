@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  ArcanaX
+
+  Created by Furkan Tomu on 6.04.2025.
+  
+*/
+"NSUserTrackingUsageDescription" = "Bu tanımlayıcı size kişiselleştirilmiş reklamlar sunmak için kullanılacaktır.";

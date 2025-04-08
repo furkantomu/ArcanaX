@@ -94,16 +94,12 @@ const Birthdate = () => {
     setErrors({...errors, gender: ''});
     setValues({...values, gender});
   };
-  console.log(
-    'Object.values(errors).includes()',
-    Object.values(errors).some(x => x !== ''),
-  );
   useEffect(() => {
-    if (Object.values(errors).some(x => x !== '')) {
-      setContextErrors(true);
-    } else {
-      setContextErrors(false);
-    }
+    // if (Object.values(errors).some(x => x !== '')) {
+    //   setContextErrors(true);
+    // } else {
+    //   setContextErrors(false);
+    // }
     setBirthdate({
       day: values.day,
       month: values.month,
@@ -128,7 +124,7 @@ const Birthdate = () => {
         <AnimatedTextField
           style={[styles.textField, styles.day]}
           value={String(values.day)}
-          errorText={errors.day}
+          //errorText={errors.day}
           label={i18n.t('NUMEROLOGY_SCREEN.DAY', {locale: localeValue})}
           onChangeText={text => handleInputChange('day', text)}
           keyboardType={'number-pad'}
@@ -138,7 +134,7 @@ const Birthdate = () => {
           style={[styles.textField, styles.month]}
           value={String(values.month)}
           label={i18n.t('NUMEROLOGY_SCREEN.MONTH', {locale: localeValue})}
-          errorText={errors.month}
+          //errorText={errors.month}
           onChangeText={text => handleInputChange('month', text)}
           keyboardType={'number-pad'}
           maxLength={2}
@@ -147,7 +143,7 @@ const Birthdate = () => {
           style={[styles.textField, styles.year]}
           value={String(values.year)}
           label={i18n.t('NUMEROLOGY_SCREEN.YEAR', {locale: localeValue})}
-          errorText={errors.year}
+          //errorText={errors.year}
           onChangeText={text => handleInputChange('year', text)}
           keyboardType={'number-pad'}
           maxLength={4}
@@ -162,9 +158,9 @@ const Birthdate = () => {
           styles.genderButtonWrapper,
 
           // eslint-disable-next-line react-native/no-inline-styles
-          {
-            borderColor: errors.gender ? 'red' : 'black',
-          },
+          // {
+          //   borderColor: errors.gender ? 'red' : 'black',
+          // },
         ]}>
         <Button
           buttonStyle={[

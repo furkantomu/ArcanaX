@@ -21,7 +21,6 @@ const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
   const haptic = useHaptic('soft');
 
   const handlePress = (buttonType: string) => {
-    console.log(buttonType);
     haptic?.();
     if (buttonType === 'logout') {
       dispatch(logout());

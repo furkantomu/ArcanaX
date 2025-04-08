@@ -10,6 +10,8 @@ export {default as AnimatedTextField} from './TextField/AnimatedTextField';
 export {default as CustomHeader} from './CustomHeader/CustomHeader';
 export {default as ChangeLanguage} from './ChangeLanguage/ChangeLanguage';
 export {default as Purchasing} from './Purchasing/Purchasing';
+export {default as MyWebComponent} from './MyWebComponent/index';
+
 
 
 
