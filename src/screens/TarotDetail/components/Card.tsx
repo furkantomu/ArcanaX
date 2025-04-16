@@ -5,7 +5,8 @@ import {getStyles} from '../styles';
 import {Typography} from '@/components';
 import {useNavigation} from '@react-navigation/native';
 import {useTarotDetailContext} from '../TarotDetailScreenContext';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
+import FastImage from 'react-native-fast-image';
 
 type TarotCardType = 'major' | 'cups' | 'pentacles' | 'swords' | 'wands';
 
@@ -38,11 +39,18 @@ const Card: React.FC<TarotCardListProps> = ({type}) => {
                 category: card.category,
               })
             }>
-            <Image
-              source={{uri: card.frontImageSource}}
+            <FastImage
+              source={{
+                uri: card?.frontImageSource,
+                priority: FastImage.priority.high,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
               style={[styles.cardImage]}
             />
-            <Typography>{localeValue === 'tr' ? card.name : card.engName}</Typography>
+
+            <Typography>
+              {localeValue === 'tr' ? card.name : card.engName}
+            </Typography>
           </Pressable>
         ))
       )}

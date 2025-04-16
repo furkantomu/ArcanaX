@@ -15,6 +15,7 @@ import {
 } from '@/utils/getImageForNumber';
 import i18n from '@/i18n';
 import {useAppSelector} from '@/hooks';
+import FastImage from 'react-native-fast-image';
 
 type TarotCard = {
   id: string;
@@ -81,8 +82,12 @@ const TarotCardDetail = () => {
             {loading ? (
               <ActivityIndicator size={'large'} style={styles.loading} />
             ) : (
-              <Image
-                source={{uri: card?.frontImageSource}}
+              <FastImage
+                source={{
+                  uri: card?.frontImageSource,
+                  priority: FastImage.priority.high,
+                }}
+                resizeMode={FastImage.resizeMode.cover}
                 style={styles.image}
               />
             )}
