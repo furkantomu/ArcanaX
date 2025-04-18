@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import Content from './components/Content';
 
 import {getStyles} from './styles';
-import {AppProvider} from './NumerologyContext';
+import {AppProvider, useNumerologyContext} from './NumerologyContext';
 import {COLORS} from '@/styles/theme';
 import { CustomHeader } from '@/components';
 
@@ -42,6 +42,7 @@ const NumerologyScreen = () => {
       });
   }, [navigation]);
 
+ 
   return (
     <AppProvider>
       <KeyboardAvoidingView

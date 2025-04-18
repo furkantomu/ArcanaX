@@ -351,7 +351,6 @@
     "AMOUNT": "Yüklemek istediğiniz tutarı seçin",
     "BONUS": "Bonus jeton kazanmak için şimdi yükleme yapın!",
     "PRIVACY": "Satın alım yaparak, gizlilik politikamızı kabul etmiş oluyorsunuz"
-
   },
   "CONTACT_MODAL": {
     "TITLE": "İletişim",
@@ -362,7 +361,7 @@
   "RATING": {
     "TITLE": "Nasıl hissettiniz?",
     "PLACEHOLDER": "Görüşlerinizi buraya yazın...",
-    "MESSAGE": "Geri bildiriminiz için teşekkürler! +10 jeton kazandınız."
+    "MESSAGE": "Geri bildiriminiz için teşekkürler!"
   },
   "BALANCE_CONTROL": {
     "TITLE": "Yetersiz Bakiye",
@@ -371,7 +370,15 @@
     "CANCEL": "İptal"
   },
   "NOT_CONNECT": "Sunucuya bağlanamadı. Jeton iadesi yapılacaktır.",
-
+  "GUIDANCE_HOME": {
+    "TITLE": "Tarot Yorumlama Egzersizleri",
+    "DESCRIPTION": "Tarot yorumlama becerini geliştir! Aşağıdaki pratiklerle sezgisel okuma yeteneğini arttır."
+  },
+  "MY_TAROT": {
+    "card1": "1 ile 5 arasında istediğin kadar kartı seçebilirsin.",
+    "card2": "Kendi desteni kullanmak istersen, kartları açık şekilde seçebilirsin.",
+    "card3": "Önce kartları sezgilerine göre yorumla, ardından bu yorumu birlikte değerlendirelim."
+  },
   "LIFE_PATH_DETAIL": {
     "1": "Yaşam yolu 1, bağımsızlık, liderlik ve yenilikçi ruh ile şekillenen bir yoldur. 1'ler, kendi yolunu çizen, cesur ve kararlı bireylerdir. Hep bir adım önde olmak, yenilikler yaratmak ve kendi özgürlüklerini kazanmak isterler. Ancak bu güçlü karakter, bazen yalnızlık ve zorlayıcı sorumluluklarla gelir. 1'ler, içsel güçleriyle zorlukların üstesinden gelirken, kendi yolunu açan öncüler olarak dünyada iz bırakır.",
     "2": "Yaşam yolu 2, denge, işbirliği ve hassasiyet ile yönlendirilir. 2'ler, başkalarıyla uyum içinde olmayı, sempatik ve anlayışlı bir yaklaşım benimsemeyi tercih ederler. Zayıf yönleri, bazen fazla fedakâr olabilmeleri ve kendi ihtiyaçlarını ihmal etmeleri olabilir. Ancak, gerçek güçleri, ihtiyaç duyulduğunda destek olma ve barışı sağlama yeteneklerinde yatar. 2'ler, ilişkilerinde derin bağlar kurarak, dünyayı sevgiyle ve huzurla dönüştürürler.",

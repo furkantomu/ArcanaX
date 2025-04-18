@@ -47,7 +47,7 @@ const FAQScreen = () => {
         ref={FaqSectionScrollViewRef}
         showsVerticalScrollIndicator={false}>
         <SafeAreaView>
-          <CustomHeader leftIcon={true} title={false} rightIcon={false} />
+          <CustomHeader leftIcon={true} title={true} rightIcon={false} />
           <View style={styles.container}>
             <Typography style={styles.faqTitle}>
               {i18n.t('FAQ_TITLE', {locale: localeValue})}

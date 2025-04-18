@@ -5,7 +5,7 @@ import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 import { getStyles } from '../styles';
 
 
-// TableOfContentsElement component props types
+
 interface TableOfContentsElementProps {
   item: string;
   index: number;

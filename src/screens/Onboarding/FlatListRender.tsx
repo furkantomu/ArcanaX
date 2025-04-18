@@ -39,14 +39,14 @@ const FlatListRender = () => {
     checkFormCompletion(currentIndex);
   }, [email, fullName, birthdate, password, currentIndex]);
 
-  const isBirthdateComplete = (birthdate) => {
-    return (
-      birthdate.day.trim() !== '' &&
-      birthdate.month.trim() !== '' &&
-      birthdate.year.trim() !== '' &&
-      birthdate.gender.trim() !== ''
-    );
-  };
+  // const isBirthdateComplete = (birthdate) => {
+  //   return (
+  //     birthdate.day.trim() !== '' &&
+  //     birthdate.month.trim() !== '' &&
+  //     birthdate.year.trim() !== '' &&
+  //     birthdate.gender.trim() !== ''
+  //   );
+  // };
 
   const checkFormCompletion = (index: number) => {
     switch (index) {

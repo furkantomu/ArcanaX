@@ -13,7 +13,6 @@ import {Card} from '@/components';
 
 import {RootStackParamList} from '@/utils/navigationUtils';
 import {StackNavigationProp} from '@react-navigation/stack';
-import Tarot from './Tarot';
 
 const imageWidth = SIZES.width * 0.7;
 const imageHeight = imageWidth * 1.63;
@@ -60,11 +59,6 @@ const Slider: React.FC<SliderProps> = ({scrollX}) => {
           />
         )}
       />
-      {DUMMY.map((item, index) => {
-        if (item.navigation === 'TarotScreen') {
-          return <Tarot key={index} index={index} scrollX={scrollX} />;
-        }
-      })}
     </View>
   );
 };

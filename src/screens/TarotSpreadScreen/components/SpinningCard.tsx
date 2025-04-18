@@ -12,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import {getStyles} from '../style';
 import {useTarotContext} from '../TarotContext';
+import FastImage from 'react-native-fast-image';
 
 interface TarotCard {
   id: number;
@@ -99,10 +100,13 @@ const SpinningCard: React.FC<SpinningCardProps> = ({
       </Animated.View>
       <Animated.View style={[styles.flippedCard, flippedCardAnimatedStyle]}>
         <TouchableOpacity onPress={handlePress} activeOpacity={1}>
-          <Image
-            source={{uri: frontImageSource}}
+          <FastImage
+            source={{
+              uri: frontImageSource,
+              priority: FastImage.priority.high,
+            }}
+            resizeMode={FastImage.resizeMode.cover}
             style={styles.spinningCard}
-            resizeMode={'cover'}
           />
         </TouchableOpacity>
         {/* <Text style={styles.cardName}>{item.name}</Text>

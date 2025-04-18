@@ -24,3 +24,17 @@ export {default as AccountSettings} from './AccountSettings/index';
 export {default as TarotHistoryScreen} from './HistoryScreen/TarotHistoryScreen/index';
 export {default as NumerologyHistoryScreen} from './HistoryScreen/NumerologyHistoryScreen/index';
 export {default as DreamHistoryScreen} from './HistoryScreen/DreamHistoryScreen/index';
+
+export {default as GuidanceHome} from './GuidanceHome/index';
+export {default as TarotCardDesription} from './TarotCardDescription/index';
+export {default as MyTarotReading} from './MyTarotReading/index';
+export {default as MyTarotAnalysis} from './MyTarotAnalysis/index';
+export {default as MyTarotAnalysisDetail} from './MyTarotAnalysisDetail/index';
+export {default as MyTarotAnalysisSave} from './MyTarotAnalysisSave/index';
+export {default as MyTarotAnalysisSaveDetail} from './MyTarotAnalysisSaveDetail/index';
+
+
+
+
+
+

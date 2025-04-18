@@ -1,0 +1,10 @@
+import {COLORS, FONTS, SIZES} from '@/styles/theme';
+import {StyleSheet} from 'react-native';
+
+export const getStyles = () =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingBottom: 20,
+    },
+  });

@@ -1,139 +1,54 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Image, ScrollView, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {RouteProp, useRoute} from '@react-navigation/native';
-
-import {getStyles} from './styles';
-import LinearGradient from 'react-native-linear-gradient';
 import {COLORS} from '@/styles/theme';
-import {CustomHeader, Typography} from '@/components';
-import {apiService} from '@/services/APIService';
-import {
-  getImageForCardElement,
-  getImageForCardNumber,
-  getImageForCardZodiac,
-} from '@/utils/getImageForNumber';
-import i18n from '@/i18n';
-import {useAppSelector} from '@/hooks';
-
-type TarotCard = {
-  id: string;
-  name: string;
-  category: 'swords' | 'wands' | 'cups' | 'pentacles' | 'major';
-  engName: string;
-  frontImageSource: string;
-  details: {
-    number: string;
-    zodiac: string;
-    element: string;
-    planet: string;
-    title: string;
-    description: string;
-  };
-};
-
-const planet = require('../../../assets/card/planet/galaxy.png');
-
-type RootStackParamList = {
-  TarotCardDetail: {id: string; category: string};
-};
-
-type TarotCardScreenRouteProp = RouteProp<
-  RootStackParamList,
-  'TarotCardDetail'
->;
+import {StyleSheet, View} from 'react-native';
+import Wrapper from './Wrapper';
+import {AppProvider} from './TarotDetailScreenContext';
+import {useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
+import {CustomHeader} from '@/components';
 
 const TarotCardDetail = () => {
-  const {localeValue} = useAppSelector(state => state.settings);
-  const [card, setCard] = useState<TarotCard>();
-  const [loading, setLoading] = useState({});
-  const {params} = useRoute<TarotCardScreenRouteProp>();
-  const {id} = params;
-  const styles = getStyles();
+  const navigation = useNavigation();
 
   useEffect(() => {
-    const fetchTarotCards = async () => {
-      try {
-        setLoading(true);
-        const response = await apiService.get(`tarot/cards/${id}`);
+    navigation.getParent()?.setOptions({
+      tabBarStyle: {display: 'none'},
+    });
 
-        setCard(response.data);
-      } catch (error) {
-        console.error('Tarot kartları yüklenirken hata oluştu:', error);
-        throw new Error('Tarot kartları yüklenemedi!');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTarotCards();
-  }, []);
-
+    return () =>
+      navigation.getParent()?.setOptions({
+        tabBarStyle: {
+          backgroundColor: '#f5f5dc4f',
+          position: 'absolute',
+          marginHorizontal: 30,
+          marginBottom: 20,
+          borderTopWidth: 0,
+          height: 50,
+          borderBottomWidth: 0,
+          borderRadius: 50,
+          elevation: 0,
+        },
+      });
+  }, [navigation]);
   return (
-    <LinearGradient colors={[COLORS.black, '#3F2305']} style={styles.container}>
-      <SafeAreaView style={styles.container}>
-        <CustomHeader leftIcon={true} title={false} rightIcon={false} />
-        <ScrollView>
-          <View style={styles.imageContainer}>
-            <Typography size="heading">
-              {localeValue === 'tr' ? card?.name : card?.engName}
-            </Typography>
-
-            {loading ? (
-              <ActivityIndicator size={'large'} style={styles.loading} />
-            ) : (
-              <Image
-                source={{uri: card?.frontImageSource}}
-                style={styles.image}
-              />
-            )}
-          </View>
-          <View style={styles.imageIconContainer}>
-            <View style={styles.iconWrapper}>
-              <Typography size="large">
-                {i18n.t('TAROT_DETAIL.NUMBER', {locale: localeValue})}
-              </Typography>
-              <Image
-                source={getImageForCardNumber(String(card?.details.number))}
-                style={styles.icon}
-              />
-              <Typography size="large">{card?.details.number}</Typography>
-            </View>
-            <View style={styles.iconWrapper}>
-              <Typography size="large">
-                {i18n.t('TAROT_DETAIL.ZODIAC', {locale: localeValue})}
-              </Typography>
-              <Image
-                source={getImageForCardZodiac(String(card?.details.zodiac))}
-                style={styles.icon}
-              />
-              <Typography size="large">{card?.details.zodiac}</Typography>
-            </View>
-            <View style={styles.iconWrapper}>
-              <Typography size="large">
-                {i18n.t('TAROT_DETAIL.ELEMENT', {locale: localeValue})}
-              </Typography>
-              <Image
-                source={getImageForCardElement(String(card?.details.element))}
-                style={styles.icon}
-              />
-              <Typography size="large">{card?.details.element}</Typography>
-            </View>
-            <View style={styles.iconWrapper}>
-              <Typography size="large">
-                {' '}
-                {i18n.t('TAROT_DETAIL.PLANET', {locale: localeValue})}
-              </Typography>
-              <Image source={planet} style={styles.icon} />
-              <Typography size="large">{card?.details.planet}</Typography>
-            </View>
-          </View>
-          <View style={styles.descriptionContainer}>
-            <Typography size="medium">{card?.details.description}</Typography>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
+    <AppProvider>
+      <LinearGradient
+        colors={['#3F2305', COLORS.darkGray, '#3F2305']}
+        style={{flex: 1}}>
+        <SafeAreaView style={styles.container}>
+          <CustomHeader leftIcon={true} title={false} rightIcon={false} />
+          <Wrapper />
+        </SafeAreaView>
+      </LinearGradient>
+    </AppProvider>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default TarotCardDetail;

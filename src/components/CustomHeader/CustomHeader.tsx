@@ -53,75 +53,95 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
 
   return (
     <View style={styles.headerContainer}>
-      {/* Left Icon */}
-      {leftIcon ? (
-        <Pressable
-          style={styles.leftIcon}
-          onPress={() => {
-            haptic?.();
-            navigation.goBack();
-          }}>
-          <Icon name="left" style={styles.icon} />
-          <Typography size="large" style={styles.iconContainer}>
-            {i18n.t('NAVIGATION_BACK', {locale: localeValue})}
+      {/* Sol alan */}
+      <View style={styles.sideContainer}>
+        {leftIcon ? (
+          <Pressable
+            style={styles.leftIcon}
+            onPress={() => {
+              haptic?.();
+              navigation.goBack();
+            }}>
+            <Icon name="left" style={styles.icon} />
+            <Typography size="large" style={styles.backText}>
+              {i18n.t('NAVIGATION_BACK', {locale: localeValue})}
+            </Typography>
+          </Pressable>
+        ) : null}
+      </View>
+  
+      {/* Orta başlık */}
+      <View style={styles.centerContainer}>
+        {title && (
+          <Typography size="large" style={styles.title}>
+            ArcanaX
           </Typography>
-        </Pressable>
-      ) : (
-        <View style={styles.iconContainer} />
-      )}
-
-      {/* Title */}
-      <Typography size="large">{title ? 'ArcanaX' : ''}</Typography>
-
-      {/* Right Icons */}
-      <View style={styles.rightIconsContainer}>
-        {rightIcon ? (
-          <View>
-            <Pressable
-              onPress={() => {
-                haptic?.();
-                openModal();
-              }}
-              style={styles.iconContainer}>
-              <Icon name="token" style={styles.tokenIcon} />
-              <Typography size="large">{balance?.totalBalance}</Typography>
-            </Pressable>
-          </View>
-        ) : (
-          <View style={styles.iconContainer} />
         )}
+      </View>
+  
+      {/* Sağ alan */}
+      <View style={styles.sideContainer}>
+        {rightIcon ? (
+          <Pressable onPress={() => {
+            haptic?.();
+            openModal();
+          }} style={styles.iconContainer}>
+            <Icon name="token" style={styles.tokenIcon} />
+            <Typography size="large">{balance?.totalBalance}</Typography>
+          </Pressable>
+        ) : null}
       </View>
     </View>
   );
+  
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
-    top: 0,
-    width: SIZES.width,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: SIZES.width,
+    paddingHorizontal: 0,
+    paddingVertical: 15,
     backgroundColor: COLORS.blackOpacity,
-    zIndex: 99,
-    // iOS shadow
     shadowColor: COLORS.gold,
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 6,
-    // Android shadow
     elevation: 0.5,
-    paddingVertical: 5,
-    paddingHorizontal: 5,
+    zIndex:99,
   },
+  
+  sideContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  
+  centerContainer: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  
+  title: {
+    color: COLORS.cream,
+    fontWeight: 'bold',
+  },
+  
+  backText: {
+    color: COLORS.cream,
+    marginLeft: 5,
+  },
+  
   iconContainer: {
-    width: 60,
-    paddingVertical: 10,
+
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 13,
     color: COLORS.cream,
+    gap: 5,
   },
   icon: {
     width: 25,
@@ -141,6 +161,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+
   },
 });
 

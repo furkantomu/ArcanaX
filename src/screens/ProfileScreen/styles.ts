@@ -55,7 +55,6 @@ export const getStyles = () =>
       backgroundColor: COLORS.darkGray,
       padding: 10,
       borderRadius: 10,
-      marginBottom: 80,
     },
     settingsMenuItem: {
       backgroundColor: '#212121',

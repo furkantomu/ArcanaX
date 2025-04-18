@@ -147,11 +147,12 @@ const Register = () => {
     const data = {
       name: values.fullName,
       email: values.email.toLowerCase(),
-      birthDate: `${values.day || '11'}-${values.month || '11'}-${
-        values.year || '2011'
-      }`,
+      // birthDate: `${values.day || '11'}-${values.month || '11'}-${
+      //   values.year || '2011'
+      // }`,
+      birthDate: "11-11-2011",
       password: values.password,
-      gender: values.gender,
+      gender: '',
     };
     dispatch(setOnboardingCompleted());
     dispatch(authActions.register(data));
@@ -198,7 +199,7 @@ const Register = () => {
               value={values.email}
               errorMessage={errors.email}
             />
-            <View style={styles.dateContainer}>
+            {/* <View style={styles.dateContainer}>
               <View>
                 <Typography style={styles.label}>
                   {i18n.t('LOGIN.DAY', {locale: localeValue})}
@@ -286,7 +287,7 @@ const Register = () => {
                 text={i18n.t('LOGIN.GENDER.FEMALE', {locale: localeValue})}
                 handlePress={() => handleGenderSelection('female')}
               />
-            </View>
+            </View> */}
             <Typography style={styles.label}>
               {i18n.t('LOGIN.PASSWORD', {locale: localeValue})}
             </Typography>

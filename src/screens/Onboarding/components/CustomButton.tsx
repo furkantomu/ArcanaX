@@ -107,7 +107,7 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
           birthdate.year || '2011'
         }`,
         password: password,
-        gender: birthdate.gender,
+        gender: '',
       };
       const response = await dispatch(authActions.register(data)).unwrap();
       if (response.status === 409) {

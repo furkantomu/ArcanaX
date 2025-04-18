@@ -10,6 +10,7 @@ import {useAppSelector} from '@/hooks';
 import {selectLoggedIn} from '@/store/auth/authSelectors';
 import {AuthStack} from '../stack/AuthStack';
 import {COLORS} from '@/styles/theme';
+import GuidanceStack from '../stack/GuidanceStack';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -78,9 +79,9 @@ const Tabs = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Kişisel"
-        component={HomeStack}
+        component={GuidanceStack}
         options={{
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({focused}: {focused: boolean}) => (
@@ -90,7 +91,7 @@ const Tabs = () => {
             />
           ),
         }}
-      /> */}
+      />
       <Tab.Screen
         name="Profil"
         component={ProfileStack}

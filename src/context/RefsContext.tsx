@@ -16,6 +16,9 @@ interface RefsContextType {
   saveNumerologySheetRef: React.RefObject<BottomSheetRefProps>;
   saveDreamSheetRef: React.RefObject<BottomSheetRefProps>;
   languageChangeSheetRef: React.RefObject<BottomSheetRefProps>;
+  myTarotSheetRef: React.RefObject<BottomSheetRefProps>;
+  tarotAnalysisScrollViewRef: React.RefObject<ScrollView>;
+  saveTarotAnalysisSheetRef: React.RefObject<BottomSheetRefProps>;
 }
 
 const RefsContext = React.createContext<RefsContextType | undefined>(undefined);
@@ -45,6 +48,9 @@ const RefsProvider: React.FC<
   const saveNumerologySheetRef = useRef<BottomSheetRefProps>(null);
   const saveDreamSheetRef = useRef<BottomSheetRefProps>(null);
   const languageChangeSheetRef = useRef<BottomSheetRefProps>(null);
+  const myTarotSheetRef = useRef<BottomSheetRefProps>(null);
+  const tarotAnalysisScrollViewRef = useRef<ScrollView>(null);
+  const saveTarotAnalysisSheetRef = useRef<BottomSheetRefProps>(null);
   const {children} = props;
 
   const contextRefValues = {
@@ -59,6 +65,9 @@ const RefsProvider: React.FC<
     saveNumerologySheetRef,
     saveDreamSheetRef,
     languageChangeSheetRef,
+    myTarotSheetRef,
+    tarotAnalysisScrollViewRef,
+    saveTarotAnalysisSheetRef,
   };
 
   return (

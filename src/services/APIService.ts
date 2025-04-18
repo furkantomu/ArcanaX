@@ -17,7 +17,7 @@ class APIService {
   private constructor() {
     this.api = axios.create({
       baseURL: 'https://www.arcanaxapp.xyz/',
-      //baseURL: 'http://192.168.0.135:3002/',
+      //baseURL: 'http://192.168.1.101:3002/',
     });
     this.setupInterceptors();
   }

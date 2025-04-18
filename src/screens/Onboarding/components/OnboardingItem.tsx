@@ -136,7 +136,6 @@ function RenderItem({index, x, item, openSheet}: Props) {
         </Animated.View>
         {item.type === 'email' && <Email />}
         {item.type === 'fullName' && <FullName />}
-        {item.type === 'birthdate' && <Birthdate />}
         {item.type === 'password' && <Password />}
       </View>
     </View>

@@ -21,4 +21,11 @@ export const Icons = {
   accountSettings: require('../../../assets/icon/accountSettings.png'),
   advert: require('../../../assets/icon/adsens.png'),
 
+  tarot: require('../../../assets/icon/tarot.png'),
+  book: require('../../../assets/icon/book.png'),
+  notepad: require('../../../assets/icon/notepad.png'),
+  yoga: require('../../../assets/icon/yoga.png'),
+  crystalBall: require('../../../assets/icon/crystal-ball.png'),
+  delete: require('../../../assets/icon/delete.png'),
+
 };

@@ -15,7 +15,6 @@ import {
   // CoffeePremiumScreen,
   DreamScreen,
   DreamPremiumScreen,
-  TarotCardDetail,
 } from '@/screens';
 
 export type RouteTypes = {
@@ -42,13 +41,6 @@ export const routes: RouteTypes[] = [
   {
     name: 'TarotDetail',
     component: TarotDetail,
-    options: {
-      headerShown: false,
-    },
-  },
-  {
-    name: 'TarotCardDetail',
-    component: TarotCardDetail,
     options: {
       headerShown: false,
     },

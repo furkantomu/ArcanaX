@@ -349,12 +349,12 @@
   "RATING": {
     "TITLE": "How Did You Feel?",
     "PLACEHOLDER": "Write your feedback here...",
-    "MESSAGE": "Thank you for your feedback! You’ve earned +10 tokens."
+    "MESSAGE": "Thank you for your feedback!"
   },
   "FEEDBACK_RESPONSE": "Your message has reached us. Your feedback is valuable to us!",
   "ADD_BALANCE_SHEET": {
     "TITLE": "Your intuition guides you... Get your tokens and find the answers!",
-   "ADD": "Your tokens have been successfully added to your account. You received a {{bonus}} bonus!",
+    "ADD": "Your tokens have been successfully added to your account. You received a {{bonus}} bonus!",
     "ERROR": "Payment verification failed, please try again.",
     "AMOUNT": "Select the amount you want to deposit",
     "BONUS": "Make a deposit now to earn bonus tokens!",
@@ -367,7 +367,15 @@
     "CANCEL": "Cancel"
   },
   "NOT_CONNECT": "Could not connect to the server. A token refund will be issued.",
-
+  "GUIDANCE_HOME": {
+    "TITLE": "Tarot Interpretation Exercises",
+    "DESCRIPTION": "Improve your tarot reading skills! Enhance your intuitive reading ability with the practices below."
+  },
+  "MY_TAROT": {
+    "card1": "You can choose from 1 to 5 cards, based on your intuition.",
+    "card2": "If you prefer to use your own deck, you can select the cards openly.",
+    "card3": "First, interpret the cards using your intuition, then we’ll evaluate the interpretation together."
+  },
   "LIFE_PATH_DETAIL": {
     "1": "Life path 1 is shaped by independence, leadership, and an innovative spirit. Those with this path are bold, determined individuals who carve their own way. They seek to be one step ahead, create innovations, and achieve their own freedom. However, this strong character often comes with solitude and demanding responsibilities. Life path 1s overcome challenges with their inner strength and leave a mark on the world as pioneers who forge their own path.",
     "2": "Life path 2 is guided by balance, cooperation, and sensitivity. Those with this path prefer to be in harmony with others and adopt a sympathetic and understanding approach. Their weakness may lie in being overly self-sacrificing and neglecting their own needs. However, their true strength lies in their ability to offer support when needed and bring about peace. Life path 2s transform the world with love and tranquility by forming deep connections in their relationships.",

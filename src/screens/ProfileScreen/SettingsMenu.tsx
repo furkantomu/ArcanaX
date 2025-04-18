@@ -4,7 +4,8 @@ import {getStyles} from './styles';
 import MenuItem from './components/MenuItem';
 import {Typography} from '@/components';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
+import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 
 const MENU_ITEM_TOP = [
   {
@@ -51,10 +52,17 @@ const MENU_ITEM_BOTTOM = [
 const SettingsMenu = () => {
   const styles = getStyles();
   const {localeValue} = useAppSelector(state => state.settings);
+  const tabBarHeight = useBottomTabBarHeight();
   return (
-    <View style={styles.settingsMenu}>
+    <View
+      style={[
+        styles.settingsMenu,
+        {
+          marginBottom: tabBarHeight,
+        },
+      ]}>
       <Typography weight="NotoSerifCondensedBoldItalic" size="large">
-        {i18n.t('PROFILE_SCREEN.OTHER_SETTINGS', {locale:localeValue})}
+        {i18n.t('PROFILE_SCREEN.OTHER_SETTINGS', {locale: localeValue})}
       </Typography>
       <View style={styles.settingsMenuItem}>
         {MENU_ITEM_TOP.map((item, idx) => (

@@ -118,7 +118,6 @@ const TarotHistoryScreen = () => {
                     style={markdownStyles}>
                     {item.content}
                   </Markdown>
-                  {/* <Text style={styles.resultText}>{item.content}</Text> */}
                 </View>
               </Animated.View>
             ))
