@@ -9,6 +9,7 @@ import {
   getImageForCardNumber,
   getImageForCardZodiac,
 } from '@/utils/getImageForNumber';
+import FastImage from 'react-native-fast-image';
 
 const CardDetail = () => {
   const {isSelectedCard} = useTarotContext();
@@ -17,11 +18,15 @@ const CardDetail = () => {
 
   return (
     <>
-      <Image
-        source={{uri: isSelectedCard?.frontImageSource}}
+      <FastImage
+        source={{
+          uri: isSelectedCard?.frontImageSource,
+          priority: FastImage.priority.high,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
         style={styles.cardDetailModalBg}
-        blurRadius={10}
       />
+
       <View style={styles.cardDetailModalCardTitle}>
         <Text style={styles.cardDetailModalCardLeftTitle}>
           "{isSelectedCard?.details?.title}"

@@ -306,7 +306,7 @@ export const getStyles = () =>
       top: 0,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
-      resizeMode: 'cover',
+      opacity: 0.5,
     },
     cardDetailModalCardTitle: {
       zIndex: 3,

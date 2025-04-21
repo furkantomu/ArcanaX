@@ -16,10 +16,12 @@ export const getStyles = () =>
       elevation: 5,
       marginHorizontal: 20,
       paddingVertical: 20,
+      marginTop: 10,
     },
     menuItems: {
       gap: 10,
       marginHorizontal: 20,
+
     },
     menuItem: {},
     accountDelete: {
