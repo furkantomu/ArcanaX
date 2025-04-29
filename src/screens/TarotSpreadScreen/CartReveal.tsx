@@ -87,6 +87,10 @@ const CartReveal = ({route}) => {
   useEffect(() => {
     let MESSAGE = '';
     if (question === '') {
+      if (readingType === 6) {
+        MESSAGE =
+          localeValue === 'tr' ? 'İlişki okuması' : 'Relationship Reading';
+      }
       MESSAGE = localeValue === 'tr' ? 'Genel Açılım' : 'General Spread';
     } else {
       MESSAGE = `${question}`;
