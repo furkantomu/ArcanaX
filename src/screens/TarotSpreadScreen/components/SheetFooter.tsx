@@ -27,7 +27,7 @@ const SheetFooter = () => {
   return (
     <View style={styles.buttonContainer}>
       <Typography size={'large'} style={styles.bottomSheetText}>
-        {readingType}/{selectedCards.length}{' '}
+        {selectedCards.length}/{readingType}{' '}
         {i18n.t('TAROT_READ_START.CARD_SELECTED', {locale: localeValue})}
       </Typography>
       <Button

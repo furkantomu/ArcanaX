@@ -122,6 +122,7 @@ const TarotSpreadWrapper = ({route}: any) => {
                 value={newMessage}
                 onChangeText={setNewMessage}
                 onSubmitEditing={handleSendMessage}
+                 placeholderTextColor={COLORS.blackOpacity1}
                 returnKeyType="send"
                 maxLength={150}
               />
@@ -134,8 +135,8 @@ const TarotSpreadWrapper = ({route}: any) => {
               </TouchableOpacity>
             </View>
             <Typography size="small">
-             {i18n.t('TAROT_READ_START.SPREAD_QUESTION_COUNT', {locale: localeValue})}: 5/
-              {messages.filter(msg => msg.role === 'user').length}
+             {i18n.t('TAROT_READ_START.SPREAD_QUESTION_COUNT', {locale: localeValue})}:{' '}
+              {messages.filter(msg => msg.role === 'user').length}/5
             </Typography>
             <Button
               text= {i18n.t('TAROT_READ_START.SPREAD_COMPLETED_BUTTON', {locale: localeValue})}
