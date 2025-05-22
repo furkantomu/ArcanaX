@@ -17,12 +17,16 @@ import {
   DreamPremiumScreen,
   TarotCardDetail,
 } from '@/screens';
+import { CustomTransition } from '@/utils/navigationUtils';
 
 export type RouteTypes = {
   name: string;
   component: FC<any>;
   options: object;
 };
+
+
+
 
 export const routes: RouteTypes[] = [
   {
@@ -37,6 +41,7 @@ export const routes: RouteTypes[] = [
     component: TarotScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('up'),
     },
   },
   {
@@ -44,6 +49,7 @@ export const routes: RouteTypes[] = [
     component: TarotDetail,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -51,6 +57,7 @@ export const routes: RouteTypes[] = [
     component: TarotCardDetail,
     options: {
       headerShown: false,
+      ...CustomTransition('down'),
     },
   },
   {
@@ -58,6 +65,7 @@ export const routes: RouteTypes[] = [
     component: TarotSpreadScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -65,6 +73,7 @@ export const routes: RouteTypes[] = [
     component: NumerologyScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('up'),
     },
   },
   {
@@ -79,6 +88,7 @@ export const routes: RouteTypes[] = [
     component: NumerologyPremiumScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   // {
@@ -100,6 +110,7 @@ export const routes: RouteTypes[] = [
     component: DreamScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('up'),
     },
   },
   {
@@ -107,6 +118,7 @@ export const routes: RouteTypes[] = [
     component: DreamPremiumScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
 ];

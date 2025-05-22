@@ -13,6 +13,7 @@ import {
   FAQScreen,
   AccountSettings,
 } from '@/screens';
+import {CustomTransition} from '@/utils/navigationUtils';
 
 export type RouteTypes = {
   name: string;
@@ -33,6 +34,7 @@ export const routes: RouteTypes[] = [
     component: ProfileUserScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -40,6 +42,7 @@ export const routes: RouteTypes[] = [
     component: ProfilePasswordScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -47,6 +50,7 @@ export const routes: RouteTypes[] = [
     component: SaveServicesScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -54,6 +58,7 @@ export const routes: RouteTypes[] = [
     component: TarotHistoryScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -61,6 +66,7 @@ export const routes: RouteTypes[] = [
     component: NumerologyHistoryScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -68,6 +74,7 @@ export const routes: RouteTypes[] = [
     component: BalanceScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -75,6 +82,7 @@ export const routes: RouteTypes[] = [
     component: DreamHistoryScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
 
@@ -83,6 +91,7 @@ export const routes: RouteTypes[] = [
     component: FAQScreen,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
   {
@@ -90,6 +99,7 @@ export const routes: RouteTypes[] = [
     component: AccountSettings,
     options: {
       headerShown: false,
+      ...CustomTransition('right'),
     },
   },
 ];

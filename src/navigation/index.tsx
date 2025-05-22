@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {StyleSheet, View} from 'react-native';
-import { DefaultTheme, NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {setup} from 'react-native-iap';
@@ -15,7 +15,6 @@ import {useAppSelector} from '@/hooks';
 
 import {COLORS} from '@/styles/theme';
 import i18n from '@/i18n';
-import crashlytics from '@react-native-firebase/crashlytics';
 import 'dayjs/locale/tr';
 
 
