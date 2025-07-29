@@ -1,27 +1,34 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, {useEffect, useState, useCallback} from 'react';
-import {View, Platform, Image, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Platform,
+  Image,
+  ActivityIndicator,
+  Pressable,
+} from 'react-native';
 import {
   isIosStorekit2,
   requestPurchase,
   useIAP,
   withIAPContext,
 } from 'react-native-iap';
-import {getStyles} from './styles';
+
 import LinearGradient from 'react-native-linear-gradient';
-import {COLORS} from '@/styles/theme';
-import Typography from '../Typography/Typography';
+import {COLORS, SIZES} from '@/styles/theme';
+
 import i18n from '@/i18n';
 import {useAppDispatch, useAppSelector} from '@/hooks';
-import Icon from '../Icon';
 
 import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
-import Advert from '../Advert/Advert';
+
 import {apiService} from '@/services/APIService';
+import {getStyles} from './styles';
+import {Button, Icon, MyWebComponent, Typography} from '@/components';
+import Advert from '@/components/Advert/Advert';
 import {CardView} from './CardView';
-import {Button} from '../button/Button';
-import MyWebComponent from '../MyWebComponent';
+import {useNavigation} from '@react-navigation/native';
 
 const image = require('../../../assets/background/tokenBg.webp');
 
@@ -50,6 +57,7 @@ const productSkus = Platform.select({
 const Purchasing = () => {
   const styles = getStyles();
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const {localeValue} = useAppSelector(state => state.settings);
   const {user} = useAppSelector(state => state.auth);
   const {balance} = useAppSelector(state => state.balance);
@@ -90,7 +98,9 @@ const Purchasing = () => {
     try {
       setLoading(true);
       if (Platform.OS === 'ios') {
-        const response = await requestPurchase({sku: selectedProduct?.productId});
+        const response = await requestPurchase({
+          sku: selectedProduct?.productId,
+        });
 
         const result = await apiService.post<{
           success: boolean;
@@ -129,7 +139,7 @@ const Purchasing = () => {
         });
       }
     } catch (error: any) {
-      console.log(error.code)
+      console.log(error.code);
       if (error.code !== 'E_USER_CANCELLED') {
         showToast({
           message:
@@ -143,6 +153,12 @@ const Purchasing = () => {
   };
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        {/* <Pressable onPress={() => navigation.goBack()} style={styles.closeButton}>
+          <Typography size="heading">X</Typography>
+        </Pressable> */}
+        <Button text='X' handlePress={() => navigation.goBack()} buttonStyle={styles.closeButton}/>
+      </View>
       <LinearGradient
         colors={[COLORS.black, COLORS.blackOpacity1, COLORS.black]}
         style={styles.linearGradient}
@@ -167,8 +183,8 @@ const Purchasing = () => {
             <Icon name="token" style={styles.tokenIcon} />
             <Typography size="large">{balance?.totalBalance}</Typography>
           </View>
-          <Advert />
         </View>
+        <Advert />
         <View style={styles.title}>
           <Typography
             weight="NotoSerifCondensedLightItalic"
@@ -209,9 +225,10 @@ const Purchasing = () => {
           text={
             selectedProduct
               ? `${selectedProduct?.title} (${selectedProduct?.localizedPrice})`
-              :   i18n.t('BALANCE_SCREEN.ADD_TOKEN', {locale: localeValue})
+              : i18n.t('BALANCE_SCREEN.ADD_TOKEN', {locale: localeValue})
           }
           disabled={selectedProduct ? false : true || loading}
+          buttonStyle={{height: 60, width: SIZES.width - 20}}
           variant="secondary"
           handlePress={handleBuyProduct}
         />

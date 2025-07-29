@@ -15,7 +15,6 @@ const FooterButton = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const {user} = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
-  const {purchasingSheetRef} = useRefsContext();
 
   const handlePress = async () => {
     const {balance} = await dispatch(
@@ -40,8 +39,7 @@ const FooterButton = () => {
             text: i18n.t('BALANCE_CONTROL.BUY', {
               locale: localeValue,
             }),
-            onPress: () =>
-              purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2),
+            onPress: () => navigation.navigate('PurchasingScreen'),
           },
         ],
       );

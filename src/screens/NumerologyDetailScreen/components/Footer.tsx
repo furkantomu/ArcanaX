@@ -21,7 +21,6 @@ const Footer = () => {
   const route = useRoute<NumerologyDetailScreenRouteProp>();
   const {localeValue} = useAppSelector(state => state.settings);
   const {user} = useAppSelector(state => state.auth);
-  const {purchasingSheetRef} = useRefsContext();
   const {numerologyDetail} = route.params;
   const dispatch = useAppDispatch();
   const styles = getStyles();
@@ -39,7 +38,7 @@ const Footer = () => {
       });
     } catch (error) {
       console.log(error);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -99,10 +98,7 @@ const Footer = () => {
                       text: i18n.t('BALANCE_CONTROL.BUY', {
                         locale: localeValue,
                       }),
-                      onPress: () =>
-                        purchasingSheetRef.current?.scrollTo(
-                          -SIZES.height / 1.2,
-                        ),
+                      onPress: () => navigation.navigate('PurchasingScreen'),
                     },
                   ],
                 );

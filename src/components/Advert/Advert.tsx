@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import MobileAds, {
   RewardedAd,
   RewardedAdEventType,
 } from 'react-native-google-mobile-ads';
-import {IconButton} from '../button/IconButton';
-import {Platform, StyleSheet, View} from 'react-native';
-import Typography from '../Typography/Typography';
+import { IconButton } from '../button/IconButton';
+import { Platform, StyleSheet, View } from 'react-native';
 import i18n from '@/i18n';
-import {useAppDispatch, useAppSelector} from '@/hooks';
-import {balanceActions} from '@/store/balance/balanceActions';
-import {showToast} from '@/utils/showToast';
-import {requestTrackingPermission} from 'react-native-tracking-transparency';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { balanceActions } from '@/store/balance/balanceActions';
+import { showToast } from '@/utils/showToast';
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
+import { SIZES } from '@/styles/theme';
 
 const adUnitId = Platform.select({
-  ios: 'ca-app-pub-4348716433106304/4541223694', // 'ca-app-pub-4348716433106304/4541223694' TestIds.REWARDED
-  android: 'ca-app-pub-4348716433106304/7546892492', // 'ca-app-pub-4348716433106304/7546892492'
+  ios: 'ca-app-pub-4348716433106304/4541223694',
+  android: 'ca-app-pub-4348716433106304/7546892492',
 });
 
 const createRewardedAd = (
@@ -43,23 +43,17 @@ const createRewardedAd = (
 
 const Advert = () => {
   const dispatch = useAppDispatch();
-  const {localeValue} = useAppSelector(state => state.settings);
-  const {user} = useAppSelector(state => state.auth);
+  const { localeValue } = useAppSelector(state => state.settings);
+  const { user } = useAppSelector(state => state.auth);
   const [rewarded, setRewarded] = useState(null);
   const [isPersonalized, setIsPersonalized] = useState(true);
-
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     const initAds = async () => {
-      // 👉 ATT izni iste
       const trackingStatus = await requestTrackingPermission();
       console.log('🛡️ Tracking Permission:', trackingStatus);
-
-      if (trackingStatus === 'authorized') {
-        setIsPersonalized(true);
-      } else {
-        setIsPersonalized(false);
-      }
+      setIsPersonalized(trackingStatus === 'authorized');
 
       MobileAds()
         .initialize()
@@ -67,7 +61,7 @@ const Advert = () => {
           console.log('✅ Google Mobile Ads Başlatıldı:', statuses);
         });
 
-      createRewardedAd(setLoaded, setRewarded, isPersonalized);
+      createRewardedAd(setLoaded, setRewarded, trackingStatus === 'authorized');
     };
 
     initAds();
@@ -77,7 +71,6 @@ const Advert = () => {
     };
   }, []);
 
-  //console.log('rewarded', rewarded);
   useEffect(() => {
     if (!rewarded) return;
 
@@ -100,7 +93,7 @@ const Advert = () => {
         );
 
         await dispatch(
-          balanceActions.getBalance({accountId: String(user?.accountId)}),
+          balanceActions.getBalance({ accountId: String(user?.accountId) }),
         );
 
         showToast({
@@ -123,30 +116,27 @@ const Advert = () => {
     if (loaded && rewarded) {
       rewarded?.show();
     } else {
-      console.warn('⚠️ Reklam henüz yüklenmedi, lütfen bekleyin.');
       showToast({
         message: 'Reklam yükleniyor, lütfen bekleyin...',
         type: 'warning',
       });
-      rewarded?.load(); // Eğer yüklenmemişse tekrar yükle
     }
   };
-
-  if (!loaded) {
-    return null;
-  }
 
   return (
     <View style={styles.container}>
       <IconButton
         iconName="advert"
         iconSize={30}
-        buttonStyle={styles.button}
+        buttonStyle={[
+          styles.button,
+          !loaded && styles.disabledButton,
+        ]}
         iconStyle={styles.icon}
-        text=""
+        text={i18n.t('ADS_BUTTON', { locale: localeValue })}
         handlePress={handleAdPress}
+        disabled={!loaded}
       />
-      <Typography>{i18n.t('ADS_BUTTON', {locale: localeValue})}</Typography>
     </View>
   );
 };
@@ -157,10 +147,12 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 5,
   },
   button: {
-    width: 50,
+    width: SIZES.width / 1.2,
+  },
+  disabledButton: {
+    opacity: 0.6,
   },
   icon: {
     resizeMode: 'cover',

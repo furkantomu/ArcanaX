@@ -27,7 +27,6 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
   title,
 }) => {
   const navigation = useNavigation();
-  const {purchasingSheetRef} = useRefsContext();
   const {balance} = useAppSelector(state => state.balance);
   const {localeValue} = useAppSelector(state => state.settings);
   const haptic = useHaptic('soft');
@@ -44,7 +43,8 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
         console.log({message: 'finishTransaction', error});
       }
     }
-    purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+    navigation.navigate('PurchasingScreen');
+    //purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2);
   };
 
   // const closeModal = () => {

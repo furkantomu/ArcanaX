@@ -3,7 +3,29 @@ import {COLORS, SIZES} from '@/styles/theme';
 
 export const getStyles = () =>
   StyleSheet.create({
-    container: {},
+    container: {
+      flex: 1,
+      justifyContent:'center',
+      backgroundColor: COLORS.black,
+    },
+    header:{
+      justifyContent: "flex-end",
+      alignItems: 'flex-end',
+      paddingRight: 20,
+      marginVertical: 20,
+      zIndex: 99,
+      position:'relative',
+    },
+    closeButton: {
+      borderWidth: 1,
+      borderColor: COLORS.silverGray,
+      width: 45,
+      height: 45,
+      borderRadius: '50%',
+      justifyContent: 'center',
+      alignItems:'center',
+      backgroundColor: COLORS.black,
+    },
     ImageBackground: {
       width: SIZES.width,
       height: SIZES.height / 1.2,
@@ -18,9 +40,10 @@ export const getStyles = () =>
     },
     content: {
       zIndex: 2,
-      paddingHorizontal: 20,
-      height: SIZES.height / 1.4,
-      justifyContent: 'space-between',
+      flex: 1,
+      justifyContent: "flex-end",
+      alignItems: 'center',
+      gap: 40,
     },
     tokenIcon: {
       resizeMode: 'cover',
@@ -31,9 +54,11 @@ export const getStyles = () =>
     currentBalance: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
+      paddingLeft: 10,
     },
-    title: {},
+    title: {
+    },
     titleText: {
       textAlign: 'center',
 
@@ -49,12 +74,14 @@ export const getStyles = () =>
     balanceAddWrapper: {
       marginTop: 0,
       gap: 3,
+      paddingLeft: 10,
+      justifyContent:'center',
+      alignItems: 'center',
     },
     balanceAdddesc: {
       color: COLORS.silverGray,
     },
     privacy: {
-
       color: COLORS.silverGray,
       textAlign: 'center',
     },

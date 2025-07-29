@@ -58,7 +58,7 @@ const CartReveal = ({route}) => {
   const isFlipped = useSharedValue(false);
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0);
-  const {detailCardSheetRef, saveTarotSheetRef, purchasingSheetRef} =
+  const {detailCardSheetRef, saveTarotSheetRef} =
     useRefsContext();
   const {localeValue} = useAppSelector(state => state.settings);
   const {user} = useAppSelector(state => state.auth);
@@ -195,7 +195,7 @@ const CartReveal = ({route}) => {
               locale: localeValue,
             }),
             onPress: () =>
-              purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2),
+              navigation.navigate('PurchasingScreen')
           },
         ],
       );

@@ -6,7 +6,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {setup} from 'react-native-iap';
 import dayjs from 'dayjs';
 
-import {BottomSheet, ChangeLanguage, Purchasing} from '@/components';
+import {BottomSheet, ChangeLanguage} from '@/components';
 import {AppTabs} from './tabs/AppTabs';
 
 import {navigationRef} from '@/utils/navigationUtils';
@@ -23,7 +23,7 @@ setup({storekitMode: 'STOREKIT2_MODE'});
 export const AppNavigationContainer = () => {
   const routeNameRef = useRef<string | undefined>(undefined);
   const {localeValue} = useAppSelector(state => state.settings);
-  const {languageChangeSheetRef, purchasingSheetRef} = useRefsContext();
+  const {languageChangeSheetRef} = useRefsContext();
   //   crashlytics().log('Testing Crashlytics');
   // crashlytics().crash();
 
@@ -46,9 +46,6 @@ export const AppNavigationContainer = () => {
       </View>
       <BottomSheet ref={languageChangeSheetRef}>
         <ChangeLanguage />
-      </BottomSheet>
-      <BottomSheet ref={purchasingSheetRef}>
-        <Purchasing />
       </BottomSheet>
     </NavigationContainer>
   );

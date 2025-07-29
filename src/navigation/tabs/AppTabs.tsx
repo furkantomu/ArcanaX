@@ -10,6 +10,8 @@ import {useAppSelector} from '@/hooks';
 import {selectLoggedIn} from '@/store/auth/authSelectors';
 import {AuthStack} from '../stack/AuthStack';
 import {COLORS} from '@/styles/theme';
+import {PurchasingScreen} from '@/screens';
+import { CustomTransition } from '@/utils/navigationUtils';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -116,6 +118,11 @@ export const AppTabs = () => {
         name="TabHomeScreen"
         component={Tabs}
         options={{animation: 'slide_from_right'}}
+      />
+      <Stack.Screen
+        name="PurchasingScreen"
+        component={PurchasingScreen}
+        options={() => CustomTransition('down')}
       />
     </Stack.Navigator>
   ) : (

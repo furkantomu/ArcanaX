@@ -9,7 +9,7 @@ interface RefsContextType {
   tarotSpreadScrollViewRef: React.RefObject<ScrollView>;
   lifePathAccordionScrollViewRef: React.RefObject<ScrollView>;
   uploadTypeSheetRef: React.RefObject<BottomSheetRefProps>;
-  purchasingSheetRef: React.RefObject<BottomSheetRefProps>;
+
   FaqSectionScrollViewRef: React.RefObject<ScrollView>;
 
   saveTarotSheetRef: React.RefObject<BottomSheetRefProps>;
@@ -39,7 +39,6 @@ const RefsProvider: React.FC<
   const tarotSpreadScrollViewRef = useRef<ScrollView>(null);
   const lifePathAccordionScrollViewRef = useRef<ScrollView>(null);
   const uploadTypeSheetRef = useRef<BottomSheetRefProps>(null);
-  const purchasingSheetRef = useRef<BottomSheetRefProps>(null);
   const FaqSectionScrollViewRef = useRef<ScrollView>(null);
   const saveTarotSheetRef = useRef<BottomSheetRefProps>(null);
   const saveNumerologySheetRef = useRef<BottomSheetRefProps>(null);
@@ -53,7 +52,6 @@ const RefsProvider: React.FC<
     tarotSpreadScrollViewRef,
     lifePathAccordionScrollViewRef,
     uploadTypeSheetRef,
-    purchasingSheetRef,
     FaqSectionScrollViewRef,
     saveTarotSheetRef,
     saveNumerologySheetRef,

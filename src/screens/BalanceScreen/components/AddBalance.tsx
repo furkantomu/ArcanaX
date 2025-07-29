@@ -8,14 +8,15 @@ import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
 import { SIZES } from '@/styles/theme';
 import { useRefsContext } from '@/context';
+import { useNavigation } from '@react-navigation/native';
 
 const AddBalance = () => {
   const styles = getStyles();
-  const {purchasingSheetRef} = useRefsContext();
+  const navigation = useNavigation();
   const {localeValue} = useAppSelector(state => state.settings);
 
   const openModal = () => {
-    purchasingSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+    navigation.navigate('PurchasingScreen');
   };
   return (
     <View>

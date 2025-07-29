@@ -24,3 +24,5 @@ export {default as AccountSettings} from './AccountSettings/index';
 export {default as TarotHistoryScreen} from './HistoryScreen/TarotHistoryScreen/index';
 export {default as NumerologyHistoryScreen} from './HistoryScreen/NumerologyHistoryScreen/index';
 export {default as DreamHistoryScreen} from './HistoryScreen/DreamHistoryScreen/index';
+
+export {default as PurchasingScreen} from './PurchasingScreen/Purchasing';
