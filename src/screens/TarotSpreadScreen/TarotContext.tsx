@@ -45,7 +45,8 @@ interface AppContextType {
   setReadingStarted: (params: boolean) => void;
 
   selectedCards: TarotCard[];
-
+  setSelectedCards: React.Dispatch<React.SetStateAction<TarotCard[]>>;
+  
   removeCard: (card: TarotCard) => void;
   addCard: (card: TarotCard) => void;
 

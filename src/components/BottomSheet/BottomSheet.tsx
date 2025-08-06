@@ -18,6 +18,7 @@ import {COLORS} from '@/styles/theme';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 150;
+const COMMON_SNAP_POINTS = -SCREEN_HEIGHT / 1.2;
 const SPRING_CONFIG = {
   damping: 15,
   stiffness: 150,
@@ -58,7 +59,7 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       backdropColor = COLORS.black,
       backdropOpacity = 0.5,
       enableBackHandler = true,
-      snapPoints = [0, MAX_TRANSLATE_Y],
+      snapPoints = [0, COMMON_SNAP_POINTS],
       initialSnapIndex = 0,
       enablePanDownToClose = true,
       gestureEnabled = true,
@@ -160,7 +161,7 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       return () => backHandler.remove();
     }, [enableBackHandler, close, currentSnapIndex]);
 
-    const SWIPE_VELOCITY_THRESHOLD = 1000;
+    const SWIPE_VELOCITY_THRESHOLD = 500;
     const gesture = Gesture.Pan()
       .enabled(gestureEnabled)
       .onStart(() => {
