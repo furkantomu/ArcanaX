@@ -15,7 +15,7 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 // Mock react-native-firebase
 jest.mock('@react-native-firebase/crashlytics', () => ({
   __esModule: true,
-  default: () => ({
+  getCrashlytics: () => ({
     recordError: jest.fn(),
     log: jest.fn(),
     setAttributes: jest.fn(),

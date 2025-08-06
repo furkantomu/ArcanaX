@@ -25,8 +25,8 @@ export const AppNavigationContainer = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const {languageChangeSheetRef} = useRefsContext();
   const {showRatingModal, setShowRatingModal} = useRatingContext();
-  //   crashlytics().log('Testing Crashlytics');
-  // crashlytics().crash();
+  //   getCrashlytics().log('Testing Crashlytics');
+  // getCrashlytics().crash();
 
   useEffect(() => {
     i18n.locale = localeValue;

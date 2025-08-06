@@ -1,4 +1,4 @@
-import crashlytics from '@react-native-firebase/crashlytics';
+import {getCrashlytics} from '@react-native-firebase/crashlytics';
 
 interface LogData {
   [key: string]: any;
@@ -43,13 +43,13 @@ class Logger {
     // Always report errors to crashlytics in production
     try {
       if (error instanceof Error) {
-        crashlytics().recordError(error);
+        getCrashlytics().recordError(error);
       } else {
-        crashlytics().recordError(new Error(message));
+        getCrashlytics().recordError(new Error(message));
       }
       
       if (data) {
-        crashlytics().setAttributes(data);
+        getCrashlytics().setAttributes(data);
       }
     } catch (e) {
       // Fail silently if crashlytics is not available
