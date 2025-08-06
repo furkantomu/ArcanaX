@@ -90,8 +90,7 @@ const FooterButtons = () => {
   });
 
   const openModal = () => {
-
-    selectCardSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+    selectCardSheetRef.current?.scrollToIndex(1);
   };
   const handleStartSpread = async () => {
     setSelectedCards([]);
