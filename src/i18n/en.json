@@ -381,5 +381,20 @@
     "11": "Life path 11 is shaped by spiritual awareness, inspiration, and a higher vision. Those with this path possess deep inner intuition, creativity, and an elevated spiritual potential. They often believe they exist for a greater mission or societal purpose and have the power to inspire others. However, they may experience emotional fluctuations, high expectations, and sometimes inner confusion. Their true strength lies in higher consciousness, spiritual pursuit, and the ability to offer strong guidance. Life path 11s, as inspiring leaders, have the potential to create significant change in the world.",
     "22": "Life path 22 is known as the master builder and is shaped by grand vision, strong leadership, and tangible success. Those with this path are perfectionist and strategic individuals with the capacity to turn massive projects into reality. They focus not on small-scale endeavors, but on the big picture, striving to create lasting impacts in the world. However, they may encounter challenges such as overburdening, burnout under pressure, and occasional feelings of isolation. Their true strength lies in their strong determination, disciplined approach, and relentless drive to create revolutionary change for society. Life path 22s can be transformative leaders who build meaningful and lasting projects for humanity.",
     "33": "Life path 33 is known as the master teacher and is shaped by love, selflessness, and social service. Those with this path possess a high level of spiritual wisdom and deep compassion, enabling them to guide others. They often dedicate themselves to a higher purpose and believe they exist to help others and make the world a better place. However, this lofty mission can sometimes bring emotional burdens and personal struggles. Their true strength lies in their ability to guide society, spread love, and rise to their potential when they find their inner balance and peace. Life path 33s create a real impact in the world not only through their emotional maturity and strong capacity for love but also by working for high ideals on behalf of humanity."
+  },
+  "RATING_MODAL": {
+    "TITLE": "Rate Your Experience",
+    "DESCRIPTION": "How did you find your tarot reading? Your feedback is very valuable to us!",
+    "COMMENT_PLACEHOLDER": "Share your thoughts about your experience...",
+    "SKIP": "Skip",
+    "SUBMIT": "Submit",
+    "SUBMITTING": "Submitting...",
+    "ALERT_TITLE": "Warning",
+    "PLEASE_RATE": "Please provide a rating",
+    "RATING_1": "Very Bad",
+    "RATING_2": "Bad",
+    "RATING_3": "Average",
+    "RATING_4": "Good",
+    "RATING_5": "Excellent"
   }
 }

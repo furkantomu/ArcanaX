@@ -11,13 +11,16 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {AppNavigator} from '@/navigation';
 import {persistor, store} from '@/store';
 import {ErrorBoundary} from '@/components';
+import {RatingProvider} from '@/context';
 
 function App(): React.JSX.Element {
   return (
     <ErrorBoundary>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppNavigator />
+          <RatingProvider>
+            <AppNavigator />
+          </RatingProvider>
         </PersistGate>
       </Provider>
     </ErrorBoundary>

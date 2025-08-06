@@ -6,11 +6,11 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {setup} from 'react-native-iap';
 import dayjs from 'dayjs';
 
-import {BottomSheet, ChangeLanguage} from '@/components';
+import {BottomSheet, ChangeLanguage, RatingModal} from '@/components';
 import {AppTabs} from './tabs/AppTabs';
 
 import {navigationRef} from '@/utils/navigationUtils';
-import {RefsProvider, useRefsContext} from '@/context';
+import {RefsProvider, useRefsContext, useRatingContext} from '@/context';
 import {useAppSelector} from '@/hooks';
 
 import {COLORS} from '@/styles/theme';
@@ -24,6 +24,7 @@ export const AppNavigationContainer = () => {
   const routeNameRef = useRef<string | undefined>(undefined);
   const {localeValue} = useAppSelector(state => state.settings);
   const {languageChangeSheetRef} = useRefsContext();
+  const {showRatingModal, setShowRatingModal} = useRatingContext();
   //   crashlytics().log('Testing Crashlytics');
   // crashlytics().crash();
 
@@ -47,6 +48,10 @@ export const AppNavigationContainer = () => {
       <BottomSheet ref={languageChangeSheetRef}>
         <ChangeLanguage />
       </BottomSheet>
+      <RatingModal
+        visible={showRatingModal}
+        onClose={() => setShowRatingModal(false)}
+      />
     </NavigationContainer>
   );
 };

@@ -13,15 +13,4 @@ export {default as MyWebComponent} from './MyWebComponent/index';
 export {default as ScreenWrapper} from './ui/ScreenWrapper';
 export {default as FormField} from './forms/FormField';
 export {default as ErrorBoundary} from './ui/ErrorBoundary';
-
-
-
-
-
-
-
-
-
-
-
-
+export {default as RatingModal} from './RatingModal';
