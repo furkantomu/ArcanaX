@@ -18,6 +18,7 @@ import {COLORS} from '@/styles/theme';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 150;
+const COMMON_SNAP_POINT = -SCREEN_HEIGHT / 1.2; // Most commonly used value
 const SPRING_CONFIG = {
   damping: 15,
   stiffness: 150,
@@ -58,7 +59,7 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       backdropColor = COLORS.black,
       backdropOpacity = 0.5,
       enableBackHandler = true,
-      snapPoints = [0, MAX_TRANSLATE_Y],
+      snapPoints = [0, COMMON_SNAP_POINT],
       initialSnapIndex = 0,
       enablePanDownToClose = true,
       gestureEnabled = true,
