@@ -16,10 +16,11 @@ import {COLORS} from '@/styles/theme';
 import {useRefsContext} from '@/context';
 import {BottomSheet} from '@/components';
 import SheetHeader from './components/SheetHeader';
-import CartSelection from './components/SelectedCardSheet';
+
 import SheetFooter from './components/SheetFooter';
 import CardDetail from './components/CardDetail';
 import SaveModal from './components/SaveModal';
+import CartSelection from './components/CartSelection';
 
 const TarotSpreadScreen = ({route}: any) => {
   const {

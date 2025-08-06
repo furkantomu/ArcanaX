@@ -35,12 +35,12 @@ const Card = ({ backImageSource, item }: CardProps) => {
   // Check if this card is currently selected
   const isCardSelected = selectedCards.some(card => card.id === item.id);
 
-  const handlePress = () => {
-    // Toggle the flip state
-    isFlipped.value = !isFlipped.value;
 
-    if (isFlipped.value) {
-      // Card is being flipped (selected)
+  const handlePress = () => {
+    const nextFlip = !isFlipped.value;
+    isFlipped.value = nextFlip;
+  
+    if (nextFlip) {
       if (selectedCards.length < readingType && !isCardSelected) {
         translateY.value = withDelay(
           200,
@@ -48,18 +48,17 @@ const Card = ({ backImageSource, item }: CardProps) => {
         );
         addCard(item);
       } else if (selectedCards.length >= readingType && !isCardSelected) {
-        // Can't select more cards, flip back
+        // Geri çevir
         isFlipped.value = false;
       }
     } else {
-      // Card is being unflipped (deselected)
       translateY.value = withDelay(
         200,
         withSpring(0, { damping: 12, stiffness: 100 }),
       );
       removeCard(item);
     }
-    
+  
     haptic?.();
   };
 
