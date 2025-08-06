@@ -21,7 +21,7 @@ interface TypographyProps extends TextProps {
   style?: TextStyle;
 }
 
-const Typography: React.FC<TypographyProps> = ({
+const Typography: React.FC<TypographyProps> = React.memo(({
   children,
   size = 'regular',
   weight = 'regular',
@@ -44,7 +44,7 @@ const Typography: React.FC<TypographyProps> = ({
       {children}
     </Text>
   );
-};
+});
 
 const styles = StyleSheet.create({
   text: {

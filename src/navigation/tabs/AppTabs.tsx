@@ -12,6 +12,7 @@ import {AuthStack} from '../stack/AuthStack';
 import {COLORS} from '@/styles/theme';
 import {PurchasingScreen} from '@/screens';
 import { CustomTransition } from '@/utils/navigationUtils';
+import {ICON_SIZES, TAB_BAR} from '@/constants';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -20,32 +21,31 @@ type TabBarIconProps = {
   source: ImageSourcePropType;
   focused: boolean;
 };
-const TabBarIcon: React.FC<TabBarIconProps> = ({source, focused}) => (
+const TabBarIcon: React.FC<TabBarIconProps> = React.memo(({source, focused}) => (
   <Image
     source={source}
     resizeMode="cover"
-    // eslint-disable-next-line react-native/no-inline-styles
     style={{
-      width: 25,
-      height: 25,
+      width: ICON_SIZES.MEDIUM,
+      height: ICON_SIZES.MEDIUM,
       tintColor: focused ? COLORS.gold : COLORS.cream,
     }}
   />
-);
+));
 
-const CustomTabButton = ({children, onPress}: any) => (
+const CustomTabButton = React.memo(({children, onPress}: any) => (
   <Pressable
     style={{
       backgroundColor: 'transparent',
-      borderRadius: 50,
+      borderRadius: TAB_BAR.BORDER_RADIUS,
       justifyContent: 'center',
       alignItems: 'center',
-      height: 50,
+      height: TAB_BAR.HEIGHT,
     }}
     onPress={onPress}>
     {children}
   </Pressable>
-);
+));
 
 const Tabs = () => {
   return (
@@ -56,12 +56,12 @@ const Tabs = () => {
         tabBarStyle: {
           backgroundColor: '#f5f5dc4f',
           position: 'absolute',
-          marginHorizontal: 30,
-          marginBottom: 20,
+          marginHorizontal: TAB_BAR.MARGIN_HORIZONTAL,
+          marginBottom: TAB_BAR.MARGIN_BOTTOM,
           borderTopWidth: 0,
-          height: 50,
+          height: TAB_BAR.HEIGHT,
           borderBottomWidth: 0,
-          borderRadius: 50,
+          borderRadius: TAB_BAR.BORDER_RADIUS,
           elevation: 0,
         },
         // eslint-disable-next-line react/no-unstable-nested-components

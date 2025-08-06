@@ -22,6 +22,7 @@ import i18n from '@/i18n';
 
 import {apiService} from '@/services/APIService';
 import {showToast} from '@/utils/showToast';
+import {logger} from '@/utils';
 
 interface ValidationErrors {
   [key: string]: string | '';
@@ -100,7 +101,7 @@ const ForgotPassword = () => {
       return response.data;
     } catch (e: any) {
       showToast({message: e.response.data.message, type: 'error'});
-      console.error('Forgot password request failed:', e.response.data.message);
+      logger.error('Forgot password request failed', e, {response: e.response?.data});
       setStep(0);
     } finally {
       setLoading(false);
