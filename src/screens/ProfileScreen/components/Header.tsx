@@ -36,13 +36,19 @@ const Header = () => {
   const styles = getStyles();
   const navigation = useNavigation();
   useEffect(() => {
-    if (user !== null) {
-      const day = dayjs(user.birthDate).format('DD');
-      const month = dayjs(user.birthDate).format('MM');
+    if (user?.birthDate) {
+      const parsedDate = dayjs(user.birthDate);
 
-      const zod = getZodiacSign(Number(day), Number(month));
-      setZodiac(zod);
-      setZodiacImage(zodiacImages[zod.engName]);
+      if (parsedDate.isValid()) {
+        const day = parsedDate.format('DD');
+        const month = parsedDate.format('MM');
+
+        const zod = getZodiacSign(Number(day), Number(month));
+        setZodiac(zod);
+        setZodiacImage(zodiacImages[zod.engName]);
+      } else {
+        console.warn('Geçersiz doğum tarihi:', user.birthDate);
+      }
     }
   }, [user]);
   const handlePress = () => {
@@ -72,8 +78,11 @@ const Header = () => {
               {user?.name}
             </Typography>
             <Typography weight="NotoSerifThin" size="large">
-              {dayjs(user?.birthDate).format('DD MMMM YYYY')} -{' '}
-              {localeValue === 'tr' ? zodiac.name : zodiac.engName}
+              {user?.birthDate && dayjs(user.birthDate).isValid()
+                ? `${dayjs(user.birthDate).format('DD MMMM YYYY')} - ${
+                    localeValue === 'tr' ? zodiac.name : zodiac.engName
+                  }`
+                : i18n.t('PROFILE_SCREEN.NO_BIRTH_DATE')}
             </Typography>
           </View>
           <View style={styles.profileEdit}>

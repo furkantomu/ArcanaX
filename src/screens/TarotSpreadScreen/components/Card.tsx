@@ -1,5 +1,5 @@
-import React from 'react';
-import {Image, TouchableOpacity} from 'react-native';
+import React, { memo } from 'react';
+import { Image, TouchableOpacity } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -7,13 +7,13 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import {getStyles} from '../style';
-import {useTarotContext} from '../TarotContext';
+import { getStyles } from '../style';
+import { useTarotContext } from '../TarotContext';
 
-import {useHaptic} from '@/utils';
+import { useHaptic } from '@/utils';
 
-const Card = ({backImageSource, index, item}) => {
-  const {selectedCards, addCard, removeCard, readingType} = useTarotContext();
+const Card = ({ backImageSource, item }: any) => {
+  const { selectedCards, addCard, removeCard, readingType } = useTarotContext();
   const styles = getStyles();
   const isFlipped = useSharedValue(false);
   const translateY = useSharedValue(0);
@@ -26,27 +26,28 @@ const Card = ({backImageSource, index, item}) => {
       if (selectedCards.length < readingType) {
         translateY.value = withDelay(
           200,
-          withSpring(-50, {damping: 12, stiffness: 100}),
+          withSpring(-50, { damping: 12, stiffness: 100 }),
         );
         addCard(item);
       }
     } else {
       translateY.value = withDelay(
         200,
-        withSpring(0, {damping: 12, stiffness: 100}),
+        withSpring(0, { damping: 12, stiffness: 100 }),
       );
       removeCard(item);
     }
     haptic?.();
   };
+
   const regularCardAnimatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{translateY: translateY.value}],
+      transform: [{ translateY: translateY.value }],
     };
   });
 
   return (
-    <Animated.View key={index} style={[styles.cardContainer]}>
+    <Animated.View style={[styles.cardContainer]}>
       <Animated.View style={[regularCardAnimatedStyle]}>
         <TouchableOpacity onPress={handlePress} activeOpacity={1}>
           <Image source={backImageSource} style={styles.card} />
@@ -55,4 +56,5 @@ const Card = ({backImageSource, index, item}) => {
     </Animated.View>
   );
 };
-export default Card;
+
+export default memo(Card);

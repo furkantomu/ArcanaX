@@ -42,13 +42,13 @@ const CartSelection = () => {
         decelerationRate={'fast'}
         snapToInterval={SIZES.width * 0.7 + 12}
         //onScroll={onScrollHandler}
-        scrollEventThrottle={1000 / 60}
+        scrollEventThrottle={16}
         snapToAlignment="center"
         bounces={false}
         keyExtractor={item => item.id}
        contentContainerStyle={styles.flatList}
         renderItem={({item, index}) => (
-          <Card key={index} backImageSource={back} index={index} item={item} />
+          <Card backImageSource={back} item={item} />
         )}
       />
 
