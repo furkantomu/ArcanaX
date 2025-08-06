@@ -385,5 +385,20 @@
     "11": "Yaşam yolu 11, spiritüel farkındalık, ilham ve yüksek vizyon ile şekillenir. 11'ler, derin bir içsel sezgiye sahip, yaratıcı ve yükselmiş bir ruhsal potansiyele sahip insanlardır. Kendilerini genellikle büyük bir misyon veya toplumsal amaç için var olduklarına inandırırlar ve başkalarına ilham verme gücüne sahiptirler. Ancak, duygusal dalgalanmalar, yüksek beklentiler ve bazen içsel karışıklık yaşama eğilimleri olabilir. Gerçek güçleri, yüksek bilinç, spiritüel arayış ve güçlü bir rehberlik sunabilme yeteneklerinde yatar. 11'ler, ilham veren liderler olarak, dünya üzerinde önemli bir değişim yaratma potansiyeline sahiptirler.",
     "22": "Yaşam yolu 22, master builder (usta inşaatçı) olarak bilinir ve büyük vizyon, güçlü liderlik ve somut başarı ile şekillenir. 22'ler, devasa projeleri gerçeğe dönüştürebilme kapasitesine sahip, mükemmeliyetçi ve stratejik bireylerdir. Onlar, küçük ölçekli değil, büyük resimlere odaklanarak dünyada kalıcı etkiler yaratmaya çalışırlar. Ancak bu yolda, aşırı yüklenme, baskı altında tükenmişlik ve zaman zaman kendilerini yalnız hissetme gibi zorluklarla karşılaşabilirler. Gerçek güçleri, güçlü kararlılıkları, disiplinli yaklaşımları ve toplum için devrim yaratma konusundaki azimlerinde yatar. 22'ler, insanlık için anlamlı ve kalıcı projeler inşa ederek, dünyayı dönüştüren liderler olabilirler.",
     "33": "Yaşam yolu 33, master teacher (usta öğretmen) olarak bilinir ve sevgi, fedakârlık ve toplumsal hizmet ile şekillenir. 33'ler, yüksek bir spiritüel bilgelik ve derin şefkat ile başkalarına rehberlik etme yeteneğine sahiptir. Kendilerini genellikle daha büyük bir amaca adar, başkalarına yardım etmek ve dünyayı daha iyi bir yer haline getirmek için var olduklarına inanırlar. Ancak bu yüksek misyon bazen onları duygusal yükler ve kişisel sıkıntılar ile karşı karşıya bırakabilir. Gerçek güçleri, kendi içsel denge ve huzurlarını bulduğunda, topluma rehberlik etme, sevgiyi yayma ve yükselme potansiyellerinde yatar. 33'ler, sadece duygusal olgunlukları ve güçlü sevgi kapasiteleri ile değil, aynı zamanda insanlık adına yüksek idealler için çalışarak dünyada gerçek bir etki yaratırlar."
+  },
+  "RATING_MODAL": {
+    "TITLE": "Deneyiminizi Değerlendirin",
+    "DESCRIPTION": "Tarot okumanızı nasıl buldunuz? Görüşleriniz bizim için çok değerli!",
+    "COMMENT_PLACEHOLDER": "Deneyiminiz hakkında düşüncelerinizi paylaşın...",
+    "SKIP": "Geç",
+    "SUBMIT": "Gönder",
+    "SUBMITTING": "Gönderiliyor...",
+    "ALERT_TITLE": "Uyarı",
+    "PLEASE_RATE": "Lütfen bir puan verin",
+    "RATING_1": "Çok Kötü",
+    "RATING_2": "Kötü",
+    "RATING_3": "Orta",
+    "RATING_4": "İyi",
+    "RATING_5": "Mükemmel"
   }
 }

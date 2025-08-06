@@ -10,7 +10,7 @@ import {getStore} from '@/store/storeAccessor';
 import {showToast} from '@/utils/showToast';
 import {logger} from '@/utils';
 import {API_CONFIG} from '@/config/api';
-import crashlytics from '@react-native-firebase/crashlytics';
+import {getCrashlytics} from '@react-native-firebase/crashlytics';
 
 class APIService {
   private static instance: APIService;
@@ -79,7 +79,7 @@ class APIService {
         }
 
         try {
-           crashlytics().recordError(
+           getCrashlytics().recordError(
             new Error(
               `email:${state.auth.user.email} url: ${
                 error.config?.url

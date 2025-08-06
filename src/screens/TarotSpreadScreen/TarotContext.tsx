@@ -6,6 +6,7 @@ import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
 import React, {createContext, useContext, ReactNode, useState} from 'react';
 import {ImageSourcePropType} from 'react-native/types';
+import {useRatingContext} from '@/context';
 
 interface TarotCard {
   id: number;
@@ -100,6 +101,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const {localeValue} = useAppSelector(state => state.settings);
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
+  const {triggerRatingModal} = useRatingContext();
   const [tarotCards, setTarotCards] = useState<TarotCard[]>([]);
   const [question, setQuestion] = useState('');
   const [readingType, setReadingType] = useState<number>(0);
@@ -191,6 +193,12 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
         message: i18n.t('TOAST.SUCCESS', {locale: localeValue}),
         type: 'success',
       });
+      
+      // Tarot okuması tamamlandıktan sonra rating modal'ını göster
+      setTimeout(() => {
+        triggerRatingModal();
+      }, 1000);
+      
       setTimeout(() => {
         navigation.popToTop();
       }, 300);
