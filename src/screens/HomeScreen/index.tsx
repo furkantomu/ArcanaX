@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeWrapper from './HomeWrapper';
 import {AppProvider} from './HomeScreenContext';
-import {useBalance} from '@/hooks/useBalance';
+import {useBalance} from '@/hooks';
 
 const HomeScreen = () => {
   // Custom hook handles all balance-related logic

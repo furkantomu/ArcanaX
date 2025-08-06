@@ -1,5 +1,5 @@
 import {useEffect, useCallback} from 'react';
-import {useAppDispatch, useAppSelector} from '@/hooks';
+import {useAppDispatch, useAppSelector} from '../hooks';
 import {balanceActions} from '@/store/balance/balanceActions';
 
 export const useBalance = () => {

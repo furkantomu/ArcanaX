@@ -1,5 +1,5 @@
 import {useState, useCallback, useRef, useEffect} from 'react';
-import {logger} from '@/utils';
+import {logger} from '../utils';
 
 interface UseApiCallState<T> {
   data: T | null;
