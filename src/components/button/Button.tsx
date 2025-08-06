@@ -3,6 +3,7 @@ import {Pressable, StyleProp, StyleSheet, TextStyle} from 'react-native';
 import Animated from 'react-native-reanimated';
 import {useHaptic, useScaleAnimation} from '@/utils';
 import {FONTS, SIZES} from '@/styles/theme';
+import {BORDER_RADIUS} from '@/constants';
 
 type ButtonProps = {
   isDestructive?: boolean;
@@ -14,7 +15,7 @@ type ButtonProps = {
   buttonStyle?: object;
 };
 
-export const Button = ({
+export const Button = React.memo<ButtonProps>(({
   text,
   textStyle,
   isDestructive = false,
@@ -22,7 +23,7 @@ export const Button = ({
   variant = 'primary',
   disabled = false,
   buttonStyle,
-}: ButtonProps) => {
+}) => {
   const {handlers, animatedStyle} = useScaleAnimation();
   const haptic = useHaptic(isDestructive ? 'medium' : 'soft');
 
@@ -68,12 +69,12 @@ export const Button = ({
       </Pressable>
     </Animated.View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   baseButton: {
     paddingVertical: 11,
-    borderRadius: 13,
+    borderRadius: BORDER_RADIUS.LARGE,
     alignItems: 'center',
     justifyContent: 'center',
   },

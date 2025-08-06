@@ -11,6 +11,7 @@ import { balanceActions } from '@/store/balance/balanceActions';
 import { showToast } from '@/utils/showToast';
 import { requestTrackingPermission } from 'react-native-tracking-transparency';
 import { SIZES } from '@/styles/theme';
+import { logger } from '@/utils';
 
 const adUnitId = Platform.select({
   ios: 'ca-app-pub-4348716433106304/4541223694',
@@ -27,12 +28,12 @@ const createRewardedAd = (
   });
 
   newRewarded.addAdEventListener(RewardedAdEventType.LOADED, () => {
-    console.log('✅ Reklam Yüklendi');
+    logger.info('Rewarded ad loaded successfully');
     setLoaded(true);
   });
 
   newRewarded.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => {
-    console.log('🚀 Reklam kapatıldı, yeni reklam yükleniyor...');
+    logger.info('Rewarded ad closed, loading new ad');
     setLoaded(false);
     createRewardedAd(setLoaded, setRewarded, isPersonalized);
   });

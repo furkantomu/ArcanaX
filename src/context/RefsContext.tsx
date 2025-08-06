@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useMemo} from 'react';
 import {ScrollView} from 'react-native';
 
 import {BottomSheetRefProps} from '@/types';
@@ -46,7 +46,7 @@ const RefsProvider: React.FC<
   const languageChangeSheetRef = useRef<BottomSheetRefProps>(null);
   const {children} = props;
 
-  const contextRefValues = {
+  const contextRefValues = useMemo(() => ({
     selectCardSheetRef,
     detailCardSheetRef,
     tarotSpreadScrollViewRef,
@@ -57,7 +57,7 @@ const RefsProvider: React.FC<
     saveNumerologySheetRef,
     saveDreamSheetRef,
     languageChangeSheetRef,
-  };
+  }), []);
 
   return (
     <RefsContext.Provider value={contextRefValues}>

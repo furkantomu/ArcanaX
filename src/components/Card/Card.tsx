@@ -23,7 +23,7 @@ interface CardProps {
 // const imageWidth = SIZES.width * 0.7;
 // const imageHeight = imageWidth * 1.63;
 
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<CardProps> = React.memo(({
   imageSource,
   onPress,
   index,
@@ -94,7 +94,7 @@ const Card: React.FC<CardProps> = ({
       </Animated.View>
     </TouchableOpacity>
   );
-};
+});
 
 const styles = StyleSheet.create({
   card: {
