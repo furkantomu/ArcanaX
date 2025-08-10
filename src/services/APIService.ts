@@ -8,8 +8,6 @@ import axios, {
 
 import {getStore} from '@/store/storeAccessor';
 import {showToast} from '@/utils/showToast';
-import {logger} from '@/utils';
-import {API_CONFIG} from '@/config/api';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 class APIService {
@@ -18,8 +16,8 @@ class APIService {
 
   private constructor() {
     this.api = axios.create({
-      baseURL: API_CONFIG.BASE_URL,
-      timeout: API_CONFIG.TIMEOUT,
+      baseURL: 'https://www.arcanaxapp.xyz/',
+      //baseURL: 'http://192.168.1.103:3002/',
     });
     this.setupInterceptors();
   }
@@ -68,7 +66,7 @@ class APIService {
         const store = getStore();
         const state = store.getState();
         if (error.code === 'ECONNABORTED') {
-          logger.error('Request timeout', error);
+          console.error('İstek zaman aşımına uğradı:', error.message);
           showToast({
             message: 'Sunucuya ulaşılamıyor. Lütfen bağlantınızı kontrol edin.',
             type: 'error',
@@ -87,7 +85,7 @@ class APIService {
             ),
           );
         } catch (e) {
-          logger.debug('Failed to log error to Crashlytics', e);
+          console.log('Failed to log error to Crashlytics:', e);
         }
         return Promise.reject(error);
       },

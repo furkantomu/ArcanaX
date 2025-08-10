@@ -71,7 +71,7 @@ const Advert = () => {
       rewarded?.removeAllListeners();
     };
   }, []);
-
+  
   useEffect(() => {
     if (!rewarded) return;
 

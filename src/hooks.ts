@@ -5,6 +5,4 @@ import type { RootState, AppDispatch } from './store';
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-// Export custom hooks
-export { useBalance } from './hooks/useBalance';
-export { useApiCall } from './hooks/useApiCall';
+

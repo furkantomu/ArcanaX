@@ -110,19 +110,19 @@ const zodiacRanges: ZodiacRange[] = [
 export function getZodiacSign(
   day: number,
   month: number,
-): {
-  engName: ZodiacSign;
-  name: ZodiacSignTR;
-} {
-  for (const {sign, signTR, start, end} of zodiacRanges) {
+): { engName: ZodiacSign; name: ZodiacSignTR } | null {
+  for (const { sign, signTR, start, end } of zodiacRanges) {
     if (
       (month === start.month && day >= start.day) ||
       (month === end.month && day <= end.day) ||
+      (start.month > end.month &&
+        (month > start.month || month < end.month)) || // Yıl sonu geçişi (ör: Oğlak: 22 Aralık - 19 Ocak)
       (month > start.month && month < end.month)
     ) {
-      return {engName: sign, name: signTR};
+      return { engName: sign, name: signTR };
     }
   }
 
-  throw new Error('Invalid date');
+  return null; // Artık error fırlatmıyor
 }
+

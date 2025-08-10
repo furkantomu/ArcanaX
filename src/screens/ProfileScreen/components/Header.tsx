@@ -38,19 +38,24 @@ const Header = () => {
   useEffect(() => {
     if (user?.birthDate) {
       const parsedDate = dayjs(user.birthDate);
-
+  
       if (parsedDate.isValid()) {
         const day = parsedDate.format('DD');
         const month = parsedDate.format('MM');
-
+  
         const zod = getZodiacSign(Number(day), Number(month));
-        setZodiac(zod);
-        setZodiacImage(zodiacImages[zod.engName]);
+        if (zod) {
+          setZodiac(zod);
+          setZodiacImage(zodiacImages[zod.engName]);
+        } else {
+          console.warn('Zodiac not found for:', day, month);
+        }
       } else {
         console.warn('Geçersiz doğum tarihi:', user.birthDate);
       }
     }
   }, [user]);
+  
   const handlePress = () => {
     navigation.navigate('ProfileUserScreen');
   };

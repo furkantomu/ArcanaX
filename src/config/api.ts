@@ -1,6 +1,6 @@
 export const API_CONFIG = {
   BASE_URL: __DEV__ 
-    ? 'http://192.168.1.103:3002/' 
+    ? 'https://www.arcanaxapp.xyz/' 
     : 'https://www.arcanaxapp.xyz/',
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
