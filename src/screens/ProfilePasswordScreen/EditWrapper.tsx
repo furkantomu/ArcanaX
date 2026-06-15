@@ -70,8 +70,8 @@ const EditWrapper = () => {
       values.confirmNewPassword
     ) {
       const data = {
-        userId: user?.id,
-        email: user?.email,
+        userId: String(user?.id),
+        email: String(user?.email),
         oldPassword: values.currentPassword,
         password: values.newPassword,
       };

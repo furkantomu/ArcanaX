@@ -8,7 +8,12 @@ import React, {useState} from 'react';
 import {Modal, View, Text, TextInput, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-const ContactModal = ({isVisible, onClose}) => {
+interface ContactModalProps {
+  isVisible: boolean;
+  onClose: () => void;
+}
+
+const ContactModal = ({isVisible, onClose}: ContactModalProps) => {
   const {user} = useAppSelector(state => state.auth);
   const {localeValue} = useAppSelector(state => state.settings);
 

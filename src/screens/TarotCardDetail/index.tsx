@@ -56,7 +56,7 @@ const TarotCardDetail = () => {
     const fetchTarotCards = async () => {
       try {
         setLoading(true);
-        const response = await apiService.get(`tarot/cards/${id}`);
+        const response = await apiService.get<TarotCard>(`tarot/cards/${id}`);
 
         setCard(response.data);
       } catch (error) {

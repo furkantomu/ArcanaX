@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import {Button} from '../button/Button';
+import {Button} from '../Button/Button';
 
 import { useRefsContext } from '@/context';
 import {useAppDispatch} from '@/hooks';

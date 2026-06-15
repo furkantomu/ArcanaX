@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   ActivityIndicator,
-  FlatList,
   StyleSheet,
   TouchableWithoutFeedback,
   useWindowDimensions,
 } from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import Animated, {
   AnimatedRef,
   SharedValue,
@@ -109,10 +109,7 @@ function CustomButton({flatListRef, flatListIndex, dataLength, x}: Props) {
         password: password,
         gender: birthdate.gender,
       };
-      const response = await dispatch(authActions.register(data)).unwrap();
-      if (response.status === 409) {
-        return;
-      }
+      await dispatch(authActions.register(data)).unwrap();
       dispatch(setOnboardingCompleted());
     }
     haptic?.();

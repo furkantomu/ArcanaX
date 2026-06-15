@@ -21,6 +21,7 @@ import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import {COLORS, SIZES} from '@/styles/theme';
 import i18n from '@/i18n';
 import {useAppSelector} from '@/hooks';
+import {NumerologyDetail} from '@/types/navigation/navigation';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
@@ -28,13 +29,13 @@ const markdownStyles = {
   strong: {color: COLORS.gold},
 };
 
-const RadicalNumber = ({numerologyDetail}) => {
+const RadicalNumber = ({numerologyDetail}: {numerologyDetail: NumerologyDetail}) => {
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {localeValue} = useAppSelector(state => state.settings);
   const {radicalNumber, setRadicalNumber} = useNumerologyPremiumContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [loading, setLoading] = useState(false);

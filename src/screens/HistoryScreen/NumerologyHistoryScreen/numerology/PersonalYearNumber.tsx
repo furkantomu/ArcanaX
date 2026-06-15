@@ -31,7 +31,7 @@ const PersonalYearNumber = () => {
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {numerologyDetail} = useNumerologyHistoryContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [personalYear, setPersonalYearNumber] = useState({
@@ -49,12 +49,13 @@ const PersonalYearNumber = () => {
     const getPersonalYear = async () => {
       try {
         setLoading(true);
-        const response = await apiService.get(
-          `numerology/personalYear/${numerologyDetail.personalYear}`,
-        );
+        const response = await apiService.get<{
+          number: number;
+          personalYear: number;
+        }>(`numerology/personalYear/${numerologyDetail.personalYear}`);
         setPersonalYearNumber({
           number: response.data.number,
-          personalYear: response.data.personalYear,
+          personalYear: String(response.data.personalYear),
         });
       } catch (error) {
         console.log(error);

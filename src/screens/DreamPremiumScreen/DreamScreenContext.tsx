@@ -13,33 +13,24 @@ interface Messages {
 
 interface AppContextType {
   messages: Messages[];
-  setMessages: (message: any) => void;
-
+  setMessages: React.Dispatch<React.SetStateAction<Messages[]>>;
   loading: boolean;
-  setLoading: (value: boolean) => void;
-
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   dream: string;
-  setDream: (value: string) => void;
-
-  setModalVisible: (value: boolean) => void;
+  setDream: React.Dispatch<React.SetStateAction<string>>;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   modalVisible: boolean;
-
-  setSaveName: (value: string) => void;
+  setSaveName: React.Dispatch<React.SetStateAction<string>>;
   saveName: string;
-
-  setSaveLoading: (value: boolean) => void;
+  setSaveLoading: React.Dispatch<React.SetStateAction<boolean>>;
   saveLoading: boolean;
-
   spreadID: string;
-  setSpreadID: (value: string) => void;
-
-  saveData: () => void;
-
-  rating: number;
-  setRating: (params: number) => void;
-
+  setSpreadID: React.Dispatch<React.SetStateAction<string>>;
+  saveData: () => Promise<void>;
+  rating: number | null;
+  setRating: React.Dispatch<React.SetStateAction<number | null>>;
   comment: string;
-  setComment: (comment: string) => void;
+  setComment: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -59,9 +50,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [saveName, setSaveName] = useState('');
   const [saveLoading, setSaveLoading] = useState(false);
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState<number | null>(null);
   const [comment, setComment] = useState('');
-
   const [spreadID, setSpreadID] = useState('');
 
   const saveData = async () => {
@@ -99,30 +89,21 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const value = {
     dream,
     setDream,
-
     messages,
     setMessages,
-
     loading,
     setLoading,
-
     modalVisible,
     setModalVisible,
-
     saveName,
     setSaveName,
-
     saveLoading,
     setSaveLoading,
-
     saveData,
-
     spreadID,
     setSpreadID,
-
     comment,
     setComment,
-
     rating,
     setRating,
   };

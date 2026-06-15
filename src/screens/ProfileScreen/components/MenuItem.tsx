@@ -11,8 +11,19 @@ import {useAppDispatch, useAppSelector} from '@/hooks';
 import {useHaptic, useScaleAnimation} from '@/utils';
 import {getStyles} from '../styles';
 import i18n from '@/i18n';
+import {Icons} from '@/components/Icon/Icons';
 
-const MenuItem = ({leftIcon, title, rightIcon, type, index}) => {
+type IconName = keyof typeof Icons;
+
+interface MenuItemProps {
+  leftIcon: IconName;
+  title: string;
+  rightIcon: IconName;
+  type: string;
+  index: number;
+}
+
+const MenuItem = ({leftIcon, title, rightIcon, type, index}: MenuItemProps) => {
   const dispatch = useAppDispatch();
   const {localeValue} = useAppSelector(state => state.settings);
   const navigation = useNavigation();

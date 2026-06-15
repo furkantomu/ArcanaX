@@ -26,18 +26,17 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
-  const [tarotService, setTarotService] = useState<TarotService[]>([]);
+  const [tarotService, setTarotService] = useState<TarotServiceType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const fetchTarotServices = async (): Promise<TarotServiceType[]> => {
     try {
       setLoading(true);
-      const response = await apiService.get<{data: TarotServiceType[]}>(
+      const response = await apiService.get<TarotServiceType[]>(
         'tarot/services',
       );
-
       setLoading(false);
       setTarotService(response.data);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       setLoading(false);
       console.error('Tarot servisleri yüklenirken hata oluştu:', error);

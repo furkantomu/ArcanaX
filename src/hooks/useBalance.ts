@@ -19,7 +19,7 @@ export const useBalance = () => {
 
   return {
     balance: balance.balance,
-    loading: balance.loading,
+    loading: balance.uiFlags.isBalanceLoading,
     error: balance.error,
     refetch: fetchBalance,
   };

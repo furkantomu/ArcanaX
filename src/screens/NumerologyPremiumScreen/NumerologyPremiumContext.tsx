@@ -4,6 +4,8 @@ import {apiService} from '@/services/APIService';
 import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '@/types/navigation/navigation';
 import {AxiosResponse} from 'axios';
 import React, {createContext, useContext, ReactNode, useState} from 'react';
 
@@ -54,42 +56,31 @@ type NumerologyDetail = {
 
 interface AppContextType {
   numerologyDetail: NumerologyDetail;
-  setNumerologyDetail: (values: NumerologyDetail) => void;
-
+  setNumerologyDetail: React.Dispatch<React.SetStateAction<NumerologyDetail>>;
   lifePath: ResponseType;
-  setLifePath: (value: ResponseType) => void;
-
+  setLifePath: React.Dispatch<React.SetStateAction<ResponseType>>;
   radicalNumber: ResponseType;
-  setRadicalNumber: (value: ResponseType) => void;
-
+  setRadicalNumber: React.Dispatch<React.SetStateAction<ResponseType>>;
   expressionNumber: ResponseType;
-  setExpressionNumber: (value: ResponseType) => void;
-
+  setExpressionNumber: React.Dispatch<React.SetStateAction<ResponseType>>;
   personalYear: ResponseType;
-  setPersonalYear: (value: ResponseType) => void;
-
+  setPersonalYear: React.Dispatch<React.SetStateAction<ResponseType>>;
   pinnacleNumber: ResponseData;
-  setPinnacleNumber: (value: ResponseData) => void;
-
+  setPinnacleNumber: React.Dispatch<React.SetStateAction<ResponseData>>;
   rulingPlanet: RulingPlanet;
-  setRulingPlanet: (value: RulingPlanet) => void;
-
+  setRulingPlanet: React.Dispatch<React.SetStateAction<RulingPlanet>>;
   karmicNumberDetails: KarmicDetail;
-  setKarmicNumberDetails: (value: KarmicDetail) => void;
-
+  setKarmicNumberDetails: React.Dispatch<React.SetStateAction<KarmicDetail>>;
   saveName: string;
-  setSaveName: (value: string) => void;
-  saveData: () => void;
+  setSaveName: React.Dispatch<React.SetStateAction<string>>;
+  saveData: () => Promise<void>;
   saveLoading: boolean;
-
-  setCompleted: (value: boolean) => void;
+  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
   completed: boolean;
-
-  rating: number;
-  setRating: (params: number) => void;
-
+  rating: number | null;
+  setRating: React.Dispatch<React.SetStateAction<number | null>>;
   comment: string;
-  setComment: (comment: string) => void;
+  setComment: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -99,7 +90,7 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const dispatch = useAppDispatch();
   const {user} = useAppSelector(state => state.auth);
   const {localeValue} = useAppSelector(state => state.settings);
@@ -153,7 +144,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const [saveName, setSaveName] = useState('');
   const [saveLoading, setSaveLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState<number | null>(null);
   const [comment, setComment] = useState('');
 
   const saveData = async () => {

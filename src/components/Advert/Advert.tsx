@@ -3,7 +3,7 @@ import MobileAds, {
   RewardedAd,
   RewardedAdEventType,
 } from 'react-native-google-mobile-ads';
-import { IconButton } from '../button/IconButton';
+import { IconButton } from '../Button/IconButton';
 import { Platform, StyleSheet, View } from 'react-native';
 import i18n from '@/i18n';
 import { useAppDispatch, useAppSelector } from '@/hooks';
@@ -46,7 +46,7 @@ const Advert = () => {
   const dispatch = useAppDispatch();
   const { localeValue } = useAppSelector(state => state.settings);
   const { user } = useAppSelector(state => state.auth);
-  const [rewarded, setRewarded] = useState(null);
+  const [rewarded, setRewarded] = useState<RewardedAd | null>(null);
   const [isPersonalized, setIsPersonalized] = useState(true);
   const [loaded, setLoaded] = useState(false);
 
@@ -77,7 +77,7 @@ const Advert = () => {
 
     const unsubscribeEarned = rewarded.addAdEventListener(
       RewardedAdEventType.EARNED_REWARD,
-      async reward => {
+      async (reward: {amount: number}) => {
         console.log('🏆 Kullanıcı ödül kazandı:', reward);
         await dispatch(
           balanceActions.addBalance({

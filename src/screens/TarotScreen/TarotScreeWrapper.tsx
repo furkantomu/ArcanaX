@@ -25,7 +25,6 @@ const TarotScreenWrapper = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const image = require('../../../assets/background/female.webp');
   const navigation = useNavigation();
-
   const opacity = useSharedValue(0);
 
   useEffect(() => {
@@ -97,7 +96,7 @@ const TarotScreenWrapper = () => {
             {loading ? (
               <ActivityIndicator size={'large'} style={styles.loading} />
             ) : (
-              tarotService.map((item, index) => (
+              tarotService?.map((item, index) => (
                 <AnimatedContent
                   key={index}
                   name={item.name}

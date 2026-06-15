@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {View, Image} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {View, Image, ImageSourcePropType} from 'react-native';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 
 import {Typography} from '@/components';
 
@@ -26,11 +27,13 @@ const numerologyHeader = [
 
 const Card = () => {
   const [numerology] = useState(numerologyHeader);
-  const [image, setImage] = useState<string[]>([]);
+  const [image, setImage] = useState<ImageSourcePropType[]>([]);
   const {localeValue} = useAppSelector(state => state.settings);
-  const route = useRoute();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'NumerologyDetailScreen'>>();
   const {numerologyDetail} = route.params;
   const styles = getStyles();
+  console.log('numerologyDetail', numerologyDetail);
 
   useEffect(() => {
     if (numerologyDetail) {
@@ -45,7 +48,7 @@ const Card = () => {
   }, [numerologyDetail]);
   return (
     <View style={styles.cardContainer}>
-      {numerology.map((item, idx) => (
+      {numerology?.map((item, idx) => (
         <View style={styles.card} key={idx}>
           <View style={styles.cardImage}>
             <Image

@@ -29,7 +29,10 @@ const FooterButton = () => {
       };
       try {
         setLoading(true);
-        const result = await apiService.post('/dream/read/start', {
+        const result = await apiService.post<{
+          id: string;
+          messages: {role: string; content: string}[];
+        }>('/dream/read/start', {
           questions: dream,
         });
         setSpreadID(result.data.id);
@@ -39,8 +42,8 @@ const FooterButton = () => {
           ...result.data.messages,
         ]);
         const data = {
-          userId: user.id,
-          accountId: user.accountId,
+          userId: String(user?.id),
+          accountId: String(user?.accountId),
           balance: Number(-10),
           amount: 0,
           transactionId: '',

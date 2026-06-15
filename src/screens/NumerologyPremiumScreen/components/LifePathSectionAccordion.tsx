@@ -43,7 +43,7 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
     useAccordion();
   const {localeValue} = useAppSelector(state => state.settings);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const rotation = useSharedValue(0);
 
   const [image, setImage] = useState();

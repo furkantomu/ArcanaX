@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 
 import LifePathSectionAccordion from './components/LifePathSectionAccordion';
 import {getStyles} from './styles';
@@ -21,10 +22,16 @@ interface Message {
   age: string;
 }
 
+interface ResponseData {
+  message: Message;
+  id: string;
+}
+
 const LifePathSection = () => {
   const [loading, setLoading] = useState(false);
   const styles = getStyles();
-  const route = useRoute();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'NumerologyPremiumScreen'>>();
   const {setPinnacleNumber, pinnacleNumber} = useNumerologyPremiumContext();
   const {localeValue} = useAppSelector(state => state.settings);
   const {numerologyDetail} = route.params;

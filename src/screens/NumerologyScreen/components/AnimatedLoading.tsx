@@ -29,17 +29,35 @@ const AnimatedLoading = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const loading = useSharedValue(1);
   const navigation = useNavigation();
+  const progress = useSharedValue(1);
+  useEffect(() => {
+  if (!isCalculate) return;
 
-  useDerivedValue(
-    () =>
-      isCalculate &&
-      withTiming(0, {duration: 5000}, () => {
-        runOnJS(setCalculate)(false);
-        runOnJS(navigation.navigate)('NumerologyDetailScreen', {
-          numerologyDetail,
-        });
-      }),
-  );
+  progress.value = withTiming(0, { duration: 5000 }, finished => {
+    if (finished) {
+      runOnJS(handleFinished)();
+    }
+  });
+}, [isCalculate]);
+
+const handleFinished = () => {
+  setCalculate(false);
+
+  navigation.navigate('NumerologyDetailScreen', {
+    numerologyDetail,
+  });
+};
+
+  // useDerivedValue(
+  //   () =>
+  //     isCalculate &&
+  //     withTiming(0, {duration: 5000}, () => {
+  //       runOnJS(setCalculate)(false);
+  //       runOnJS(() =>
+  //         navigation.navigate('NumerologyDetailScreen', {numerologyDetail}),
+  //       )();
+  //     }),
+  // );
 
   const styles = getStyles();
 

@@ -3,10 +3,12 @@ import Content from './components/Content';
 import LifePathSection from './LifePathSection';
 import Footer from './components/Footer';
 import {useNumerologyPremiumContext} from './NumerologyPremiumContext';
-import {useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 
 const Wrapper = () => {
-  const route = useRoute();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'NumerologyPremiumScreen'>>();
   const {numerologyDetail} = route.params;
   const {setNumerologyDetail} = useNumerologyPremiumContext();
 

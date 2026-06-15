@@ -12,6 +12,8 @@ import {
   requestPurchase,
   useIAP,
   withIAPContext,
+  Product,
+  ProductPurchase,
 } from 'react-native-iap';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -62,7 +64,7 @@ const Purchasing = () => {
   const {user} = useAppSelector(state => state.auth);
   const {balance} = useAppSelector(state => state.balance);
   const [loading, setLoading] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const {connected, products, currentPurchase, finishTransaction, getProducts} =
     useIAP();
@@ -98,12 +100,13 @@ const Purchasing = () => {
     try {
       setLoading(true);
       if (Platform.OS === 'ios') {
-        const response = await requestPurchase({
-          sku: selectedProduct?.productId,
-        });
+        const response = (await requestPurchase({
+          sku: selectedProduct?.productId ?? '',
+        })) as ProductPurchase;
 
         const result = await apiService.post<{
           success: boolean;
+          bonus: string;
         }>('/auth/verify-purchase', {
           transactionId: response.transactionId,
         });
@@ -120,12 +123,15 @@ const Purchasing = () => {
         });
       } else {
         const purchaseData = await requestPurchase({
-          skus: [selectedProduct?.productId],
+          skus: [selectedProduct?.productId ?? ''],
         });
-        const result = await apiService.post('/auth/verify-purchase-android', {
-          purchaseData,
-          selectedProduct,
-        });
+        const result = await apiService.post<{bonus: string}>(
+          '/auth/verify-purchase-android',
+          {
+            purchaseData,
+            selectedProduct,
+          },
+        );
 
         await dispatch(
           balanceActions.getBalance({accountId: String(user?.accountId)}),
@@ -213,9 +219,11 @@ const Purchasing = () => {
               : products.sort(
                   (a, b) =>
                     parseFloat(
-                      a.oneTimePurchaseOfferDetails.priceAmountMicros,
+                      a.oneTimePurchaseOfferDetails?.priceAmountMicros ?? '0',
                     ) -
-                    parseFloat(b.oneTimePurchaseOfferDetails.priceAmountMicros),
+                    parseFloat(
+                      b.oneTimePurchaseOfferDetails?.priceAmountMicros ?? '0',
+                    ),
                 )
           }
         />

@@ -4,9 +4,19 @@ import {getStyles} from './styles';
 import MenuItem from './components/MenuItem';
 import {Typography} from '@/components';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
+import {Icons} from '@/components/Icon/Icons';
 
-const MENU_ITEM_TOP = [
+type IconName = keyof typeof Icons;
+
+type MenuConfig = {
+  leftIcon: IconName;
+  title: string;
+  rightIcon: IconName;
+  type: string;
+};
+
+const MENU_ITEM_TOP: MenuConfig[] = [
   {
     leftIcon: 'password',
     title: 'PASSWORD',
@@ -27,7 +37,7 @@ const MENU_ITEM_TOP = [
   },
 ];
 
-const MENU_ITEM_BOTTOM = [
+const MENU_ITEM_BOTTOM: MenuConfig[] = [
   {
     leftIcon: 'accountSettings',
     title: 'ACCOUNT_SETTINGS',

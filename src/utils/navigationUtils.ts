@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {StackActions, NavigationContainerRef} from '@react-navigation/native';
+import type {RootStackParamList} from '@/types/navigation/navigation';
 
-export type RootStackParamList = {
-  [key: string]: object | undefined;
-};
+export type {RootStackParamList, NumerologyDetail} from '@/types/navigation/navigation';
 
 
 export const navigationRef =
@@ -11,7 +10,8 @@ export const navigationRef =
 
 // Add type definitions for the navigation functions
 export function navigate(name: string, params?: object): void {
-  navigationRef.current?.navigate({name, params});
+  (navigationRef.current as {navigate: (n: string, p?: object) => void} | null)
+    ?.navigate(name, params);
 }
 
 export function pop(n: number): void {
@@ -29,7 +29,7 @@ export function replace(name: string, params?: object): void {
 export const CustomTransition = (transitionType: string) => ({
   transitionSpec: {
     open: {
-      animation: 'spring',
+      animation: 'spring' as const,
       config: {
         stiffness: 500,      // Sertlik (daha büyük -> daha hızlı ve sert)
         damping: 50,         // Yayın sönümleme oranı
@@ -40,7 +40,7 @@ export const CustomTransition = (transitionType: string) => ({
       },
     },
     close: {
-      animation: 'spring',
+      animation: 'spring' as const,
       config: {
         stiffness: 500,
         damping: 50,

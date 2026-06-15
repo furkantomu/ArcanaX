@@ -39,7 +39,12 @@ const FlatListRender = () => {
     checkFormCompletion(currentIndex);
   }, [email, fullName, birthdate, password, currentIndex]);
 
-  const isBirthdateComplete = (birthdate) => {
+  const isBirthdateComplete = (birthdate: {
+    day: string;
+    month: string;
+    year: string;
+    gender: string;
+  }) => {
     return (
       birthdate.day.trim() !== '' &&
       birthdate.month.trim() !== '' &&

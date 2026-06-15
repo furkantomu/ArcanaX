@@ -6,30 +6,26 @@ import type {
   BalancePayload,
   BalanceResponse,
 } from './balanceTypes';
+import {Balance} from '@/types/User';
 
 export async function balance(
   credentials: BalancePayload,
 ): Promise<BalanceResponse> {
-  const response = await apiService.get(
+  const response = await apiService.get<Balance>(
     `token/balance/${credentials.accountId}`,
   );
-  const data = {
-    id: response?.data.id,
-    userId: response.data.userId,
-    totalBalance: response.data.totalBalance,
-    totalAmountPaid: response.data.totalAmountPaid,
-    createdAt: response.data.createdAt,
-    updatedAt: response.data.updatedAt,
-  };
-
   return {
-    balance: data,
+    balance: response.data,
   };
 }
+
 export async function addBalance(
   credentials: AddBalancePayload,
 ): Promise<AddBalanceResponse> {
-  const response = await apiService.post('token/add-balance', credentials);
+  const response = await apiService.post<{message: string}>(
+    'token/add-balance',
+    credentials,
+  );
   return {
     message: response.data.message,
   };

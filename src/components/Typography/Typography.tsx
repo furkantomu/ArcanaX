@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Text, TextStyle, StyleSheet, TextProps} from 'react-native';
+import {Text, TextStyle, StyleSheet, TextProps, StyleProp} from 'react-native';
 
 import {COLORS} from 'styles/theme';
 import {fontSize, getFont, letterSpacing} from 'styles/typography';
@@ -18,7 +18,7 @@ interface TypographyProps extends TextProps {
     | 'NotoSerifCondensedBoldItalic';
   lineHeightType?: 'small' | 'regular' | 'medium' | 'large';
   letterSpacingType?: 'normal' | 'wide';
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
 }
 
 const Typography: React.FC<TypographyProps> = React.memo(({

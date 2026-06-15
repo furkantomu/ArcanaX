@@ -4,8 +4,19 @@ import {Animated, View, StyleSheet, Pressable, FlatList} from 'react-native';
 
 import {COLORS, SIZES} from '@/styles/theme';
 import {Icon, Typography} from '@/components';
+import {Product} from 'react-native-iap';
 
-export const CardView = ({products, selectedProduct, setSelectedProduct}) => {
+interface CardViewProps {
+  products: Product[];
+  selectedProduct: Product | null;
+  setSelectedProduct: (product: Product) => void;
+}
+
+export const CardView = ({
+  products,
+  selectedProduct,
+  setSelectedProduct,
+}: CardViewProps) => {
   const pan = React.useRef(new Animated.ValueXY()).current;
 
   const [scrollViewWidth, setScrollViewWidth] = React.useState(0);

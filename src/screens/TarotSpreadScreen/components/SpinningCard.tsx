@@ -52,7 +52,7 @@ const SpinningCard: React.FC<SpinningCardProps> = ({
     if (!isFlipped.value) {
       isFlipped.value = !isFlipped.value;
     } else {
-      fetchTarotCard(item.id, item.category);
+      fetchTarotCard(String(item.id));
       openModal();
     }
     //isFlipped.value = !isFlipped.value;

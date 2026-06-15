@@ -24,7 +24,8 @@ import {useTarotContext} from './TarotContext';
 import {getStyles} from './style';
 import {useRefsContext} from '@/context';
 import {useHaptic} from '@/utils';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 import {getReadingTypeText} from '@/utils/getReadingTypeText';
 import {apiService} from '@/services/APIService';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
@@ -38,7 +39,9 @@ const markdownStyles = {
   strong: {color: COLORS.gold},
 };
 
-const CartReveal = ({route}) => {
+type CartRevealRouteProp = RouteProp<RootStackParamList, 'TarotSpreadScreen'>;
+
+const CartReveal = ({route}: {route: CartRevealRouteProp}) => {
   const {
     selectedCards,
     showOpenButton,
@@ -132,18 +135,21 @@ const CartReveal = ({route}) => {
     setError(null);
 
     try {
-      const result = await apiService.post('/tarot/read/start', {
+      const result = await apiService.post<{
+        messages: {role: string; content: string}[];
+        id: string;
+      }>('/tarot/read/start', {
         readingType: getReadingTypeText(readingType, localeValue),
         questions: message,
         tarotCards: selectedCards.map(card => card.engName),
       });
       setMessages(prevMessages => [...prevMessages, ...result.data.messages]);
-      setSpreadID(result?.data.id);
+      setSpreadID(result.data.id);
 
       const data = {
         userId: String(user?.id),
         accountId: String(user?.accountId),
-        balance: Number(-route.params.price),
+        balance: Number(-(route.params?.price ?? 0)),
         amount: 0,
         transactionId: '',
         appTransactionId: '',
@@ -214,8 +220,8 @@ const CartReveal = ({route}) => {
     haptic?.();
   };
 
-  const handleCardDetail = item => {
-    fetchTarotCard(item.id);
+  const handleCardDetail = (item: {id: number}) => {
+    fetchTarotCard(String(item.id));
     openModal();
   };
   return (

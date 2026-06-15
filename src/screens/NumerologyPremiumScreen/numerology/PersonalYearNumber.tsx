@@ -20,21 +20,22 @@ import {COLORS, SIZES} from '@/styles/theme';
 import {Typography} from '@/components';
 import Markdown, {MarkdownIt} from 'react-native-markdown-display';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
+import {NumerologyDetail} from '@/types/navigation/navigation';
 
 const arrow = require('../../../../assets/icon/downArrow.png');
 const markdownStyles = {
   body: {color: COLORS.cream, fontSize: SIZES.body2, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
-const PersonalYearNumber = ({numerologyDetail}) => {
+const PersonalYearNumber = ({numerologyDetail}: {numerologyDetail: NumerologyDetail}) => {
   const styles = getStyles();
   const {localeValue} = useAppSelector(state => state.settings);
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {personalYear, setPersonalYear} = useNumerologyPremiumContext();
 
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [loading, setLoading] = useState(false);

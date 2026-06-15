@@ -52,7 +52,7 @@ const Register = () => {
   const {setLoginType, setRegisterPasswordVisible, registerPasswordVisible} =
     useLoginContext();
   const dispatch = useAppDispatch();
-  const scrollViewRef = useRef();
+  const scrollViewRef = useRef<ScrollView>(null);
   const [validateOnChange, setValidateOnChange] = useState(false);
 
   const {error, uiFlags} = useSelector((state: any) => state.auth);
@@ -318,7 +318,7 @@ const Register = () => {
                 value={String(values.password)}
                 errorMessage={errors.password}
                 onFocus={() =>
-                  scrollViewRef.current.scrollToEnd({animated: true})
+                  scrollViewRef.current?.scrollToEnd({animated: true})
                 }
                 secureTextEntry={registerPasswordVisible.password}
               />
@@ -357,7 +357,7 @@ const Register = () => {
                 value={String(values.confirmPassword)}
                 errorMessage={errors.confirmPassword}
                 onFocus={() =>
-                  scrollViewRef.current.scrollToEnd({animated: true})
+                  scrollViewRef.current?.scrollToEnd({animated: true})
                 }
                 secureTextEntry={registerPasswordVisible.confirmPassword}
               />

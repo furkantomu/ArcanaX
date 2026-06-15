@@ -1,7 +1,8 @@
 
 import React from 'react';
 import {View} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 
 import {Typography} from '@/components';
 
@@ -10,7 +11,8 @@ import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
 
 const Header = () => {
-  const route = useRoute();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'NumerologyDetailScreen'>>();
   const {localeValue} = useAppSelector(state => state.settings);
   const {numerologyDetail} = route.params;
   const styles = getStyles();

@@ -31,7 +31,7 @@ const ExpressionNumber = () => {
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {numerologyDetail} = useNumerologyHistoryContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [expressionNumber, setExpressionNumber] = useState({
@@ -49,12 +49,13 @@ const ExpressionNumber = () => {
     const getExpressionNumber = async () => {
       try {
         setLoading(true);
-        const response = await apiService.get(
-          `numerology/expressionNumber/${numerologyDetail.expression}`,
-        );
+        const response = await apiService.get<{
+          number: number;
+          expressionNumber: number;
+        }>(`numerology/expressionNumber/${numerologyDetail.expression}`);
         setExpressionNumber({
           number: response.data.number,
-          expressionNumber: response.data.expressionNumber,
+          expressionNumber: String(response.data.expressionNumber),
         });
       } catch (error) {
         console.log(error);

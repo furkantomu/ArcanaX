@@ -1,5 +1,5 @@
-export {Button} from './button/Button';
-export {IconButton} from './button/IconButton';
+export {Button} from './Button/Button';
+export {IconButton} from './Button/IconButton';
 export {default as Loading} from './Animated/Loading';
 export {default as Successful} from './Animated/Successful';
 export {default as BottomSheet} from './BottomSheet/BottomSheet';

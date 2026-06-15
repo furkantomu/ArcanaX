@@ -13,9 +13,9 @@ interface AppContextType {
   cards: TarotCard[];
 
   tarotCards: TarotCard[];
-  fetchTarotCards: () => void;
+  fetchTarotCards: () => Promise<void>;
 
-  setLoading: (param: boolean) => void;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   loading: boolean;
 
   getFilteredTarotCards: (category: string) => TarotCard[];
@@ -36,7 +36,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const fetchTarotCards = async () => {
     try {
       setLoading(true);
-      const response = await apiService.get<{data: TarotCard[]}>('tarot/cards');
+      const response = await apiService.get<TarotCard[]>('tarot/cards');
       setLoading(false);
       setTarotCards(response.data);
     } catch (error) {
@@ -48,9 +48,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
   const getFilteredTarotCards = (category: string) => {
     const list = tarotCards.filter(card => card.category === category);
-    setCards(list)
+    setCards(list);
+    return list;
   };
-  const value = {tarotCards, fetchTarotCards, loading, getFilteredTarotCards, cards};
+  const value = {tarotCards, fetchTarotCards, loading, setLoading, getFilteredTarotCards, cards};
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

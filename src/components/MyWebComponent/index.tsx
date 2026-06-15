@@ -13,7 +13,7 @@ import i18n from '@/i18n';
 import {useAppSelector} from '@/hooks';
 import {COLORS} from '@/styles/theme';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Button} from '../button/Button';
+import {Button} from '../Button/Button';
 
 const {width, height} = Dimensions.get('window'); // Ekran boyutlarını alıyoruz
 

@@ -11,26 +11,41 @@ import type {
   UpdateResponse,
 } from './authTypes';
 
-export async function login(credentials: LoginPayload): Promise<LoginResponse> {
-  const response = await apiService.post('auth/login', credentials);
+type AuthApiData = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  birthDate: string;
+  createdAt: string;
+  updatedAt: string;
+  accountId: string;
+  gener: string;
+  accessToken: string;
+  refreshToken: string;
+};
 
-  const user = {
-    id: response?.data.id,
-    name: response.data.name,
-    email: response.data.email,
-    role: response.data.role,
-    birthDate: response.data.birthDate,
-    createdAt: response.data.createdAt,
-    updatedAt: response.data.updatedAt,
-    accountId: response.data.accountId,
-    gender: response.data.gener,
-  };
+const mapAuthUser = (data: AuthApiData) => ({
+  id: data.id,
+  name: data.name,
+  email: data.email,
+  role: data.role,
+  birthDate: data.birthDate,
+  createdAt: data.createdAt,
+  updatedAt: data.updatedAt,
+  accountId: data.accountId,
+  gender: data.gener,
+});
+
+export async function login(credentials: LoginPayload): Promise<LoginResponse> {
+  const response = await apiService.post<AuthApiData>('auth/login', credentials);
+  const data = response.data;
 
   return {
-    user: user,
+    user: mapAuthUser(data),
     headers: {
-      accessToken: response.data.accessToken,
-      refreshToken: response.data.refreshToken,
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken,
     },
   };
 }
@@ -38,24 +53,17 @@ export async function login(credentials: LoginPayload): Promise<LoginResponse> {
 export async function register(
   credentials: RegisterPayload,
 ): Promise<RegisterResponse> {
-  const response = await apiService.post('auth/register', credentials);
-  const user = {
-    id: response?.data.id,
-    name: response.data.name,
-    email: response.data.email,
-    role: response.data.role,
-    birthDate: response.data.birthDate,
-    createdAt: response.data.createdAt,
-    updatedAt: response.data.updatedAt,
-    accountId: response.data.accountId,
-    gender: response.data.gener,
-  };
+  const response = await apiService.post<AuthApiData>(
+    'auth/register',
+    credentials,
+  );
+  const data = response.data;
 
   return {
-    user: user,
+    user: mapAuthUser(data),
     headers: {
-      accessToken: response.data.accessToken,
-      refreshToken: response.data.refreshToken,
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken,
     },
   };
 }
@@ -64,31 +72,27 @@ export async function profile(credentials: {
   id: string;
   email: string;
 }): Promise<ProfileResponse> {
-  const response = await apiService.get(`auth/profile/${credentials.id}/${credentials.email}`);
-  const user = {
-    id: response?.data.id,
-    name: response.data.name,
-    email: response.data.email,
-    role: response.data.role,
-    birthDate: response.data.birthDate,
-    createdAt: response.data.createdAt,
-    updatedAt: response.data.updatedAt,
-    accountId: response.data.accountId,
-    gender: response.data.gener,
-  };
+  const response = await apiService.get<AuthApiData>(
+    `auth/profile/${credentials.id}/${credentials.email}`,
+  );
   return {
-    user: user,
+    user: mapAuthUser(response.data),
   };
 }
 
 export async function update(
   credentials: UpdatePayload,
 ): Promise<UpdateResponse> {
-  const user = await apiService.post('auth/update', credentials);
+  const response = await apiService.post<{
+    name: string;
+    email: string;
+    birthDate: string;
+  }>('auth/update', credentials);
   return {
-    user: user.data,
+    user: response.data,
   };
 }
+
 export async function resetPassword(credentials: ResetPasswordPayload) {
   await apiService.post('auth/reset-password', credentials);
   return {};

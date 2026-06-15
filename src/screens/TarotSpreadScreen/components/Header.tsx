@@ -12,9 +12,13 @@ import {COLORS} from '@/styles/theme';
 import {getStyles} from '../style';
 import {Typography} from '@/components';
 import i18n from '@/i18n';
-import { useAppSelector } from '@/hooks';
+import {useAppSelector} from '@/hooks';
+import {RouteProp} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 
-const Header = ({route}) => {
+type HeaderRouteProp = RouteProp<RootStackParamList, 'TarotSpreadScreen'>;
+
+const Header = ({route}: {route: HeaderRouteProp}) => {
   const {localeValue} = useAppSelector(state => state.settings);
   const styles = getStyles();
 

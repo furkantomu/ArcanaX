@@ -40,7 +40,7 @@ const LifePathSectionAccordion: React.FC<LifePathSectionAccordionProps> = ({
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {lifePathAccordionScrollViewRef} = useRefsContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const rotation = useSharedValue(0);
 
   const animatedRotateStyle = useAnimatedStyle(() => ({

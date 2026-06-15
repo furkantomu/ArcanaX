@@ -56,8 +56,7 @@ const NumerologyForm = () => {
       birthDate,
       ...numerologyResults,
     });
-
-    setCalculate(true);
+     setCalculate(true);
   };
 
   return (

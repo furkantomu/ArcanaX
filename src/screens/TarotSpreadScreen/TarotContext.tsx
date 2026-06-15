@@ -4,6 +4,8 @@ import {apiService} from '@/services/APIService';
 import {balanceActions} from '@/store/balance/balanceActions';
 import {showToast} from '@/utils/showToast';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '@/types/navigation/navigation';
 import React, {createContext, useContext, ReactNode, useState} from 'react';
 import {ImageSourcePropType} from 'react-native/types';
 
@@ -38,55 +40,39 @@ interface Messages {
 
 interface AppContextType {
   question: string;
-  setQuestion: (text: string) => void;
+  setQuestion: React.Dispatch<React.SetStateAction<string>>;
   readingType: number;
-  setReadingType: (type: number) => void;
+  setReadingType: React.Dispatch<React.SetStateAction<number>>;
   readingStarted: boolean;
-  setReadingStarted: (params: boolean) => void;
-
+  setReadingStarted: React.Dispatch<React.SetStateAction<boolean>>;
   selectedCards: TarotCard[];
   setSelectedCards: React.Dispatch<React.SetStateAction<TarotCard[]>>;
-  
   removeCard: (card: TarotCard) => void;
   addCard: (card: TarotCard) => void;
-
   messages: Messages[];
-  setMessages: (message: Messages) => void;
-
+  setMessages: React.Dispatch<React.SetStateAction<Messages[]>>;
   showOpenButton: boolean;
-  setShowOpenButton: (value: boolean) => void;
-
+  setShowOpenButton: React.Dispatch<React.SetStateAction<boolean>>;
   isSelectedCard: TarotCardDetail;
-  setSelectedCard: (card: TarotCardDetail) => void;
-
-  setWritingLoading: (value: boolean) => void;
+  setSelectedCard: React.Dispatch<React.SetStateAction<TarotCardDetail>>;
+  setWritingLoading: React.Dispatch<React.SetStateAction<boolean>>;
   isWritingLoading: boolean;
-
-  setReadingCompleted: (value: boolean) => void;
+  setReadingCompleted: React.Dispatch<React.SetStateAction<boolean>>;
   readingCompleted: boolean;
-
-  fetchTarotCards: () => void;
+  fetchTarotCards: () => Promise<void>;
   tarotCards: TarotCard[];
-
-  fetchTarotCard: (id: string) => void;
-
+  fetchTarotCard: (id: string) => Promise<void>;
   spreadID: string;
-  setSpreadID: (value: string) => void;
-
-  setSaveName: (value: string) => void;
+  setSpreadID: React.Dispatch<React.SetStateAction<string>>;
+  setSaveName: React.Dispatch<React.SetStateAction<string>>;
   saveName: string;
-
-  saveData: () => void;
-
-  setSaveLoading: (value: boolean) => void;
+  saveData: () => Promise<void>;
+  setSaveLoading: React.Dispatch<React.SetStateAction<boolean>>;
   saveLoading: boolean;
-
-
-  rating: number;
-  setRating: (params: number) => void;
-
+  rating: number | null;
+  setRating: React.Dispatch<React.SetStateAction<number | null>>;
   comment: string;
-  setComment: (comment: string) => void;
+  setComment: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -98,7 +84,7 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const {user} = useAppSelector(state => state.auth);
   const {localeValue} = useAppSelector(state => state.settings);
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const dispatch = useAppDispatch();
   const [tarotCards, setTarotCards] = useState<TarotCard[]>([]);
   const [question, setQuestion] = useState('');
@@ -130,7 +116,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
       description: '',
     },
   });
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState<number | null>(null);
     const [comment, setComment] = useState('');
 
   const addCard = (card: TarotCard) => {
@@ -152,7 +138,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const fetchTarotCards = async () => {
     try {
       setLoading(true);
-      const response = await apiService.get<{data: TarotCard[]}>('tarot/cards');
+      const response = await apiService.get< TarotCard[]>('tarot/cards');
       setLoading(false);
       setTarotCards(response.data);
     } catch (error) {
@@ -164,7 +150,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const fetchTarotCard = async (id: string) => {
     try {
       setLoading(true);
-      const response = await apiService.get(`tarot/cards/${id}`);
+      const response = await apiService.get<TarotCardDetail>(`tarot/cards/${id}`);
       setSelectedCard(response.data);
     } catch (error) {
       console.error('Tarot kartları yüklenirken hata oluştu:', error);
@@ -179,7 +165,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
       setSaveLoading(true);
       await apiService.post('tarot/save', {
         id: spreadID,
-        userId: user.id,
+        userId: user?.id,
         saveName,
         rating: rating === null ? -1 : rating,
         comment,
@@ -246,6 +232,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
 
     saveData,
     saveLoading,
+    setSaveLoading,
 
     comment,
     setComment,

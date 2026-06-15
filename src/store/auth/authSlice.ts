@@ -92,6 +92,9 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(authActions.update.fulfilled, (state, action) => {
+        if (!state.user) {
+          return;
+        }
         state.user = {
           ...state.user,
           birthDate: action.payload.user.birthDate,

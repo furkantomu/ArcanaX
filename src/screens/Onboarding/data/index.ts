@@ -1,3 +1,4 @@
-import data,{ OnboardingData } from "./onboarding";
+import data, {OnboardingData} from './onboarding';
 
-export { OnboardingData,data}
+export type {OnboardingData};
+export {data};

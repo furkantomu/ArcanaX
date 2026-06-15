@@ -6,12 +6,13 @@ import LifePathNumber from '../numerology/LifePathNumber';
 import ExpressionNumber from '../numerology/ExpressionNumber';
 import RadicalNumber from '../numerology/RadicalNumber';
 import PersonalYearNumber from '../numerology/PersonalYearNumber';
-import { useRoute } from '@react-navigation/native';
-
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 
 const Content = () => {
   const styles = getStyles();
-  const route = useRoute();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'NumerologyPremiumScreen'>>();
   const {numerologyDetail} = route.params;
 
   return (

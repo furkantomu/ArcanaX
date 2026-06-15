@@ -2,7 +2,8 @@ import {View, Text, ActivityIndicator} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {getStyles} from '../styles';
 
-import {useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {RootStackParamList} from '@/types/navigation/navigation';
 import {useNumerologyPremiumContext} from '../NumerologyPremiumContext';
 import {AxiosResponse} from 'axios';
 import {apiService} from '@/services/APIService';
@@ -24,7 +25,8 @@ const StaticInfo = () => {
   const {localeValue} = useAppSelector(state => state.settings);
   const [loading, setLoading] = useState(false);
 
-  const route = useRoute();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'NumerologyPremiumScreen'>>();
   const {numerologyDetail} = route.params;
   const {
     rulingPlanet,

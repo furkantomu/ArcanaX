@@ -12,7 +12,7 @@ interface SaveType {
 
 interface AppContextType {
   saveType: SaveType[];
-  setSaveType: (params: SaveType) => void;
+  setSaveType: React.Dispatch<React.SetStateAction<SaveType[]>>;
 
   getSave: (params: string) => void;
 
@@ -42,7 +42,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const getSave = async (type: string) => {
     try {
       setLoading(true);
-      const result = await apiService.get(`${type}/save/${user?.id}`);
+      const result = await apiService.get<SaveType[]>(`${type}/save/${user?.id}`);
       setSaveType(result.data);
     } catch (error) {
       showToast({
@@ -69,6 +69,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
     getSave,
     getSaveDetail,
     saveType,
+    setSaveType,
     loading,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

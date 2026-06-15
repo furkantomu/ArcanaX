@@ -11,6 +11,7 @@ import {SIZES} from '@/styles/theme';
 import {useRefsContext} from '@/context';
 import {balanceActions} from '@/store/balance/balanceActions';
 import {apiService} from '@/services/APIService';
+import {RootStackParamList} from '@/utils/navigationUtils';
 
 type NumerologyDetailScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -31,7 +32,9 @@ const Footer = () => {
   });
   const getNumerologyPrice = async () => {
     try {
-      const response = await apiService.get(`numerology/numerology-price`);
+      const response = await apiService.get<{status: string; price: number}>(
+        `numerology/numerology-price`,
+      );
       setNumerologyPrice({
         status: response.data.status,
         price: response.data.price,

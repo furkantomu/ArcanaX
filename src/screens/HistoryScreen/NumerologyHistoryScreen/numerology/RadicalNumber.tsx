@@ -32,7 +32,7 @@ const RadicalNumber = () => {
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {numerologyDetail} = useNumerologyHistoryContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [radicalNumber, setRadicalNumber] = useState({
@@ -50,12 +50,13 @@ const RadicalNumber = () => {
     const getRadicalNumber = async () => {
       try {
         setLoading(true);
-        const response = await apiService.get(
-          `numerology/radicalNumber/${numerologyDetail.radicalNumber}`,
-        );
+        const response = await apiService.get<{
+          number: number;
+          radicalNumber: number;
+        }>(`numerology/radicalNumber/${numerologyDetail.radicalNumber}`);
         setRadicalNumber({
           number: response.data.number,
-          radicalNumber: response.data.radicalNumber,
+          radicalNumber: String(response.data.radicalNumber),
         });
       } catch (error) {
         console.log(error);

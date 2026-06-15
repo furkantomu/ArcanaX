@@ -6,8 +6,8 @@ import axios, {
   AxiosRequestHeaders,
 } from 'axios';
 
-import {getStore} from '@/store/storeAccessor';
-import {showToast} from '@/utils/showToast';
+import { getStore } from '@/store/storeAccessor';
+import { showToast } from '@/utils/showToast';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 class APIService {
@@ -16,8 +16,7 @@ class APIService {
 
   private constructor() {
     this.api = axios.create({
-      baseURL: 'https://www.arcanaxapp.xyz/',
-      //baseURL: 'http://192.168.1.103:3002/',
+      baseURL: 'http://192.168.0.21:3000/',
     });
     this.setupInterceptors();
   }
@@ -30,11 +29,11 @@ class APIService {
   }
 
 
-  private getHeaders(): AxiosRequestHeaders {
+  private getHeaders(): Record<string, string> {
     const store = getStore();
     const state = store.getState();
     const headers = state.auth.headers;
-    const headersObj: AxiosRequestHeaders = {
+    const headersObj: Record<string, string> = {
       'Accept-Language': state.settings.localeValue,
     };
     if (headers) {
@@ -49,6 +48,14 @@ class APIService {
         config: AxiosRequestConfig,
       ): Promise<InternalAxiosRequestConfig> => {
         const headers = this.getHeaders();
+
+        console.log('🚀 REQUEST');
+        console.log('URL:', `${config.baseURL || ''}${config.url || ''}`);
+        console.log('METHOD:', config.method?.toUpperCase());
+        console.log('HEADERS:', headers);
+        console.log('BODY:', config.data);
+
+
         return {
           ...config,
           headers: {
@@ -73,14 +80,13 @@ class APIService {
           });
         }
         if (error.response?.status === 401) {
-          store.dispatch({type: 'auth/logout'});
+          store.dispatch({ type: 'auth/logout' });
         }
 
         try {
-           crashlytics().recordError(
+          crashlytics().recordError(
             new Error(
-              `email:${state.auth.user.email} url: ${
-                error.config?.url
+              `email:${state.auth.user.email} url: ${error.config?.url
               }, errorMessage: ${JSON.stringify(error.response?.data)}`,
             ),
           );

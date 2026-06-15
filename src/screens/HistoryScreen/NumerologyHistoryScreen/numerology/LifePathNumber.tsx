@@ -33,7 +33,7 @@ const LifePathNumber = () => {
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {numerologyDetail} = useNumerologyHistoryContext();
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [lifePath, setLifePath] = useState({
@@ -51,12 +51,13 @@ const LifePathNumber = () => {
     const getLifePath = async () => {
       try {
         setLoading(true);
-        const response = await apiService.get(
-          `numerology/lifepath/${numerologyDetail.lifePath}`,
-        );
+        const response = await apiService.get<{
+          number: number;
+          lifePath: number;
+        }>(`numerology/lifepath/${numerologyDetail.lifePath}`);
         setLifePath({
           number: response.data.number,
-          lifePath: response.data.lifePath,
+          lifePath: String(response.data.lifePath),
         });
       } catch (error) {
         console.log(error);

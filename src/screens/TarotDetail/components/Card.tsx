@@ -1,6 +1,5 @@
 import {ActivityIndicator, Image, Pressable, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {TAROTCARD} from '@/utils/dummy';
 import {getStyles} from '../styles';
 import {Typography} from '@/components';
 import {useNavigation} from '@react-navigation/native';

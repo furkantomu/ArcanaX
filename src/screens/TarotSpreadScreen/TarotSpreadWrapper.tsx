@@ -70,7 +70,7 @@ const TarotSpreadWrapper = ({route}: any) => {
 
       try {
         setWritingLoading(true);
-        const result = await apiService.put(
+        const result = await apiService.put<{messages: {role: string; content: string}[]}>(
           `/tarot/read/start/${spreadID}`,
           newMsg,
         );

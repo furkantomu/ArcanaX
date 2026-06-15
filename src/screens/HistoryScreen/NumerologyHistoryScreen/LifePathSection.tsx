@@ -86,7 +86,7 @@ const LifePathSection = () => {
             key={idx}
             title={item}
             description={section[idx]}
-            content={pinnacleNumber[item]}
+            content={pinnacleNumber[item as keyof typeof pinnacleNumber]}
             loading={loading}
           />
         ))}

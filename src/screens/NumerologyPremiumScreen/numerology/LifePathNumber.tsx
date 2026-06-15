@@ -1,5 +1,6 @@
 import {View, Text, Pressable, ActivityIndicator, Image} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
+import {NumerologyDetail} from '@/types/navigation/navigation';
 import {getStyles} from '../styles';
 import Animated, {
   Easing,
@@ -25,13 +26,13 @@ const markdownStyles = {
   body: {color: COLORS.cream, fontSize: SIZES.body2, fontFamily: 'NotoSerif-Regular'},
   strong: {color: COLORS.gold},
 };
-const LifePathNumber = ({numerologyDetail}) => {
+const LifePathNumber = ({numerologyDetail}: {numerologyDetail: NumerologyDetail}) => {
   const styles = getStyles();
   const {setHeight, animatedheightStyle, animatedref, handleLayout, isOpened} =
     useAccordion();
   const {lifePath, setLifePath} = useNumerologyPremiumContext();
   const {localeValue} = useAppSelector(state => state.settings);
-  const itemRefs = useRef();
+  const itemRefs = useRef<View>(null);
   const {lifePathAccordionScrollViewRef} = useRefsContext();
   const rotation = useSharedValue(0);
   const [loading, setLoading] = useState(false);

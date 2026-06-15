@@ -18,5 +18,5 @@ export const handleApiError = (error: unknown, customErrorMsg?: string) => {
   const message =
     customErrorMsg ||
     i18n.t('LOGIN.ERROR.NETWORK_ERROR');
-  return {success: false, errors: message};
+  return {success: false, errors: message ?? 'Unknown error'};
 };
