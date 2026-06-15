@@ -1,5 +1,5 @@
-import {Dimensions, StyleSheet, View, BackHandler} from 'react-native';
-import React, {JSX, useCallback, useImperativeHandle, useEffect, useMemo} from 'react';
+import {Dimensions, StyleSheet, View, BackHandler, useSafeAreaInsets} from 'react-native';
+import React, {JSX, useCallback, useImperativeHandle, useEffect, useMemo, useRef} from 'react';
 import {
   Gesture,
   GestureDetector,
@@ -11,22 +11,28 @@ import Animated, {
   runOnJS,
   interpolate,
   Extrapolation,
+  useAnimatedReaction,
+  cancelAnimation,
 } from 'react-native-reanimated';
 
 import {BottomSheetRefProps} from '@/types';
 import {COLORS} from '@/styles/theme';
 
-const {height: SCREEN_HEIGHT} = Dimensions.get('window');
+const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 150;
 const COMMON_SNAP_POINTS = -SCREEN_HEIGHT / 1.2;
 const SPRING_CONFIG = {
-  damping: 15,
-  stiffness: 150,
+  damping: 12,
+  mass: 1,
+  overshootClamping: false,
+  restSpeedThreshold: 2,
+  restDisplacementThreshold: 2,
 } as const;
 
 const OPACITY_SPRING_CONFIG = {
-  damping: 12,
-  stiffness: 200,
+  damping: 14,
+  mass: 1,
+  overshootClamping: true,
 } as const;
 
 type BottomSheetProps = {
@@ -68,18 +74,31 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
     },
     ref,
   ) => {
+    const insets = useSafeAreaInsets();
     const translateY = useSharedValue(snapPoints[initialSnapIndex]);
     const opacity = useSharedValue(initialSnapIndex > 0 ? 1 : 0);
     const currentSnapIndex = useSharedValue(initialSnapIndex);
-
+    
+    // Track state for proper animation handling
+    const isAnimating = useSharedValue(false);
+    
     const context = useSharedValue({
       y: 0,
     });
 
+    // Store refs to prevent memory leaks
+    const callbackRef = useRef<(() => void) | null>(null);
+    const backHandlerRef = useRef<any>(null);
+
     // Memoize sorted snap points for performance
-    const sortedSnapPoints = useMemo(() => 
-      [...snapPoints].sort((a, b) => b - a), // Sort descending (most negative first)
-    [snapPoints]);
+    const sortedSnapPoints = useMemo(() => {
+      const sorted = [...snapPoints].sort((a, b) => a - b); // Sort ascending (most open first)
+      return sorted;
+    }, [snapPoints]);
+
+    // Memoize open and closed positions
+    const openPosition = useMemo(() => sortedSnapPoints[0], [sortedSnapPoints]);
+    const closedPosition = useMemo(() => sortedSnapPoints[sortedSnapPoints.length - 1], [sortedSnapPoints]);
 
     // Find closest snap point
     const findClosestSnapPoint = useCallback((value: number) => {
@@ -104,26 +123,33 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
         const targetSnapIndex = sortedSnapPoints.indexOf(destination);
         if (targetSnapIndex === -1) return;
 
+        // Cancel any ongoing animation
+        cancelAnimation(translateY);
+        cancelAnimation(opacity);
+
+        isAnimating.value = true;
+
         translateY.value = withSpring(destination, SPRING_CONFIG, (finished) => {
           if (finished) {
             currentSnapIndex.value = targetSnapIndex;
+            isAnimating.value = false;
             if (callback) {
               runOnJS(callback)();
             }
           }
         });
 
-        const targetOpacity = destination === 0 ? 0 : 1;
+        const targetOpacity = destination === closedPosition ? 0 : 1;
         opacity.value = withSpring(targetOpacity, OPACITY_SPRING_CONFIG);
 
-        // Call callbacks
-        if (destination === 0 && onClose) {
+        // Call callbacks immediately without waiting for animation
+        if (destination === closedPosition && onClose) {
           runOnJS(onClose)();
-        } else if (destination !== 0 && onOpen) {
+        } else if (destination !== closedPosition && onOpen) {
           runOnJS(onOpen)();
         }
       },
-      [translateY, opacity, sortedSnapPoints, onOpen, onClose, currentSnapIndex],
+      [translateY, opacity, sortedSnapPoints, onOpen, onClose, currentSnapIndex, closedPosition, isAnimating],
     );
 
     const scrollToIndex = useCallback(
@@ -137,8 +163,8 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
     );
 
     const close = useCallback((callback?: () => void) => {
-      scrollTo(0, callback);
-    }, [scrollTo]);
+      scrollTo(closedPosition, callback);
+    }, [scrollTo, closedPosition]);
 
     useImperativeHandle(ref, () => ({
       scrollTo,
@@ -146,60 +172,78 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       close,
     }), [scrollTo, scrollToIndex, close]);
 
-    // Handle Android back button
+    // Handle Android back button with proper cleanup
     useEffect(() => {
       if (!enableBackHandler) return;
 
-      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      const handleBackPress = () => {
         if (currentSnapIndex.value > 0) {
           close();
           return true; // Prevent default behavior
         }
         return false; // Allow default behavior
-      });
+      };
 
-      return () => backHandler.remove();
+      backHandlerRef.current = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+      return () => {
+        if (backHandlerRef.current) {
+          backHandlerRef.current.remove();
+          backHandlerRef.current = null;
+        }
+      };
     }, [enableBackHandler, close, currentSnapIndex]);
 
+    // Optimize gesture configuration
     const SWIPE_VELOCITY_THRESHOLD = 500;
-    const gesture = Gesture.Pan()
-      .enabled(gestureEnabled)
-      .onStart(() => {
-        context.value = {
-          y: translateY.value,
-        };
-      })
-      .onUpdate(event => {
-        const newTranslateY = event.translationY + context.value.y;
-        
-        // Constrain within bounds
-        const minY = Math.min(...sortedSnapPoints);
-        const maxY = Math.max(...sortedSnapPoints);
-        
-        translateY.value = Math.max(Math.min(newTranslateY, maxY), minY);
-      })
-      .onEnd(event => {
-        const isFastSwipe = Math.abs(event.velocityY) > SWIPE_VELOCITY_THRESHOLD;
-        
-        if (isFastSwipe) {
-          if (event.velocityY < 0) {
-            // Fast swipe up - go to most expanded state
-            scrollTo(sortedSnapPoints[0]);
-          } else if (enablePanDownToClose) {
-            // Fast swipe down - go to closed state
-            scrollTo(0);
+    const gesture = useMemo(() => {
+      return Gesture.Pan()
+        .enabled(gestureEnabled)
+        .shouldCancelWhenOutside(false)
+        .onStart(() => {
+          // Cancel any ongoing animation
+          cancelAnimation(translateY);
+          context.value = {
+            y: translateY.value,
+          };
+        })
+        .onUpdate(event => {
+          if (isAnimating.value) return; // Prevent gesture during animation
+
+          const newTranslateY = event.translationY + context.value.y;
+          
+          // Constrain within bounds with overshoot allowed for spring effect
+          const minY = Math.min(...sortedSnapPoints);
+          const maxY = Math.max(...sortedSnapPoints);
+          
+          const constrainedY = Math.max(Math.min(newTranslateY, maxY + 50), minY - 50);
+          translateY.value = constrainedY;
+        })
+        .onEnd(event => {
+          const isFastSwipe = Math.abs(event.velocityY) > SWIPE_VELOCITY_THRESHOLD;
+          const currentY = translateY.value;
+          
+          if (isFastSwipe) {
+            if (event.velocityY < 0) {
+              // Fast swipe up - go to most expanded state
+              scrollTo(openPosition);
+            } else if (enablePanDownToClose && currentY > closedPosition * 0.2) {
+              // Fast swipe down - go to closed state
+              scrollTo(closedPosition);
+            } else {
+              // Go to closest snap point
+              const closest = findClosestSnapPoint(currentY);
+              scrollTo(closest);
+            }
           } else {
-            // Go to closest snap point
-            const closest = findClosestSnapPoint(translateY.value);
+            // Slow gesture - snap to closest point
+            const closest = findClosestSnapPoint(currentY);
             scrollTo(closest);
           }
-        } else {
-          // Slow gesture - snap to closest point
-          const closest = findClosestSnapPoint(translateY.value);
-          scrollTo(closest);
-        }
-      });
+        });
+    }, [gestureEnabled, translateY, sortedSnapPoints, scrollTo, openPosition, closedPosition, enablePanDownToClose, findClosestSnapPoint, isAnimating, context]);
 
+    // Animate styles - prevent unnecessary re-computation
     const rBottomSheetStyles = useAnimatedStyle(() => {
       return {
         transform: [
@@ -210,53 +254,67 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       };
     }, []);
 
+    // Animated backdrop with optimized pointer events
     const rBackdropStyles = useAnimatedStyle(() => {
       const backdropOpacityInterpolated = interpolate(
         translateY.value,
-        [0, MAX_TRANSLATE_Y],
+        [closedPosition, openPosition],
         [0, backdropOpacity],
         Extrapolation.CLAMP,
       );
 
       return {
         opacity: enableBackdrop ? backdropOpacityInterpolated : 0,
-        pointerEvents: translateY.value === 0 ? 'none' : 'auto',
+        pointerEvents: translateY.value >= closedPosition * 0.5 ? 'none' : 'auto',
       };
-    }, [enableBackdrop, backdropOpacity]);
+    }, [enableBackdrop, backdropOpacity, closedPosition, openPosition]);
 
     const handleBackdropPress = useCallback(() => {
-      if (enableBackdrop) {
+      if (enableBackdrop && !isAnimating.value) {
         close();
       }
-    }, [enableBackdrop, close]);
+    }, [enableBackdrop, close, isAnimating]);
 
     return (
       <>
-        {/* Backdrop */}
+        {/* Backdrop with pointer events passthrough when hidden */}
         <Animated.View
           style={[styles.backdrop, rBackdropStyles, {backgroundColor: backdropColor}]}
           onTouchEnd={handleBackdropPress}
+          pointerEvents="box-none"
         />
         
-        {/* Bottom Sheet */}
+        {/* Bottom Sheet with GestureDetector wrapper */}
         <GestureDetector gesture={gesture}>
           <Animated.View
             style={[
               styles.container,
               rBottomSheetStyles,
-              {backgroundColor: backgroundColor},
+              {
+                backgroundColor: backgroundColor,
+                paddingBottom: insets.bottom,
+              },
             ]}
             accessible={true}
             accessibilityLabel={accessibilityLabel}
             accessibilityHint={accessibilityHint}
-            >
+            accessibilityRole="adjustable"
+          >
+            {/* Drag Handle */}
             <View 
               style={[styles.line, {backgroundColor: lineColor}]}
               accessible={true}
               accessibilityLabel="Drag handle"
               accessibilityHint="Double tap to close bottom sheet"
+              accessibilityRole="button"
             />
-            {children}
+            {/* Content wrapper with safe pass-through for interactions */}
+            <View
+              style={styles.contentWrapper}
+              pointerEvents="box-none"
+            >
+              {children}
+            </View>
           </Animated.View>
         </GestureDetector>
       </>
@@ -280,17 +338,22 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     height: SCREEN_HEIGHT,
-    width: '100%',
+    width: SCREEN_WIDTH,
     top: SCREEN_HEIGHT,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     zIndex: 30,
+    overflow: 'hidden',
   },
   line: {
     height: 4,
     width: '40%',
     alignSelf: 'center',
-    marginVertical: 20,
-    borderRadius: 5,
+    marginVertical: 12,
+    borderRadius: 2,
+  },
+  contentWrapper: {
+    flex: 1,
+    pointerEvents: 'box-none',
   },
 });
