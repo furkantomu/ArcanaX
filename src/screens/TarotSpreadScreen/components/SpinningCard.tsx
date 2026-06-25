@@ -45,7 +45,7 @@ const SpinningCard: React.FC<SpinningCardProps> = ({
   const haptic = useHaptic('soft');
 
   const openModal = () => {
-    detailCardSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+    detailCardSheetRef.current?.present();
   };
   const handlePress = () => {
     haptic?.();

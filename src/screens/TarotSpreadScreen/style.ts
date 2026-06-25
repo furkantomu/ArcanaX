@@ -124,7 +124,7 @@ export const getStyles = () =>
     },
     cardSelectionSheet: {
       justifyContent: 'space-between',
-      height: SIZES.height / 1.5,
+      backgroundColor: COLORS.black,
     },
     bottomSheetHeader: {
       alignItems: 'center',
@@ -137,6 +137,7 @@ export const getStyles = () =>
     },
     buttonContainer: {
       paddingHorizontal: 20,
+      paddingVertical: 10,
       gap: 5,
     },
     bottomSheetButtonText: {
@@ -317,6 +318,7 @@ export const getStyles = () =>
     cardDetailModalCardWrapper: {
       flexDirection: 'row',
       justifyContent: 'space-around',
+     
     },
     cardDetailModalCardRightWrapper: {
       justifyContent: 'space-around',
@@ -335,6 +337,7 @@ export const getStyles = () =>
       fontFamily: FONTS.NotoSerifBold,
       lineHeight: 20,
       textAlign: 'center',
+      
     },
     cardDetailModalCardNumber: {
       height: 40,
@@ -355,7 +358,6 @@ export const getStyles = () =>
       width: '100%',
       paddingHorizontal: 20,
       marginTop: 20,
-      height: SIZES.height * 0.50,
     },
     cardDetailModalDescription: {
       backgroundColor: COLORS.blackOpacity1,

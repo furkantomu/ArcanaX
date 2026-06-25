@@ -18,7 +18,9 @@ const SheetFooter = () => {
   const styles = getStyles();
 
   const hideModal = () => {
-    selectCardSheetRef.current?.scrollTo(0);
+     selectCardSheetRef.current?.dismiss({
+      overshootClamping: true,
+    });
   };
   const handlePress = () => {
     hideModal();

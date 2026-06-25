@@ -1,28 +1,28 @@
-import React, {useEffect} from 'react';
-import {Image, ScrollView, SafeAreaView} from 'react-native';
+import React, { useEffect } from 'react';
+import { Image, ScrollView, SafeAreaView } from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import Wrapper from './Wrapper';
 
-import {AppProvider} from './NumerologyPremiumContext';
-import {useRefsContext} from '@/context';
+import { AppProvider } from './NumerologyPremiumContext';
+import { useRefsContext } from '@/context';
 
-import {getStyles} from './styles';
+import { getStyles } from './styles';
 import { COLORS } from '@/styles/theme';
-import { BottomSheet } from '@/components';
 import SaveModal from './components/SaveModal';
+import { BottomSheetModal, BottomSheetModalProvider, useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
 
 const NumerologyPremiumScreen = () => {
   const navigation = useNavigation();
-  const {lifePathAccordionScrollViewRef, saveNumerologySheetRef} = useRefsContext();
-  
+  const { lifePathAccordionScrollViewRef, saveNumerologySheetRef } = useRefsContext();
+
   const styles = getStyles();
   const bg = require('../../../assets/background/bg4.webp');
 
   useEffect(() => {
     navigation.getParent()?.setOptions({
-      tabBarStyle: {display: 'none'},
+      tabBarStyle: { display: 'none' },
     });
 
     return () =>
@@ -40,23 +40,30 @@ const NumerologyPremiumScreen = () => {
         },
       });
   }, [navigation]);
-
+  const animationConfigs = useBottomSheetSpringConfigs({
+    mass: 1,
+    stiffness: 420,
+    damping: 30,
+  });
   return (
     <AppProvider>
-      <SafeAreaView style={styles.container}>
-        <Image
-          source={bg}
-          resizeMode={'cover'}
-          style={styles.bg}
-          blurRadius={10}
-        />
-        <ScrollView ref={lifePathAccordionScrollViewRef}>
-          <Wrapper />
-        </ScrollView>
-      </SafeAreaView>
-      <BottomSheet ref={saveNumerologySheetRef}>
-        <SaveModal/>
-      </BottomSheet>
+      <BottomSheetModalProvider>
+        <SafeAreaView style={styles.container}>
+          <Image
+            source={bg}
+            resizeMode={'cover'}
+            style={styles.bg}
+            blurRadius={10}
+          />
+          <ScrollView ref={lifePathAccordionScrollViewRef}>
+            <Wrapper />
+          </ScrollView>
+        </SafeAreaView>
+        <BottomSheetModal ref={saveNumerologySheetRef} enablePanDownToClose
+          animationConfigs={animationConfigs}>
+          <SaveModal />
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </AppProvider>
   );
 };

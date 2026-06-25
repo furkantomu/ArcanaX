@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {View, TouchableOpacity, Pressable} from 'react-native';
+import React, { useEffect } from 'react';
+import { View, TouchableOpacity, Pressable } from 'react-native';
 import Animated, {
   runOnJS,
   useAnimatedStyle,
@@ -9,18 +9,18 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import {getStyles} from '../style';
-import {SIZES} from '@/styles/theme';
-import {useHaptic} from '@/utils';
-import {useRefsContext} from '@/context';
-import {useTarotContext} from '../TarotContext';
+import { getStyles } from '../style';
+import { SIZES } from '@/styles/theme';
+import { useHaptic } from '@/utils';
+import { useRefsContext } from '@/context';
+import { useTarotContext } from '../TarotContext';
 import i18n from '@/i18n';
 import { useAppSelector } from '@/hooks';
 
 const FooterButtons = () => {
-  const {selectCardSheetRef} = useRefsContext();
-  const {localeValue} = useAppSelector(state => state.settings);
-  const {fetchTarotCards, setSelectedCards} = useTarotContext();
+  const { selectCardSheetRef } = useRefsContext();
+  const { localeValue } = useAppSelector(state => state.settings);
+  const { fetchTarotCards, setSelectedCards } = useTarotContext();
   const haptic = useHaptic('soft');
   const styles = getStyles();
   const rightArrows = require('../../../../assets/icon/rightArrows.png');
@@ -36,27 +36,27 @@ const FooterButtons = () => {
   const scale = useSharedValue(0);
 
   useEffect(() => {
-    opacity.value = withDelay(200, withTiming(1, {duration: 800}));
+    opacity.value = withDelay(200, withTiming(1, { duration: 800 }));
     translateX.value = withDelay(
       200,
-      withSpring(0, {damping: 12, stiffness: 100}),
+      withSpring(0, { damping: 12, stiffness: 100 }),
     );
     translateY.value = withDelay(
       200,
-      withSpring(0, {damping: 12, stiffness: 100}),
+      withSpring(0, { damping: 12, stiffness: 100 }),
     );
     translateRightArrowX.value = withDelay(
       200,
-      withSpring(0, {damping: 12, stiffness: 100}),
+      withSpring(0, { damping: 12, stiffness: 100 }),
     );
-    scale.value = withDelay(200, withSpring(1, {damping: 10, stiffness: 100}));
+    scale.value = withDelay(200, withSpring(1, { damping: 10, stiffness: 100 }));
   }, [opacity, scale, translateX, translateRightArrowX, translateY]);
 
   const animatedTextStyle = useAnimatedStyle(() => {
     return {
       opacity: opacity.value,
       transform: [
-        {scale: scale.value}, // Scale animasyonunu ekledik
+        { scale: scale.value }, // Scale animasyonunu ekledik
       ],
     };
   });
@@ -65,8 +65,8 @@ const FooterButtons = () => {
     return {
       opacity: opacity.value,
       transform: [
-        {translateY: translateY.value},
-        {rotateZ: `${rotateZ.value}deg`},
+        { translateY: translateY.value },
+        { rotateZ: `${rotateZ.value}deg` },
       ],
     };
   });
@@ -75,9 +75,9 @@ const FooterButtons = () => {
     return {
       opacity: opacity.value,
       transform: [
-        {translateX: translateRightArrowX.value},
-        {rotateZ: '180deg'},
-        {scale: scale.value},
+        { translateX: translateRightArrowX.value },
+        { rotateZ: '180deg' },
+        { scale: scale.value },
       ],
     };
   });
@@ -85,22 +85,23 @@ const FooterButtons = () => {
   const animatedLeftArrowStyle = useAnimatedStyle(() => {
     return {
       opacity: opacity.value,
-      transform: [{translateX: translateX.value}, {scale: scale.value}],
+      transform: [{ translateX: translateX.value }, { scale: scale.value }],
     };
   });
 
   const openModal = () => {
-    selectCardSheetRef.current?.scrollToIndex(1);
+    fetchTarotCards();
+    selectCardSheetRef.current?.present();
   };
   const handleStartSpread = async () => {
     setSelectedCards([]);
     translateX.value = withDelay(
       500,
-      withSpring(-SIZES.width, {damping: 12, stiffness: 100}),
+      withSpring(-SIZES.width, { damping: 12, stiffness: 100 }),
     );
     translateRightArrowX.value = withDelay(
       500,
-      withSpring(SIZES.width, {damping: 12, stiffness: 100}, isFinished => {
+      withSpring(SIZES.width, { damping: 12, stiffness: 100 }, isFinished => {
         if (isFinished) {
           runOnJS(openModal)();
         }
@@ -108,17 +109,16 @@ const FooterButtons = () => {
     );
     rotateZ.value = withDelay(
       400,
-      withSpring(540, {damping: 10, stiffness: 100}),
+      withSpring(540, { damping: 10, stiffness: 100 }),
     );
     haptic?.();
-    fetchTarotCards();
   };
 
   return (
     <View style={styles.buttons}>
       <Pressable onPress={handleStartSpread}>
         <Animated.Text style={[styles.subTitle, animatedTextStyle]}>
-          {i18n.t('TAROT_READ_START.SELECT_BUTTON', {locale: localeValue})}
+          {i18n.t('TAROT_READ_START.SELECT_BUTTON', { locale: localeValue })}
         </Animated.Text>
       </Pressable>
       <View style={styles.imageContainer}>

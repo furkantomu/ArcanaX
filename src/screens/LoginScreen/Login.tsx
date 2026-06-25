@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, Pressable} from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 
 import TextField from '@/components/TextField/TextField';
 
-import {Button, Icon, Typography} from '@/components';
+import { Button, Icon, Typography } from '@/components';
 
-import {useAppDispatch, useAppSelector} from '@/hooks';
-import {Form, useForm} from '@/hooks/useForm';
-import {useLoginContext} from './LoginContext';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { Form, useForm } from '@/hooks/useForm';
+import { useLoginContext } from './LoginContext';
 
-import {authActions} from '@/store/auth/authActions';
+import { authActions } from '@/store/auth/authActions';
 
-import {COLORS, FONTS, SIZES} from '@/styles/theme';
-import {useSelector} from 'react-redux';
+import { COLORS, FONTS, SIZES } from '@/styles/theme';
+import { useSelector } from 'react-redux';
 import i18n from '@/i18n';
-import {useRefsContext} from '@/context';
+import { useRefsContext } from '@/context';
 import { setOnboardingCompleted } from '@/store/settings/settingsSlice';
 
 interface ValidationErrors {
@@ -32,31 +32,31 @@ const initialFieldValues: FormValues = {
 };
 
 const Login = () => {
-  const {localeValue} = useAppSelector(state => state.settings);
-  const {setLoginType, setPasswordVisible, passwordVisible} = useLoginContext();
-  const {languageChangeSheetRef} = useRefsContext();
+  const { localeValue } = useAppSelector(state => state.settings);
+  const { setLoginType, setPasswordVisible, passwordVisible } = useLoginContext();
+  const { languageChangeSheetRef } = useRefsContext();
   const [validateOnChange, setValidateOnChange] = useState(false);
   const dispatch = useAppDispatch();
-  const {error, uiFlags} = useSelector((state: any) => state.auth);
+  const { error, uiFlags } = useSelector((state: any) => state.auth);
   const validation = (fieldValues: Partial<FormValues>): ValidationErrors => {
-    let temp: ValidationErrors = {...errors};
+    let temp: ValidationErrors = { ...errors };
 
     if ('email' in fieldValues) {
       temp.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(fieldValues.email))
         ? ''
-        : i18n.t('LOGIN.EMAIL_REQUIRED', {locale: localeValue});
+        : i18n.t('LOGIN.EMAIL_REQUIRED', { locale: localeValue });
     }
     if ('password' in fieldValues) {
       temp.password = fieldValues.password
         ? ''
-        : i18n.t('LOGIN.REQUIRED', {locale: localeValue});
+        : i18n.t('LOGIN.REQUIRED', { locale: localeValue });
     }
 
-    setErrors({...temp});
+    setErrors({ ...temp });
 
     return temp;
   };
-  const {values, handleInputChange, errors, setErrors} = useForm(
+  const { values, handleInputChange, errors, setErrors } = useForm(
     initialFieldValues,
     validateOnChange,
     validation,
@@ -64,25 +64,25 @@ const Login = () => {
 
   const handlePress = async () => {
     const validationErrors = validation(values);
-    let temp: ValidationErrors = {...validationErrors};
-    setErrors({...temp});
+    let temp: ValidationErrors = { ...validationErrors };
+    setErrors({ ...temp });
     if (Object.values(validationErrors).some(x => x !== '')) {
       setValidateOnChange(true);
       return;
     }
-    const {email, password} = values;
-       dispatch(setOnboardingCompleted());
-    dispatch(authActions.login({email: email.toLowerCase(), password}));
+    const { email, password } = values;
+    dispatch(setOnboardingCompleted());
+    dispatch(authActions.login({ email: email.toLowerCase(), password }));
   };
   return (
     <View style={styles.container}>
       <Form style={styles.form}>
         <Typography style={styles.label}>
-          {i18n.t('LOGIN.EMAIL', {locale: localeValue})}
+          {i18n.t('LOGIN.EMAIL', { locale: localeValue })}
         </Typography>
         <TextField
           inputName="email"
-          placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', {locale: localeValue})}
+          placeholder={i18n.t('LOGIN.EMAIL_PLACEHOLDER', { locale: localeValue })}
           style={{
             ...styles.textField,
             borderColor: errors.email ? COLORS.red : COLORS.darkGray,
@@ -92,7 +92,7 @@ const Login = () => {
           errorMessage={errors.email}
         />
         <Typography style={styles.label}>
-          {i18n.t('LOGIN.PASSWORD', {locale: localeValue})}
+          {i18n.t('LOGIN.PASSWORD', { locale: localeValue })}
         </Typography>
         <View style={styles.securePassword}>
           <Pressable
@@ -121,7 +121,7 @@ const Login = () => {
 
         <TouchableOpacity onPress={() => setLoginType('password')}>
           <Typography style={styles.passwordChangeText}>
-            {i18n.t('LOGIN.FORGOT_PASSWORD', {locale: localeValue})}
+            {i18n.t('LOGIN.FORGOT_PASSWORD', { locale: localeValue })}
           </Typography>
         </TouchableOpacity>
       </Form>
@@ -129,21 +129,21 @@ const Login = () => {
         {error && <Typography style={styles.errorMessage}>{error}</Typography>}
         <Button
           disabled={uiFlags.isLoggingIn}
-          text={i18n.t('LOGIN.LOGIN_BUTTON', {locale: localeValue})}
+          text={i18n.t('LOGIN.LOGIN_BUTTON', { locale: localeValue })}
           handlePress={handlePress}
         />
         <TouchableOpacity onPress={() => setLoginType('register')}>
           <Typography style={styles.newAccount}>
-            {i18n.t('LOGIN.NEW_ACCOUNT', {locale: localeValue})}
+            {i18n.t('LOGIN.NEW_ACCOUNT', { locale: localeValue })}
           </Typography>
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() =>
-            languageChangeSheetRef.current?.scrollTo(-SIZES.height / 1.2)
+            languageChangeSheetRef.current?.present()
           }>
           <Typography style={styles.newAccount}>
-            {i18n.t('CHANGE_LANGUAGE', {locale: localeValue})}
+            {i18n.t('CHANGE_LANGUAGE', { locale: localeValue })}
           </Typography>
         </TouchableOpacity>
       </View>

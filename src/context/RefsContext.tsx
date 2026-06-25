@@ -1,21 +1,21 @@
 import React, {useRef, useMemo} from 'react';
 import {ScrollView} from 'react-native';
-
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import {BottomSheetRefProps} from '@/types';
 
 interface RefsContextType {
-  selectCardSheetRef: React.RefObject<BottomSheetRefProps>;
-  detailCardSheetRef: React.RefObject<BottomSheetRefProps>;
+  selectCardSheetRef: React.RefObject<BottomSheetModal>;
+  detailCardSheetRef: React.RefObject<BottomSheetModal>;
   tarotSpreadScrollViewRef: React.RefObject<ScrollView>;
   lifePathAccordionScrollViewRef: React.RefObject<ScrollView>;
-  uploadTypeSheetRef: React.RefObject<BottomSheetRefProps>;
+  uploadTypeSheetRef: React.RefObject<BottomSheetModal>;
 
   FaqSectionScrollViewRef: React.RefObject<ScrollView>;
 
-  saveTarotSheetRef: React.RefObject<BottomSheetRefProps>;
-  saveNumerologySheetRef: React.RefObject<BottomSheetRefProps>;
-  saveDreamSheetRef: React.RefObject<BottomSheetRefProps>;
-  languageChangeSheetRef: React.RefObject<BottomSheetRefProps>;
+  saveTarotSheetRef: React.RefObject<BottomSheetModal>;
+  saveNumerologySheetRef: React.RefObject<BottomSheetModal>;
+  saveDreamSheetRef: React.RefObject<BottomSheetModal>;
+  languageChangeSheetRef: React.RefObject<BottomSheetModal>;
 }
 
 const RefsContext = React.createContext<RefsContextType | undefined>(undefined);
@@ -34,16 +34,16 @@ const useRefsContext = (): RefsContextType => {
 const RefsProvider: React.FC<
   Partial<RefsContextType & {children: React.ReactNode}>
 > = props => {
-  const selectCardSheetRef = useRef<BottomSheetRefProps>(null);
-  const detailCardSheetRef = useRef<BottomSheetRefProps>(null);
+  const selectCardSheetRef = useRef<BottomSheetModal>(null);
+  const detailCardSheetRef = useRef<BottomSheetModal>(null);
   const tarotSpreadScrollViewRef = useRef<ScrollView>(null);
   const lifePathAccordionScrollViewRef = useRef<ScrollView>(null);
-  const uploadTypeSheetRef = useRef<BottomSheetRefProps>(null);
+  const uploadTypeSheetRef = useRef<BottomSheetModal>(null);
   const FaqSectionScrollViewRef = useRef<ScrollView>(null);
-  const saveTarotSheetRef = useRef<BottomSheetRefProps>(null);
-  const saveNumerologySheetRef = useRef<BottomSheetRefProps>(null);
-  const saveDreamSheetRef = useRef<BottomSheetRefProps>(null);
-  const languageChangeSheetRef = useRef<BottomSheetRefProps>(null);
+  const saveTarotSheetRef = useRef<BottomSheetModal>(null);
+  const saveNumerologySheetRef = useRef<BottomSheetModal>(null);
+  const saveDreamSheetRef = useRef<BottomSheetModal>(null);
+  const languageChangeSheetRef = useRef<BottomSheetModal>(null);
   const {children} = props;
 
   const contextRefValues = useMemo(() => ({

@@ -22,13 +22,15 @@ const Footer = () => {
   const route = useRoute<NumerologyDetailScreenRouteProp>();
   const {localeValue} = useAppSelector(state => state.settings);
   const {user} = useAppSelector(state => state.auth);
+  const {uiFlags} = useAppSelector(state => state.balance);
+
   const {numerologyDetail} = route.params;
   const dispatch = useAppDispatch();
   const styles = getStyles();
   const navigation = useNavigation();
   const [numerologyPrice, setNumerologyPrice] = useState({
     status: 'active',
-    price: 100,
+    price: 0,
   });
   const getNumerologyPrice = async () => {
     try {

@@ -1,5 +1,5 @@
-import {View, StyleSheet, useWindowDimensions, ViewToken} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import { View, StyleSheet, useWindowDimensions, ViewToken } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import Animated, {
   interpolateColor,
   useAnimatedRef,
@@ -9,15 +9,15 @@ import Animated, {
 } from 'react-native-reanimated';
 import Pagination from './components/Pagination';
 import CustomButton from './components/CustomButton';
-import {useRefsContext} from '@/context';
-import {data, OnboardingData} from './data';
+import { useRefsContext } from '@/context';
+import { data, OnboardingData } from './data';
 import RenderItem from './components/OnboardingItem';
-import {FlatList} from 'react-native-gesture-handler';
-import {useOnboardingContext} from './OnboardingContext';
+import { FlatList } from 'react-native-gesture-handler';
+import { useOnboardingContext } from './OnboardingContext';
 
 const FlatListRender = () => {
-  const {width: SCREEN_WIDTH, height: SCREEN_HEIGHT} = useWindowDimensions();
-  const {languageChangeSheetRef} = useRefsContext();
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = useWindowDimensions();
+  const { languageChangeSheetRef } = useRefsContext();
   const flatListRef = useAnimatedRef<FlatList<OnboardingData>>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const x = useSharedValue(0);
@@ -32,7 +32,7 @@ const FlatListRender = () => {
     setScrollEnabled,
   } = useOnboardingContext();
   const openModal = () => {
-    languageChangeSheetRef.current?.scrollTo(-SCREEN_HEIGHT / 1.2);
+    languageChangeSheetRef.current?.present()
   };
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const FlatListRender = () => {
         ref={flatListRef}
         onScroll={onScroll}
         data={data}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <RenderItem item={item} index={index} x={x} openSheet={openModal} />
         )}
         scrollEventThrottle={16}

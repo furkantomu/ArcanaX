@@ -113,7 +113,7 @@ const CartReveal = ({route}: {route: CartRevealRouteProp}) => {
             {
               text: i18n.t('ALERT.YES', {locale: localeValue}),
               onPress: () => {
-                saveTarotSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+                saveTarotSheetRef.current?.present();
               },
             }, // Çıkışı onaylarsa devam eder
           ],
@@ -174,7 +174,7 @@ const CartReveal = ({route}: {route: CartRevealRouteProp}) => {
   };
 
   const openModal = () => {
-    detailCardSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+    detailCardSheetRef.current?.present();
   };
 
   const handlePress = async () => {

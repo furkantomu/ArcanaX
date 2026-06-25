@@ -1,7 +1,7 @@
 export const API_CONFIG = {
   BASE_URL: __DEV__ 
-    ? 'https://www.arcanaxapp.xyz/' 
-    : 'http://192.168.0.21:3000',
+    ? 'localhost:3000/' 
+    : 'https://arcana-3vav.onrender.com',
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
 } as const;

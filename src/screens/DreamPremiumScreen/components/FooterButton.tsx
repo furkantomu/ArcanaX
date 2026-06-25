@@ -21,7 +21,7 @@ const FooterButton = () => {
 
   const handlePress = async (params: string) => {
     if (params === 'completed') {
-      saveDreamSheetRef.current?.scrollTo(-SIZES.height / 1.2);
+      saveDreamSheetRef.current?.present();
     } else {
       const oldMessage = {
         role: 'user',

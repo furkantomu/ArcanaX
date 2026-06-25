@@ -228,7 +228,7 @@ const Purchasing = () => {
           }
         />
 
-        <MyWebComponent uri="https://arcanaxapp.com/privacy" />
+        <MyWebComponent uri="https://term-phi.vercel.app/" />
         <Button
           text={
             selectedProduct

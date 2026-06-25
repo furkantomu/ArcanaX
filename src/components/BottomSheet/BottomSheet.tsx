@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet, View, BackHandler, useSafeAreaInsets} from 'react-native';
+import {Dimensions, StyleSheet, View, BackHandler} from 'react-native';
 import React, {JSX, useCallback, useImperativeHandle, useEffect, useMemo, useRef} from 'react';
 import {
   Gesture,
@@ -17,6 +17,7 @@ import Animated, {
 
 import {BottomSheetRefProps} from '@/types';
 import {COLORS} from '@/styles/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 150;

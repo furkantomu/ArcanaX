@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5.2.14",
     "@react-native-async-storage/async-storage": "^2.1.2",
     "@react-native-firebase/analytics": "^21.12.2",
     "@react-native-firebase/app": "^21.12.2",

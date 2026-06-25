@@ -83,8 +83,8 @@ android {
         applicationId "com.arcanax"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 126
-        versionName "1.0.1"
+        versionCode 127
+        versionName "1.0.2"
         missingDimensionStrategy "store", "play"
     }
     signingConfigs {
